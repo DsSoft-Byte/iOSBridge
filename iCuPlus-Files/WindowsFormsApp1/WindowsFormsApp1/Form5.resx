@@ -1712,6 +1712,19 @@
         AI/83C8B4JGf+yUAPPJzvwSAR37ulwDwyM/9EgAe+W/yfh+f8v8D9/oCSuLBLcwAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>This is a beta-only piece of
+software, bugs are expected.
+Report all bugs on r/setupapp
+and tag me in your post.
+
+
+All other types of reports
+will be ignored due to me
+being only online on reddit.
+
+</value>
+  </data>
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABAwAAAQICAYAAACJcklgAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m

@@ -156,11 +156,9 @@
             this.label19.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label19.Location = new System.Drawing.Point(12, 169);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(124, 96);
+            this.label19.Size = new System.Drawing.Size(125, 120);
             this.label19.TabIndex = 13;
-            this.label19.Text = "This is a beta-only piece of\r\nsoftware bugs are expected\r\nReport all bugs on r/se" +
-    "tupapp\r\nand tag me in your post\r\n\r\nAll other types of reports\r\nwill be ignored d" +
-    "ue to me\r\nbeing only online on reddit";
+            this.label19.Text = resources.GetString("label19.Text");
             // 
             // label18
             // 

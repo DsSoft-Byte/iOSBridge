@@ -863,8 +863,6 @@ namespace WindowsFormsApp1
         {
             MessageBox.Show("Debugging and Developer mode activated, to return to Production state restart the app, Developer code -10");
             panel7.Visible = true;
-            Form5 form5 = new Form5();
-            form5.Show();
         }
 
         private void button3_Click_1(object sender, EventArgs e)

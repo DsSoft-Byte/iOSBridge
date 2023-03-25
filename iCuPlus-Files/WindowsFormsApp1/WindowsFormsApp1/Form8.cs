@@ -42,10 +42,9 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This Server is under Maintenance");
-            //Ping ping = new Ping();
-            //PingReply reply = ping.Send("192.168.50.5", 1000);
-           //MessageBox.Show(reply.Status.ToString());
+            Ping ping = new Ping();
+            PingReply reply = ping.Send("bnmhbjkhklbjkl.000webhostapp.com", 5000);
+            MessageBox.Show(reply.Status.ToString());
         }
 
         private void button5_Click(object sender, EventArgs e)

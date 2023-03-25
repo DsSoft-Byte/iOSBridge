@@ -383,11 +383,13 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(508, 388);
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label16.Location = new System.Drawing.Point(41, 428);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(186, 13);
+            this.label16.Size = new System.Drawing.Size(663, 13);
             this.label16.TabIndex = 16;
-            this.label16.Text = "PLACEHOLDER TEXT< DBUTTONS";
+            this.label16.Text = "All Devices from Samsung-Based to A11 can use the tethered bypass regardless of t" +
+    "he iOS version. New A6 - A11 untethered bypass soon!";
             // 
             // Form7
             // 
