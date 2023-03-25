@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Daniel\\Documents\\GitHub\\iCuPlus-Testing\\iCuPlus-Files\\iCuplusupdater\\iCuplusupdater\\iCuplusupdater.csproj",
+      "projectUniqueName": "C:\\Users\\Daniel\\Documents\\GitHub\\iCu-X\\iCuplusupdater\\iCuplusupdater\\iCuplusupdater.csproj",
       "projectName": "iCuplusupdater",
-      "projectPath": "C:\\Users\\Daniel\\Documents\\GitHub\\iCuPlus-Testing\\iCuPlus-Files\\iCuplusupdater\\iCuplusupdater\\iCuplusupdater.csproj",
+      "projectPath": "C:\\Users\\Daniel\\Documents\\GitHub\\iCu-X\\iCuplusupdater\\iCuplusupdater\\iCuplusupdater.csproj",
       "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Daniel\\Documents\\GitHub\\iCuPlus-Testing\\iCuPlus-Files\\iCuplusupdater\\iCuplusupdater\\obj\\",
+      "outputPath": "C:\\Users\\Daniel\\Documents\\GitHub\\iCu-X\\iCuplusupdater\\iCuplusupdater\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

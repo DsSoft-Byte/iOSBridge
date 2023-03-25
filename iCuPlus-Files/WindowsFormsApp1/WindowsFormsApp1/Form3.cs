@@ -45,7 +45,7 @@ namespace WindowsFormsApp1
 
                     {
                         WebClient webClient = new WebClient();
-                        webClient.DownloadFile("https://raw.githubusercontent.com/DsSoft-Byte/iCu/main/iCures_Updater.zip", @"C:\iCuPlus.zip");
+                        webClient.DownloadFile("https://github.com/DsSoft-Byte/iCu-X/releases/download/v10/do.not.download.zip", @"C:\iCuPlus.zip");
                         string zipPath = @"C:\iCuPlus.zip";
                         string extractPath = @"C:\UpdateData";
                         System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);

@@ -111,7 +111,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(187, 16);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Compiled on 03/03/2023, 22:24";
+            this.label5.Text = "Compiled on 25/03/2023, 14:51";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
