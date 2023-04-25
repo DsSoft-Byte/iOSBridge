@@ -25,6 +25,8 @@ No more XAMPP Self hosting! Just run the tool! I did the hard work so you don't 
 
 
 
+
+
 Activation ✔
 
 Updater ✔
@@ -43,4 +45,4 @@ Custom Linux distro and USB Imager/Flasher ⏳
 
 
 
-Updated on 25/04/23, Reddit users from setupapp, download THIS!!!
+#Updated on 25/04/23, Reddit users from setupapp, download THIS!!!
