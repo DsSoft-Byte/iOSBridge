@@ -2,7 +2,7 @@
 Next-Generation iCu Unlocker follow-up.
 
 
-#Proudly presenting, iCu X (10)
+# Proudly presenting, iCu X (10)
 
 
 Fully redesigned UI/UX
@@ -27,22 +27,22 @@ No more XAMPP Self hosting! Just run the tool! I did the hard work so you don't 
 
 
 
-Activation ✔
+# Activation ✔
 
-Updater ✔
+# Updater ✔
 
-Faster than all previous iCu versions ✔
+# Faster than all previous iCu versions ✔
 
-Full activation matrix ✔
+# Full activation matrix ✔
 
-ipwndfu up to A11 ✔
+# ipwndfu up to A11 ✔
 
-Custom Themes ✔👀
+# Custom Themes ✔👀
 
-Recovery Dashboard ⏳
+# Recovery Dashboard ⏳
 
-Custom Linux distro and USB Imager/Flasher ⏳
+# Custom Linux distro and USB Imager/Flasher ⏳
 
 
 
-Updated on 25/04/23, Reddit users from setupapp, download THIS!!!
+# Updated on 25/04/23, Reddit users from setupapp, download THIS!!!
