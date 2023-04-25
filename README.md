@@ -45,4 +45,4 @@ Custom Linux distro and USB Imager/Flasher ⏳
 
 
 
-#Updated on 25/04/23, Reddit users from setupapp, download THIS!!!
+Updated on 25/04/23, Reddit users from setupapp, download THIS!!!
