@@ -203,7 +203,7 @@ namespace WindowsFormsApp1
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 31);
             this.label1.TabIndex = 3;
-            this.label1.Text = "iCu X Release 10.0.0";
+            this.label1.Text = "iCu X Release 10.0.1";
             // 
             // button5
             // 
@@ -632,7 +632,7 @@ namespace WindowsFormsApp1
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(112, 31);
             this.label11.TabIndex = 16;
-            this.label11.Text = "10B0D0";
+            this.label11.Text = "10B0D1";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // panel7
