@@ -54,5 +54,10 @@ namespace WindowsFormsApp1
             //PingReply reply = ping.Send("192.168.XX.XX", 1000);
             //MessageBox.Show(reply.Status.ToString());
         }
+
+        private void Form8_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

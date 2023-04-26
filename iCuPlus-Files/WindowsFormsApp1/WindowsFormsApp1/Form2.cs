@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (File.Exists(@"C:\UpdateData\icuplusupdater.exe"))
+            if (File.Exists(@"C:\UpdateData\iCures\icuplusupdater.exe"))
             {
                 Process.Start(@"C:\UpdateData\iCures\icuplusupdater.exe");
                 Application.Exit();

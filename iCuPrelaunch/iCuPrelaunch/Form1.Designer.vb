@@ -49,7 +49,7 @@ Partial Class Form1
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(455, 34)
         Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Launch iCu software"
+        Me.Button2.Text = "Launch iCu X software"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'CheckBox1
@@ -76,7 +76,7 @@ Partial Class Form1
         Me.Label2.Size = New System.Drawing.Size(452, 20)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "iCu X Software launcher |                                                    | V5" &
-    ".0.0"
+    ".0.1"
         '
         'LinkLabel1
         '
@@ -107,7 +107,7 @@ Partial Class Form1
         Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.ShowInTaskbar = False
-        Me.Text = "iCu X Launcher V5.0.0"
+        Me.Text = "iCu X Launcher V5.0.1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

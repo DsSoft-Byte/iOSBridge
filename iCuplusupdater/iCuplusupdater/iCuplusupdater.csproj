@@ -7,6 +7,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Dtafalonso-Ios8-ICloud-Drive.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Dtafalonso-Ios8-ICloud-Drive.ico" />
+  </ItemGroup>
 
 </Project>

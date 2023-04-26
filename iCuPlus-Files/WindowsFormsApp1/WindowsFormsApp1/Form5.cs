@@ -61,7 +61,6 @@ namespace WindowsFormsApp1
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("This is the first ever iCu X release. Expect it to be buggy the first few revisions.");
             {
                 // Checking the existence of the specified
                 if (File.Exists(@"C:/iCures/Username.txt"))

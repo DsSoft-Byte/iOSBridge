@@ -100,7 +100,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(196, 16);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Software Build Number: 10B0D1";
+            this.label4.Text = "Software Build Number: 10B0D2";
             // 
             // label5
             // 
@@ -111,7 +111,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(187, 16);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Compiled on 25/04/2023, 23:02";
+            this.label5.Text = "Compiled on 26/04/2023, 15:00";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
@@ -132,9 +132,9 @@
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label7.Location = new System.Drawing.Point(213, 207);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(300, 16);
+            this.label7.Size = new System.Drawing.Size(330, 16);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Recommended Windows OS: Windows 10/11 x64";
+            this.label7.Text = "Recommended Windows OS: Windows 7 x64/W10 Pro";
             // 
             // label8
             // 

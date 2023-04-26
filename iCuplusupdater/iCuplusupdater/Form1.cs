@@ -1,6 +1,7 @@
 using Microsoft.VisualBasic;
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace iCuplusupdater
 {
@@ -13,7 +14,7 @@ namespace iCuplusupdater
 
         private void button2_Click(object sender, EventArgs e)
         {
-                CopyDirectory(@"C:\UpdateData\iCures", @"C:\iCures", true);
+                CopyDirectory(@"C:\UpdateData\iCures\", @"C:\iCures\", true);
 
                 static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
                 {
@@ -44,9 +45,9 @@ namespace iCuplusupdater
                         {
                             string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
                             CopyDirectory(subDir.FullName, newDestinationDir, true);
-
-                        Thread.Sleep(4000);
-                        MessageBox.Show("Something Happened, Ignore this message. Developer code -11.");
+                        MessageBox.Show("Update succeeded");
+                        Application.Exit();
+                        
                         }
                     }
                 }

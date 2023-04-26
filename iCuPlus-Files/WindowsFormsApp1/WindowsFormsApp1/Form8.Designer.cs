@@ -126,6 +126,7 @@
             this.MaximizeBox = false;
             this.Name = "Form8";
             this.Text = "iCu X Server Status";
+            this.Load += new System.EventHandler(this.Form8_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

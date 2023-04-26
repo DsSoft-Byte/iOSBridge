@@ -180,7 +180,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(125, 18);
             this.label14.TabIndex = 11;
-            this.label14.Text = "25/04/23 23:02 cpd";
+            this.label14.Text = "26/04/23 15:00 cpd";
             // 
             // label13
             // 
@@ -191,7 +191,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(43, 18);
             this.label13.TabIndex = 10;
-            this.label13.Text = "X1001";
+            this.label13.Text = "X1002";
             // 
             // label12
             // 
@@ -213,7 +213,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(87, 18);
             this.label11.TabIndex = 8;
-            this.label11.Text = "iCu X V10.0.1";
+            this.label11.Text = "iCu X V10.0.2";
             // 
             // label9
             // 
@@ -257,7 +257,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 16);
             this.label3.TabIndex = 4;
-            this.label3.Text = "iCu X V10.0.1";
+            this.label3.Text = "iCu X V10.0.2";
             // 
             // panel3
             // 

@@ -43,9 +43,6 @@ C:\Users\Daniel\Documents\GitHub\iCuPlus-Testing\iCuPlus-Files\iCuPlus-Files\Win
 C:\Users\Daniel\Documents\GitHub\iCuPlus-Testing\iCuPlus-Files\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form7.resources
 C:\Users\Daniel\Documents\GitHub\iCuPlus-Testing\iCuPlus-Files\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form8.resources
 C:\Users\Daniel\Documents\GitHub\iCuPlus-Testing\iCuPlus-Files\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form9.resources
-C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\iCu.exe.config
-C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\iCu.exe
-C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\iCu.pdb
 C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
 C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
 C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
@@ -60,5 +57,8 @@ C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFor
 C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
-C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu.exe
-C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu.pdb
+C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\iCu X.exe.config
+C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\iCu X.exe
+C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\iCu X.pdb
+C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu X.exe
+C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu X.pdb

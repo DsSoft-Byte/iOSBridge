@@ -203,7 +203,7 @@ namespace WindowsFormsApp1
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 31);
             this.label1.TabIndex = 3;
-            this.label1.Text = "iCu X Release 10.0.1";
+            this.label1.Text = "iCu X Release 10.0.2";
             // 
             // button5
             // 
@@ -346,11 +346,11 @@ namespace WindowsFormsApp1
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label3.Location = new System.Drawing.Point(100, 12);
+            this.label3.Location = new System.Drawing.Point(60, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
+            this.label3.Size = new System.Drawing.Size(175, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Tethered Bypa$$";
+            this.label3.Text = "Tethered Bypa$$ (ALL A5 Devices)";
             // 
             // panel3
             // 
@@ -419,11 +419,11 @@ namespace WindowsFormsApp1
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label6.Location = new System.Drawing.Point(104, 12);
+            this.label6.Location = new System.Drawing.Point(63, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 13);
+            this.label6.Size = new System.Drawing.Size(159, 13);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Pangu7 Bypa$$";
+            this.label6.Text = "Pangu7 iOS 7 exclusive Bypa$$";
             // 
             // panel4
             // 
@@ -446,7 +446,7 @@ namespace WindowsFormsApp1
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(261, 28);
             this.button15.TabIndex = 11;
-            this.button15.Text = "Run XAMPP";
+            this.button15.Text = "Ask a question on r/setupapp";
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
@@ -459,7 +459,7 @@ namespace WindowsFormsApp1
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(261, 28);
             this.button16.TabIndex = 10;
-            this.button16.Text = "Download XAMPP";
+            this.button16.Text = "Download User Manual iCu X";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
@@ -480,11 +480,11 @@ namespace WindowsFormsApp1
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label7.Location = new System.Drawing.Point(79, 12);
+            this.label7.Location = new System.Drawing.Point(60, 12);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 13);
+            this.label7.Size = new System.Drawing.Size(171, 13);
             this.label7.TabIndex = 8;
-            this.label7.Text = "Bypa$$ Preparation tools";
+            this.label7.Text = "Bypa$$ Useful resources and tools";
             // 
             // panel5
             // 
@@ -534,7 +534,7 @@ namespace WindowsFormsApp1
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(261, 28);
             this.button20.TabIndex = 9;
-            this.button20.Text = "Install iTunes package";
+            this.button20.Text = "Download and Install Legacy iTunes package";
             this.button20.UseVisualStyleBackColor = false;
             this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
@@ -542,11 +542,11 @@ namespace WindowsFormsApp1
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label8.Location = new System.Drawing.Point(75, 12);
+            this.label8.Location = new System.Drawing.Point(60, 12);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(146, 13);
+            this.label8.Size = new System.Drawing.Size(158, 13);
             this.label8.TabIndex = 8;
-            this.label8.Text = "Legacy tools | Win 7 x64 best";
+            this.label8.Text = "Legacy tools | use on Win 7 x64";
             // 
             // panel6
             // 
@@ -571,7 +571,7 @@ namespace WindowsFormsApp1
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(130, 28);
             this.button3.TabIndex = 13;
-            this.button3.Text = "CB/A ";
+            this.button3.Text = "Custom Button 2";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
@@ -584,7 +584,7 @@ namespace WindowsFormsApp1
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(125, 28);
             this.button24.TabIndex = 12;
-            this.button24.Text = "CB/X ";
+            this.button24.Text = "Custom Button 1";
             this.button24.UseVisualStyleBackColor = false;
             this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
@@ -632,7 +632,7 @@ namespace WindowsFormsApp1
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(112, 31);
             this.label11.TabIndex = 16;
-            this.label11.Text = "10B0D1";
+            this.label11.Text = "10B0D2";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // panel7
@@ -719,7 +719,7 @@ namespace WindowsFormsApp1
         {
             using (var client = new WebClient())
                 if (File.Exists(@"C:\iCuPlus.zip"))
-                    MessageBox.Show("Update file detected ERROR 2");
+                    MessageBox.Show("Update file detected Error 003");
             else
 
             {
@@ -805,12 +805,12 @@ namespace WindowsFormsApp1
 
         private void button16_Click(object sender, EventArgs e)
         {
-            Process.Start("https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.1.12/xampp-windows-x64-8.1.12-0-VS16-installer.exe");
+            MessageBox.Show("Open the PDF in your iCures folder, its there :)");
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\xampp\xampp-control.exe");
+            Process.Start("https://www.reddit.com/r/setupapp/");
         }
 
         private void button20_Click(object sender, EventArgs e)
