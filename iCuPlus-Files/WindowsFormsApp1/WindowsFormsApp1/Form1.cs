@@ -203,7 +203,7 @@ namespace WindowsFormsApp1
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 31);
             this.label1.TabIndex = 3;
-            this.label1.Text = "iCu X Release 10.0.2";
+            this.label1.Text = "iCu X Release 10.0.3";
             // 
             // button5
             // 
@@ -297,11 +297,11 @@ namespace WindowsFormsApp1
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label4.Location = new System.Drawing.Point(49, 115);
+            this.label4.Location = new System.Drawing.Point(24, 115);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(186, 20);
+            this.label4.Size = new System.Drawing.Size(252, 40);
             this.label4.TabIndex = 13;
-            this.label4.Text = "All A5 Devices supported";
+            this.label4.Text = "iPad 2 Only on 9.3.5/6. All other A5\r\nare UNSUPPORTED on iOS 8+";
             // 
             // button12
             // 
@@ -346,11 +346,11 @@ namespace WindowsFormsApp1
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label3.Location = new System.Drawing.Point(60, 12);
+            this.label3.Location = new System.Drawing.Point(65, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(175, 13);
+            this.label3.Size = new System.Drawing.Size(153, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Tethered Bypa$$ (ALL A5 Devices)";
+            this.label3.Text = "Tethered Bypa$$ (A5 Devices)";
             // 
             // panel3
             // 
@@ -419,11 +419,11 @@ namespace WindowsFormsApp1
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label6.Location = new System.Drawing.Point(63, 12);
+            this.label6.Location = new System.Drawing.Point(43, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(159, 13);
+            this.label6.Size = new System.Drawing.Size(213, 13);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Pangu7 iOS 7 exclusive Bypa$$";
+            this.label6.Text = "Pangu7 iOS 7 exclusive untethered Bypa$$";
             // 
             // panel4
             // 
@@ -599,6 +599,7 @@ namespace WindowsFormsApp1
             this.button21.TabIndex = 11;
             this.button21.Text = "Info/Help";
             this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.button21_Click_1);
             // 
             // button22
             // 
@@ -632,7 +633,7 @@ namespace WindowsFormsApp1
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(112, 31);
             this.label11.TabIndex = 16;
-            this.label11.Text = "10B0D2";
+            this.label11.Text = "10B0D3";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // panel7
@@ -688,7 +689,7 @@ namespace WindowsFormsApp1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "iCu X V10.0.0";
+            this.Text = "iCu X V10.0.3";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -871,6 +872,11 @@ namespace WindowsFormsApp1
             string fileReader;
             fileReader = System.IO.File.ReadAllText(@"C:\iCures\CB-A-config.txt");
             Process.Start(fileReader);
+        }
+
+        private void button21_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Everything is in the PDF file in your iCu X installation folder, have a read.");
         }
     }
 

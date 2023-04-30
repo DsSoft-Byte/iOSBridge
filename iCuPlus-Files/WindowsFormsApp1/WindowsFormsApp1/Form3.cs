@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
                     string zipPath = @"C:\iCuPlus.zip";
                     string extractPath = @"C:\UpdateData";
                     System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
-                // Will crash here because no compressed package of iCu X is available.
+                // Will crash here occasionally.
                     System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\Updater\icuplusupdater.exe");
                     MessageBox.Show("Exit all iCu windows and update then.");
                 }

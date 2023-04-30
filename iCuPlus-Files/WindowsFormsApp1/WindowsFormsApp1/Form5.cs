@@ -82,5 +82,16 @@ namespace WindowsFormsApp1
         {
             MessageBox.Show("Recovery Dashboard is under development.");
         }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            Form10 form10 = new Form10();
+            form10.Show();
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

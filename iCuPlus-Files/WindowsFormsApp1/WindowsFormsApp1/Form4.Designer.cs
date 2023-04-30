@@ -78,7 +78,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(252, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "iCu X RELEASE Software Version V10.0.1";
+            this.label2.Text = "iCu X RELEASE Software Version V10.0.3";
             // 
             // label3
             // 
@@ -100,7 +100,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(196, 16);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Software Build Number: 10B0D2";
+            this.label4.Text = "Software Build Number: 10B0D3";
             // 
             // label5
             // 
@@ -111,7 +111,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(187, 16);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Compiled on 26/04/2023, 15:00";
+            this.label5.Text = "Compiled on 30/04/2023, 21:00";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6

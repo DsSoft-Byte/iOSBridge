@@ -62,3 +62,5 @@ C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFor
 C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\iCu X.pdb
 C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu X.exe
 C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu X.pdb
+C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form10.resources
+C:\Users\Daniel\Documents\GitHub\iCu-X\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form11.resources
