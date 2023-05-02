@@ -9,11 +9,11 @@ Fully redesigned UI/UX
 
 Server-based activation FINALLY!
 
-Rewritten in C#
+Fully Rewritten in C# from the ground up.
 
-100% Customizable with custom "iCuFS" files
+100% Customizable with custom "iCuFS" zip files
 
-Can be downgraded to any version
+Can be downgraded to any version with iCuFS zips
 
 Provides latest information on iCloud bypasses
 
