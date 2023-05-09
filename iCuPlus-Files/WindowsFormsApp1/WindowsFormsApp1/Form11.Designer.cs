@@ -63,7 +63,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(771, 132);
             this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "ProductName: iCu X\r\nProductVersion: 10.0.3\r\nInternalSoftwareString: X1003\r\nServer" +
+            this.textBox1.Text = "ProductName: iCu X\r\nProductVersion: 10.0.4\r\nInternalSoftwareString: X1004\r\nServer" +
     "-Client-Duet: Yes\r\nStockHostProvider: 000\r\nStockFileUsed: AT752Sliver\r\nLayerOne:" +
     " No\r\nDsSoft ECE: No\r\nInsiderBeta: No\r\n";
             // 

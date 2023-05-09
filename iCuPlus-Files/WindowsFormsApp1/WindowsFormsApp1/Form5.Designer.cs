@@ -180,9 +180,9 @@
             this.label14.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label14.Location = new System.Drawing.Point(12, 536);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(125, 18);
+            this.label14.Size = new System.Drawing.Size(88, 18);
             this.label14.TabIndex = 11;
-            this.label14.Text = "30/04/23 21:00 cpd";
+            this.label14.Text = "04/04/23 cpd";
             // 
             // label13
             // 
@@ -193,7 +193,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(43, 18);
             this.label13.TabIndex = 10;
-            this.label13.Text = "X1003";
+            this.label13.Text = "X1004";
             // 
             // label12
             // 
@@ -215,7 +215,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(87, 18);
             this.label11.TabIndex = 8;
-            this.label11.Text = "iCu X V10.0.3";
+            this.label11.Text = "iCu X V10.0.4";
             // 
             // label9
             // 
@@ -259,7 +259,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 16);
             this.label3.TabIndex = 4;
-            this.label3.Text = "iCu X V10.0.3";
+            this.label3.Text = "iCu X V10.0.4";
             // 
             // panel3
             // 

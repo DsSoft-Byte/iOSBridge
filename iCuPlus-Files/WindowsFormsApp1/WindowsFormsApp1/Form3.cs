@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
                     string extractPath = @"C:\UpdateData";
                     System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
                 // Will crash here occasionally.
-                    System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\Updater\icuplusupdater.exe");
+                    System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\icuplusupdater.exe");
                     MessageBox.Show("Exit all iCu windows and update then.");
                 }
                 else
@@ -90,7 +90,7 @@ namespace WindowsFormsApp1
                     string zipPath = @"C:\iCuPlus.zip";
                     string extractPath = @"C:\UpdateData";
                     System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
-                    System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\Updater\icuplusupdater.exe");
+                    System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\icuplusupdater.exe");
                     MessageBox.Show("Exit all iCu windows and update then.");
                 }
                 else
