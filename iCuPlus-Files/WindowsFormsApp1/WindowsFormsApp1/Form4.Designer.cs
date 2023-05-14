@@ -33,8 +33,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -91,35 +89,12 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "iCu X Updater version V1.3.3";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label4.Location = new System.Drawing.Point(213, 117);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 16);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Software Build Number: 10B0D4";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label5.Location = new System.Drawing.Point(213, 146);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 16);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Compiled on 04/04/2023";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label6.Location = new System.Drawing.Point(213, 176);
+            this.label6.Location = new System.Drawing.Point(213, 116);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(267, 16);
             this.label6.TabIndex = 6;
@@ -130,7 +105,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label7.Location = new System.Drawing.Point(213, 207);
+            this.label7.Location = new System.Drawing.Point(213, 147);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(330, 16);
             this.label7.TabIndex = 7;
@@ -217,8 +192,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
@@ -243,8 +216,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

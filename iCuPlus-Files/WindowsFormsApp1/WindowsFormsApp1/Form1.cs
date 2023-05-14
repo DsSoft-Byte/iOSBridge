@@ -40,7 +40,6 @@ namespace WindowsFormsApp1
         private Label label6;
         private Panel panel4;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button17;
         private Label label7;
         private Panel panel5;
@@ -58,6 +57,22 @@ namespace WindowsFormsApp1
         private Label label16;
         private Label label17;
         private System.Windows.Forms.Button button3;
+        private Panel panel8;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button button25;
+        private Label label14;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button16;
+        private Label label12;
+        private Label label10;
+        private Panel panel9;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button29;
+        private Label label18;
+        private SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button button2;
 
         public Form1()
@@ -140,14 +155,15 @@ namespace WindowsFormsApp1
             this.button11 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button26 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -165,6 +181,20 @@ namespace WindowsFormsApp1
             this.panel7 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.button30 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
+            this.button29 = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -172,6 +202,8 @@ namespace WindowsFormsApp1
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -210,9 +242,9 @@ namespace WindowsFormsApp1
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button5.Location = new System.Drawing.Point(655, 472);
+            this.button5.Location = new System.Drawing.Point(835, 448);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(292, 32);
+            this.button5.Size = new System.Drawing.Size(246, 45);
             this.button5.TabIndex = 6;
             this.button5.Text = "Exit";
             this.button5.UseVisualStyleBackColor = false;
@@ -227,7 +259,7 @@ namespace WindowsFormsApp1
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(18, 91);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(292, 170);
+            this.panel1.Size = new System.Drawing.Size(246, 155);
             this.panel1.TabIndex = 7;
             // 
             // button8
@@ -237,7 +269,7 @@ namespace WindowsFormsApp1
             this.button8.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button8.Location = new System.Drawing.Point(15, 107);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(261, 28);
+            this.button8.Size = new System.Drawing.Size(216, 28);
             this.button8.TabIndex = 11;
             this.button8.Text = "Run gaster";
             this.button8.UseVisualStyleBackColor = false;
@@ -250,7 +282,7 @@ namespace WindowsFormsApp1
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button7.Location = new System.Drawing.Point(15, 73);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(261, 28);
+            this.button7.Size = new System.Drawing.Size(216, 28);
             this.button7.TabIndex = 10;
             this.button7.Text = "Use Zadig";
             this.button7.UseVisualStyleBackColor = false;
@@ -263,7 +295,7 @@ namespace WindowsFormsApp1
             this.button6.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button6.Location = new System.Drawing.Point(15, 40);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(261, 28);
+            this.button6.Size = new System.Drawing.Size(216, 28);
             this.button6.TabIndex = 9;
             this.button6.Text = "Install MinGW (Optional)";
             this.button6.UseVisualStyleBackColor = false;
@@ -273,7 +305,7 @@ namespace WindowsFormsApp1
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label2.Location = new System.Drawing.Point(92, 12);
+            this.label2.Location = new System.Drawing.Point(71, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 13);
             this.label2.TabIndex = 8;
@@ -287,30 +319,31 @@ namespace WindowsFormsApp1
             this.panel2.Controls.Add(this.button10);
             this.panel2.Controls.Add(this.button11);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(337, 91);
+            this.panel2.Location = new System.Drawing.Point(287, 91);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(292, 170);
+            this.panel2.Size = new System.Drawing.Size(246, 155);
             this.panel2.TabIndex = 12;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label4.Location = new System.Drawing.Point(24, 115);
+            this.label4.Location = new System.Drawing.Point(12, 113);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(252, 40);
+            this.label4.Size = new System.Drawing.Size(207, 32);
             this.label4.TabIndex = 13;
             this.label4.Text = "iPad 2 Only on 9.3.5/6. All other A5\r\nare UNSUPPORTED on iOS 8+";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button12
             // 
             this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button12.Location = new System.Drawing.Point(145, 40);
+            this.button12.Location = new System.Drawing.Point(123, 40);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(131, 28);
+            this.button12.Size = new System.Drawing.Size(107, 28);
             this.button12.TabIndex = 12;
             this.button12.Text = "Bypa$$ x64";
             this.button12.UseVisualStyleBackColor = false;
@@ -323,7 +356,7 @@ namespace WindowsFormsApp1
             this.button10.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button10.Location = new System.Drawing.Point(15, 73);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(261, 28);
+            this.button10.Size = new System.Drawing.Size(215, 28);
             this.button10.TabIndex = 10;
             this.button10.Text = "Run UDID/ECID scan";
             this.button10.UseVisualStyleBackColor = false;
@@ -336,7 +369,7 @@ namespace WindowsFormsApp1
             this.button11.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button11.Location = new System.Drawing.Point(15, 40);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(124, 28);
+            this.button11.Size = new System.Drawing.Size(102, 28);
             this.button11.TabIndex = 9;
             this.button11.Text = "Bypa$$ x86";
             this.button11.UseVisualStyleBackColor = false;
@@ -346,44 +379,58 @@ namespace WindowsFormsApp1
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label3.Location = new System.Drawing.Point(65, 12);
+            this.label3.Location = new System.Drawing.Point(37, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 13);
+            this.label3.Size = new System.Drawing.Size(177, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Tethered Bypa$$ (A5 Devices)";
+            this.label3.Text = "Tethered PHP Bypa$$ (iPad 2 Only)";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.panel3.Controls.Add(this.button26);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.button9);
             this.panel3.Controls.Add(this.button13);
             this.panel3.Controls.Add(this.button14);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Location = new System.Drawing.Point(655, 91);
+            this.panel3.Location = new System.Drawing.Point(561, 91);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(292, 170);
+            this.panel3.Size = new System.Drawing.Size(246, 155);
             this.panel3.TabIndex = 14;
+            // 
+            // button26
+            // 
+            this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button26.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button26.Location = new System.Drawing.Point(130, 74);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(103, 28);
+            this.button26.TabIndex = 14;
+            this.button26.Text = "Run Sideloadly i8";
+            this.button26.UseVisualStyleBackColor = false;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label5.Location = new System.Drawing.Point(31, 115);
+            this.label5.Location = new System.Drawing.Point(34, 119);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(235, 20);
+            this.label5.Size = new System.Drawing.Size(185, 16);
             this.label5.TabIndex = 13;
-            this.label5.Text = "All iOS 7.X.X Devices supported";
+            this.label5.Text = "All iOS 7/8 Devices supported";
             // 
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button9.Location = new System.Drawing.Point(145, 40);
+            this.button9.Location = new System.Drawing.Point(130, 40);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(131, 28);
+            this.button9.Size = new System.Drawing.Size(103, 28);
             this.button9.TabIndex = 12;
             this.button9.Text = "Bypa$$ x64";
             this.button9.UseVisualStyleBackColor = false;
@@ -396,7 +443,7 @@ namespace WindowsFormsApp1
             this.button13.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button13.Location = new System.Drawing.Point(15, 73);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(261, 28);
+            this.button13.Size = new System.Drawing.Size(109, 28);
             this.button13.TabIndex = 10;
             this.button13.Text = "Run Pangu7";
             this.button13.UseVisualStyleBackColor = false;
@@ -409,7 +456,7 @@ namespace WindowsFormsApp1
             this.button14.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button14.Location = new System.Drawing.Point(15, 40);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(124, 28);
+            this.button14.Size = new System.Drawing.Size(109, 28);
             this.button14.TabIndex = 9;
             this.button14.Text = "Bypa$$ x86";
             this.button14.UseVisualStyleBackColor = false;
@@ -419,36 +466,23 @@ namespace WindowsFormsApp1
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label6.Location = new System.Drawing.Point(43, 12);
+            this.label6.Location = new System.Drawing.Point(20, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(213, 13);
+            this.label6.Size = new System.Drawing.Size(209, 13);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Pangu7 iOS 7 exclusive untethered Bypa$$";
+            this.label6.Text = "iOS 7/8 exclusive PHP untethered Bypa$$";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.panel4.Controls.Add(this.button15);
             this.panel4.Controls.Add(this.button16);
+            this.panel4.Controls.Add(this.button15);
             this.panel4.Controls.Add(this.button17);
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Location = new System.Drawing.Point(18, 287);
+            this.panel4.Location = new System.Drawing.Point(18, 267);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(292, 170);
+            this.panel4.Size = new System.Drawing.Size(246, 155);
             this.panel4.TabIndex = 12;
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button15.Location = new System.Drawing.Point(15, 107);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(261, 28);
-            this.button15.TabIndex = 11;
-            this.button15.Text = "Ask a question on r/setupapp";
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button16
             // 
@@ -457,11 +491,24 @@ namespace WindowsFormsApp1
             this.button16.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button16.Location = new System.Drawing.Point(15, 73);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(261, 28);
-            this.button16.TabIndex = 10;
-            this.button16.Text = "Download User Manual iCu X";
+            this.button16.Size = new System.Drawing.Size(216, 28);
+            this.button16.TabIndex = 12;
+            this.button16.Text = "Download Etas0nJB";
             this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.button16.Click += new System.EventHandler(this.button16_Click_1);
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button15.Location = new System.Drawing.Point(15, 107);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(216, 28);
+            this.button15.TabIndex = 11;
+            this.button15.Text = "Control Windows Defender";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button17
             // 
@@ -470,9 +517,9 @@ namespace WindowsFormsApp1
             this.button17.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button17.Location = new System.Drawing.Point(15, 40);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(261, 28);
+            this.button17.Size = new System.Drawing.Size(216, 28);
             this.button17.TabIndex = 9;
-            this.button17.Text = "Flash Linux *.iso to USB";
+            this.button17.Text = "Download Sideloadly";
             this.button17.UseVisualStyleBackColor = false;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
@@ -480,7 +527,7 @@ namespace WindowsFormsApp1
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label7.Location = new System.Drawing.Point(60, 12);
+            this.label7.Location = new System.Drawing.Point(40, 11);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(171, 13);
             this.label7.TabIndex = 8;
@@ -493,9 +540,9 @@ namespace WindowsFormsApp1
             this.panel5.Controls.Add(this.button19);
             this.panel5.Controls.Add(this.button20);
             this.panel5.Controls.Add(this.label8);
-            this.panel5.Location = new System.Drawing.Point(337, 287);
+            this.panel5.Location = new System.Drawing.Point(287, 267);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(292, 170);
+            this.panel5.Size = new System.Drawing.Size(246, 155);
             this.panel5.TabIndex = 13;
             // 
             // button18
@@ -505,7 +552,7 @@ namespace WindowsFormsApp1
             this.button18.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button18.Location = new System.Drawing.Point(15, 107);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(261, 28);
+            this.button18.Size = new System.Drawing.Size(215, 28);
             this.button18.TabIndex = 11;
             this.button18.Text = "Limera1n DFU";
             this.button18.UseVisualStyleBackColor = false;
@@ -519,9 +566,9 @@ namespace WindowsFormsApp1
             this.button19.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button19.Location = new System.Drawing.Point(15, 73);
             this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(261, 28);
+            this.button19.Size = new System.Drawing.Size(215, 28);
             this.button19.TabIndex = 10;
-            this.button19.Text = "Legacy Tools | Soon!";
+            this.button19.Text = "FCE365 Firmware Manager for CFW";
             this.button19.UseVisualStyleBackColor = false;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
@@ -532,9 +579,9 @@ namespace WindowsFormsApp1
             this.button20.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button20.Location = new System.Drawing.Point(15, 40);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(261, 28);
+            this.button20.Size = new System.Drawing.Size(215, 28);
             this.button20.TabIndex = 9;
-            this.button20.Text = "Download and Install Legacy iTunes package";
+            this.button20.Text = "Download and Install Old iTunes";
             this.button20.UseVisualStyleBackColor = false;
             this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
@@ -542,7 +589,7 @@ namespace WindowsFormsApp1
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label8.Location = new System.Drawing.Point(60, 12);
+            this.label8.Location = new System.Drawing.Point(46, 11);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(158, 13);
             this.label8.TabIndex = 8;
@@ -556,9 +603,9 @@ namespace WindowsFormsApp1
             this.panel6.Controls.Add(this.button21);
             this.panel6.Controls.Add(this.button22);
             this.panel6.Controls.Add(this.label9);
-            this.panel6.Location = new System.Drawing.Point(655, 287);
+            this.panel6.Location = new System.Drawing.Point(835, 267);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(292, 170);
+            this.panel6.Size = new System.Drawing.Size(246, 155);
             this.panel6.TabIndex = 14;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
@@ -567,9 +614,9 @@ namespace WindowsFormsApp1
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button3.Location = new System.Drawing.Point(145, 73);
+            this.button3.Location = new System.Drawing.Point(130, 73);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(130, 28);
+            this.button3.Size = new System.Drawing.Size(103, 28);
             this.button3.TabIndex = 13;
             this.button3.Text = "Custom Button 2";
             this.button3.UseVisualStyleBackColor = false;
@@ -582,7 +629,7 @@ namespace WindowsFormsApp1
             this.button24.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button24.Location = new System.Drawing.Point(14, 73);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(125, 28);
+            this.button24.Size = new System.Drawing.Size(110, 28);
             this.button24.TabIndex = 12;
             this.button24.Text = "Custom Button 1";
             this.button24.UseVisualStyleBackColor = false;
@@ -595,7 +642,7 @@ namespace WindowsFormsApp1
             this.button21.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button21.Location = new System.Drawing.Point(14, 107);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(262, 28);
+            this.button21.Size = new System.Drawing.Size(219, 28);
             this.button21.TabIndex = 11;
             this.button21.Text = "Info/Help";
             this.button21.UseVisualStyleBackColor = false;
@@ -608,7 +655,7 @@ namespace WindowsFormsApp1
             this.button22.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button22.Location = new System.Drawing.Point(14, 40);
             this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(261, 28);
+            this.button22.Size = new System.Drawing.Size(219, 28);
             this.button22.TabIndex = 10;
             this.button22.Text = "Settings and Updates";
             this.button22.UseVisualStyleBackColor = false;
@@ -618,7 +665,7 @@ namespace WindowsFormsApp1
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label9.Location = new System.Drawing.Point(94, 12);
+            this.label9.Location = new System.Drawing.Point(75, 11);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 13);
             this.label9.TabIndex = 8;
@@ -629,7 +676,7 @@ namespace WindowsFormsApp1
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label11.Location = new System.Drawing.Point(842, 9);
+            this.label11.Location = new System.Drawing.Point(989, 9);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(112, 31);
             this.label11.TabIndex = 16;
@@ -641,7 +688,7 @@ namespace WindowsFormsApp1
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.panel7.Controls.Add(this.button1);
             this.panel7.Controls.Add(this.button2);
-            this.panel7.Location = new System.Drawing.Point(443, 472);
+            this.panel7.Location = new System.Drawing.Point(607, 461);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(186, 34);
             this.panel7.TabIndex = 17;
@@ -650,29 +697,189 @@ namespace WindowsFormsApp1
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label16.Location = new System.Drawing.Point(362, 19);
+            this.label16.Location = new System.Drawing.Point(375, 9);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(171, 39);
+            this.label16.Size = new System.Drawing.Size(240, 55);
             this.label16.TabIndex = 21;
             this.label16.Text = "iCu X V10";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label17.Location = new System.Drawing.Point(523, 48);
+            this.label17.Location = new System.Drawing.Point(621, 40);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(284, 24);
+            this.label17.Size = new System.Drawing.Size(325, 25);
             this.label17.TabIndex = 22;
             this.label17.Text = "Redesigned to fit the modern era";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.panel8.Controls.Add(this.label12);
+            this.panel8.Controls.Add(this.label10);
+            this.panel8.Controls.Add(this.button4);
+            this.panel8.Controls.Add(this.button23);
+            this.panel8.Controls.Add(this.button25);
+            this.panel8.Controls.Add(this.label14);
+            this.panel8.Location = new System.Drawing.Point(835, 91);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(246, 155);
+            this.panel8.TabIndex = 15;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label12.Location = new System.Drawing.Point(49, 129);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(151, 16);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "iPad 2 on iOS 9.3.5/6 too";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label10.Location = new System.Drawing.Point(32, 107);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(185, 16);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "All iOS 7/8 Devices supported";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button4.Location = new System.Drawing.Point(130, 40);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(103, 28);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "Bypa$$ x64";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // button23
+            // 
+            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button23.Location = new System.Drawing.Point(15, 73);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(218, 28);
+            this.button23.TabIndex = 10;
+            this.button23.Text = "Run Pangu7";
+            this.button23.UseVisualStyleBackColor = false;
+            // 
+            // button25
+            // 
+            this.button25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button25.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button25.Location = new System.Drawing.Point(15, 40);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(109, 28);
+            this.button25.TabIndex = 9;
+            this.button25.Text = "Bypa$$ x86";
+            this.button25.UseVisualStyleBackColor = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label14.Location = new System.Drawing.Point(12, 12);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(225, 13);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Backup PHP Bypa$$ iPad2 on iOS 9 (iOS7/8)";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.panel9.Controls.Add(this.button30);
+            this.panel9.Controls.Add(this.button27);
+            this.panel9.Controls.Add(this.button28);
+            this.panel9.Controls.Add(this.button29);
+            this.panel9.Controls.Add(this.label18);
+            this.panel9.Location = new System.Drawing.Point(561, 267);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(246, 155);
+            this.panel9.TabIndex = 16;
+            // 
+            // button30
+            // 
+            this.button30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button30.Enabled = false;
+            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button30.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button30.Location = new System.Drawing.Point(15, 107);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(218, 28);
+            this.button30.TabIndex = 13;
+            this.button30.Text = "Execute Bypass";
+            this.button30.UseVisualStyleBackColor = false;
+            // 
+            // button27
+            // 
+            this.button27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button27.Enabled = false;
+            this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button27.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button27.Location = new System.Drawing.Point(130, 40);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(103, 28);
+            this.button27.TabIndex = 12;
+            this.button27.Text = "Install XAMPP";
+            this.button27.UseVisualStyleBackColor = false;
+            // 
+            // button28
+            // 
+            this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button28.Enabled = false;
+            this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button28.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button28.Location = new System.Drawing.Point(15, 73);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(218, 28);
+            this.button28.TabIndex = 10;
+            this.button28.Text = "Run XAMPP";
+            this.button28.UseVisualStyleBackColor = false;
+            // 
+            // button29
+            // 
+            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button29.Enabled = false;
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button29.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button29.Location = new System.Drawing.Point(15, 40);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(109, 28);
+            this.button29.TabIndex = 9;
+            this.button29.Text = "Down. Serverdata";
+            this.button29.UseVisualStyleBackColor = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label18.Location = new System.Drawing.Point(32, 11);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(175, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "XAMPP Local Experimental Bypa$$";
             // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.ClientSize = new System.Drawing.Size(966, 518);
+            this.ClientSize = new System.Drawing.Size(1103, 505);
+            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.panel7);
@@ -704,6 +911,10 @@ namespace WindowsFormsApp1
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -801,7 +1012,7 @@ namespace WindowsFormsApp1
 
         private void button17_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nothin' here yet. But soon will be.");
+            System.Diagnostics.Process.Start("https://sideloadly.io/SideloadlySetup64.exe");
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -811,7 +1022,7 @@ namespace WindowsFormsApp1
 
         private void button15_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.reddit.com/r/setupapp/");
+            System.Diagnostics.Process.Start("C:/iCures/Defendercontrol.bat");
         }
 
         private void button20_Click(object sender, EventArgs e)
@@ -877,6 +1088,26 @@ namespace WindowsFormsApp1
         private void button21_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Everything is in the PDF file in your iCu X installation folder, have a read.");
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button16_Click_1(object sender, EventArgs e)
+        {
+            Process.Start("https://etasonjb.tihmstar.net/ipa/etasonJB-RC5.ipa");
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

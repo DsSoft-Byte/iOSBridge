@@ -37,7 +37,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -138,7 +137,6 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label11);
@@ -172,17 +170,6 @@
             this.label18.Size = new System.Drawing.Size(96, 15);
             this.label18.TabIndex = 12;
             this.label18.Text = "Troubleshooting";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label14.Location = new System.Drawing.Point(12, 536);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(88, 18);
-            this.label14.TabIndex = 11;
-            this.label14.Text = "04/04/23 cpd";
             // 
             // label13
             // 
@@ -502,7 +489,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
