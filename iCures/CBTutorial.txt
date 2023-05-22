@@ -1,5 +1,5 @@
 ---------------------------------------
-CB/X, CB/A In-depth Tutorial for iCu
+CB/X, CB/A In-depth Tutorial for iCu X
 ---------------------------------------
 
 These features were implemented after a lot of users gave their opinion on the maiden version of iCu that was not working properly

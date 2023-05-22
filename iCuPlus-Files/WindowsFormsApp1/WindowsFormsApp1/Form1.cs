@@ -54,25 +54,25 @@ namespace WindowsFormsApp1
         private Label label9;
         private Label label11;
         private Panel panel7;
-        private Label label16;
         private Label label17;
         private System.Windows.Forms.Button button3;
-        private Panel panel8;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button25;
-        private Label label14;
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Button button16;
-        private Label label12;
-        private Label label10;
         private Panel panel9;
-        private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.Button button29;
         private Label label18;
         private SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button button31;
+        private Label label13;
+        private Label label15;
+        private LinkLabel linkLabel1;
+        private Label label10;
+        private Label label12;
+        private Label label14;
+        private Label label16;
+        private Label label19;
+        private Label label20;
         private System.Windows.Forms.Button button2;
 
         public Form1()
@@ -162,6 +162,7 @@ namespace WindowsFormsApp1
             this.button14 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button31 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
@@ -179,22 +180,21 @@ namespace WindowsFormsApp1
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.button30 = new System.Windows.Forms.Button();
-            this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -202,7 +202,6 @@ namespace WindowsFormsApp1
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -212,7 +211,7 @@ namespace WindowsFormsApp1
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 28);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Show Checker";
+            this.button1.Text = "UpdateTest";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -222,7 +221,7 @@ namespace WindowsFormsApp1
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 28);
             this.button2.TabIndex = 1;
-            this.button2.Text = "DUZIP";
+            this.button2.Text = "PartialZIP";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -233,16 +232,16 @@ namespace WindowsFormsApp1
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(270, 31);
+            this.label1.Size = new System.Drawing.Size(417, 31);
             this.label1.TabIndex = 3;
-            this.label1.Text = "iCu X Release 10.0.4";
+            this.label1.Text = "iCu X Release 10, May 22 update";
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button5.Location = new System.Drawing.Point(835, 448);
+            this.button5.Location = new System.Drawing.Point(835, 377);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(246, 45);
             this.button5.TabIndex = 6;
@@ -475,6 +474,7 @@ namespace WindowsFormsApp1
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.panel4.Controls.Add(this.button31);
             this.panel4.Controls.Add(this.button16);
             this.panel4.Controls.Add(this.button15);
             this.panel4.Controls.Add(this.button17);
@@ -484,11 +484,24 @@ namespace WindowsFormsApp1
             this.panel4.Size = new System.Drawing.Size(246, 155);
             this.panel4.TabIndex = 12;
             // 
+            // button31
+            // 
+            this.button31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button31.ForeColor = System.Drawing.Color.IndianRed;
+            this.button31.Location = new System.Drawing.Point(16, 40);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(107, 28);
+            this.button31.TabIndex = 13;
+            this.button31.Text = "Down. Sideloadly";
+            this.button31.UseVisualStyleBackColor = false;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
             // button16
             // 
             this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button16.ForeColor = System.Drawing.Color.IndianRed;
             this.button16.Location = new System.Drawing.Point(15, 73);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(216, 28);
@@ -501,7 +514,7 @@ namespace WindowsFormsApp1
             // 
             this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button15.ForeColor = System.Drawing.Color.IndianRed;
             this.button15.Location = new System.Drawing.Point(15, 107);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(216, 28);
@@ -514,12 +527,12 @@ namespace WindowsFormsApp1
             // 
             this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button17.Location = new System.Drawing.Point(15, 40);
+            this.button17.ForeColor = System.Drawing.Color.IndianRed;
+            this.button17.Location = new System.Drawing.Point(129, 40);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(216, 28);
+            this.button17.Size = new System.Drawing.Size(102, 28);
             this.button17.TabIndex = 9;
-            this.button17.Text = "Download Sideloadly";
+            this.button17.Text = "Down. XAMPP";
             this.button17.UseVisualStyleBackColor = false;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
@@ -603,7 +616,7 @@ namespace WindowsFormsApp1
             this.panel6.Controls.Add(this.button21);
             this.panel6.Controls.Add(this.button22);
             this.panel6.Controls.Add(this.label9);
-            this.panel6.Location = new System.Drawing.Point(835, 267);
+            this.panel6.Location = new System.Drawing.Point(835, 91);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(246, 155);
             this.panel6.TabIndex = 14;
@@ -688,122 +701,27 @@ namespace WindowsFormsApp1
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
             this.panel7.Controls.Add(this.button1);
             this.panel7.Controls.Add(this.button2);
-            this.panel7.Location = new System.Drawing.Point(607, 461);
+            this.panel7.Location = new System.Drawing.Point(786, 3);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(186, 34);
             this.panel7.TabIndex = 17;
             this.panel7.Visible = false;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label16.Location = new System.Drawing.Point(375, 9);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(240, 55);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "iCu X V10";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label17.Location = new System.Drawing.Point(621, 40);
+            this.label17.Location = new System.Drawing.Point(447, 40);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(325, 25);
+            this.label17.Size = new System.Drawing.Size(525, 25);
             this.label17.TabIndex = 22;
-            this.label17.Text = "Redesigned to fit the modern era";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.panel8.Controls.Add(this.label12);
-            this.panel8.Controls.Add(this.label10);
-            this.panel8.Controls.Add(this.button4);
-            this.panel8.Controls.Add(this.button23);
-            this.panel8.Controls.Add(this.button25);
-            this.panel8.Controls.Add(this.label14);
-            this.panel8.Location = new System.Drawing.Point(835, 91);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(246, 155);
-            this.panel8.TabIndex = 15;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label12.Location = new System.Drawing.Point(49, 129);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(151, 16);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "iPad 2 on iOS 9.3.5/6 too";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label10.Location = new System.Drawing.Point(32, 107);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(185, 16);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "All iOS 7/8 Devices supported";
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button4.Location = new System.Drawing.Point(130, 40);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(103, 28);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Bypa$$ x64";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // button23
-            // 
-            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button23.Location = new System.Drawing.Point(15, 73);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(218, 28);
-            this.button23.TabIndex = 10;
-            this.button23.Text = "Run Pangu7";
-            this.button23.UseVisualStyleBackColor = false;
-            // 
-            // button25
-            // 
-            this.button25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button25.Location = new System.Drawing.Point(15, 40);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(109, 28);
-            this.button25.TabIndex = 9;
-            this.button25.Text = "Bypa$$ x86";
-            this.button25.UseVisualStyleBackColor = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label14.Location = new System.Drawing.Point(12, 12);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(225, 13);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Backup PHP Bypa$$ iPad2 on iOS 9 (iOS7/8)";
+            this.label17.Text = "Updated layout, new bypasses and windows-gp tools!";
             // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.panel9.Controls.Add(this.button30);
-            this.panel9.Controls.Add(this.button27);
+            this.panel9.Controls.Add(this.label10);
             this.panel9.Controls.Add(this.button28);
             this.panel9.Controls.Add(this.button29);
             this.panel9.Controls.Add(this.label18);
@@ -812,44 +730,18 @@ namespace WindowsFormsApp1
             this.panel9.Size = new System.Drawing.Size(246, 155);
             this.panel9.TabIndex = 16;
             // 
-            // button30
-            // 
-            this.button30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.button30.Enabled = false;
-            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button30.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button30.Location = new System.Drawing.Point(15, 107);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(218, 28);
-            this.button30.TabIndex = 13;
-            this.button30.Text = "Execute Bypass";
-            this.button30.UseVisualStyleBackColor = false;
-            // 
-            // button27
-            // 
-            this.button27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.button27.Enabled = false;
-            this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button27.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button27.Location = new System.Drawing.Point(130, 40);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(103, 28);
-            this.button27.TabIndex = 12;
-            this.button27.Text = "Install XAMPP";
-            this.button27.UseVisualStyleBackColor = false;
-            // 
             // button28
             // 
             this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
-            this.button28.Enabled = false;
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button28.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button28.Location = new System.Drawing.Point(15, 73);
+            this.button28.Location = new System.Drawing.Point(15, 107);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(218, 28);
             this.button28.TabIndex = 10;
-            this.button28.Text = "Run XAMPP";
+            this.button28.Text = "Run HACKcmd";
             this.button28.UseVisualStyleBackColor = false;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
             // button29
             // 
@@ -859,30 +751,139 @@ namespace WindowsFormsApp1
             this.button29.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button29.Location = new System.Drawing.Point(15, 40);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(109, 28);
+            this.button29.Size = new System.Drawing.Size(218, 28);
             this.button29.TabIndex = 9;
-            this.button29.Text = "Down. Serverdata";
+            this.button29.Text = "Learn more... requires macOS host";
             this.button29.UseVisualStyleBackColor = false;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label18.Location = new System.Drawing.Point(32, 11);
+            this.label18.Location = new System.Drawing.Point(34, 11);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(175, 13);
+            this.label18.Size = new System.Drawing.Size(169, 13);
             this.label18.TabIndex = 8;
-            this.label18.Text = "XAMPP Local Experimental Bypa$$";
+            this.label18.Text = "Experimantal-Community Bypasses";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label13.Location = new System.Drawing.Point(14, 425);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(551, 40);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "Please Download and Install all of these programms to their default locations,\r\na" +
+    "nd Disable Windows Defender";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label15.Location = new System.Drawing.Point(15, 49);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(72, 13);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "Source Code:";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkColor = System.Drawing.Color.DarkKhaki;
+            this.linkLabel1.Location = new System.Drawing.Point(89, 49);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(125, 13);
+            this.linkLabel1.TabIndex = 23;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "DsSoft Github iCu-X repo";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label10.Location = new System.Drawing.Point(12, 81);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(225, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "If your ISP allows open ports, host and dm me!";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label12.Location = new System.Drawing.Point(831, 267);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 20);
+            this.label12.TabIndex = 24;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label14.Location = new System.Drawing.Point(830, 267);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(89, 25);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "Bypass:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label16.Location = new System.Drawing.Point(921, 266);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(160, 25);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "Server Working";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label19.Location = new System.Drawing.Point(891, 306);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(130, 25);
+            this.label19.TabIndex = 27;
+            this.label19.Text = "iCu X 10.0.4";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label20.Location = new System.Drawing.Point(832, 348);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(242, 13);
+            this.label20.TabIndex = 28;
+            this.label20.Text = "Made by The_Hackintosh on behalf of DsSoft Inc";
             // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.ClientSize = new System.Drawing.Size(1103, 505);
-            this.Controls.Add(this.panel9);
-            this.Controls.Add(this.panel8);
-            this.Controls.Add(this.label17);
+            this.ClientSize = new System.Drawing.Size(1103, 470);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.label16);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.panel7);
+            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -911,8 +912,6 @@ namespace WindowsFormsApp1
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.ResumeLayout(false);
@@ -1106,6 +1105,39 @@ namespace WindowsFormsApp1
         }
 
         private void button26_Click(object sender, EventArgs e)
+        {
+            var fileName = Path.Combine(Environment.GetFolderPath(
+    Environment.SpecialFolder.LocalApplicationData), "sideloadly\\sideloadly.exe");
+            //MessageBox.Show(fileName);
+            System.Diagnostics.Process.Start(fileName);
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/DsSoft-Byte/iCu-X");
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button30_Click(object sender, EventArgs e)
         {
 
         }
