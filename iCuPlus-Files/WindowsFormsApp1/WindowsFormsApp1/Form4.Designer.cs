@@ -41,6 +41,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -76,7 +77,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(252, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "iCu X RELEASE Software Version V10.0.4";
+            this.label2.Text = "iCu X RELEASE Software Version V10.0.5";
             // 
             // label3
             // 
@@ -94,7 +95,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label6.Location = new System.Drawing.Point(213, 116);
+            this.label6.Location = new System.Drawing.Point(213, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(267, 16);
             this.label6.TabIndex = 6;
@@ -105,7 +106,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label7.Location = new System.Drawing.Point(213, 147);
+            this.label7.Location = new System.Drawing.Point(213, 169);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(330, 16);
             this.label7.TabIndex = 7;
@@ -178,12 +179,24 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label4.Location = new System.Drawing.Point(213, 112);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(149, 16);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Installer: DsSoft Liberty3";
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(590, 469);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label11);
@@ -224,5 +237,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label4;
     }
 }

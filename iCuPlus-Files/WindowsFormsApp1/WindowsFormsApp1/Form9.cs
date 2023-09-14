@@ -46,5 +46,10 @@ namespace WindowsFormsApp1
                 Console.WriteLine(ex.ToString());
             }
         }
+
+        private void Form9_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -384,12 +384,12 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label16.Location = new System.Drawing.Point(41, 428);
+            this.label16.Location = new System.Drawing.Point(93, 428);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(663, 13);
+            this.label16.Size = new System.Drawing.Size(539, 13);
             this.label16.TabIndex = 16;
-            this.label16.Text = "All Devices from Samsung-Based to A11 can use the tethered bypass regardless of t" +
-    "he iOS version. New A6 - A11 untethered bypass soon!";
+            this.label16.Text = "All Devices from Samsung-Based to A5 can use the tethered bypass up to iOS 8.4.1." +
+    " iPad 2 works on all versions";
             // 
             // Form7
             // 

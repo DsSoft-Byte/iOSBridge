@@ -235,3 +235,519 @@
 2023/05/22 20:19:29 Will tick
 2023/05/22 20:19:29 Apps [] map[string][]*model.Installation{}
 2023/05/22 20:19:29 Done tick
+2023/05/22 20:20:29 Got timeout, refreshing
+2023/05/22 20:20:29 Timeout stop: false
+2023/05/22 20:20:29 Drain failed?..
+2023/05/22 20:20:29 Will tick
+2023/05/22 20:20:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:20:29 Done tick
+2023/05/22 20:21:29 Got timeout, refreshing
+2023/05/22 20:21:29 Timeout stop: false
+2023/05/22 20:21:29 Drain failed?..
+2023/05/22 20:21:29 Will tick
+2023/05/22 20:21:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:21:29 Done tick
+2023/05/22 20:22:29 Got timeout, refreshing
+2023/05/22 20:22:29 Timeout stop: false
+2023/05/22 20:22:29 Drain failed?..
+2023/05/22 20:22:29 Will tick
+2023/05/22 20:22:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:22:29 Done tick
+2023/05/22 20:23:29 Got timeout, refreshing
+2023/05/22 20:23:29 Timeout stop: false
+2023/05/22 20:23:29 Drain failed?..
+2023/05/22 20:23:29 Will tick
+2023/05/22 20:23:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:23:29 Done tick
+2023/05/22 20:24:29 Got timeout, refreshing
+2023/05/22 20:24:29 Timeout stop: false
+2023/05/22 20:24:29 Drain failed?..
+2023/05/22 20:24:29 Will tick
+2023/05/22 20:24:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:24:29 Done tick
+2023/05/22 20:25:29 Got timeout, refreshing
+2023/05/22 20:25:29 Timeout stop: false
+2023/05/22 20:25:29 Drain failed?..
+2023/05/22 20:25:29 Will tick
+2023/05/22 20:25:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:25:29 Done tick
+2023/05/22 20:26:29 Got timeout, refreshing
+2023/05/22 20:26:29 Timeout stop: false
+2023/05/22 20:26:29 Drain failed?..
+2023/05/22 20:26:29 Will tick
+2023/05/22 20:26:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:26:29 Done tick
+2023/05/22 20:27:29 Got timeout, refreshing
+2023/05/22 20:27:29 Timeout stop: false
+2023/05/22 20:27:29 Drain failed?..
+2023/05/22 20:27:29 Will tick
+2023/05/22 20:27:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:27:29 Done tick
+2023/05/22 20:28:29 Got timeout, refreshing
+2023/05/22 20:28:29 Timeout stop: false
+2023/05/22 20:28:29 Drain failed?..
+2023/05/22 20:28:29 Will tick
+2023/05/22 20:28:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:28:29 Done tick
+2023/05/22 20:29:29 Got timeout, refreshing
+2023/05/22 20:29:29 Timeout stop: false
+2023/05/22 20:29:29 Drain failed?..
+2023/05/22 20:29:29 Will tick
+2023/05/22 20:29:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:29:29 Done tick
+2023/05/22 20:30:29 Got timeout, refreshing
+2023/05/22 20:30:29 Timeout stop: false
+2023/05/22 20:30:29 Drain failed?..
+2023/05/22 20:30:29 Will tick
+2023/05/22 20:30:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:30:29 Done tick
+2023/05/22 20:31:29 Got timeout, refreshing
+2023/05/22 20:31:29 Timeout stop: false
+2023/05/22 20:31:29 Drain failed?..
+2023/05/22 20:31:29 Will tick
+2023/05/22 20:31:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:31:29 Done tick
+2023/05/22 20:32:29 Got timeout, refreshing
+2023/05/22 20:32:29 Timeout stop: false
+2023/05/22 20:32:29 Drain failed?..
+2023/05/22 20:32:29 Will tick
+2023/05/22 20:32:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:32:29 Done tick
+2023/05/22 20:33:29 Got timeout, refreshing
+2023/05/22 20:33:29 Timeout stop: false
+2023/05/22 20:33:29 Drain failed?..
+2023/05/22 20:33:29 Will tick
+2023/05/22 20:33:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:33:29 Done tick
+2023/05/22 20:34:29 Got timeout, refreshing
+2023/05/22 20:34:29 Timeout stop: false
+2023/05/22 20:34:29 Drain failed?..
+2023/05/22 20:34:29 Will tick
+2023/05/22 20:34:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:34:29 Done tick
+2023/05/22 20:35:29 Got timeout, refreshing
+2023/05/22 20:35:29 Timeout stop: false
+2023/05/22 20:35:29 Drain failed?..
+2023/05/22 20:35:29 Will tick
+2023/05/22 20:35:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:35:29 Done tick
+2023/05/22 20:36:29 Got timeout, refreshing
+2023/05/22 20:36:29 Timeout stop: false
+2023/05/22 20:36:29 Drain failed?..
+2023/05/22 20:36:29 Will tick
+2023/05/22 20:36:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:36:29 Done tick
+2023/05/22 20:37:29 Got timeout, refreshing
+2023/05/22 20:37:29 Timeout stop: false
+2023/05/22 20:37:29 Drain failed?..
+2023/05/22 20:37:29 Will tick
+2023/05/22 20:37:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:37:29 Done tick
+2023/05/22 20:38:29 Got timeout, refreshing
+2023/05/22 20:38:29 Timeout stop: false
+2023/05/22 20:38:29 Drain failed?..
+2023/05/22 20:38:29 Will tick
+2023/05/22 20:38:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:38:29 Done tick
+2023/05/22 20:39:29 Got timeout, refreshing
+2023/05/22 20:39:29 Timeout stop: false
+2023/05/22 20:39:29 Drain failed?..
+2023/05/22 20:39:29 Will tick
+2023/05/22 20:39:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:39:29 Done tick
+2023/05/22 20:40:29 Got timeout, refreshing
+2023/05/22 20:40:29 Timeout stop: false
+2023/05/22 20:40:29 Drain failed?..
+2023/05/22 20:40:29 Will tick
+2023/05/22 20:40:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:40:29 Done tick
+2023/05/22 20:41:29 Got timeout, refreshing
+2023/05/22 20:41:29 Timeout stop: false
+2023/05/22 20:41:29 Drain failed?..
+2023/05/22 20:41:29 Will tick
+2023/05/22 20:41:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:41:29 Done tick
+2023/05/22 20:42:29 Got timeout, refreshing
+2023/05/22 20:42:29 Timeout stop: false
+2023/05/22 20:42:29 Drain failed?..
+2023/05/22 20:42:29 Will tick
+2023/05/22 20:42:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:42:29 Done tick
+2023/05/22 20:43:29 Got timeout, refreshing
+2023/05/22 20:43:29 Timeout stop: false
+2023/05/22 20:43:29 Drain failed?..
+2023/05/22 20:43:29 Will tick
+2023/05/22 20:43:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:43:29 Done tick
+2023/05/22 20:44:29 Got timeout, refreshing
+2023/05/22 20:44:29 Timeout stop: false
+2023/05/22 20:44:29 Drain failed?..
+2023/05/22 20:44:29 Will tick
+2023/05/22 20:44:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:44:29 Done tick
+2023/05/22 20:45:29 Got timeout, refreshing
+2023/05/22 20:45:29 Timeout stop: false
+2023/05/22 20:45:29 Drain failed?..
+2023/05/22 20:45:29 Will tick
+2023/05/22 20:45:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:45:29 Done tick
+2023/05/22 20:46:29 Got timeout, refreshing
+2023/05/22 20:46:29 Timeout stop: false
+2023/05/22 20:46:29 Drain failed?..
+2023/05/22 20:46:29 Will tick
+2023/05/22 20:46:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:46:29 Done tick
+2023/05/22 20:47:29 Got timeout, refreshing
+2023/05/22 20:47:29 Timeout stop: false
+2023/05/22 20:47:29 Drain failed?..
+2023/05/22 20:47:29 Will tick
+2023/05/22 20:47:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:47:29 Done tick
+2023/05/22 20:48:29 Got timeout, refreshing
+2023/05/22 20:48:29 Timeout stop: false
+2023/05/22 20:48:29 Drain failed?..
+2023/05/22 20:48:29 Will tick
+2023/05/22 20:48:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:48:29 Done tick
+2023/05/22 20:49:29 Got timeout, refreshing
+2023/05/22 20:49:29 Timeout stop: false
+2023/05/22 20:49:29 Drain failed?..
+2023/05/22 20:49:29 Will tick
+2023/05/22 20:49:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:49:29 Done tick
+2023/05/22 20:50:29 Got timeout, refreshing
+2023/05/22 20:50:29 Timeout stop: false
+2023/05/22 20:50:29 Drain failed?..
+2023/05/22 20:50:29 Will tick
+2023/05/22 20:50:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:50:29 Done tick
+2023/05/22 20:51:29 Got timeout, refreshing
+2023/05/22 20:51:29 Timeout stop: false
+2023/05/22 20:51:29 Drain failed?..
+2023/05/22 20:51:29 Will tick
+2023/05/22 20:51:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:51:29 Done tick
+2023/05/22 20:52:29 Got timeout, refreshing
+2023/05/22 20:52:29 Timeout stop: false
+2023/05/22 20:52:29 Drain failed?..
+2023/05/22 20:52:29 Will tick
+2023/05/22 20:52:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:52:29 Done tick
+2023/05/22 20:53:29 Got timeout, refreshing
+2023/05/22 20:53:29 Timeout stop: false
+2023/05/22 20:53:29 Drain failed?..
+2023/05/22 20:53:29 Will tick
+2023/05/22 20:53:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:53:29 Done tick
+2023/05/22 20:54:29 Got timeout, refreshing
+2023/05/22 20:54:29 Timeout stop: false
+2023/05/22 20:54:29 Drain failed?..
+2023/05/22 20:54:29 Will tick
+2023/05/22 20:54:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:54:29 Done tick
+2023/05/22 20:55:29 Got timeout, refreshing
+2023/05/22 20:55:29 Timeout stop: false
+2023/05/22 20:55:29 Drain failed?..
+2023/05/22 20:55:29 Will tick
+2023/05/22 20:55:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:55:29 Done tick
+2023/05/22 20:56:29 Got timeout, refreshing
+2023/05/22 20:56:29 Timeout stop: false
+2023/05/22 20:56:29 Drain failed?..
+2023/05/22 20:56:29 Will tick
+2023/05/22 20:56:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:56:29 Done tick
+2023/05/22 20:57:29 Got timeout, refreshing
+2023/05/22 20:57:29 Timeout stop: false
+2023/05/22 20:57:29 Drain failed?..
+2023/05/22 20:57:29 Will tick
+2023/05/22 20:57:29 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:57:29 Done tick
+2023/05/22 20:58:30 Got timeout, refreshing
+2023/05/22 20:58:30 Timeout stop: false
+2023/05/22 20:58:30 Drain failed?..
+2023/05/22 20:58:30 Will tick
+2023/05/22 20:58:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:58:30 Done tick
+2023/05/22 20:59:30 Got timeout, refreshing
+2023/05/22 20:59:30 Timeout stop: false
+2023/05/22 20:59:30 Drain failed?..
+2023/05/22 20:59:30 Will tick
+2023/05/22 20:59:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 20:59:30 Done tick
+2023/05/22 21:00:30 Got timeout, refreshing
+2023/05/22 21:00:30 Timeout stop: false
+2023/05/22 21:00:30 Drain failed?..
+2023/05/22 21:00:30 Will tick
+2023/05/22 21:00:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:00:30 Done tick
+2023/05/22 21:01:30 Got timeout, refreshing
+2023/05/22 21:01:30 Timeout stop: false
+2023/05/22 21:01:30 Drain failed?..
+2023/05/22 21:01:30 Will tick
+2023/05/22 21:01:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:01:30 Done tick
+2023/05/22 21:02:30 Got timeout, refreshing
+2023/05/22 21:02:30 Timeout stop: false
+2023/05/22 21:02:30 Drain failed?..
+2023/05/22 21:02:30 Will tick
+2023/05/22 21:02:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:02:30 Done tick
+2023/05/22 21:03:30 Got timeout, refreshing
+2023/05/22 21:03:30 Timeout stop: false
+2023/05/22 21:03:30 Drain failed?..
+2023/05/22 21:03:30 Will tick
+2023/05/22 21:03:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:03:30 Done tick
+2023/05/22 21:04:30 Got timeout, refreshing
+2023/05/22 21:04:30 Timeout stop: false
+2023/05/22 21:04:30 Drain failed?..
+2023/05/22 21:04:30 Will tick
+2023/05/22 21:04:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:04:30 Done tick
+2023/05/22 21:05:30 Got timeout, refreshing
+2023/05/22 21:05:30 Timeout stop: false
+2023/05/22 21:05:30 Drain failed?..
+2023/05/22 21:05:30 Will tick
+2023/05/22 21:05:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:05:30 Done tick
+2023/05/22 21:06:30 Got timeout, refreshing
+2023/05/22 21:06:30 Timeout stop: false
+2023/05/22 21:06:30 Drain failed?..
+2023/05/22 21:06:30 Will tick
+2023/05/22 21:06:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:06:30 Done tick
+2023/05/22 21:07:30 Got timeout, refreshing
+2023/05/22 21:07:30 Timeout stop: false
+2023/05/22 21:07:30 Drain failed?..
+2023/05/22 21:07:30 Will tick
+2023/05/22 21:07:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:07:30 Done tick
+2023/05/22 21:08:30 Got timeout, refreshing
+2023/05/22 21:08:30 Timeout stop: false
+2023/05/22 21:08:30 Drain failed?..
+2023/05/22 21:08:30 Will tick
+2023/05/22 21:08:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:08:30 Done tick
+2023/05/22 21:09:30 Got timeout, refreshing
+2023/05/22 21:09:30 Timeout stop: false
+2023/05/22 21:09:30 Drain failed?..
+2023/05/22 21:09:30 Will tick
+2023/05/22 21:09:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:09:30 Done tick
+2023/05/22 21:10:30 Got timeout, refreshing
+2023/05/22 21:10:30 Timeout stop: false
+2023/05/22 21:10:30 Drain failed?..
+2023/05/22 21:10:30 Will tick
+2023/05/22 21:10:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:10:30 Done tick
+2023/05/22 21:11:30 Got timeout, refreshing
+2023/05/22 21:11:30 Timeout stop: false
+2023/05/22 21:11:30 Drain failed?..
+2023/05/22 21:11:30 Will tick
+2023/05/22 21:11:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:11:30 Done tick
+2023/05/22 21:12:30 Got timeout, refreshing
+2023/05/22 21:12:30 Timeout stop: false
+2023/05/22 21:12:30 Drain failed?..
+2023/05/22 21:12:30 Will tick
+2023/05/22 21:12:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:12:30 Done tick
+2023/05/22 21:13:30 Got timeout, refreshing
+2023/05/22 21:13:30 Timeout stop: false
+2023/05/22 21:13:30 Drain failed?..
+2023/05/22 21:13:30 Will tick
+2023/05/22 21:13:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:13:30 Done tick
+2023/05/22 21:14:30 Got timeout, refreshing
+2023/05/22 21:14:30 Timeout stop: false
+2023/05/22 21:14:30 Drain failed?..
+2023/05/22 21:14:30 Will tick
+2023/05/22 21:14:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:14:30 Done tick
+2023/05/22 21:15:30 Got timeout, refreshing
+2023/05/22 21:15:30 Timeout stop: false
+2023/05/22 21:15:30 Drain failed?..
+2023/05/22 21:15:30 Will tick
+2023/05/22 21:15:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:15:30 Done tick
+2023/05/22 21:16:30 Got timeout, refreshing
+2023/05/22 21:16:30 Timeout stop: false
+2023/05/22 21:16:30 Drain failed?..
+2023/05/22 21:16:30 Will tick
+2023/05/22 21:16:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:16:30 Done tick
+2023/05/22 21:17:30 Got timeout, refreshing
+2023/05/22 21:17:30 Timeout stop: false
+2023/05/22 21:17:30 Drain failed?..
+2023/05/22 21:17:30 Will tick
+2023/05/22 21:17:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:17:30 Done tick
+2023/05/22 21:18:30 Got timeout, refreshing
+2023/05/22 21:18:30 Timeout stop: false
+2023/05/22 21:18:30 Drain failed?..
+2023/05/22 21:18:30 Will tick
+2023/05/22 21:18:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:18:30 Done tick
+2023/05/22 21:19:30 Got timeout, refreshing
+2023/05/22 21:19:30 Timeout stop: false
+2023/05/22 21:19:30 Drain failed?..
+2023/05/22 21:19:30 Will tick
+2023/05/22 21:19:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:19:30 Done tick
+2023/05/22 21:20:30 Got timeout, refreshing
+2023/05/22 21:20:30 Timeout stop: false
+2023/05/22 21:20:30 Drain failed?..
+2023/05/22 21:20:30 Will tick
+2023/05/22 21:20:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:20:30 Done tick
+2023/05/22 21:21:30 Got timeout, refreshing
+2023/05/22 21:21:30 Timeout stop: false
+2023/05/22 21:21:30 Drain failed?..
+2023/05/22 21:21:30 Will tick
+2023/05/22 21:21:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:21:30 Done tick
+2023/05/22 21:22:30 Got timeout, refreshing
+2023/05/22 21:22:30 Timeout stop: false
+2023/05/22 21:22:30 Drain failed?..
+2023/05/22 21:22:30 Will tick
+2023/05/22 21:22:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:22:30 Done tick
+2023/05/22 21:23:30 Got timeout, refreshing
+2023/05/22 21:23:30 Timeout stop: false
+2023/05/22 21:23:30 Drain failed?..
+2023/05/22 21:23:30 Will tick
+2023/05/22 21:23:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:23:30 Done tick
+2023/05/22 21:24:30 Got timeout, refreshing
+2023/05/22 21:24:30 Timeout stop: false
+2023/05/22 21:24:30 Drain failed?..
+2023/05/22 21:24:30 Will tick
+2023/05/22 21:24:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:24:30 Done tick
+2023/05/22 21:25:30 Got timeout, refreshing
+2023/05/22 21:25:30 Timeout stop: false
+2023/05/22 21:25:30 Drain failed?..
+2023/05/22 21:25:30 Will tick
+2023/05/22 21:25:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:25:30 Done tick
+2023/05/22 21:26:30 Got timeout, refreshing
+2023/05/22 21:26:30 Timeout stop: false
+2023/05/22 21:26:30 Drain failed?..
+2023/05/22 21:26:30 Will tick
+2023/05/22 21:26:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:26:30 Done tick
+2023/05/22 21:27:30 Got timeout, refreshing
+2023/05/22 21:27:30 Timeout stop: false
+2023/05/22 21:27:30 Drain failed?..
+2023/05/22 21:27:30 Will tick
+2023/05/22 21:27:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:27:30 Done tick
+2023/05/22 21:28:30 Got timeout, refreshing
+2023/05/22 21:28:30 Timeout stop: false
+2023/05/22 21:28:30 Drain failed?..
+2023/05/22 21:28:30 Will tick
+2023/05/22 21:28:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:28:30 Done tick
+2023/05/22 21:29:30 Got timeout, refreshing
+2023/05/22 21:29:30 Timeout stop: false
+2023/05/22 21:29:30 Drain failed?..
+2023/05/22 21:29:30 Will tick
+2023/05/22 21:29:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:29:30 Done tick
+2023/05/22 21:30:30 Got timeout, refreshing
+2023/05/22 21:30:30 Timeout stop: false
+2023/05/22 21:30:30 Drain failed?..
+2023/05/22 21:30:30 Will tick
+2023/05/22 21:30:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:30:30 Done tick
+2023/05/22 21:31:30 Got timeout, refreshing
+2023/05/22 21:31:30 Timeout stop: false
+2023/05/22 21:31:30 Drain failed?..
+2023/05/22 21:31:30 Will tick
+2023/05/22 21:31:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:31:30 Done tick
+2023/05/22 21:32:30 Got timeout, refreshing
+2023/05/22 21:32:30 Timeout stop: false
+2023/05/22 21:32:30 Drain failed?..
+2023/05/22 21:32:30 Will tick
+2023/05/22 21:32:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:32:30 Done tick
+2023/05/22 21:33:30 Got timeout, refreshing
+2023/05/22 21:33:30 Timeout stop: false
+2023/05/22 21:33:30 Drain failed?..
+2023/05/22 21:33:30 Will tick
+2023/05/22 21:33:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:33:30 Done tick
+2023/05/22 21:34:30 Got timeout, refreshing
+2023/05/22 21:34:30 Timeout stop: false
+2023/05/22 21:34:30 Drain failed?..
+2023/05/22 21:34:30 Will tick
+2023/05/22 21:34:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:34:30 Done tick
+2023/05/22 21:35:30 Got timeout, refreshing
+2023/05/22 21:35:30 Timeout stop: false
+2023/05/22 21:35:30 Drain failed?..
+2023/05/22 21:35:30 Will tick
+2023/05/22 21:35:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:35:30 Done tick
+2023/05/22 21:36:30 Got timeout, refreshing
+2023/05/22 21:36:30 Timeout stop: false
+2023/05/22 21:36:30 Drain failed?..
+2023/05/22 21:36:30 Will tick
+2023/05/22 21:36:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:36:30 Done tick
+2023/05/22 21:37:30 Got timeout, refreshing
+2023/05/22 21:37:30 Timeout stop: false
+2023/05/22 21:37:30 Drain failed?..
+2023/05/22 21:37:30 Will tick
+2023/05/22 21:37:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:37:30 Done tick
+2023/05/22 21:38:30 Got timeout, refreshing
+2023/05/22 21:38:30 Timeout stop: false
+2023/05/22 21:38:30 Drain failed?..
+2023/05/22 21:38:30 Will tick
+2023/05/22 21:38:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:38:30 Done tick
+2023/05/22 21:39:30 Got timeout, refreshing
+2023/05/22 21:39:30 Timeout stop: false
+2023/05/22 21:39:30 Drain failed?..
+2023/05/22 21:39:30 Will tick
+2023/05/22 21:39:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:39:30 Done tick
+2023/05/22 21:40:30 Got timeout, refreshing
+2023/05/22 21:40:30 Timeout stop: false
+2023/05/22 21:40:30 Drain failed?..
+2023/05/22 21:40:30 Will tick
+2023/05/22 21:40:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:40:30 Done tick
+2023/05/22 21:41:30 Got timeout, refreshing
+2023/05/22 21:41:30 Timeout stop: false
+2023/05/22 21:41:30 Drain failed?..
+2023/05/22 21:41:30 Will tick
+2023/05/22 21:41:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:41:30 Done tick
+2023/05/22 21:42:30 Got timeout, refreshing
+2023/05/22 21:42:30 Timeout stop: false
+2023/05/22 21:42:30 Drain failed?..
+2023/05/22 21:42:30 Will tick
+2023/05/22 21:42:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:42:30 Done tick
+2023/05/22 21:43:30 Got timeout, refreshing
+2023/05/22 21:43:30 Timeout stop: false
+2023/05/22 21:43:30 Drain failed?..
+2023/05/22 21:43:30 Will tick
+2023/05/22 21:43:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:43:30 Done tick
+2023/05/22 21:44:30 Got timeout, refreshing
+2023/05/22 21:44:30 Timeout stop: false
+2023/05/22 21:44:30 Drain failed?..
+2023/05/22 21:44:30 Will tick
+2023/05/22 21:44:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:44:30 Done tick
+2023/05/22 21:45:30 Got timeout, refreshing
+2023/05/22 21:45:30 Timeout stop: false
+2023/05/22 21:45:30 Drain failed?..
+2023/05/22 21:45:30 Will tick
+2023/05/22 21:45:30 Apps [] map[string][]*model.Installation{}
+2023/05/22 21:45:30 Done tick

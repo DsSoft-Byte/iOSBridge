@@ -35,6 +35,7 @@ namespace WindowsFormsApp1
             if (newestversions.Contains(currentversion))
             {
                 MessageBox.Show("You are up to date!");
+                label7.Text = newestversions;
             }
             else
             {
@@ -53,6 +54,7 @@ namespace WindowsFormsApp1
                         Form2 form2 = new Form2();
 
                         form2.Show();
+                        label7.Text = newestversions;
                     }
             }
         }

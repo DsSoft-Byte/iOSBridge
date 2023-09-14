@@ -35,5 +35,10 @@ namespace WindowsFormsApp1
             Form11 form11 = new Form11();
             form11.Show();
         }
+
+        private void Form10_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

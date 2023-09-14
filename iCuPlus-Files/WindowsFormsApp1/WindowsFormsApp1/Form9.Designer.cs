@@ -92,6 +92,7 @@
             this.MaximizeBox = false;
             this.Name = "Form9";
             this.Text = "iCu X FirstRun Manager";
+            this.Load += new System.EventHandler(this.Form9_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

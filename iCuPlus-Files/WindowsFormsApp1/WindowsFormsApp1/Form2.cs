@@ -63,5 +63,10 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error. User Manual Code 001");
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
     }

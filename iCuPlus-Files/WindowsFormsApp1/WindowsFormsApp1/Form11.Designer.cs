@@ -43,9 +43,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 24);
+            this.label1.Size = new System.Drawing.Size(206, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "iCu X Client Information dumper";
+            this.label1.Text = "iCu X Client Information";
             // 
             // label2
             // 
@@ -63,7 +63,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(771, 132);
             this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "ProductName: iCu X\r\nProductVersion: 10.0.4\r\nInternalSoftwareString: X1004\r\nServer" +
+            this.textBox1.Text = "ProductName: iCu X\r\nProductVersion: 10.0.5\r\nInternalSoftwareString: X1005\r\nServer" +
     "-Client-Duet: Yes\r\nStockHostProvider: 000\r\nStockFileUsed: AT752Sliver\r\nLayerOne:" +
     " No\r\nDsSoft ECE: No\r\nInsiderBeta: No\r\n";
             // 
@@ -80,10 +80,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(14, 262);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(675, 13);
+            this.label3.Size = new System.Drawing.Size(330, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Copy the contents of the first Textbox and include those in your DM, help will no" +
-    "t be given to users running old versions or stolen internal betas";
+            this.label3.Text = "Copy the contents of the first Textbox and include those in your DM,.";
             // 
             // button1
             // 
@@ -111,7 +110,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form11";
-            this.Text = "iCu X Client Information logger";
+            this.Text = "iCu X Client Information";
             this.Load += new System.EventHandler(this.Form11_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -270,7 +270,7 @@
             this.button56.Name = "button56";
             this.button56.Size = new System.Drawing.Size(223, 32);
             this.button56.TabIndex = 30;
-            this.button56.Text = "Change Your Name?";
+            this.button56.Text = "Change Your Name";
             this.button56.UseVisualStyleBackColor = true;
             this.button56.Click += new System.EventHandler(this.button56_Click);
             // 
@@ -279,7 +279,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.ClientSize = new System.Drawing.Size(683, 402);
+            this.ClientSize = new System.Drawing.Size(663, 402);
             this.Controls.Add(this.button56);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
