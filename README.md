@@ -1,8 +1,8 @@
-# iCu-X
+# iOSBridge
 Next-Generation iCu Unlocker follow-up.
 
 
-# Proudly presenting, iCu X (10)
+# Proudly presenting, iOSBridge (10)
 
 
 Fully redesigned UI/UX
@@ -17,9 +17,9 @@ Can be downgraded to any version with iCuFS zips
 
 Provides latest information on iCloud bypasses
 
-iPhone Recovery dashboard (Available soon)
+iPhone Recovery dashboard
 
-Stable base for all later iCu X versions.
+Stable base for all later iCu X/iOSBridge versions.
 
 No more XAMPP Self hosting! Just run the tool! I did the hard work so you don't have to!
 
@@ -39,7 +39,7 @@ No more XAMPP Self hosting! Just run the tool! I did the hard work so you don't 
 
 # Custom Themes ✔👀
 
-# Recovery Dashboard ⏳
+# Recovery Dashboard 
 
 # Custom Linux distro and USB Imager/Flasher ⏳
 
