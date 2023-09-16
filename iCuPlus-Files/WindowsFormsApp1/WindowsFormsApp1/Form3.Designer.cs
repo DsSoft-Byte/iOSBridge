@@ -61,7 +61,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(223, 32);
             this.button12.TabIndex = 17;
-            this.button12.Text = "About iCu X";
+            this.button12.Text = "About iOSBridge";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
@@ -97,7 +97,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(223, 32);
             this.button5.TabIndex = 8;
-            this.button5.Text = "Downgrade iCu X";
+            this.button5.Text = "Downgrade iOSBridge";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -164,11 +164,11 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Location = new System.Drawing.Point(37, 129);
+            this.label1.Location = new System.Drawing.Point(13, 126);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 24);
+            this.label1.Size = new System.Drawing.Size(167, 24);
             this.label1.TabIndex = 19;
-            this.label1.Text = "iCu X Settings";
+            this.label1.Text = "iOSBridge Settings";
             // 
             // label2
             // 
@@ -176,11 +176,11 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label2.Location = new System.Drawing.Point(34, 342);
+            this.label2.Location = new System.Drawing.Point(11, 342);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 24);
+            this.label2.Size = new System.Drawing.Size(170, 24);
             this.label2.TabIndex = 20;
-            this.label2.Text = "iCu X Updates";
+            this.label2.Text = "iOSBridge Updates";
             // 
             // label3
             // 
@@ -228,9 +228,10 @@
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label7.Location = new System.Drawing.Point(424, 238);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(170, 13);
+            this.label7.Size = new System.Drawing.Size(192, 13);
             this.label7.TabIndex = 26;
-            this.label7.Text = "Checks for iCu X software updates";
+            this.label7.Text = "Checks for iOSBridge software updates";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -238,9 +239,9 @@
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label8.Location = new System.Drawing.Point(424, 276);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(156, 13);
+            this.label8.Size = new System.Drawing.Size(178, 13);
             this.label8.TabIndex = 27;
-            this.label8.Text = "Downgrades the iCu X software";
+            this.label8.Text = "Downgrades the iOSBridge software";
             // 
             // label9
             // 
@@ -248,9 +249,9 @@
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label9.Location = new System.Drawing.Point(424, 98);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(144, 13);
+            this.label9.Size = new System.Drawing.Size(166, 13);
             this.label9.TabIndex = 28;
-            this.label9.Text = "Changes how iCu X calls you";
+            this.label9.Text = "Changes how iOSBridge calls you";
             // 
             // label10
             // 
@@ -279,7 +280,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.ClientSize = new System.Drawing.Size(663, 402);
+            this.ClientSize = new System.Drawing.Size(663, 389);
             this.Controls.Add(this.button56);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -304,7 +305,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form3";
-            this.Text = "iCu X Settings";
+            this.Text = "iOSBridge Settings";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -42,6 +42,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -54,9 +56,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 24);
+            this.label1.Size = new System.Drawing.Size(151, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "About iCu X";
+            this.label1.Text = "About iOSBridge";
             // 
             // pictureBox1
             // 
@@ -119,9 +121,9 @@
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label8.Location = new System.Drawing.Point(12, 289);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(197, 16);
+            this.label8.Size = new System.Drawing.Size(229, 16);
             this.label8.TabIndex = 8;
-            this.label8.Text = "This Build of iCu X Is licensed to:";
+            this.label8.Text = "This Build of iOSBridge Is licensed to:";
             // 
             // label9
             // 
@@ -130,16 +132,16 @@
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label9.Location = new System.Drawing.Point(12, 249);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(158, 24);
+            this.label9.Size = new System.Drawing.Size(197, 24);
             this.label9.TabIndex = 9;
-            this.label9.Text = "More about iCu X";
+            this.label9.Text = "More about iOSBridge";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label10.Location = new System.Drawing.Point(207, 289);
+            this.label10.Location = new System.Drawing.Point(247, 289);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(158, 16);
             this.label10.TabIndex = 10;
@@ -190,12 +192,36 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Installer: DsSoft Liberty3";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label5.Location = new System.Drawing.Point(213, 197);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 16);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Pro:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label12.Location = new System.Drawing.Point(247, 197);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(25, 16);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "No";
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(590, 469);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -213,7 +239,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form4";
-            this.Text = "About iCu X";
+            this.Text = "About iOSBridge";
             this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -238,5 +264,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label12;
     }
 }

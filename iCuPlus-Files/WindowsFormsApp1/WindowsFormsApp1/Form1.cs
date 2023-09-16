@@ -62,7 +62,6 @@ namespace WindowsFormsApp1
         private Label label10;
         private Label label12;
         private Label label16;
-        private Label label19;
 
         public Form1()
         {
@@ -172,7 +171,6 @@ namespace WindowsFormsApp1
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label12 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -188,9 +186,9 @@ namespace WindowsFormsApp1
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(302, 25);
+            this.label1.Size = new System.Drawing.Size(109, 25);
             this.label1.TabIndex = 3;
-            this.label1.Text = "iCu X. The ultimate iCloud tool";
+            this.label1.Text = "iOSBridge";
             // 
             // panel1
             // 
@@ -670,7 +668,7 @@ namespace WindowsFormsApp1
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label15.Location = new System.Drawing.Point(15, 40);
+            this.label15.Location = new System.Drawing.Point(14, 45);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 13);
             this.label15.TabIndex = 14;
@@ -680,7 +678,7 @@ namespace WindowsFormsApp1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkColor = System.Drawing.Color.DarkKhaki;
-            this.linkLabel1.Location = new System.Drawing.Point(89, 40);
+            this.linkLabel1.Location = new System.Drawing.Point(88, 45);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(125, 13);
             this.linkLabel1.TabIndex = 23;
@@ -710,22 +708,10 @@ namespace WindowsFormsApp1
             this.label16.Text = "Y";
             this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label19.Location = new System.Drawing.Point(414, 19);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(342, 39);
-            this.label19.TabIndex = 27;
-            this.label19.Text = "iCu X Release 10.0.5";
-            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(991, 465);
-            this.Controls.Add(this.label19);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.linkLabel1);

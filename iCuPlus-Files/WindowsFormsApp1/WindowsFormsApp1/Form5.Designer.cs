@@ -61,6 +61,7 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -200,9 +201,9 @@
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label11.Location = new System.Drawing.Point(12, 482);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(87, 18);
+            this.label11.Size = new System.Drawing.Size(107, 18);
             this.label11.TabIndex = 8;
-            this.label11.Text = "iCu X V10.0.5";
+            this.label11.Text = "iOSBridge 10.0.5";
             // 
             // label9
             // 
@@ -231,22 +232,22 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label4.Location = new System.Drawing.Point(12, 60);
+            this.label4.Location = new System.Drawing.Point(5, 59);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 32);
+            this.label4.Size = new System.Drawing.Size(147, 32);
             this.label4.TabIndex = 5;
-            this.label4.Text = "You are using the  \r\nbest iCu version yet!";
+            this.label4.Text = "You are using the  \r\nbest Bridge version yet!";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label3.Location = new System.Drawing.Point(28, 20);
+            this.label3.Location = new System.Drawing.Point(15, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 16);
+            this.label3.Size = new System.Drawing.Size(115, 16);
             this.label3.TabIndex = 4;
-            this.label3.Text = "iCu X V10.0.5";
+            this.label3.Text = "iOSBridge V10.0.5";
             // 
             // panel3
             // 
@@ -306,11 +307,11 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label7.Location = new System.Drawing.Point(66, 26);
+            this.label7.Location = new System.Drawing.Point(49, 26);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 24);
+            this.label7.Size = new System.Drawing.Size(167, 24);
             this.label7.TabIndex = 2;
-            this.label7.Text = "iCu X Settings";
+            this.label7.Text = "iOSBridge Settings";
             // 
             // label10
             // 
@@ -415,11 +416,11 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label17.Location = new System.Drawing.Point(41, 26);
+            this.label17.Location = new System.Drawing.Point(59, 26);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(173, 24);
+            this.label17.Size = new System.Drawing.Size(125, 24);
             this.label17.TabIndex = 2;
-            this.label17.Text = "Experienced mode";
+            this.label17.Text = "Legacy mode";
             // 
             // pictureBox5
             // 
@@ -432,12 +433,25 @@
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.Location = new System.Drawing.Point(893, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 53);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Dev";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(1026, 661);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
@@ -453,7 +467,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form5";
-            this.Text = "iCu X Startup panel";
+            this.Text = "iOSBridge Startup panel";
             this.Load += new System.EventHandler(this.Form5_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -515,5 +529,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Button button1;
     }
 }

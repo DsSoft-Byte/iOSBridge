@@ -80,7 +80,9 @@ namespace WindowsFormsApp1
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Recovery Dashboard is under development.");
+            //MessageBox.Show("Recovery Dashboard is under development.");
+            Form13 form13 = new Form13();
+            form13.Show();
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
@@ -92,6 +94,18 @@ namespace WindowsFormsApp1
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form12 form12 = new Form12();
+            form12.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form13 form13 = new Form13();
+            form13.Show();
         }
     }
 }

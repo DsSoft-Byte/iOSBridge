@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Net.HttpWebRequest request = (System.Net.HttpWebRequest)System.Net.WebRequest.Create("https://github.com/DsSoft-Byte/iCu-X/blob/main/version.txt");
+            System.Net.HttpWebRequest request = (System.Net.HttpWebRequest)System.Net.WebRequest.Create("https://dssoft.us.to/ver.txt");
             System.Net.HttpWebResponse response = (System.Net.HttpWebResponse)request.GetResponse();
             var sr = new System.IO.StreamReader(response.GetResponseStream());
 
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             if (newestversions.Contains(currentversion))
             {
                 MessageBox.Show("You are up to date!");
-                label7.Text = newestversions;
+                //label7.Text = newestversions;
             }
             else
             {
@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
                         Form2 form2 = new Form2();
 
                         form2.Show();
-                        label7.Text = newestversions;
+                        //label7.Text = newestversions;
                     }
             }
         }
@@ -144,6 +144,11 @@ namespace WindowsFormsApp1
         }
 
         private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }

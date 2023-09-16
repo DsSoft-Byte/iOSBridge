@@ -82,9 +82,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 25);
+            this.label1.Size = new System.Drawing.Size(262, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "iCu X Bypass options";
+            this.label1.Text = "iOSBridge Bypass options";
             // 
             // groupBox1
             // 
@@ -417,7 +417,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form7";
-            this.Text = "iCu X Bypass options";
+            this.Text = "iOSBridge Bypass options";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
