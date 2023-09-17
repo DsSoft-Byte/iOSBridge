@@ -49,9 +49,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(7, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(286, 25);
+            this.label1.Size = new System.Drawing.Size(331, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "iCu X Server Status Checker";
+            this.label1.Text = "iOSBridge Server Status Checker";
             // 
             // button1
             // 
@@ -185,7 +185,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form8";
-            this.Text = "iCu X Server Status";
+            this.Text = "iOSBridge Server Status";
             this.Load += new System.EventHandler(this.Form8_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

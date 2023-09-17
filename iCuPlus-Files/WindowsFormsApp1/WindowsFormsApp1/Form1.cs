@@ -186,9 +186,9 @@ namespace WindowsFormsApp1
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 25);
+            this.label1.Size = new System.Drawing.Size(377, 25);
             this.label1.TabIndex = 3;
-            this.label1.Text = "iOSBridge";
+            this.label1.Text = "iOSBridge - The Ultimate iOS Multitool";
             // 
             // panel1
             // 
@@ -680,10 +680,10 @@ namespace WindowsFormsApp1
             this.linkLabel1.LinkColor = System.Drawing.Color.DarkKhaki;
             this.linkLabel1.Location = new System.Drawing.Point(88, 45);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(125, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(177, 13);
             this.linkLabel1.TabIndex = 23;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "DsSoft Github iCu-X repo";
+            this.linkLabel1.Text = "DsSoft Github iCu-X/iOSBridge repo";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label12
@@ -729,7 +729,7 @@ namespace WindowsFormsApp1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "iCu X V10.0.5";
+            this.Text = "iOSBridge V10.0.5";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

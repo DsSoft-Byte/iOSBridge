@@ -11,25 +11,33 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace WindowsFormsApp1
 {
     public partial class Form13 : Form
     {
-        private ManagementEventWatcher watcher;
+        private ManagementEventWatcher connectWatcher;
+        private ManagementEventWatcher disconnectWatcher;
+        private System.Windows.Forms.Timer notificationTimer;
 
 
 
         public Form13()
         {
             InitializeComponent();
-            watcher = new ManagementEventWatcher();
-            watcher.EventArrived += new EventArrivedEventHandler(HandleEvent);
-            watcher.Query = new WqlEventQuery("SELECT * FROM __InstanceCreationEvent WITHIN 2 WHERE TargetInstance ISA 'Win32_PnPEntity'");
-            watcher.Start();
+            connectWatcher = new ManagementEventWatcher();
+            connectWatcher.EventArrived += new EventArrivedEventHandler(HandleConnectEvent);
+            connectWatcher.Query = new WqlEventQuery("SELECT * FROM __InstanceCreationEvent WITHIN 2 WHERE TargetInstance ISA 'Win32_PnPEntity'");
+            connectWatcher.Start();
+
+            disconnectWatcher = new ManagementEventWatcher();
+            disconnectWatcher.EventArrived += new EventArrivedEventHandler(HandleDisconnectEvent);
+            disconnectWatcher.Query = new WqlEventQuery("SELECT * FROM __InstanceDeletionEvent WITHIN 2 WHERE TargetInstance ISA 'Win32_PnPEntity'");
+            disconnectWatcher.Start();
         }
 
-        private void HandleEvent(object sender, EventArrivedEventArgs e)
+        private void HandleConnectEvent(object sender, EventArrivedEventArgs e)
         {
             ManagementBaseObject instance = (ManagementBaseObject)e.NewEvent["TargetInstance"];
             string deviceName = instance["Name"].ToString(); //OG Code
@@ -38,20 +46,57 @@ namespace WindowsFormsApp1
             if (description.Contains("Apple Mobile Device USB Composite Device"))
             {
                 MessageBox.Show($"An Apple device connected: {deviceName}");
+                Thread.Sleep(10);
                 System.Diagnostics.Process.Start(@"C:\\iCures\\ideviceinfopipe.bat");
+                Thread.Sleep(10);
                 string filePath = @"C:\iCures\Dependencies\lim\output.txt";
+                Thread.Sleep(1000);
                 string fileContent = File.ReadAllText(filePath);
 
                 this.Invoke((MethodInvoker)delegate
                 {
                     label2.Text = (fileContent);
                 });
+                ShowNotificationPanel();
             }
         }
 
-                //MessageBox.Show($"USB device change detected: {deviceName}");
+        private void HandleDisconnectEvent(object sender, EventArrivedEventArgs e)
+        {
+            ManagementBaseObject instance = (ManagementBaseObject)e.NewEvent["TargetInstance"];
+            string description = instance["Description"].ToString();
 
-            private void Form13_Load(object sender, EventArgs e)
+            if (description.Contains("Apple Mobile Device USB Composite Device"))
+            {
+                //MessageBox.Show($"Apple device disconnected. {description}");
+                this.Invoke((MethodInvoker)delegate
+                {
+                    label2.Text = ("Libimobiledevice Feed");
+                });
+                ShowNotificationPanel();
+            }
+        }
+
+        private async void ShowNotificationPanel()
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                panel5.Visible = true;
+            });
+
+            // Wait for 2 seconds
+            await Task.Delay(2000);
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                panel5.Visible = false;
+            });
+        }
+
+
+        //MessageBox.Show($"USB device change detected: {deviceName}");
+
+        private void Form13_Load(object sender, EventArgs e)
         {
 
         }
@@ -63,8 +108,10 @@ namespace WindowsFormsApp1
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            watcher.Stop();
-            watcher.Dispose();
+            connectWatcher.Stop();
+            connectWatcher.Dispose();
+            disconnectWatcher.Stop();
+            disconnectWatcher.Dispose();
         }
     }
 }

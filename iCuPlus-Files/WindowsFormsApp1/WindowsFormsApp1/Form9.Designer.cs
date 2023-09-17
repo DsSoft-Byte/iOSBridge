@@ -91,7 +91,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form9";
-            this.Text = "iCu X FirstRun Manager";
+            this.Text = "iOSBridge FirstRun Manager";
             this.Load += new System.EventHandler(this.Form9_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

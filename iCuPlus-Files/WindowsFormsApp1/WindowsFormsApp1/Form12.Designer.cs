@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -83,12 +84,24 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(334, 207);
+            this.button2.Location = new System.Drawing.Point(198, 153);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(277, 30);
             this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
+            this.button2.Text = "NukeUpdates";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label4.Location = new System.Drawing.Point(23, 265);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(616, 58);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "DO NOT CONNECT ANY IOS DEVICE WHILE HERE!\r\nJAILBROKEN OR NOT IT WILL DESTROY UPDA" +
+    "TES!!!!";
             // 
             // Form12
             // 
@@ -96,6 +109,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(666, 528);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -119,5 +133,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label4;
     }
 }
