@@ -805,32 +805,122 @@ namespace WindowsFormsApp1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\iCures\gaster.bat");
+            //Process.Start(@"C:\iCures\gaster.bat");
+            // Initiate the enter custom Pwned DFU mode process
+            ProcessStartInfo enterCustomPwnedDFUStartInfo = new ProcessStartInfo();
+            enterCustomPwnedDFUStartInfo.FileName = "C:\\iCures\\Dependencies\\gaster.exe"; // Replace with actual file path
+            enterCustomPwnedDFUStartInfo.Arguments = "pwn";
+            enterCustomPwnedDFUStartInfo.CreateNoWindow = false;
+            enterCustomPwnedDFUStartInfo.UseShellExecute = false;
+
+            Process enterCustomPwnedDFUProcess = new Process();
+            enterCustomPwnedDFUProcess.StartInfo = enterCustomPwnedDFUStartInfo;
+            enterCustomPwnedDFUProcess.Start();
+            enterCustomPwnedDFUProcess.WaitForExit();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\iCures\idact.bat");
+            //Process.Start(@"C:\iCures\idact.bat");
+            //Process.Start(@"C:\iCures\idact-x64.bat");
+            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php"; // Replace with actual activation server URL
+
+            // Initiate the activation process
+            ProcessStartInfo activateStartInfo = new ProcessStartInfo();
+            activateStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\ideviceactivation.exe";
+            activateStartInfo.Arguments = $"activate -s {activationServer} -d";
+            activateStartInfo.CreateNoWindow = false;
+            activateStartInfo.UseShellExecute = false;
+
+            Process activateProcess = new Process();
+            activateProcess.StartInfo = activateStartInfo;
+            activateProcess.Start();
+            activateProcess.WaitForExit();
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\iCures\idact-x64.bat");
+            //Process.Start(@"C:\iCures\idact-x64.bat");
+            //Process.Start(@"C:\iCures\idact-x64.bat");
+            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php"; // Replace with actual activation server URL
+
+            // Initiate the activation process
+            ProcessStartInfo activateStartInfo = new ProcessStartInfo();
+            activateStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\ideviceactivation.exe";
+            activateStartInfo.Arguments = $"activate -s {activationServer} -d";
+            activateStartInfo.CreateNoWindow = false;
+            activateStartInfo.UseShellExecute = false;
+
+            Process activateProcess = new Process();
+            activateProcess.StartInfo = activateStartInfo;
+            activateProcess.Start();
+            activateProcess.WaitForExit();
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\iCures\prelaunch.bat");
+            //Process.Start(@"C:\iCures\prelaunch.bat");
+            ProcessStartInfo udidStartInfo = new ProcessStartInfo();
+            udidStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\idevice_id.exe";
+            udidStartInfo.Arguments = "-l";
+            udidStartInfo.RedirectStandardOutput = true;
+            udidStartInfo.UseShellExecute = false;
+
+            Process udidProcess = new Process();
+            udidProcess.StartInfo = udidStartInfo;
+            udidProcess.Start();
+
+            string udid = udidProcess.StandardOutput.ReadToEnd().Trim();
+            udidProcess.WaitForExit();
+
+            MessageBox.Show("UDID: " + udid, "Device UDID");
+
+            // Option to copy UDID to clipboard
+            DialogResult copyResult = MessageBox.Show("Do you want to copy the UDID to the clipboard?", "Copy UDID", MessageBoxButtons.YesNo);
+
+            if (copyResult == DialogResult.Yes)
+            {
+                Clipboard.SetText(udid);
+                MessageBox.Show("UDID copied to clipboard.", "Copy UDID");
+            }
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\iCures\idact.bat");
+            //Process.Start(@"C:\iCures\idact.bat");
+            //Process.Start(@"C:\iCures\idact-x64.bat");
+            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php"; // Replace with actual activation server URL
+
+            // Initiate the activation process
+            ProcessStartInfo activateStartInfo = new ProcessStartInfo();
+            activateStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\ideviceactivation.exe";
+            activateStartInfo.Arguments = $"activate -s {activationServer} -d";
+            activateStartInfo.CreateNoWindow = false;
+            activateStartInfo.UseShellExecute = false;
+
+            Process activateProcess = new Process();
+            activateProcess.StartInfo = activateStartInfo;
+            activateProcess.Start();
+            activateProcess.WaitForExit();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\iCures\idact-x64.bat");
+            //Process.Start(@"C:\iCures\idact-x64.bat");
+            //Process.Start(@"C:\iCures\idact-x64.bat");
+            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php"; // Replace with actual activation server URL
+
+            // Initiate the activation process
+            ProcessStartInfo activateStartInfo = new ProcessStartInfo();
+            activateStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\ideviceactivation.exe";
+            activateStartInfo.Arguments = $"activate -s {activationServer} -d";
+            activateStartInfo.CreateNoWindow = false;
+            activateStartInfo.UseShellExecute = false;
+
+            Process activateProcess = new Process();
+            activateProcess.StartInfo = activateStartInfo;
+            activateProcess.Start();
+            activateProcess.WaitForExit();
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -840,7 +930,7 @@ namespace WindowsFormsApp1
 
         private void button17_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://sideloadly.io/SideloadlySetup64.exe");
+            System.Diagnostics.Process.Start("https://sourceforge.net/projects/xampp/files/latest/download");
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -866,7 +956,17 @@ namespace WindowsFormsApp1
 
         private void button18_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\iCures\idpwn.bat");
+            //Process.Start(@"C:\iCures\idpwn.bat");
+            ProcessStartInfo enterPwnedDFUStartInfo = new ProcessStartInfo();
+            enterPwnedDFUStartInfo.FileName = "C:\\iCures\\Dependencies\\libimdevice\\libimdevice\\idevicerestore.exe";
+            enterPwnedDFUStartInfo.Arguments = "--pwn";
+            enterPwnedDFUStartInfo.CreateNoWindow = false;
+            enterPwnedDFUStartInfo.UseShellExecute = false;
+
+            Process enterPwnedDFUProcess = new Process();
+            enterPwnedDFUProcess.StartInfo = enterPwnedDFUStartInfo;
+            enterPwnedDFUProcess.Start();
+            enterPwnedDFUProcess.WaitForExit();
         }
 
         private void button22_Click_1(object sender, EventArgs e)
@@ -884,9 +984,9 @@ namespace WindowsFormsApp1
         {
             MessageBox.Show("I dont know yet if this will be used");
             // Code converted from iCu, works well.
-            string sfileReader;
-            sfileReader = System.IO.File.ReadAllText(@"C:\iCures\CB-X-config.txt");
-            Process.Start(sfileReader);
+            //string sfileReader;
+            //sfileReader = System.IO.File.ReadAllText(@"C:\\iCures\\CB-X-config.txt");
+            //Process.Start(sfileReader);
         }
 
         private void label12_Click(object sender, EventArgs e)
@@ -942,7 +1042,7 @@ namespace WindowsFormsApp1
 
         private void button31_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Process.Start("https://sideloadly.io/SideloadlySetup64.exe");
         }
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)

@@ -102,9 +102,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(301, 29);
+            this.label1.Size = new System.Drawing.Size(573, 29);
             this.label1.TabIndex = 1;
-            this.label1.Text = "iOSBridge MultiDashboard";
+            this.label1.Text = "iOSBridge MultiDashboard - Our 3uTools Alternative";
             // 
             // label2
             // 
@@ -113,9 +113,10 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label2.Location = new System.Drawing.Point(3, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(274, 60);
+            this.label2.Size = new System.Drawing.Size(306, 100);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Libimobiledevice Feed\r\n\r\nInfos About iDevice will show up here!";
+            this.label2.Text = "Libimobiledevice Feed\r\n\r\nInfos About iDevice will show up here!\r\n\r\nIf This is Emp" +
+    "ty You Didnt Trust on device!";
             // 
             // panel1
             // 
@@ -159,6 +160,7 @@
             this.button6.TabIndex = 1;
             this.button6.Text = "Deactivate iDevice";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -190,8 +192,9 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(182, 23);
             this.button8.TabIndex = 1;
-            this.button8.Text = "Restart";
+            this.button8.Text = "Restart iDevice";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -201,8 +204,9 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(182, 23);
             this.button9.TabIndex = 0;
-            this.button9.Text = "Turn Off";
+            this.button9.Text = "Turn Off iDevice";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // panel4
             // 
@@ -224,6 +228,7 @@
             this.button10.TabIndex = 1;
             this.button10.Text = "Backup Modern iDevice";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -233,27 +238,28 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(182, 23);
             this.button11.TabIndex = 0;
-            this.button11.Text = "Backup Legacy iDevice";
+            this.button11.Text = "Backup Legacy iDevice (iOS3)";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(15, 28);
+            this.panel5.Location = new System.Drawing.Point(3, 28);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(182, 90);
+            this.panel5.Size = new System.Drawing.Size(205, 90);
             this.panel5.TabIndex = 7;
             this.panel5.Visible = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(3, 32);
+            this.label5.Location = new System.Drawing.Point(3, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 16);
+            this.label5.Size = new System.Drawing.Size(199, 20);
             this.label5.TabIndex = 11;
             this.label5.Text = "Plug-In/Plug-Out Detected!";
             // 
@@ -275,7 +281,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(182, 23);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Get UDID";
+            this.button2.Text = "Get iDevice UDID";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -287,8 +293,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(182, 23);
             this.button3.TabIndex = 0;
-            this.button3.Text = "Open SSH Tunnel (2222, 22)";
+            this.button3.Text = "Open iproxy Tunnel (2222, 22)";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel7
             // 
@@ -493,7 +500,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label4.Location = new System.Drawing.Point(655, 19);
+            this.label4.Location = new System.Drawing.Point(655, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 16);
             this.label4.TabIndex = 13;
