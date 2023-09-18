@@ -411,9 +411,9 @@
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label9.Location = new System.Drawing.Point(335, 494);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(315, 13);
+            this.label9.Size = new System.Drawing.Size(301, 13);
             this.label9.TabIndex = 12;
-            this.label9.Text = "MultiDashboard/RecoveyPanel Alpha V1.3.7, Use at OWN RISK";
+            this.label9.Text = "MultiDashboard/RecoveyPanel Beta V1.5, Use at OWN RISK";
             // 
             // panel11
             // 

@@ -75,11 +75,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label2.Location = new System.Drawing.Point(213, 58);
+            this.label2.Location = new System.Drawing.Point(213, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(252, 16);
+            this.label2.Size = new System.Drawing.Size(284, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "iCu X RELEASE Software Version V10.0.5";
+            this.label2.Text = "iOSBridge RELEASE Software Version V10.0.6";
             // 
             // label3
             // 
@@ -186,7 +186,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label4.Location = new System.Drawing.Point(213, 112);
+            this.label4.Location = new System.Drawing.Point(213, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(149, 16);
             this.label4.TabIndex = 14;

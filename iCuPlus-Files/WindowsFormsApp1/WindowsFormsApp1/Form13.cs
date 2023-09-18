@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
                 System.Diagnostics.Process.Start(@"C:\\iCures\\ideviceinfopipe.bat");
                 Thread.Sleep(10);
                 string filePath = @"C:\iCures\Dependencies\lim\output.txt";
-                Thread.Sleep(1000);
+                Thread.Sleep(4500);
                 string fileContent = File.ReadAllText(filePath);
 
                 this.Invoke((MethodInvoker)delegate
