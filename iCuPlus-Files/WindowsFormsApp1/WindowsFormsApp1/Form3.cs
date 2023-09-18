@@ -68,9 +68,9 @@ namespace WindowsFormsApp1
         {
             using (var client = new WebClient())
                 MessageBox.Show("REMOVE The C:/UpdateData Directory NOW, before clicking OK, if you dont, this process WILL CRASH, if its not there then proceed.");
-                if (File.Exists(@"C:\iCuPlus.zip"))
+                if (File.Exists(@"C:\iCuFS.zip"))
                 {
-                    string zipPath = @"C:\iCuPlus.zip";
+                    string zipPath = @"C:\iCuFS.zip";
                     string extractPath = @"C:\UpdateData";
                     System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
                 // Will crash here occasionally.
@@ -87,9 +87,9 @@ namespace WindowsFormsApp1
         {
             using (var client = new WebClient())
                 MessageBox.Show("REMOVE The C:/UpdateData Directory NOW, before clicking OK, if you dont, this process WILL CRASH, if its not there then proceed.");
-            if (File.Exists(@"C:\iCuPlus.zip"))
+            if (File.Exists(@"C:\iCuFS.zip"))
                 {
-                    string zipPath = @"C:\iCuPlus.zip";
+                    string zipPath = @"C:\iCuFS.zip";
                     string extractPath = @"C:\UpdateData";
                     System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
                     System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\icuplusupdater.exe");

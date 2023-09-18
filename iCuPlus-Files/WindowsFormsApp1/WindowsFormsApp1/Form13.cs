@@ -12,6 +12,9 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
+using iMobileDevice;
+using iMobileDevice.iDevice;
+using iMobileDevice.Lockdown;
 
 namespace WindowsFormsApp1
 {
@@ -35,6 +38,7 @@ namespace WindowsFormsApp1
             disconnectWatcher.EventArrived += new EventArrivedEventHandler(HandleDisconnectEvent);
             disconnectWatcher.Query = new WqlEventQuery("SELECT * FROM __InstanceDeletionEvent WITHIN 2 WHERE TargetInstance ISA 'Win32_PnPEntity'");
             disconnectWatcher.Start();
+
         }
 
         private void HandleConnectEvent(object sender, EventArrivedEventArgs e)
@@ -45,7 +49,7 @@ namespace WindowsFormsApp1
 
             if (description.Contains("Apple Mobile Device USB Composite Device"))
             {
-                MessageBox.Show($"An Apple device connected: {deviceName}");
+                //MessageBox.Show($"An Apple device connected: {deviceName}");
                 Thread.Sleep(10);
                 System.Diagnostics.Process.Start(@"C:\\iCures\\ideviceinfopipe.bat");
                 Thread.Sleep(10);
@@ -56,6 +60,8 @@ namespace WindowsFormsApp1
                 this.Invoke((MethodInvoker)delegate
                 {
                     label2.Text = (fileContent);
+                    panel10.Visible = true;
+
                 });
                 ShowNotificationPanel();
             }
@@ -71,7 +77,19 @@ namespace WindowsFormsApp1
                 //MessageBox.Show($"Apple device disconnected. {description}");
                 this.Invoke((MethodInvoker)delegate
                 {
-                    label2.Text = ("Libimobiledevice Feed");
+                    label2.Text = ("Libimobiledevice Feed\r\n\r\nInfos About iDevice will show up here!\r\n");
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        panel10.Visible = false;
+
+                    });
+
+                    //if (label2.Text.Contains("iPhone"))
+                    //{
+                    // Your code for when label2 contains "iPhone"
+                    //MessageBox.Show("An iPhone is connected.");
+                    //}
                 });
                 ShowNotificationPanel();
             }
@@ -113,5 +131,91 @@ namespace WindowsFormsApp1
             disconnectWatcher.Stop();
             disconnectWatcher.Dispose();
         }
+
+        static void FlashDevice(string[] args)
+        {
+            string selectedFilePath = args[0];  // Assuming the file path is passed as an argument
+            string argument = "";
+            if (args.Length > 1)
+            {
+                if (args[1] == "Erase")
+                {
+                    argument = "-e";
+                }
+            }
+            string flashingProcessArguments = $"{argument} \"{selectedFilePath}\"";
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "C:\\iCures\\Dependencies\\lim\\idr.exe";
+            startInfo.Arguments = flashingProcessArguments;
+            startInfo.CreateNoWindow = false;
+            startInfo.UseShellExecute = false;
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+            process.WaitForExit();
+        }
+
+        private string selectedFilePath = ""; // Variable to store selected file path
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "Apple IPSW files (*.ipsw)|*.ipsw";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                selectedFilePath = openFileDialog1.FileName;
+                textBox1.Text = (selectedFilePath);
+            }
+        }
+
+        private void OutputDataHandler(object sendingProcess, DataReceivedEventArgs outLine)
+        {
+            if (!string.IsNullOrEmpty(outLine.Data))
+            {
+                Console.WriteLine(outLine.Data);
+            }
+        }
+
+        private void ErrorDataHandler(object sendingProcess, DataReceivedEventArgs outLine)
+        {
+            if (!string.IsNullOrEmpty(outLine.Data))
+            {
+                Console.WriteLine(outLine.Data);
+            }
+        }
+
+
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(selectedFilePath))
+            {
+                string eraseDevice = radioButton1.Checked ? "-e " : "";
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = "C:\\iCures\\Dependencies\\lim\\idr.exe";
+                startInfo.Arguments = $"{eraseDevice}\"{selectedFilePath}\"";
+                startInfo.CreateNoWindow = false;
+                startInfo.UseShellExecute = false;
+                //MessageBox.Show($"Selected File Path: {eraseDevice}");
+
+
+                Process process = new Process();
+                process.StartInfo = startInfo;
+
+                process.Start();
+                process.WaitForExit();
+            }
+            else
+            {
+                MessageBox.Show("Please select a file before flashing.");
+            }
+
+        }
+        }
     }
-}
+
