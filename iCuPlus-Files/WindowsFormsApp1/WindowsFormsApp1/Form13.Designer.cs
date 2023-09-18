@@ -363,7 +363,7 @@
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.Gray;
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel10.Controls.Add(this.label7);
             this.panel10.Controls.Add(this.pictureBox2);
             this.panel10.Controls.Add(this.label6);
@@ -398,7 +398,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label6.Location = new System.Drawing.Point(15, 217);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(204, 13);
