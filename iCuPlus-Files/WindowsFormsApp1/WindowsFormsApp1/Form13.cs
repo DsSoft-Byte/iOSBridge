@@ -12,9 +12,6 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
-using iMobileDevice;
-using iMobileDevice.iDevice;
-using iMobileDevice.Lockdown;
 
 namespace WindowsFormsApp1
 {
