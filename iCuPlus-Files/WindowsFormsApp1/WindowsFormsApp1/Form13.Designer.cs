@@ -57,17 +57,18 @@
             this.button12 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button14 = new System.Windows.Forms.Button();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.button13 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -136,6 +137,7 @@
             this.button5.TabIndex = 1;
             this.button5.Text = "Exit Recovery Mode";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // panel2
             // 
@@ -168,6 +170,7 @@
             this.button7.TabIndex = 0;
             this.button7.Text = "Bypass FActivatio/iPad 2";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // panel3
             // 
@@ -267,13 +270,14 @@
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.button2.Location = new System.Drawing.Point(15, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(182, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Get UDID";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -327,6 +331,7 @@
             this.button4.TabIndex = 1;
             this.button4.Text = "gaster pwndfu up to A11";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button12
             // 
@@ -338,6 +343,7 @@
             this.button12.TabIndex = 0;
             this.button12.Text = "Limera1n pwndfu";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // panel9
             // 
@@ -360,26 +366,6 @@
             this.panel10.TabIndex = 10;
             this.panel10.Visible = false;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(15, 217);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(204, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "iDevice Type Detection Not Yet Available";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(18, 21);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(201, 173);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -392,11 +378,31 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "?";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(18, 21);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(201, 173);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(15, 217);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(204, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "iDevice Type Detection Not Yet Available";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label9.Location = new System.Drawing.Point(444, 21);
+            this.label9.Location = new System.Drawing.Point(335, 494);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(315, 13);
             this.label9.TabIndex = 12;
@@ -416,46 +422,17 @@
             this.panel11.Size = new System.Drawing.Size(452, 121);
             this.panel11.TabIndex = 10;
             // 
-            // label8
+            // button14
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label8.Location = new System.Drawing.Point(14, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 16);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "iDevice Flasher";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(17, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(341, 20);
-            this.textBox1.TabIndex = 10;
-            // 
-            // button13
-            // 
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button13.Location = new System.Drawing.Point(364, 30);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 23);
-            this.button13.TabIndex = 2;
-            this.button13.Text = "Set";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.radioButton1.Location = new System.Drawing.Point(214, 59);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(156, 17);
-            this.radioButton1.TabIndex = 11;
-            this.radioButton1.Text = "Full Restore (Factory Reset)";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button14.Location = new System.Drawing.Point(17, 86);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(422, 23);
+            this.button14.TabIndex = 2;
+            this.button14.Text = "FLASH!";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // radioButton2
             // 
@@ -470,17 +447,58 @@
             this.radioButton2.Text = "Update Flash (Firmware Upgrade)";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // radioButton1
             // 
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button14.Location = new System.Drawing.Point(17, 86);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(422, 23);
-            this.button14.TabIndex = 2;
-            this.button14.Text = "FLASH!";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.radioButton1.Location = new System.Drawing.Point(214, 59);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(156, 17);
+            this.radioButton1.TabIndex = 11;
+            this.radioButton1.Text = "Full Restore (Factory Reset)";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button13.Location = new System.Drawing.Point(364, 30);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.TabIndex = 2;
+            this.button13.Text = "Set";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(17, 32);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(341, 20);
+            this.textBox1.TabIndex = 10;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label8.Location = new System.Drawing.Point(14, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(101, 16);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "iDevice Flasher";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label4.Location = new System.Drawing.Point(655, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 16);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Click Here for Help";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Form13
             // 
@@ -488,6 +506,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(1016, 652);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel10);
@@ -568,5 +587,6 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label4;
     }
 }

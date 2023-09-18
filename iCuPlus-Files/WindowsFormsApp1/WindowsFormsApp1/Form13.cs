@@ -116,9 +116,40 @@ namespace WindowsFormsApp1
 
         }
 
+        static void EnterRecoveryMode(string udid)
+        {
+            string argument = udid != null ? $"-u {udid}" : "";
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "C:\\iCures\\Dependencies\\lim\\ideviceenterrecovery.exe";
+            startInfo.Arguments = argument;
+            startInfo.CreateNoWindow = false;
+            startInfo.UseShellExecute = false;
+
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+            process.WaitForExit();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            // Retrieve the UDID
+            ProcessStartInfo udidStartInfo = new ProcessStartInfo();
+            udidStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\idevice_id.exe";
+            udidStartInfo.Arguments = "-l";
+            udidStartInfo.RedirectStandardOutput = true;
+            udidStartInfo.UseShellExecute = false;
 
+            Process udidProcess = new Process();
+            udidProcess.StartInfo = udidStartInfo;
+            udidProcess.Start();
+
+            string udid = udidProcess.StandardOutput.ReadToEnd().Trim();
+            udidProcess.WaitForExit();
+
+            // Enter recovery mode
+            EnterRecoveryMode(udid);
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -213,6 +244,51 @@ namespace WindowsFormsApp1
             }
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\iCures\gaster.bat");
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\iCures\idpwn.bat");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\iCures\idact-x64.bat");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\iCures\rec.bat");
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("If you get ERROR: Unable to place device into restore mode while flashing, Update your iTunes installation and restart " +
+                "Your Computer, then Open Device Manager and choose Apple Recovery (iBoot) USB Composite Device, Click Uninstall and check the other box too " +
+                "That should resolve the issue and you should be able to flash.");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo udidStartInfo = new ProcessStartInfo();
+            udidStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\idevice_id.exe";
+            udidStartInfo.Arguments = "-l";
+            udidStartInfo.RedirectStandardOutput = true;
+            udidStartInfo.UseShellExecute = false;
+
+            Process udidProcess = new Process();
+            udidProcess.StartInfo = udidStartInfo;
+            udidProcess.Start();
+
+            string udid = udidProcess.StandardOutput.ReadToEnd().Trim();
+            udidProcess.WaitForExit();
+
+            MessageBox.Show("UDID: " + udid, "Device UDID");
+        }
+    }
     }
 
