@@ -130,9 +130,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label3.Location = new System.Drawing.Point(264, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 13);
+            this.label3.Size = new System.Drawing.Size(117, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Check if dssoft.us.to is up";
+            this.label3.Text = "Check if dssoft.ch is up";
             // 
             // label4
             // 

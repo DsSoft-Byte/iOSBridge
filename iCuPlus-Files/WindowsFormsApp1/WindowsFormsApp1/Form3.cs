@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Net.HttpWebRequest request = (System.Net.HttpWebRequest)System.Net.WebRequest.Create("https://dssoft.us.to/ver.txt");
+            System.Net.HttpWebRequest request = (System.Net.HttpWebRequest)System.Net.WebRequest.Create("https://dssoft.ch/ver.txt");
             System.Net.HttpWebResponse response = (System.Net.HttpWebResponse)request.GetResponse();
             var sr = new System.IO.StreamReader(response.GetResponseStream());
 

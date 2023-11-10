@@ -79,7 +79,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(284, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "iOSBridge RELEASE Software Version V10.0.6";
+            this.label2.Text = "iOSBridge RELEASE Software Version V10.0.7";
             // 
             // label3
             // 

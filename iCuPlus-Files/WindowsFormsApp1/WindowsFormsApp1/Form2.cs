@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
             var specialTxt = new FileInfo(@"C:\iCuPlus.zip");
 
             if (generalTxt.Exists && specialTxt.Exists)
-                //if (specialTxt.Exists)
+                if (specialTxt.Exists)
                 System.IO.File.Delete(@"C:\iCuPlus.zip");
             string root = @"C:\UpdateData";
             // If directory does not exist, don't even try   

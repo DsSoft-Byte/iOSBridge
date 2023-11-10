@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("iCu X")]
-[assembly: AssemblyDescription("Modern iCloud unlocker of 2023 and 2024")]
+[assembly: AssemblyDescription("Ultimate successor of iCu and a powerful 3uTools replacement.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("DsSoft")]
 [assembly: AssemblyProduct("iCu X Unlocker")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("10.0.0.6")]
-[assembly: AssemblyFileVersion("10.0.0.6")]
+[assembly: AssemblyVersion("10.0.0.7")]
+[assembly: AssemblyFileVersion("10.0.0.7")]

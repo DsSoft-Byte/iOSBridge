@@ -81,7 +81,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(325, 29);
             this.label3.TabIndex = 3;
-            this.label3.Text = "iOSBridge 10.0.0.5 DevPanel";
+            this.label3.Text = "iOSBridge 10.0.0.7 DevPanel";
             // 
             // button2
             // 

@@ -645,7 +645,7 @@ namespace WindowsFormsApp1
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 25);
             this.label11.TabIndex = 16;
-            this.label11.Text = "10B0D5";
+            this.label11.Text = "10B0D7";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // saveFileDialog1
@@ -729,7 +729,7 @@ namespace WindowsFormsApp1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "iOSBridge V10.0.6";
+            this.Text = "iOSBridge V10.0.7";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

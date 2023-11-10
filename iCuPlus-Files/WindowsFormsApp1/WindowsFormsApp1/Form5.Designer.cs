@@ -181,7 +181,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(43, 18);
             this.label13.TabIndex = 10;
-            this.label13.Text = "X1006";
+            this.label13.Text = "X1007";
             // 
             // label12
             // 
@@ -203,7 +203,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(107, 18);
             this.label11.TabIndex = 8;
-            this.label11.Text = "iOSBridge 10.0.6";
+            this.label11.Text = "iOSBridge 10.0.7";
             // 
             // label9
             // 
@@ -247,7 +247,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 16);
             this.label3.TabIndex = 4;
-            this.label3.Text = "iOSBridge V10.0.6";
+            this.label3.Text = "iOSBridge V10.0.7";
             // 
             // panel3
             // 
