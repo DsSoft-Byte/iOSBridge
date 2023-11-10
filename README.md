@@ -4,7 +4,9 @@ Next-Generation iCu Unlocker follow-up.
 
 # Proudly presenting, iOSBridge (10)
 
-# URGENT SECURITY PATCH 10.0.0.7, my free us.to domain expired, the update server is now at dssoft.ch/ver.txt, the new update needs to be downloaded manually from releases. This effectively breaks updater capabilities of legacy iCu and iCu X before 10.0.0.7 and is classified as a urgend patch. this new domain is now here to stay.
+# URGENT SECURITY PATCH 10.0.0.7
+
+My free us.to domain expired, the update server is now at dssoft.ch/ver.txt, the new update needs to be downloaded manually from releases. This effectively breaks updater capabilities of legacy iCu and iCu X before 10.0.0.7 and is classified as a urgend patch. this new domain is now here to stay.
 
 
 Fully redesigned UI/UX
