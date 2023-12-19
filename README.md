@@ -7,7 +7,7 @@ Next-Generation iCu Unlocker follow-up. Proudly presenting, iOSBridge (10).
 
 URGENT SECURITY PATCH 10.0.0.7 (10.11.2023)
 
-**Important Note:** My free us.to domain expired, and the update server is now at [dssoft.ch/ver.txt](https://dssoft.ch/ver.txt). The new update needs to be downloaded manually from releases. This effectively breaks updater capabilities of legacy iCu and iCu X before 10.0.0.7 and is classified as an urgent patch. This new domain is now here to stay.
+**Important Note:** All of you should use [this](https://github.com/DsSoft-Byte/iOSBridge/releases/download/v10.0.7-1/iCu.X.Installer.exe) installer, if you wish to try the beta grab the newest iCU X.exe artifact and overwrite the existing iCu X.exe file.
 
 ## Featured
 
