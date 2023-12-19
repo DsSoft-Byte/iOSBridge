@@ -33,3 +33,6 @@ URGENT SECURITY PATCH 10.0.0.7 (10.11.2023)
 
 **Updated on 25/04/23,** Reddit users from setupapp, download THIS!!!
 
+To use the easy installer, grab it from [here](https://github.com/DsSoft-Byte/iOSBridge/releases/download/v10.0.7-1/iCu.X.Installer.exe)
+![Installer Icon](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Installer_icon_icon.png/64px-Installer_icon_icon.png)
+
