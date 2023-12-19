@@ -409,9 +409,9 @@
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label9.Location = new System.Drawing.Point(335, 494);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(310, 13);
+            this.label9.Size = new System.Drawing.Size(301, 13);
             this.label9.TabIndex = 12;
-            this.label9.Text = "MultiDashboard/RecoveyPanel Beta V1.8-2, Use at OWN RISK";
+            this.label9.Text = "MultiDashboard/RecoveyPanel Beta V1.9, Use at OWN RISK";
             // 
             // panel11
             // 
@@ -489,9 +489,9 @@
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label8.Location = new System.Drawing.Point(14, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 16);
+            this.label8.Size = new System.Drawing.Size(279, 16);
             this.label8.TabIndex = 9;
-            this.label8.Text = "iDevice Flasher";
+            this.label8.Text = "iDevice Flasher                64Bit Only (ASR Error)";
             // 
             // label4
             // 
