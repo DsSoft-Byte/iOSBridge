@@ -1,6 +1,7 @@
 # iOSBridge
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DsSoft-Byte/iOSBridge/.NET%20Build%20and%20Test/main)](https://github.com/DsSoft-Byte/iOSBridge/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/DsSoft-Byte/iOSBridge/test.yml?branch=main)](https://github.com/DsSoft-Byte/iOSBridge/actions)
+
 
 Next-Generation iCu Unlocker follow-up. Proudly presenting, iOSBridge (10).
 
