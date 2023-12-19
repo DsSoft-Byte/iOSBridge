@@ -28,4 +28,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Main Executable (iCu X.exe)
-        path: iCuPlus-Files/WindowsFormsApp1/bin/Debug/*.exe # Update the path to the executable files
+        path: iCuPlus-Files/WindowsFormsApp1/WindowsFormsApp1/bin/Debug/*.exe # Update the path to the executable files
