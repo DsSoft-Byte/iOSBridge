@@ -1,6 +1,7 @@
 # iOSBridge
 
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/DsSoft-Byte/iOSBridge/dotnet-desktop.yml?branch=main)](https://github.com/DsSoft-Byte/iOSBridge/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/DsSoft-Byte/iOSBridge/dotnet-desktop.yml?branch=main)](https://github.com/DsSoft-Byte/iOSBridge/actions) [![Last Commit](https://img.shields.io/github/last-commit/DsSoft-Byte/iOSBridge)](https://github.com/DsSoft-Byte/iOSBridge/commits/main)
+
 
 
 Next-Generation iCu Unlocker follow-up. Proudly presenting, iOSBridge (10).
