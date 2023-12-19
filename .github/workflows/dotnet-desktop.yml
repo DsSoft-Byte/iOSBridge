@@ -1,0 +1,32 @@
+name: .NET Windows Build and Artifact
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1.0.2 # This action sets up MSBuild for the workflow
+    - name: Restore dependencies
+      run: nuget restore iCuPlus-Files/WindowsFormsApp1.sln # Replace WindowsFormsApp1.sln with your solution file name
+    - name: Build
+      run: msbuild /p:Configuration=Release iCuPlus-Files/WindowsFormsApp1.sln # Replace WindowsFormsApp1.sln with your solution file name
+    - name: Test
+      run: |
+        # Run your tests here, replace this comment with the actual command to run tests
+        # For example:
+        # dotnet test WindowsFormsApp1Test/WindowsFormsApp1Test.csproj
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Main Executable (iCu X.exe)
+        path: iCuPlus-Files/WindowsFormsApp1/WindowsFormsApp1/bin/Debug/*.exe # Update the path to match your actual output directory and executable name
+
