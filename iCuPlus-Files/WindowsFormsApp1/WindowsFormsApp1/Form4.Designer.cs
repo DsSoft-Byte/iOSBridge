@@ -77,9 +77,9 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label2.Location = new System.Drawing.Point(213, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(284, 16);
+            this.label2.Size = new System.Drawing.Size(274, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "iOSBridge RELEASE Software Version V10.0.7";
+            this.label2.Text = "iOSBridge RELEASE Software Version V10.1";
             // 
             // label3
             // 

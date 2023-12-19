@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form13));
             this.button1 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -413,7 +411,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(310, 13);
             this.label9.TabIndex = 12;
-            this.label9.Text = "MultiDashboard/RecoveyPanel Beta V1.6-2, Use at OWN RISK";
+            this.label9.Text = "MultiDashboard/RecoveyPanel Beta V1.8-2, Use at OWN RISK";
             // 
             // panel11
             // 
@@ -557,7 +555,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
