@@ -85,7 +85,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(223, 32);
             this.button7.TabIndex = 12;
-            this.button7.Text = "Install custom iCuFS";
+            this.button7.Text = "Install custom iOSBridge FS";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -109,7 +109,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(223, 32);
             this.button3.TabIndex = 6;
-            this.button3.Text = "Reinstall/Repair";
+            this.button3.Text = "iOSBridge FS Online Store";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -208,9 +208,9 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label5.Location = new System.Drawing.Point(424, 312);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 13);
+            this.label5.Size = new System.Drawing.Size(191, 13);
             this.label5.TabIndex = 24;
-            this.label5.Text = "Repairs a broken installation";
+            this.label5.Text = "Download modified/expanded versions";
             // 
             // label6
             // 

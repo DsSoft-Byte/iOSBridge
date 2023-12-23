@@ -68,17 +68,17 @@ namespace WindowsFormsApp1
         {
             using (var client = new WebClient())
                 MessageBox.Show("REMOVE The C:/UpdateData Directory NOW, before clicking OK, if you dont, this process WILL CRASH, if its not there then proceed.");
-                if (File.Exists(@"C:\iCuFS.zip"))
+                if (File.Exists(@"C:\iOSBridgeFS.zip"))
                 {
-                    string zipPath = @"C:\iCuFS.zip";
+                    string zipPath = @"C:\iOSBridgeFS.zip";
                     string extractPath = @"C:\UpdateData";
                     System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
                 // Will crash here occasionally.
                     System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\icuplusupdater.exe");
-                    MessageBox.Show("Exit all iCu windows and update then.");
+                    MessageBox.Show("Exit all iOSBridge windows and update then.");
                 }
                 else
-                    MessageBox.Show("No valid iCuFS downgrade file provided.");
+                    MessageBox.Show("No valid iOSBridge downgrade file provided.");
                 {
             }
         }
@@ -87,16 +87,16 @@ namespace WindowsFormsApp1
         {
             using (var client = new WebClient())
                 MessageBox.Show("REMOVE The C:/UpdateData Directory NOW, before clicking OK, if you dont, this process WILL CRASH, if its not there then proceed.");
-            if (File.Exists(@"C:\iCuFS.zip"))
+            if (File.Exists(@"C:\iOSBridge.zip"))
                 {
-                    string zipPath = @"C:\iCuFS.zip";
+                    string zipPath = @"C:\iOSBridge.zip";
                     string extractPath = @"C:\UpdateData";
                     System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
                     System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\icuplusupdater.exe");
-                    MessageBox.Show("Exit all iCu windows and update then.");
+                    MessageBox.Show("Exit all iOSBridge windows and update then.");
                 }
                 else
-                    MessageBox.Show("No valid iCuFS file provided.");
+                    MessageBox.Show("No valid iOSBridge FS file provided.");
                 {
              }
         }
@@ -115,7 +115,10 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("There is no iCu Uninstaller yet. Just delete the iCures directory. User Manual Code 002");
+            //MessageBox.Show("There is no iCu Uninstaller yet. Just delete the iCures directory. User Manual Code 002");
+            Form14 form14 = new Form14();
+            form14.Show();
+
         }
 
         private void button2_Click(object sender, EventArgs e)

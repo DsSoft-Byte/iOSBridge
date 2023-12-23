@@ -79,7 +79,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(274, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "iOSBridge RELEASE Software Version V10.2";
+            this.label2.Text = "iOSBridge RELEASE Software Version V10.3";
             // 
             // label3
             // 
@@ -88,9 +88,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label3.Location = new System.Drawing.Point(213, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(175, 16);
+            this.label3.Size = new System.Drawing.Size(165, 16);
             this.label3.TabIndex = 3;
-            this.label3.Text = "iCu X Updater version V1.3.3";
+            this.label3.Text = "iCu X Updater version V1.5";
             // 
             // label6
             // 

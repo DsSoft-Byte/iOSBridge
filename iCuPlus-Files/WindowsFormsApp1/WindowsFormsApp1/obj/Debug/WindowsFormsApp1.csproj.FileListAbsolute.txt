@@ -108,3 +108,6 @@ C:\Users\Daniel\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\Window
 C:\Users\Daniel\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Daniel\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu X.exe
 C:\Users\Daniel\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu X.pdb
+C:\Users\Daniel\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form14.resources
+C:\Users\Daniel\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form15.resources
+C:\Users\Daniel\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form16.resources

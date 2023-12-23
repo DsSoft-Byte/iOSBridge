@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form2 : Form
+    public partial class Form16 : Form
     {
-        public Form2()
+        public Form16()
         {
             InitializeComponent();
         }
@@ -39,18 +39,18 @@ namespace WindowsFormsApp1
             }
             else
                 MessageBox.Show("Update Data Corrupted. Updater Missing." +
-                    "Please Check your UpdateData folder in C: for outdated update files potentially from iCu.");
+                    "Please Check your UpdateData folder in C:\\ and delete it.");
 
             }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             var generalTxt = new FileInfo(@"C:\UpdateData\iCures\ideviceinfopipe.bat");
-            var specialTxt = new FileInfo(@"C:\iCuPlus.zip");
+            var specialTxt = new FileInfo(@"C:\iOSBridgeSF.zip");
 
             if (generalTxt.Exists && specialTxt.Exists)
                 if (specialTxt.Exists)
-                System.IO.File.Delete(@"C:\iCuPlus.zip");
+                System.IO.File.Delete(@"C:\iOSBridge.zip");
             string root = @"C:\UpdateData";
             // If directory does not exist, don't even try   
             if (Directory.Exists(root))

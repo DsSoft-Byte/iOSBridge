@@ -181,7 +181,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(43, 18);
             this.label13.TabIndex = 10;
-            this.label13.Text = "X1020";
+            this.label13.Text = "X1030";
             // 
             // label12
             // 
@@ -201,9 +201,9 @@
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label11.Location = new System.Drawing.Point(12, 482);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 18);
+            this.label11.Size = new System.Drawing.Size(128, 18);
             this.label11.TabIndex = 8;
-            this.label11.Text = "iOSBridge 10.2";
+            this.label11.Text = "iOSBridge 10.3 BETA";
             // 
             // label9
             // 
@@ -247,7 +247,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 16);
             this.label3.TabIndex = 4;
-            this.label3.Text = "iOSBridge V10.2";
+            this.label3.Text = "iOSBridge V10.3";
             // 
             // panel3
             // 
