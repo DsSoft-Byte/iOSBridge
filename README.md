@@ -18,7 +18,7 @@ URGENT SECURITY PATCH 10.0.0.7 (10.11.2023)
 - 100% Customizable with custom "iCuFS" zip files
 - Can be downgraded to any version with iCuFS zips
 - Provides the latest information on iCloud bypasses
-- iPhone Recovery dashboard
+- iPhone Recovery dashboard (Restore working on 64-Bit devices only, Tested on 5S and X)
 - Stable base for all later iCu X/iOSBridge versions.
 - No more XAMPP Self hosting! Just run the tool! I did the hard work so you don't have to!
 
