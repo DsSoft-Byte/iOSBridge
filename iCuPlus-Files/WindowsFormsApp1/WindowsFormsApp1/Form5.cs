@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Recovery Dashboard is under development.");
+            MessageBox.Show("Thank the Libimobiledevice developers for absoluetely ignoring and ghosting me, only 64Bit restores work on windows and that only partly, the rest should work.");
             Form13 form13 = new Form13();
             form13.Show();
         }

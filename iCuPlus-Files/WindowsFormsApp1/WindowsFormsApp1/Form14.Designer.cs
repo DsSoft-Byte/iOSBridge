@@ -43,10 +43,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -111,9 +112,10 @@
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label9.Location = new System.Drawing.Point(299, 234);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(271, 18);
+            this.label9.Size = new System.Drawing.Size(306, 54);
             this.label9.TabIndex = 7;
-            this.label9.Text = "Reserved for community made versions";
+            this.label9.Text = "Yes, you read it right, checkm8 on iOSBridge \r\nWindows is happening. This downloa" +
+    "ds the\r\nDriver sys and dll packages";
             // 
             // label8
             // 
@@ -137,7 +139,7 @@
             this.label7.Size = new System.Drawing.Size(334, 54);
             this.label7.TabIndex = 5;
             this.label7.Text = "Light Mode of the dark mode focused iOSBridge\r\nprogramm, may help with readabilit" +
-    "y on small high\r\nres screens like the Surface Go 2";
+    "y on small high\r\nres screens like the Surface convertibles\r\n";
             // 
             // panel5
             // 
@@ -162,6 +164,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel4.Controls.Add(this.button4);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Location = new System.Drawing.Point(14, 228);
             this.panel4.Name = "panel4";
@@ -173,11 +176,11 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label5.Location = new System.Drawing.Point(92, 42);
+            this.label5.Location = new System.Drawing.Point(16, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 18);
+            this.label5.Size = new System.Drawing.Size(225, 18);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Reserved";
+            this.label5.Text = "MacOS USB Passtrough Drivers";
             // 
             // panel3
             // 
@@ -223,6 +226,17 @@
             this.panel2.Size = new System.Drawing.Size(268, 100);
             this.panel2.TabIndex = 0;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label11.Location = new System.Drawing.Point(28, 68);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(213, 18);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "DOSENT WORK AS OF NOW";
+            // 
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -258,16 +272,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label11
+            // button4
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label11.Location = new System.Drawing.Point(28, 68);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(213, 18);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "DOSENT WORK AS OF NOW";
+            this.button4.Enabled = false;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button4.Location = new System.Drawing.Point(19, 49);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(233, 23);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Download";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // Form14
             // 
@@ -321,5 +336,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button4;
     }
 }
