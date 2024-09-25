@@ -14,7 +14,7 @@ URGENT SECURITY PATCH 10.0.0.7 (10/11/2023)
 
 **Important Note:** All of you should use [this](https://github.com/DsSoft-Byte/iOSBridge/releases/download/v10.0.7-1/iCu.X.Installer.exe) installer, if you wish to try the beta grab the newest iCu X.exe artifact and overwrite the existing iCu X.exe file.
 
-**Important Note regarding the restore feature:** Restore only works on 64 Bit devices on iOS 10.X.X whyever please DO NOT use restore until further notice has been issued (17/04/24)
+**Important Note regarding the restore feature:** Restore only works on 64 Bit devices on iOS 10.X.X whyever. Please DO NOT use for now. This is a libimobiledevice Windows issue that is ignored by the devs. Nothing i can do to fix it.
 
 ## Featured
 
@@ -38,8 +38,6 @@ URGENT SECURITY PATCH 10.0.0.7 (10/11/2023)
 - Custom Themes ✔👀
 - Recovery Dashboard
 - Custom Linux distro and USB Imager/Flasher ⏳
-
-**Updated on 25/04/23,** Reddit users from setupapp, download THIS!!!
 
 To use the easy installer, grab it from [here](https://github.com/DsSoft-Byte/iOSBridge/releases/download/v10.0.7-1/iCu.X.Installer.exe)
 
