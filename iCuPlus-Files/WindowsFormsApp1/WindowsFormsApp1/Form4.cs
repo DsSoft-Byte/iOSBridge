@@ -32,6 +32,15 @@ namespace WindowsFormsApp1
             string sfileReader;
             sfileReader = System.IO.File.ReadAllText(@"C:/iCures/Username.txt");
             label10.Text = sfileReader;
+
+            if (Properties.Settings.Default.IsActivated)
+            {
+                label12.Text = "Yes";
+            }
+            else
+            {
+
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

@@ -113,7 +113,14 @@ namespace WindowsFormsApp1
 
         private void Form13_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.IsActivated)
+            {
+                button7.Visible = true;
+            }
+            else
+            {
 
+            }
         }
 
         static void EnterRecoveryMode(string udid)
@@ -223,15 +230,21 @@ namespace WindowsFormsApp1
         {
             if (!string.IsNullOrEmpty(selectedFilePath))
             {
-                MessageBox.Show("The Programm will display a Error message on second reconnect before sending iBEC, this is normal, just click continiue. Its Not Dangerous.");
+                // Ask user if they want to use idr1.exe or stick with idr.exe
+                DialogResult result = MessageBox.Show("Do you want to use the newer libimobiledevice restore library? Click Yes to use the fixed library, or No to stick with the default idevicerestore.",
+                                                      "Choose Restore File",
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Question);
+
+                string selectedFile = result == DialogResult.Yes ? "idr1.exe" : "idr.exe";
+                MessageBox.Show("The Program will display an error message on second reconnect before sending iBEC. This is normal, just click continue. It's not dangerous.");
+
                 string eraseDevice = radioButton1.Checked ? "-e " : "";
                 ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.FileName = "C:\\iCures\\Dependencies\\lim\\idr.exe";
+                startInfo.FileName = $"C:\\iCures\\Dependencies\\lim\\{selectedFile}";
                 startInfo.Arguments = $"{eraseDevice}\"{selectedFilePath}\"";
                 startInfo.CreateNoWindow = false;
                 startInfo.UseShellExecute = false;
-                //MessageBox.Show($"Selected File Path: {eraseDevice}");
-
 
                 Process process = new Process();
                 process.StartInfo = startInfo;
@@ -243,6 +256,29 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Please select a file before flashing.");
             }
+
+            //if (!string.IsNullOrEmpty(selectedFilePath))
+            //{
+            //MessageBox.Show("The Programm will display a Error message on second reconnect before sending iBEC, this is normal, just click continiue. Its Not Dangerous.");
+            //string eraseDevice = radioButton1.Checked ? "-e " : "";
+            //ProcessStartInfo startInfo = new ProcessStartInfo();
+            //startInfo.FileName = "C:\\iCures\\Dependencies\\lim\\idr.exe";
+            //startInfo.Arguments = $"{eraseDevice}\"{selectedFilePath}\"";
+            //startInfo.CreateNoWindow = false;
+            //startInfo.UseShellExecute = false;
+            //MessageBox.Show($"Selected File Path: {eraseDevice}");
+
+
+            //Process process = new Process();
+            //process.StartInfo = startInfo;
+
+            //process.Start();
+            //process.WaitForExit();
+            //}
+            //else
+            //{
+            //MessageBox.Show("Please select a file before flashing.");
+            //}
 
         }
 

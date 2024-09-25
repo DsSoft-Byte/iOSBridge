@@ -85,7 +85,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(223, 32);
             this.button7.TabIndex = 12;
-            this.button7.Text = "Install custom iOSBridge FS";
+            this.button7.Text = "Activate iOSBridge Pro";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -188,9 +188,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label3.Location = new System.Drawing.Point(424, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 13);
+            this.label3.Size = new System.Drawing.Size(202, 13);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Allows installation of custom versions";
+            this.label3.Text = "Active Pro and enjoy our NEW bypasses!";
             // 
             // label4
             // 

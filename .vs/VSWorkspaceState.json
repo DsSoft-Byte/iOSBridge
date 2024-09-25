@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\iCuPlus-Files",
+    "\\iCuPlus-Files\\WindowsFormsApp1",
+    "\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1"
   ],
-  "SelectedNode": "\\WindowsFormsApp1.sln",
+  "SelectedNode": "\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form13.cs",
   "PreviewInSolutionExplorer": false
 }

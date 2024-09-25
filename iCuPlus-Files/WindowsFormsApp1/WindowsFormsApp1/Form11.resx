@@ -119,10 +119,10 @@
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
     <value>ProductName: iOSBridge
-ProductVersion: 10.3.0
-InternalSoftwareString: X1030
+ProductVersion: 10.5.0
+InternalSoftwareString: X1050
 Server-Client-Duet: Yes
-StockHostProvider: 000
+StockHostProvider: NONE
 StockFileUsed: AT752Sliver
 LayerOne: No
 DsSoft ECE: No

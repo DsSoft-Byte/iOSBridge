@@ -79,7 +79,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(274, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "iOSBridge RELEASE Software Version V10.3";
+            this.label2.Text = "iOSBridge RELEASE Software Version V10.5";
             // 
             // label3
             // 
@@ -155,7 +155,7 @@
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label11.Location = new System.Drawing.Point(12, 317);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(574, 48);
+            this.label11.Size = new System.Drawing.Size(581, 48);
             this.label11.TabIndex = 11;
             this.label11.Text = resources.GetString("label11.Text");
             // 
@@ -219,7 +219,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.ClientSize = new System.Drawing.Size(590, 469);
+            this.ClientSize = new System.Drawing.Size(596, 469);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

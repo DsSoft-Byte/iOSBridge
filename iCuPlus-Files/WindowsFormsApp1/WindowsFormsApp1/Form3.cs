@@ -85,18 +85,20 @@ namespace WindowsFormsApp1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            using (var client = new WebClient())
-                MessageBox.Show("REMOVE The C:/UpdateData Directory NOW, before clicking OK, if you dont, this process WILL CRASH, if its not there then proceed.");
-            if (File.Exists(@"C:\iOSBridge.zip"))
-                {
-                    string zipPath = @"C:\iOSBridge.zip";
-                    string extractPath = @"C:\UpdateData";
-                    System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
-                    System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\icuplusupdater.exe");
-                    MessageBox.Show("Exit all iOSBridge windows and update then.");
-                }
-                else
-                    MessageBox.Show("No valid iOSBridge FS file provided.");
+            Form17 form17 = new Form17();
+            form17.Show();
+            //using (var client = new WebClient())
+               // MessageBox.Show("REMOVE The C:/UpdateData Directory NOW, before clicking OK, if you dont, this process WILL CRASH, if its not there then proceed.");
+            //if (File.Exists(@"C:\iOSBridge.zip"))
+                //{
+                    //string zipPath = @"C:\iOSBridge.zip";
+                    //string extractPath = @"C:\UpdateData";
+                    //System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
+                    //System.Diagnostics.Process.Start(@"C:\UpdateData\iCures\icuplusupdater.exe");
+                    //MessageBox.Show("Exit all iOSBridge windows and update then.");
+                //}
+                //else
+                    //MessageBox.Show("No valid iOSBridge FS file provided.");
                 {
              }
         }

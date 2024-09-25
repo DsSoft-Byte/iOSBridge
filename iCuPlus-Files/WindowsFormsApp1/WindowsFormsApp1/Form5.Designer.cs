@@ -181,7 +181,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(43, 18);
             this.label13.TabIndex = 10;
-            this.label13.Text = "X1040";
+            this.label13.Text = "X1050";
             // 
             // label12
             // 
@@ -203,7 +203,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(128, 18);
             this.label11.TabIndex = 8;
-            this.label11.Text = "iOSBridge 10.4 BETA";
+            this.label11.Text = "iOSBridge 10.5 BETA";
             // 
             // label9
             // 
@@ -234,7 +234,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label4.Location = new System.Drawing.Point(5, 59);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(148, 32);
+            this.label4.Size = new System.Drawing.Size(147, 32);
             this.label4.TabIndex = 5;
             this.label4.Text = "You are using the  \r\nbest Bridge version yet!";
             // 
@@ -245,9 +245,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label3.Location = new System.Drawing.Point(15, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 16);
+            this.label3.Size = new System.Drawing.Size(105, 16);
             this.label3.TabIndex = 4;
-            this.label3.Text = "iOSBridge V10.4";
+            this.label3.Text = "iOSBridge V10.5";
             // 
             // panel3
             // 
@@ -443,7 +443,6 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Dev";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form5

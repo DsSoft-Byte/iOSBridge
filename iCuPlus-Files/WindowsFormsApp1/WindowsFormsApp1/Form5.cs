@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Thank the Libimobiledevice developers for absoluetely ignoring and ghosting me, only 64Bit restores work on windows and that only partly, the rest should work.");
+            MessageBox.Show("Restore is 60% Working now. Use old library for 64Bit Restore and new library for 32Bit restore, rest works normally on all architectures.");
             Form13 form13 = new Form13();
             form13.Show();
         }

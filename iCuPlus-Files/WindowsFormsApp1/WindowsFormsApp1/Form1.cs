@@ -279,6 +279,7 @@ namespace WindowsFormsApp1
             // button12
             // 
             this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button12.Enabled = false;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button12.Location = new System.Drawing.Point(145, 40);
@@ -287,6 +288,7 @@ namespace WindowsFormsApp1
             this.button12.TabIndex = 12;
             this.button12.Text = "Bypa$$ x64";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Visible = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button10
@@ -305,6 +307,7 @@ namespace WindowsFormsApp1
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button11.Enabled = false;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button11.Location = new System.Drawing.Point(15, 40);
@@ -313,6 +316,7 @@ namespace WindowsFormsApp1
             this.button11.TabIndex = 9;
             this.button11.Text = "Bypa$$ x86";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Visible = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // label3
@@ -366,6 +370,7 @@ namespace WindowsFormsApp1
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button9.Enabled = false;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button9.Location = new System.Drawing.Point(145, 40);
@@ -374,6 +379,7 @@ namespace WindowsFormsApp1
             this.button9.TabIndex = 12;
             this.button9.Text = "Bypa$$ x64";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Visible = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button13
@@ -392,6 +398,7 @@ namespace WindowsFormsApp1
             // button14
             // 
             this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(5)))), ((int)(((byte)(126)))));
+            this.button14.Enabled = false;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button14.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button14.Location = new System.Drawing.Point(15, 40);
@@ -400,6 +407,7 @@ namespace WindowsFormsApp1
             this.button14.TabIndex = 9;
             this.button14.Text = "Bypa$$ x86";
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.Visible = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // label6
@@ -645,7 +653,7 @@ namespace WindowsFormsApp1
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 25);
             this.label11.TabIndex = 16;
-            this.label11.Text = "10B3D0";
+            this.label11.Text = "10B5D0";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // saveFileDialog1
@@ -700,12 +708,12 @@ namespace WindowsFormsApp1
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label16.ForeColor = System.Drawing.Color.Red;
             this.label16.Location = new System.Drawing.Point(955, 40);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(27, 25);
             this.label16.TabIndex = 26;
-            this.label16.Text = "Y";
+            this.label16.Text = "N";
             this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // Form1
@@ -729,7 +737,7 @@ namespace WindowsFormsApp1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "iOSBridge V10.3";
+            this.Text = "iOSBridge V10.5";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -785,7 +793,17 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.IsActivated)
+            {
+                button9.Enabled = true;
+                button11.Enabled = true;
+                button12.Enabled = true;
+                button14.Enabled = true;    
+            }
+            else
+            {
 
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
