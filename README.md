@@ -6,7 +6,8 @@
 
 Next-Generation iCu Unlocker follow-up. Proudly presenting, iOSBridge (10).
 
-iOSBridge 25.09.2024 Functionality Notice: Bypass Server is down, I am working on it to host it locally for a small user fee of 5 Bucks for a Lifetime app license. Other App functionality is unaffected.
+iOSBridge 25.09.2024 Functionality Notice:
+Bypass Server is down, I am working on it to host it locally for a small user fee of 5 Bucks for a Lifetime app license. Other App functionality is unaffected.
 
 URGENT SECURITY PATCH 10.0.0.7 (10/11/2023)
 
