@@ -25,7 +25,7 @@ jobs:
         # For example:
         # dotnet test iCuPlus-Files/WindowsFormsApp1/WindowsFormsApp1Test/WindowsFormsApp1Test.csproj
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: Main Executable (iCu X.exe)
         path: iCuPlus-Files/WindowsFormsApp1/WindowsFormsApp1/bin/Debug/*.exe # Update the path to the executable files
