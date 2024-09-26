@@ -20,8 +20,6 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string path = @"C:\iCures\Username.txt";
-            //using (FileStream fs = File.Create(path))
 
             string path = @"c:\iCures\Username.txt";
 
@@ -31,15 +29,10 @@ namespace WindowsFormsApp1
                 using (FileStream fs = File.Create(path))
                 {
                     byte[] info = new UTF8Encoding(true).GetBytes(textBox1.Text);
-                    // Add some information to the file.
                     fs.Write(info, 0, info.Length);
                     this.Close();
                 }
 
-                //using (StreamWriter writetext = new StreamWriter(@"C:/iCures/Username.txt"))
-                //{
-                   // writetext.WriteLine(textBox1.Text);
-                //}
             }
             catch (Exception ex)
             {

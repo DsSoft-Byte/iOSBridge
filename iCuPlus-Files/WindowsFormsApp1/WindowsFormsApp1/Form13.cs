@@ -99,7 +99,6 @@ namespace WindowsFormsApp1
                 panel5.Visible = true;
             });
 
-            // Wait for 2 seconds
             await Task.Delay(2000);
 
             this.Invoke((MethodInvoker)delegate

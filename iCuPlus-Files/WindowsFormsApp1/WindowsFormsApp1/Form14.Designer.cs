@@ -38,6 +38,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -171,6 +171,18 @@
             this.panel4.Size = new System.Drawing.Size(268, 100);
             this.panel4.TabIndex = 1;
             // 
+            // button4
+            // 
+            this.button4.Enabled = false;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button4.Location = new System.Drawing.Point(19, 49);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(233, 23);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Download";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -272,18 +284,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button4
-            // 
-            this.button4.Enabled = false;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button4.Location = new System.Drawing.Point(19, 49);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(233, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Download";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // Form14
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,6 +300,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "iOSBridge FS Store";
+            this.Load += new System.EventHandler(this.Form14_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);

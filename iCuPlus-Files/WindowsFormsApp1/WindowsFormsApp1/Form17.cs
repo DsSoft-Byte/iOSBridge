@@ -26,17 +26,11 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Generate the machine ID
             string machineId = GetMachineId();
 
-            // Copy the machine ID to the clipboard
             Clipboard.SetText(machineId);
 
-            // Notify the user that the Machine ID was copied
             MessageBox.Show($"Your Machine ID has been copied to the clipboard: {machineId}", "Machine ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Alternatively, if you want to display it in a TextBox as well:
-            // textBoxMachineId.Text = machineId;
         }
             private string GetMachineId()
             {
@@ -79,10 +73,9 @@ namespace WindowsFormsApp1
 
             if (VerifyActivationCode(machineId, enteredCode))
             {
-                Properties.Settings.Default.IsActivated = true; // Create this setting in Settings.settings
+                Properties.Settings.Default.IsActivated = true;
                 Properties.Settings.Default.Save();
                 MessageBox.Show("Activation Successful! Thank you for your support.");
-                // Proceed with app functionality
             }
             else
             {
@@ -91,14 +84,12 @@ namespace WindowsFormsApp1
         }
         private bool VerifyActivationCode(string machineId, string activationCode)
         {
-            // Example logic to verify activation code (in production, check this with your server or a database)
             string correctCode = GenerateActivationCode(machineId);
             return correctCode.Equals(activationCode, StringComparison.OrdinalIgnoreCase);
         }
 
         private string GenerateActivationCode(string machineId)
         {
-            // Example: simple hash-based code generation using the machine ID
             using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(machineId + "0000078463478653465xui"));
@@ -110,7 +101,6 @@ namespace WindowsFormsApp1
         {
             public static string GetMachineId()
             {
-                // Combine CPU and BIOS serial numbers to form a unique machine ID
                 string cpuId = GetHardwareIdentifier("Win32_Processor", "ProcessorId");
                 string biosId = GetHardwareIdentifier("Win32_BIOS", "SerialNumber");
 

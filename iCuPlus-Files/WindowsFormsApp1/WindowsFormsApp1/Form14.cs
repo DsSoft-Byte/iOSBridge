@@ -32,5 +32,10 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
+
+        private void Form14_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

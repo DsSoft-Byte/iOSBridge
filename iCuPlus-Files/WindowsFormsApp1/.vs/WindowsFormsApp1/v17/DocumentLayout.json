@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form13.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form13.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form13.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -23,103 +35,103 @@
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form14.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form14.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form15.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form15.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|c:\\users\\djaro\\documents\\github\\iosbridge\\icuplus-files\\windowsformsapp1\\windowsformsapp1\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|WindowsFormsApp1||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form16 - depricated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form16 - depricated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form9.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form9.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form9.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form9.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form16 - depricated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form16 - depricated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form15.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form15.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form15.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form15.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form14.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form14.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form13.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form13.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|WindowsFormsApp1||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|c:\\users\\djaro\\documents\\github\\iosbridge\\icuplus-files\\windowsformsapp1\\windowsformsapp1\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -132,10 +144,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form16 - depricated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form16 - depricated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form16 - depricated.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -158,10 +166,6 @@
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -176,10 +180,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form5.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form5.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form9.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form9.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form9.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -216,6 +216,9 @@
     {
       "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\windowsformsapp1\\form4.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form4.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F60F4E5E-C8E4-4D68-B558-58A3E94D7982}|WindowsFormsApp1\\WindowsFormsApp1.csproj|c:\\users\\djaro\\documents\\github\\iosbridge\\icuplus-files\\windowsformsapp1\\windowsformsapp1\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -225,17 +228,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 16,
               "Title": "Form17.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form17.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form17.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form17.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form17.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAAAjAAAA",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAswBsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T07:20:44.832Z",
               "EditorCaption": ""
@@ -254,7 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Form12.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form12.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form12.cs",
@@ -266,7 +269,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 5,
               "Title": "Form11.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form11.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form11.cs",
@@ -278,7 +281,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 4,
               "Title": "Form10.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form10.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form10.cs",
@@ -290,7 +293,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.cs",
@@ -302,33 +305,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 30,
               "Title": "Form3.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form3.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form3.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form3.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form3.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAAAFcAAAAMAAAA",
+              "ViewState": "AQIAAIkAAAAAAAAAAAAiwJcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T06:34:29.233Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 21,
               "Title": "Form14.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form14.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form14.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form14.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form14.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAhwCUAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T06:34:29.233Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 20,
               "Title": "Form15.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form15.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form15.cs",
@@ -340,59 +343,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 19,
               "Title": "Form15.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form15.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form15.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form15.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form15.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAMAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAA4wEkAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T06:34:29.234Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 22,
               "Title": "Form13.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form13.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form13.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form13.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form13.cs",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAqwHkAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T06:34:29.263Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 26,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form1.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form1.cs",
-              "ViewState": "AQIAAA0DAAAAAAAAAAAUwCADAAAgAAAA",
+              "ViewState": "AQIAAC8EAAAAAAAAAAAuwBUEAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T06:34:29.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 24,
               "Title": "Form11.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form11.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form11.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form11.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form11.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAhwBUAAAAMAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAgwBUAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T06:34:29.362Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Form13.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form13.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form13.cs",
@@ -404,18 +407,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 27,
               "Title": "WindowsFormsApp1",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\WindowsFormsApp1.csproj",
-              "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
-              "RelativeToolTip": "WindowsFormsApp1\\WindowsFormsApp1.csproj",
+              "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\WindowsFormsApp1.csproj*",
+              "RelativeToolTip": "WindowsFormsApp1\\WindowsFormsApp1.csproj*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2023-01-16T08:38:26.596Z"
+              "WhenOpened": "2023-01-16T08:38:26.596Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Form14.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form14.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form14.cs",
@@ -427,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
               "Title": "Form3.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form3.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form3.cs",
@@ -439,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
               "Title": "Form2.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form2.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form2.cs",
@@ -451,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "Form4.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form4.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form4.cs",
@@ -463,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Form5.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form5.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form5.cs",
@@ -475,51 +479,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 2,
               "Title": "Form6.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form6.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form6.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form6.cs [Design]",
               "RelativeToolTip": "WindowsFormsApp1\\Form6.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.366Z"
+              "WhenOpened": "2024-09-25T06:34:29.366Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 14,
               "Title": "Form7.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form7.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form7.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form7.cs [Design]",
               "RelativeToolTip": "WindowsFormsApp1\\Form7.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.367Z"
+              "WhenOpened": "2024-09-25T06:34:29.367Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 13,
               "Title": "Form8.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form8.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form8.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form8.cs [Design]",
               "RelativeToolTip": "WindowsFormsApp1\\Form8.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.367Z"
+              "WhenOpened": "2024-09-25T06:34:29.367Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 12,
               "Title": "Form9.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form9.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form9.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form9.cs [Design]",
               "RelativeToolTip": "WindowsFormsApp1\\Form9.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.368Z"
+              "WhenOpened": "2024-09-25T06:34:29.368Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "app.manifest",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\app.manifest",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\app.manifest",
@@ -531,18 +539,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 10,
               "Title": "Form16 - depricated.cs [Design]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form16 - depricated.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form16 - depricated.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form16 - depricated.cs [Design]",
               "RelativeToolTip": "WindowsFormsApp1\\Form16 - depricated.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.369Z"
+              "WhenOpened": "2024-09-25T06:34:29.369Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "Form6.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form6.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form6.cs",
@@ -550,11 +559,12 @@
               "RelativeToolTip": "WindowsFormsApp1\\Form6.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAhwCEAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.37Z"
+              "WhenOpened": "2024-09-25T06:34:29.37Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "Form2.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form2.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form2.cs",
@@ -567,19 +577,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 18,
               "Title": "Form16 - depricated.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form16 - depricated.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form16 - depricated.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form16 - depricated.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form16 - depricated.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAASwEQAAAAMAAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAAcwBcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.371Z"
+              "WhenOpened": "2024-09-25T06:34:29.371Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "Form16 - depricated.Designer.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form16 - depricated.Designer.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form16 - depricated.Designer.cs",
@@ -587,11 +598,12 @@
               "RelativeToolTip": "WindowsFormsApp1\\Form16 - depricated.Designer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.371Z"
+              "WhenOpened": "2024-09-25T06:34:29.371Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "Form15.Designer.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form15.Designer.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form15.Designer.cs",
@@ -604,7 +616,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "Form2.Designer.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form2.Designer.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form2.Designer.cs",
@@ -617,18 +629,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "Form16 - depricated.resx",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form16 - depricated.resx",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form16 - depricated.resx",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form16 - depricated.resx",
               "RelativeToolTip": "WindowsFormsApp1\\Form16 - depricated.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-09-25T06:34:29.373Z"
+              "WhenOpened": "2024-09-25T06:34:29.373Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Program.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Program.cs",
@@ -640,20 +653,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 25,
               "Title": "Form10.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form10.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form10.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form10.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form10.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T06:34:29.374Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 32,
               "Title": "Form4.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form4.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form4.cs",
@@ -666,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "Form8.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form8.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form8.cs",
@@ -674,24 +687,25 @@
               "RelativeToolTip": "WindowsFormsApp1\\Form8.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAArwC0AAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.375Z"
+              "WhenOpened": "2024-09-25T06:34:29.375Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 23,
               "Title": "Form12.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form12.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form12.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form12.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form12.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAiwDQAAAAMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEQAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T06:34:29.375Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "Dtafalonso-Ios8-ICloud-Drive.ico - Icon [256x256, 32 bit, PNG]",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Dtafalonso-Ios8-ICloud-Drive.ico",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Dtafalonso-Ios8-ICloud-Drive.ico",
@@ -702,20 +716,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 31,
               "Title": "Form5.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form5.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form5.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form5.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form5.cs",
-              "ViewState": "AQIAAFYAAAAAAAAAAAAUwGQAAAAMAAAA",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAGQAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T06:34:29.376Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "Form5.Designer.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form5.Designer.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form5.Designer.cs",
@@ -728,7 +742,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "Form5.resx",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form5.resx",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form5.resx",
@@ -740,15 +754,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 11,
               "Title": "Form9.cs",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form9.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form9.cs",
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form9.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form9.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAIA9wBYAAAAMAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAowBUAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.378Z"
+              "WhenOpened": "2024-09-25T06:34:29.378Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -760,7 +775,8 @@
               "RelativeToolTip": "WindowsFormsApp1\\Form9.Designer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAF4AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.378Z"
+              "WhenOpened": "2024-09-25T06:34:29.378Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -771,7 +787,8 @@
               "ToolTip": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Form9.resx",
               "RelativeToolTip": "WindowsFormsApp1\\Form9.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-09-25T06:34:29.379Z"
+              "WhenOpened": "2024-09-25T06:34:29.379Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -783,7 +800,8 @@
               "RelativeToolTip": "WindowsFormsApp1\\Form7.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.379Z"
+              "WhenOpened": "2024-09-25T06:34:29.379Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -808,11 +826,12 @@
               "RelativeToolTip": "WindowsFormsApp1\\Properties\\AssemblyInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T06:34:29.38Z"
+              "WhenOpened": "2024-09-25T06:34:29.38Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 29,
               "Title": "Settings.settings",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\Properties\\Settings.settings",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Properties\\Settings.settings",
@@ -860,7 +879,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\djaro\\Documents\\GitHub\\iOSBridge\\iCuPlus-Files\\WindowsFormsApp1\\WindowsFormsApp1\\App.config",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\App.config",

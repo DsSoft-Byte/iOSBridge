@@ -150,7 +150,14 @@ namespace WindowsFormsApp1
 
         private void Form3_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.IsActivated)
+            {
+                button7.Enabled = false;
+            }
+            else
+            {
 
+            }
         }
 
         private void label7_Click(object sender, EventArgs e)

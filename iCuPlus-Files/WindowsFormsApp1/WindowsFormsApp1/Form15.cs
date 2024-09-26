@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
     public partial class Form15 : Form
     {
         WebClient webClient = new WebClient();
-        string zipFile = @"C:\iOSBridge.zip"; // Path to save the downloaded zip file
+        string zipFile = @"C:\iOSBridge.zip";
         string extractPath = @"C:\UpdateData";
         public Form15()
         {
@@ -29,7 +29,6 @@ namespace WindowsFormsApp1
 
         private void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
         {
-            // Update progress bar or any visual indicator of download progress
             progressBar1.Value = e.ProgressPercentage;
         }
 
@@ -50,17 +49,15 @@ namespace WindowsFormsApp1
         }
         private void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            progressBar1.Value = e.ProgressPercentage; // Update progress bar with download progress
+            progressBar1.Value = e.ProgressPercentage;
         }
 
         private void DownloadCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            //button1.Enabled = true; // Enable the button after download completes
             if (e.Error == null)
             {
                 try
                 {
-                    // Extract the contents of the ZIP file directly to C:\
                     System.IO.Compression.ZipFile.ExtractToDirectory(zipFile, extractPath);
                     //MessageBox.Show("Download completed successfully!");
                     File.Delete(zipFile);

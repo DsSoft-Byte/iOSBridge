@@ -288,7 +288,6 @@ namespace WindowsFormsApp1
             this.button12.TabIndex = 12;
             this.button12.Text = "Bypa$$ x64";
             this.button12.UseVisualStyleBackColor = false;
-            this.button12.Visible = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button10
@@ -316,7 +315,6 @@ namespace WindowsFormsApp1
             this.button11.TabIndex = 9;
             this.button11.Text = "Bypa$$ x86";
             this.button11.UseVisualStyleBackColor = false;
-            this.button11.Visible = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // label3
@@ -379,7 +377,6 @@ namespace WindowsFormsApp1
             this.button9.TabIndex = 12;
             this.button9.Text = "Bypa$$ x64";
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.Visible = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button13
@@ -407,7 +404,6 @@ namespace WindowsFormsApp1
             this.button14.TabIndex = 9;
             this.button14.Text = "Bypa$$ x86";
             this.button14.UseVisualStyleBackColor = false;
-            this.button14.Visible = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // label6
@@ -905,11 +901,8 @@ namespace WindowsFormsApp1
 
         private void button14_Click(object sender, EventArgs e)
         {
-            //Process.Start(@"C:\iCures\idact.bat");
-            //Process.Start(@"C:\iCures\idact-x64.bat");
-            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php"; // Replace with actual activation server URL
+            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php";
 
-            // Initiate the activation process
             ProcessStartInfo activateStartInfo = new ProcessStartInfo();
             activateStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\ideviceactivation.exe";
             activateStartInfo.Arguments = $"activate -s {activationServer} -d";
@@ -924,11 +917,8 @@ namespace WindowsFormsApp1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //Process.Start(@"C:\iCures\idact-x64.bat");
-            //Process.Start(@"C:\iCures\idact-x64.bat");
-            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php"; // Replace with actual activation server URL
+            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php";
 
-            // Initiate the activation process
             ProcessStartInfo activateStartInfo = new ProcessStartInfo();
             activateStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\ideviceactivation.exe";
             activateStartInfo.Arguments = $"activate -s {activationServer} -d";
@@ -974,7 +964,6 @@ namespace WindowsFormsApp1
 
         private void button18_Click(object sender, EventArgs e)
         {
-            //Process.Start(@"C:\iCures\idpwn.bat");
             ProcessStartInfo enterPwnedDFUStartInfo = new ProcessStartInfo();
             enterPwnedDFUStartInfo.FileName = "C:\\iCures\\Dependencies\\libimdevice\\libimdevice\\idevicerestore.exe";
             enterPwnedDFUStartInfo.Arguments = "--pwn";

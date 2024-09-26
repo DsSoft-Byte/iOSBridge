@@ -66,8 +66,8 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.IsActivated = false; // Reset activation state
-            Properties.Settings.Default.Save(); // Persist the setting
+            Properties.Settings.Default.IsActivated = false;
+            Properties.Settings.Default.Save();
         }
     }
 }
