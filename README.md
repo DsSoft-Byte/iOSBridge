@@ -6,9 +6,9 @@
 
 Next-Generation iCu Unlocker follow-up. Proudly presenting, iOSBridge (10).
 
-iOSBridge 25.09.2024 Functionality Notice:
+iOSBridge 11.01.2025 Functionality Notice:
 
-Bypass Server is down, I am working on it to host it locally for a small user fee of 5 Bucks for a Lifetime app license. Other App functionality is unaffected.
+Bypass Server is finally up, iOS 16/17 Bypasses and MDM Unlocks are on the way! Bypassing will now require a 10 Euro one-time fee via PayPal. The activation/purchase site is under construction. When you DM me your Machine ID you get a free lifetime license!
 
 URGENT SECURITY PATCH 10.0.0.7 (10/11/2023)
 
