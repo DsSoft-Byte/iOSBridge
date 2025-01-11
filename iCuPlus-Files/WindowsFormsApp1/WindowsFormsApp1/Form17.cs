@@ -75,7 +75,7 @@ namespace WindowsFormsApp1
             {
                 Properties.Settings.Default.IsActivated = true;
                 Properties.Settings.Default.Save();
-                MessageBox.Show("Activation Successful! Thank you for your support.");
+                MessageBox.Show("Activation Successful! Thank you for your support. Enjoy!");
             }
             else
             {

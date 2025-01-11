@@ -80,12 +80,12 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkColor = System.Drawing.Color.PaleTurquoise;
-            this.linkLabel1.Location = new System.Drawing.Point(137, 130);
+            this.linkLabel1.Location = new System.Drawing.Point(110, 130);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(199, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(250, 13);
             this.linkLabel1.TabIndex = 4;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Buy iOSBridge Pro at www.dssoft.ch/pro";
+            this.linkLabel1.Text = "Buy iOSBridge Pro at www.activation.iosbridge.com";
             // 
             // button2
             // 

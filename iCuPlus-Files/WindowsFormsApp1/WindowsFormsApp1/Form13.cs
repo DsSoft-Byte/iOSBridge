@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
         {
             if (Properties.Settings.Default.IsActivated)
             {
-                button7.Visible = true;
+                button7.Enabled = true;
             }
             else
             {
@@ -316,7 +316,7 @@ namespace WindowsFormsApp1
         private void button7_Click(object sender, EventArgs e)
         {
             //Process.Start(@"C:\iCures\idact-x64.bat");
-            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php"; // Replace with actual activation server URL
+            string activationServer = "88.213.134.255:8080/index.php"; // Replace with actual activation server URL
 
             // Initiate the activation process
             ProcessStartInfo activateStartInfo = new ProcessStartInfo();

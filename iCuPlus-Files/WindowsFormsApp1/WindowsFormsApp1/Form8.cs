@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
         private void button4_Click(object sender, EventArgs e)
         {
             Ping ping = new Ping();
-            PingReply reply = ping.Send("buyhamstersinbulk.000webhostapp.com", 5000);
+            PingReply reply = ping.Send("88.213.134.255", 5000);
             MessageBox.Show(reply.Status.ToString());
         }
 

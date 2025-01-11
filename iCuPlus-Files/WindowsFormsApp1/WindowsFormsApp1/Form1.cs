@@ -704,12 +704,12 @@ namespace WindowsFormsApp1
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.label16.Location = new System.Drawing.Point(955, 40);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(27, 25);
             this.label16.TabIndex = 26;
-            this.label16.Text = "N";
+            this.label16.Text = "Y";
             this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // Form1
@@ -837,7 +837,7 @@ namespace WindowsFormsApp1
         {
             //Process.Start(@"C:\iCures\idact.bat");
             //Process.Start(@"C:\iCures\idact-x64.bat");
-            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php"; // Replace with actual activation server URL
+            string activationServer = "88.213.134.255:8080/index.php"; // Replace with actual activation server URL
 
             // Initiate the activation process
             ProcessStartInfo activateStartInfo = new ProcessStartInfo();
@@ -856,7 +856,7 @@ namespace WindowsFormsApp1
         {
             //Process.Start(@"C:\iCures\idact-x64.bat");
             //Process.Start(@"C:\iCures\idact-x64.bat");
-            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php"; // Replace with actual activation server URL
+            string activationServer = "88.213.134.255:8080/index.php"; // Replace with actual activation server URL
 
             // Initiate the activation process
             ProcessStartInfo activateStartInfo = new ProcessStartInfo();
@@ -901,7 +901,7 @@ namespace WindowsFormsApp1
 
         private void button14_Click(object sender, EventArgs e)
         {
-            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php";
+            string activationServer = "http://88.213.134.255:8080/index.php";
 
             ProcessStartInfo activateStartInfo = new ProcessStartInfo();
             activateStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\ideviceactivation.exe";
@@ -917,7 +917,7 @@ namespace WindowsFormsApp1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            string activationServer = "https://buyhamstersinbulk.000webhostapp.com/hamster.php";
+            string activationServer = "88.213.134.255:8080/index.php";
 
             ProcessStartInfo activateStartInfo = new ProcessStartInfo();
             activateStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\ideviceactivation.exe";

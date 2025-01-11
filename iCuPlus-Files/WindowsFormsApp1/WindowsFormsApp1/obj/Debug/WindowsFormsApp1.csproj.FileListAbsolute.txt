@@ -137,3 +137,4 @@ C:\Users\djaro\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\Windows
 C:\Users\djaro\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu X.exe
 C:\Users\djaro\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\iCu X.pdb
 C:\Users\djaro\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form17.resources
+C:\Users\Daniel\Documents\GitHub\iOSBridge\iCuPlus-Files\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form17.resources
