@@ -649,7 +649,7 @@ namespace WindowsFormsApp1
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 25);
             this.label11.TabIndex = 16;
-            this.label11.Text = "17B7D0";
+            this.label11.Text = "17B8D0";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // saveFileDialog1
@@ -733,7 +733,7 @@ namespace WindowsFormsApp1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "iOSBridge V11.7";
+            this.Text = "iOSBridge V11.8";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -798,7 +798,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-
+                button11.Enabled = true;
             }
         }
 
@@ -965,7 +965,7 @@ namespace WindowsFormsApp1
         private void button18_Click(object sender, EventArgs e)
         {
             ProcessStartInfo enterPwnedDFUStartInfo = new ProcessStartInfo();
-            enterPwnedDFUStartInfo.FileName = "C:\\iCures\\Dependencies\\libimdevice\\libimdevice\\idevicerestore.exe";
+            enterPwnedDFUStartInfo.FileName = "C:\\iCures\\Dependencies\\lim\\idr.exe";
             enterPwnedDFUStartInfo.Arguments = "--pwn";
             enterPwnedDFUStartInfo.CreateNoWindow = false;
             enterPwnedDFUStartInfo.UseShellExecute = false;
