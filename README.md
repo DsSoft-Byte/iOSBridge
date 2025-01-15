@@ -20,24 +20,21 @@ URGENT SECURITY PATCH 10.0.0.7 (10/11/2023)
 
 - Fully redesigned UI/UX
 - Server-based activation FINALLY!
+- Pulls latest Jailbreaks from superfast CDN
 - Fully Rewritten in C# from the ground up.
 - 100% Customizable with custom "iCuFS" zip files
-- Can be downgraded to any version with iCuFS zips
 - Provides the latest information on iCloud bypasses
-- iPhone Recovery dashboard (Restore working on 64-Bit devices only, Tested on 5S and X)
-- Stable base for all later iCu X/iOSBridge versions.
-- No more XAMPP Self hosting! Just run the tool! I did the hard work so you don't have to!
+- iPhone Recovery and Restore
+
 
 ### Functionalities
 
-- Activation ✔
-- Updater ✔
-- Faster than all previous iCu versions ✔
-- Full activation matrix ✔
-- ipwndfu up to A11 ✔
-- Custom Themes ✔👀
+- Activation
+- Updater
+- Faster than all previous iCu versions
+- Full activation and MDM
+- ipwndfu up to A11
 - Recovery Dashboard
-- Custom Linux distro and USB Imager/Flasher ⏳
 
 To use the easy installer, grab it from [here](https://github.com/DsSoft-Byte/iOSBridge/releases/download/v10.0.7-1/iCu.X.Installer.exe)
 
