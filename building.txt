@@ -1,0 +1,11 @@
+cd projectdir
+
+npm install && npm start
+
+then when closed start again with
+
+npm run start
+
+build with 
+
+npm run bild

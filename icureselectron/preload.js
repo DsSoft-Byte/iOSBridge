@@ -1,0 +1,61 @@
+const { contextBridge, ipcRenderer } = require('electron')
+
+contextBridge.exposeInMainWorld('app', {
+  // Window chrome
+  minimize:   () => ipcRenderer.send('win-minimize'),
+  maximize:   () => ipcRenderer.send('win-maximize'),
+  close:      () => ipcRenderer.send('win-close'),
+
+  // Navigation
+  openWindow: (page)   => ipcRenderer.invoke('open-window', page),
+
+  // Identity
+  getUsername: ()      => ipcRenderer.invoke('get-username'),
+
+  // Device
+  getUdid:        ()       => ipcRenderer.invoke('get-udid'),
+  getDeviceInfo:  ()       => ipcRenderer.invoke('get-device-info'),
+  startUsbWatch:  ()       => ipcRenderer.invoke('start-usb-watch'),
+  stopUsbWatch:   ()       => ipcRenderer.invoke('stop-usb-watch'),
+
+  // Device control
+  enterRecovery:    (udid)            => ipcRenderer.invoke('enter-recovery', udid),
+  exitRecovery:     ()                => ipcRenderer.invoke('exit-recovery'),
+  pwnedDfu:         ()                => ipcRenderer.invoke('pwned-dfu'),
+  customPwnedDfu:   ()                => ipcRenderer.invoke('custom-pwned-dfu'),
+  restartDevice:    (udid)            => ipcRenderer.invoke('restart-device', udid),
+  shutdownDevice:   (udid)            => ipcRenderer.invoke('shutdown-device', udid),
+  activateWithServer: (server)         => ipcRenderer.invoke('activate-with-server', server),
+  deactivate:         ()               => ipcRenderer.invoke('deactivate'),
+
+  // App activation
+  getMachineId:  ()      => ipcRenderer.invoke('get-machine-id'),
+  getActivated:  ()      => ipcRenderer.invoke('get-activated'),
+  setActivated:  (val)   => ipcRenderer.invoke('set-activated', val),
+  flashIpsw:        (opts)            => ipcRenderer.invoke('flash-ipsw', opts),
+  backup:           (opts)            => ipcRenderer.invoke('backup', opts),
+  iproxy:           (opts)            => ipcRenderer.invoke('iproxy', opts),
+
+  // File pickers
+  pickIpsw:   ()       => ipcRenderer.invoke('pick-ipsw'),
+  pickFolder: ()       => ipcRenderer.invoke('pick-folder'),
+
+  // Clipboard
+  copy: (text)         => ipcRenderer.invoke('copy-to-clipboard', text),
+
+  // Browser / external links
+  openExternal: (url)  => ipcRenderer.invoke('open-external', url),
+
+  // App version
+  getAppVersion: ()    => ipcRenderer.invoke('get-app-version'),
+
+  // OTA updates
+  checkForUpdate:   ()    => ipcRenderer.invoke('check-for-update'),
+  downloadUpdate:   ()    => ipcRenderer.invoke('download-update'),
+  launchUpdater:    ()    => ipcRenderer.invoke('launch-updater'),
+  onUpdateProgress: (cb)  => ipcRenderer.on('update-progress', (_, pct) => cb(pct)),
+
+  // USB events from main
+  onDeviceConnected:    (cb) => ipcRenderer.on('device-connected',    (_, udid) => cb(udid)),
+  onDeviceDisconnected: (cb) => ipcRenderer.on('device-disconnected', ()        => cb()),
+})

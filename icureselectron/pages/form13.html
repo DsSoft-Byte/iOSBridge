@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOSBridge — iDevice Toolkit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Variables — mirrors your site exactly ─────────────────────────── */
+    :root {
+      --bg-deep: #000000;
+      --bg-elevated: #111111;
+      --bg-glass: rgba(20, 20, 22, 0.45);
+      --bg-glass-hover: rgba(30, 30, 34, 0.55);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.16);
+      --glass-edge: inset 0 1px 1px rgba(255, 255, 255, 0.13);
+      --text-primary: #F5F5F7;
+      --text-secondary: #86868B;
+      --text-muted: #515154;
+      --accent: #0A84FF;
+      --accent-glow: rgba(10, 132, 255, 0.35);
+      --success: rgba(48, 209, 88, 0.9);
+      --warning: rgba(255, 159, 10, 0.9);
+      --danger: rgba(255, 69, 58, 0.9);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --dur-fast: 200ms;
+      --dur-normal: 400ms;
+      --dur-slow: 700ms;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+      background: transparent;
+      /* Electron transparent window */
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+
+    /* ── App shell — the glass "window" ──────────────────────────────────── */
+    .app-shell {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: rgba(8, 8, 10, 0.82);
+      backdrop-filter: saturate(180%) blur(40px);
+      -webkit-backdrop-filter: saturate(180%) blur(40px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow:
+        0 0 0 0.5px rgba(255, 255, 255, 0.04),
+        0 32px 80px rgba(0, 0, 0, 0.85),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
+
+    /* ── Custom title bar ──────────────────────────────────────────────── */
+    .titlebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      height: 44px;
+      flex-shrink: 0;
+      -webkit-app-region: drag;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .titlebar__brand {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text-secondary);
+    }
+
+    .titlebar__title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .titlebar__controls {
+      display: flex;
+      gap: 8px;
+      -webkit-app-region: no-drag;
+    }
+
+    .tb-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: filter var(--dur-fast);
+    }
+
+    .tb-btn:hover {
+      filter: brightness(1.3);
+    }
+
+    .tb-btn--close {
+      background: #FF5F57;
+    }
+
+    .tb-btn--minimize {
+      background: #FFBD2E;
+    }
+
+    .tb-btn--maximize {
+      background: #27C840;
+    }
+
+    /* ── Layout: sidebar + main ───────────────────────────────────────── */
+    .layout {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── Sidebar ──────────────────────────────────────────────────────── */
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border-subtle);
+      padding: 20px 12px;
+      gap: 4px;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    .sidebar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sidebar__section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 12px 10px 6px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-out-expo);
+      border: 1px solid transparent;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+    }
+
+    .nav-item:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--border-subtle);
+    }
+
+    .nav-item.is-active {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: var(--border-strong);
+      box-shadow: var(--glass-edge);
+    }
+
+    .nav-item__icon {
+      font-size: 1rem;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    /* ── Main content area ────────────────────────────────────────────── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Top bar ─────────────────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .topbar__heading {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Device status badge */
+    .device-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--glass-edge);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all var(--dur-normal) var(--ease-out-expo);
+    }
+
+    .device-badge.is-connected {
+      color: var(--text-primary);
+      border-color: rgba(48, 209, 88, 0.3);
+      background: rgba(48, 209, 88, 0.07);
+    }
+
+    .device-badge__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      transition: background var(--dur-normal);
+      flex-shrink: 0;
+    }
+
+    .device-badge.is-connected .device-badge__dot {
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+      animation: pulse-dot 2s ease infinite;
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    /* ── Panels (tab content) ─────────────────────────────────────────── */
+    .panels {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      padding: 24px;
+    }
+
+    .panels::-webkit-scrollbar {
+      display: none;
+    }
+
+    .panel {
+      display: none;
+      animation: fade-up var(--dur-normal) var(--ease-out-expo) forwards;
+    }
+
+    .panel.is-active {
+      display: block;
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Section headings inside panels ─────────────────────────────── */
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      margin-top: 28px;
+    }
+
+    .section-label:first-child {
+      margin-top: 0;
+    }
+
+    /* ── Glass card ─────────────────────────────────────────────────── */
+    .glass-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--glass-edge), 0 8px 32px rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* ── Button grid ─────────────────────────────────────────────────── */
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+
+    /* ── Buttons — transparent glass, exactly your site's style ─────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-out-expo);
+      border: 1px solid var(--border-strong);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-primary);
+      box-shadow: var(--glass-edge);
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: translateY(-1px);
+      box-shadow: var(--glass-edge), 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn:disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* Accent filled — like your hero CTA */
+    .btn--accent {
+      background: var(--accent);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 0 24px var(--accent-glow), var(--glass-edge);
+    }
+
+    .btn--accent:hover {
+      background: #2998ff;
+      box-shadow: 0 0 32px var(--accent-glow), 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* White filled — like your site's .hero__cta */
+    .btn--white {
+      background: #F5F5F7;
+      border-color: transparent;
+      color: #000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn--white:hover {
+      transform: scale(1.02) translateY(-1px);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.18), 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Danger */
+    .btn--danger {
+      border-color: rgba(255, 69, 58, 0.4);
+      color: #FF453A;
+    }
+
+    .btn--danger:hover {
+      background: rgba(255, 69, 58, 0.12);
+      border-color: rgba(255, 69, 58, 0.6);
+    }
+
+    /* Warning */
+    .btn--warning {
+      border-color: rgba(255, 159, 10, 0.4);
+      color: #FF9F0A;
+    }
+
+    .btn--warning:hover {
+      background: rgba(255, 159, 10, 0.12);
+      border-color: rgba(255, 159, 10, 0.6);
+    }
+
+    /* ── Device info display ─────────────────────────────────────────── */
+    .device-info-box {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 220px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-strong) transparent;
+    }
+
+    /* ── IPSW file selector row ───────────────────────────────────────── */
+    .file-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .file-path {
+      flex: 1;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .file-path.has-file {
+      color: var(--text-primary);
+    }
+
+    /* ── Toggle (erase option) ───────────────────────────────────────── */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .toggle-row:last-child {
+      border-bottom: none;
+    }
+
+    .toggle-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .toggle-sublabel {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 26px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle__track {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      transition: background var(--dur-fast), border-color var(--dur-fast);
+      cursor: pointer;
+    }
+
+    .toggle input:checked+.toggle__track {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .toggle__track::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      transition: transform var(--dur-fast) var(--ease-out-expo);
+    }
+
+    .toggle input:checked+.toggle__track::after {
+      transform: translateX(18px);
+    }
+
+    /* ── UDID display ────────────────────────────────────────────────── */
+    .udid-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .udid-value {
+      flex: 1;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ── Port inputs ─────────────────────────────────────────────────── */
+    .port-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .glass-input {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+      font-family: inherit;
+    }
+
+    .glass-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .glass-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* ── Toast notification — matches your panel5 ────────────────────── */
+    .toast-stack {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: rgba(20, 20, 22, 0.85);
+      backdrop-filter: saturate(180%) blur(30px);
+      -webkit-backdrop-filter: saturate(180%) blur(30px);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--glass-edge), 0 16px 40px rgba(0, 0, 0, 0.5);
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      opacity: 0;
+      transform: translateY(12px) scale(0.96);
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .toast__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .toast--info .toast__dot {
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .toast--success .toast__dot {
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+    }
+
+    .toast--warning .toast__dot {
+      background: var(--warning);
+    }
+
+    .toast--error .toast__dot {
+      background: var(--danger);
+    }
+
+    /* ── Scrollbar for panels ────────────────────────────────────────── */
+    .panels::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .panels::-webkit-scrollbar-thumb {
+      background: var(--border-strong);
+      border-radius: 4px;
+    }
+
+    /* ── Text helpers ────────────────────────────────────────────────── */
+    .text-gradient {
+      background: linear-gradient(180deg, #FFFFFF 0%, #86868B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-muted {
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+    }
+
+    /* info note */
+    .info-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      background: rgba(10, 132, 255, 0.07);
+      border: 1px solid rgba(10, 132, 255, 0.2);
+      border-radius: var(--radius-sm);
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+
+    .info-note__icon {
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    /* ── Server bubbles ──────────────────────────────────────────────── */
+    .server-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 0;
+    }
+
+    .server-bubble {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 18px 20px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--glass-edge), 0 8px 24px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-out-expo);
+      text-align: left;
+      width: 100%;
+    }
+
+    .server-bubble:hover {
+      background: var(--bg-glass-hover);
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+      box-shadow: var(--glass-edge), 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .server-bubble.is-selected {
+      border-color: var(--accent);
+      background: rgba(10, 132, 255, 0.1);
+      box-shadow: var(--glass-edge), 0 0 0 1px var(--accent), 0 8px 24px rgba(10, 132, 255, 0.2);
+    }
+
+    .server-bubble__icon {
+      font-size: 1.5rem;
+    }
+
+    .server-bubble__name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .server-bubble__addr {
+      font-size: 0.6875rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--text-muted);
+    }
+
+    .server-bubble.is-selected .server-bubble__addr {
+      color: var(--accent);
+    }
+
+    /* ── Activation status ───────────────────────────────────────────── */
+    .activation-status {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    .activation-status__icon {
+      font-size: 1.5rem;
+    }
+
+    .activation-status--success {
+      color: #30D158;
+    }
+
+    .activation-status--error {
+      color: #FF453A;
+    }
+
+    /* ── Connection list items ───────────────────────────────────────── */
+    .connection-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .connection-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 12px;
+    }
+
+    .connection-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .connection-item:first-child {
+      padding-top: 0;
+    }
+
+    .connection-item__left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .connection-item__icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .connection-item__name {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .connection-item__desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── Update panel ────────────────────────────────────────────────── */
+    .update-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .update-progress-wrap {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .update-progress-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .update-progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: var(--progress, 0%);
+      background: var(--accent);
+      border-radius: 999px;
+      box-shadow: 0 0 8px var(--accent-glow);
+      transition: width 0.3s var(--ease-out-expo);
+    }
+
+    .update-progress-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      min-width: 36px;
+      text-align: right;
+    }
+
+    /* ── Dev mode banner ─────────────────────────────────────────────── */
+    .dev-banner {
+      position: fixed;
+      top: 44px;
+      /* below title bar */
+      left: 0;
+      right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(255, 159, 10, 0.12);
+      border-bottom: 1px solid rgba(255, 159, 10, 0.3);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #FF9F0A;
+      letter-spacing: 0.05em;
+      pointer-events: none;
+    }
+
+    .dev-banner__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #FF9F0A;
+      animation: pulse-dot 1.5s ease infinite;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <!-- Title bar -->
+    <div class="titlebar">
+      <span class="titlebar__brand">iOSBridge</span>
+      <span class="titlebar__title">iDevice Toolkit</span>
+      <div class="titlebar__controls">
+        <button class="tb-btn tb-btn--minimize" onclick="app.minimize()" title="Minimize"></button>
+        <button class="tb-btn tb-btn--maximize" onclick="app.maximize()" title="Maximize"></button>
+        <button class="tb-btn tb-btn--close" onclick="app.close()" title="Close"></button>
+      </div>
+    </div>
+
+    <!-- Dev mode banner — only visible when DEV_MODE = true -->
+    <div class="dev-banner" id="dev-banner" style="display:none">
+      <span class="dev-banner__dot"></span>
+      DEV MODE — Activation checks bypassed
+    </div>
+
+    <div class="layout">
+
+      <!-- Sidebar navigation -->
+      <aside class="sidebar">
+        <span class="sidebar__section-label">Device</span>
+        <button class="nav-item is-active" data-panel="info" onclick="switchPanel(this)">
+          <span class="nav-item__icon">📱</span> Device Info
+        </button>
+        <button class="nav-item" data-panel="restore" onclick="switchPanel(this)">
+          <span class="nav-item__icon">💿</span> Restore / Flash
+        </button>
+        <button class="nav-item" data-panel="recovery" onclick="switchPanel(this)">
+          <span class="nav-item__icon">🔄</span> Recovery / DFU
+        </button>
+        <button class="nav-item" data-panel="activation" onclick="switchPanel(this)">
+          <span class="nav-item__icon">🔑</span> Activation
+        </button>
+
+        <span class="sidebar__section-label">Tools</span>
+        <button class="nav-item" data-panel="backup" onclick="switchPanel(this)">
+          <span class="nav-item__icon">🗄️</span> Backup
+        </button>
+        <button class="nav-item" data-panel="diagnostics" onclick="switchPanel(this)">
+          <span class="nav-item__icon">🩺</span> Diagnostics
+        </button>
+        <button class="nav-item" data-panel="network" onclick="switchPanel(this)">
+          <span class="nav-item__icon">🌐</span> Network / SSH
+        </button>
+        <button class="nav-item" data-panel="app-activation" onclick="switchPanel(this)">
+          <span class="nav-item__icon">🛡️</span> App Activation
+        </button>
+        <button class="nav-item" data-panel="connections" onclick="switchPanel(this)">
+          <span class="nav-item__icon">🔌</span> Connections / Drivers
+        </button>
+        <button class="nav-item" data-panel="update" onclick="switchPanel(this)">
+          <span class="nav-item__icon">🚀</span> Update
+        </button>
+      </aside>
+
+      <!-- Main area -->
+      <div class="main">
+
+        <!-- Top bar -->
+        <div class="topbar">
+          <h1 class="topbar__heading text-gradient">iDevice Toolkit</h1>
+          <div class="device-badge" id="device-badge">
+            <span class="device-badge__dot"></span>
+            <span id="device-status-text">No device</span>
+          </div>
+        </div>
+
+        <!-- Panels -->
+        <div class="panels">
+
+          <!-- ── Device Info ─────────────────────────────────────────── -->
+          <div class="panel is-active" id="panel-info">
+            <div class="glass-card">
+              <p class="section-label">Live Feed</p>
+              <div class="device-info-box" id="device-info-box">
+                Libimobiledevice Feed
+
+                Plug in your iDevice — info will appear here automatically.
+              </div>
+            </div>
+
+            <p class="section-label">UDID</p>
+            <div class="glass-card">
+              <div class="udid-row">
+                <div class="udid-value" id="udid-display">—</div>
+                <button class="btn" onclick="fetchUdid()">Refresh</button>
+                <button class="btn" id="copy-udid-btn" onclick="copyUdid()" disabled>Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Restore / Flash ────────────────────────────────────── -->
+          <div class="panel" id="panel-restore">
+            <div class="glass-card">
+              <p class="section-label">IPSW File</p>
+              <div class="file-row">
+                <div class="file-path" id="ipsw-path-display">No file selected</div>
+                <button class="btn btn--white" onclick="pickIpsw()">Browse…</button>
+              </div>
+
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Erase device</div>
+                  <div class="toggle-sublabel">Wipes all data during restore</div>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" id="erase-toggle">
+                  <span class="toggle__track"></span>
+                </label>
+              </div>
+
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Use newer library (recommended)</div>
+                  <div class="toggle-sublabel">Fixed library for use on Windows</div>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" id="newlib-toggle">
+                  <span class="toggle__track"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="btn-grid">
+              <button class="btn btn--accent" onclick="flashIpsw()">⚡ Flash IPSW</button>
+            </div>
+
+            <div class="info-note">
+              <span class="info-note__icon">ℹ</span>
+              <span>If you get <em>ERROR: Unable to place device into restore mode</em>, update iTunes, restart, open
+                Device Manager → Apple Recovery (iBoot) USB Composite Device → Uninstall (check the extra box
+                too).</span>
+            </div>
+          </div>
+
+          <!-- ── Recovery ───────────────────────────────────────────── -->
+          <div class="panel" id="panel-recovery">
+            <p class="section-label">Recovery Mode</p>
+            <div class="glass-card">
+              <div class="btn-grid">
+                <button class="btn" onclick="enterRecovery()">Enter Recovery</button>
+                <button class="btn btn--warning" onclick="exitRecovery()">Exit Recovery</button>
+              </div>
+            </div>
+
+            <p class="section-label">DFU / Pwned DFU</p>
+            <div class="glass-card">
+              <div class="btn-grid">
+                <button class="btn btn--danger" onclick="pwnedDfu()">Pwned DFU (limera1n)</button>
+                <button class="btn btn--danger" onclick="customPwnedDfu()">Pwned DFU (gaster)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Activation ─────────────────────────────────────────── -->
+          <div class="panel" id="panel-activation">
+            <p class="section-label">Select Activation Server</p>
+
+            <div class="server-grid">
+
+              <button class="server-bubble" data-server="88.213.134.255:8080/index.php" onclick="selectServer(this)">
+                <span class="server-bubble__icon">📱</span>
+                <span class="server-bubble__name">iPad 2 &amp; iPhone 4S any iOS</span>
+                <span class="server-bubble__addr">88.213.134.255:8080</span>
+              </button>
+
+              <button class="server-bubble" data-server="88.213.134.255:8443/index.php" onclick="selectServer(this)">
+                <span class="server-bubble__icon">⛓️</span>
+                <span class="server-bubble__name">checkm8 Devices any iOS</span>
+                <span class="server-bubble__addr">88.213.134.255:8443</span>
+              </button>
+
+              <button class="server-bubble" data-server="88.213.134.255:9090/index.php" onclick="selectServer(this)">
+                <span class="server-bubble__icon">🔐</span>
+                <span class="server-bubble__name">A12+ Devices 17.0 - 26.0</span>
+                <span class="server-bubble__addr">88.213.134.255:9090</span>
+              </button>
+
+            </div>
+
+            <div class="glass-card" style="margin-top:16px">
+              <div class="toggle-row" style="padding-top:0">
+                <div>
+                  <div class="toggle-label">Selected server</div>
+                  <div class="toggle-sublabel" id="selected-server-display">None selected</div>
+                </div>
+              </div>
+              <div class="btn-grid" style="margin-top:16px">
+                <button class="btn btn--accent" id="activate-btn" onclick="activate()" disabled>Activate Device</button>
+                <button class="btn btn--danger" onclick="deactivate()">Deactivate Device</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Backup ─────────────────────────────────────────────── -->
+          <div class="panel" id="panel-backup">
+            <p class="section-label">Create Backup</p>
+            <div class="glass-card">
+              <div class="btn-grid">
+                <button class="btn btn--accent" onclick="backup(false)">Backup (A5+)</button>
+                <button class="btn" onclick="backup(true)">Backup (>=A4)</button>
+              </div>
+              <p class="text-muted" style="margin-top:12px">You'll be prompted to pick a destination folder.</p>
+            </div>
+          </div>
+
+          <!-- ── Diagnostics ────────────────────────────────────────── -->
+          <div class="panel" id="panel-diagnostics">
+            <p class="section-label">Power</p>
+            <div class="glass-card">
+              <div class="btn-grid">
+                <button class="btn" onclick="restartDevice()">Restart Device</button>
+                <button class="btn btn--danger" onclick="shutdownDevice()">Shutdown Device</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Network / SSH ──────────────────────────────────────── -->
+          <div class="panel" id="panel-network">
+            <p class="section-label">TCP Tunnel (iProxy)</p>
+            <div class="glass-card">
+              <div class="port-row">
+                <div class="input-group">
+                  <label>Local port</label>
+                  <input type="text" class="glass-input" id="local-port" placeholder="2222" value="2222">
+                </div>
+                <div class="input-group">
+                  <label>iDevice port</label>
+                  <input type="text" class="glass-input" id="idevice-port" placeholder="22" value="22">
+                </div>
+              </div>
+              <button class="btn btn--accent" onclick="startIproxy()">Start Tunnel</button>
+              <div class="info-note" style="margin-top:12px">
+                <span class="info-note__icon">ℹ</span>
+                <span>Default ports: 2222 (local) → 22 (iDevice). Used for SSH access over USB.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── App Activation ─────────────────────────────────────── -->
+          <div class="panel" id="panel-app-activation">
+            <p class="section-label">Machine ID</p>
+            <div class="glass-card">
+              <div class="udid-row">
+                <div class="udid-value" id="machine-id-display">Computing…</div>
+                <button class="btn" onclick="copyMachineId()">Copy</button>
+              </div>
+              <p class="text-muted" style="margin-top:10px">Share this ID to receive your activation code.</p>
+            </div>
+
+            <p class="section-label">Enter Activation Code</p>
+            <div class="glass-card">
+              <div class="input-group" style="margin-bottom:14px">
+                <label>Activation Code</label>
+                <input type="text" class="glass-input" id="activation-code-input" placeholder="16-character code"
+                  maxlength="32" oninput="this.value = this.value.toLowerCase()">
+              </div>
+              <button class="btn btn--accent" onclick="submitActivationCode()" style="width:100%">
+                🔓 Activate iOSBridge
+              </button>
+            </div>
+
+            <div class="glass-card" id="activation-status-card" style="display:none">
+              <div class="activation-status" id="activation-status-content"></div>
+            </div>
+          </div>
+
+          <!-- ── Connections ────────────────────────────────────────── -->
+          <div class="panel" id="panel-connections">
+            <p class="section-label">iTunes</p>
+            <div class="glass-card">
+              <div class="connection-list">
+
+                <div class="connection-item">
+                  <div class="connection-item__left">
+                    <span class="connection-item__icon">🎵</span>
+                    <div>
+                      <div class="connection-item__name">iTunes</div>
+                      <div class="connection-item__desc">Latest version Apple</div>
+                    </div>
+                  </div>
+                  <button class="btn btn--accent"
+                    onclick="openLink('https://secure-appldnld.apple.com/itunes12/031-69284-20160802-7E7B2D20-552B-11E6-B2B9-696CECD541CE/iTunes64Setup.exe')">Download</button>
+                </div>
+
+                <div class="connection-item">
+                  <div class="connection-item__left">
+                    <span class="connection-item__icon">🎵</span>
+                    <div>
+                      <div class="connection-item__name">iTunes Legacy</div>
+                      <div class="connection-item__desc">Classic version for iPhone 3GS restores</div>
+                    </div>
+                  </div>
+                  <button class="btn"
+                    onclick="openLink('https://www.filehorse.com/download-itunes-64/16353/download/')">Download</button>
+                </div>
+
+              </div>
+            </div>
+
+            <p class="section-label">Drivers</p>
+            <div class="glass-card">
+              <div class="connection-list">
+
+                <div class="connection-item">
+                  <div class="connection-item__left">
+                    <span class="connection-item__icon">⚙️</span>
+                    <div>
+                      <div class="connection-item__name">Apple Mobile Device Drivers</div>
+                      <div class="connection-item__desc">USB drivers only — no iTunes required</div>
+                    </div>
+                  </div>
+                  <button class="btn btn--white" onclick="openLink('https://dssoft.ch/downloads/apple-drivers')">Coming
+                    Soon</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Update ─────────────────────────────────────────────── -->
+          <div class="panel" id="panel-update">
+            <p class="section-label">Current Version</p>
+            <div class="glass-card">
+              <div class="udid-row">
+                <div class="udid-value" id="current-version-display">—</div>
+                <button class="btn btn--accent" onclick="checkForUpdate()" id="check-update-btn">Check for
+                  Update</button>
+              </div>
+            </div>
+
+            <div id="update-available-card" style="display:none">
+              <p class="section-label">Update Available</p>
+              <div class="glass-card">
+                <div class="update-status-row">
+                  <div>
+                    <div class="toggle-label" id="update-version-label">New version available</div>
+                    <div class="toggle-sublabel">Download and prepare the update package</div>
+                  </div>
+                  <button class="btn btn--accent" onclick="downloadUpdate()" id="download-update-btn">Download
+                    Update</button>
+                </div>
+
+                <!-- Progress bar — shown during download -->
+                <div class="update-progress-wrap" id="update-progress-wrap" style="display:none">
+                  <div class="update-progress-bar" id="update-progress-bar"></div>
+                  <span class="update-progress-label" id="update-progress-label">0%</span>
+                </div>
+              </div>
+
+              <div class="glass-card" id="update-ready-card" style="display:none">
+                <div class="update-status-row">
+                  <div>
+                    <div class="toggle-label">Ready to install</div>
+                    <div class="toggle-sublabel">The updater will close iOSBridge and apply the update</div>
+                  </div>
+                  <button class="btn btn--white" onclick="launchUpdater()">Install Now</button>
+                </div>
+              </div>
+            </div>
+
+            <div id="update-current-card" style="display:none">
+              <div class="glass-card">
+                <div class="activation-status activation-status--success">
+                  <span class="activation-status__icon">✅</span>
+                  <span>You're up to date!</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="update-error-card" style="display:none">
+              <div class="glass-card">
+                <div class="activation-status activation-status--error">
+                  <span class="activation-status__icon">⚠️</span>
+                  <span id="update-error-msg">Could not check for updates.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /panels -->
+      </div><!-- /main -->
+    </div><!-- /layout -->
+  </div><!-- /app-shell -->
+
+  <!-- Toast stack -->
+  <div class="toast-stack" id="toast-stack"></div>
+
+  <script>
+    // ── ⚠️  DEV MODE — set to false before shipping ─────────────────────────
+    const DEV_MODE = false
+
+    // ── State ───────────────────────────────────────────────────────────────
+    let currentUdid = ''
+    let selectedIpsw = ''
+    let deviceConnected = false
+    let isActivated = false   // set on boot from stored activation state
+
+    // ── Panel switching ─────────────────────────────────────────────────────
+    function switchPanel(btn) {
+      document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('is-active'))
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('is-active'))
+      btn.classList.add('is-active')
+      document.getElementById('panel-' + btn.dataset.panel).classList.add('is-active')
+    }
+
+    // ── Toast ───────────────────────────────────────────────────────────────
+    function toast(msg, type = 'info', duration = 3000) {
+      const stack = document.getElementById('toast-stack')
+      const el = document.createElement('div')
+      el.className = `toast toast--${type}`
+      el.innerHTML = `<span class="toast__dot"></span><span>${msg}</span>`
+      stack.appendChild(el)
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('is-visible')))
+      setTimeout(() => {
+        el.classList.remove('is-visible')
+        setTimeout(() => el.remove(), 500)
+      }, duration)
+    }
+
+    // ── Device badge ────────────────────────────────────────────────────────
+    function setDeviceState(connected, label) {
+      deviceConnected = connected
+      const badge = document.getElementById('device-badge')
+      const txt = document.getElementById('device-status-text')
+      badge.classList.toggle('is-connected', connected)
+      txt.textContent = label
+    }
+
+    // ── USB watch (polls every 2s via main process) ─────────────────────────
+    async function startWatch() {
+      await app.startUsbWatch()
+
+      app.onDeviceConnected(async (udid) => {
+        currentUdid = udid
+        setDeviceState(true, udid ? udid.slice(0, 8) + '…' : 'Connected')
+        toast('iDevice connected', 'success')
+        document.getElementById('udid-display').textContent = udid || '—'
+        document.getElementById('copy-udid-btn').disabled = !udid
+
+        // fetch device info
+        const info = await app.getDeviceInfo()
+        document.getElementById('device-info-box').textContent = info
+      })
+
+      app.onDeviceDisconnected(() => {
+        currentUdid = ''
+        setDeviceState(false, 'No device')
+        toast('iDevice disconnected', 'warning')
+        document.getElementById('device-info-box').textContent =
+          'Libimobiledevice Feed\n\nPlug in your iDevice — info will appear here automatically.'
+        document.getElementById('udid-display').textContent = '—'
+        document.getElementById('copy-udid-btn').disabled = true
+      })
+    }
+
+    // ── UDID ────────────────────────────────────────────────────────────────
+    async function fetchUdid() {
+      try {
+        const udid = await app.getUdid()
+        currentUdid = udid
+        document.getElementById('udid-display').textContent = udid || 'No device found'
+        document.getElementById('copy-udid-btn').disabled = !udid
+        if (udid) toast('UDID refreshed', 'success')
+      } catch { toast('Could not get UDID', 'error') }
+    }
+
+    async function copyUdid() {
+      if (!currentUdid) return
+      await app.copy(currentUdid)
+      toast('UDID copied to clipboard', 'success')
+    }
+
+    // ── IPSW picker ─────────────────────────────────────────────────────────
+    async function pickIpsw() {
+      const p = await app.pickIpsw()
+      if (!p) return
+      selectedIpsw = p
+      const el = document.getElementById('ipsw-path-display')
+      el.textContent = p
+      el.classList.add('has-file')
+      toast('IPSW selected', 'info')
+    }
+
+    async function flashIpsw() {
+      if (!selectedIpsw) { toast('Please select an IPSW file first', 'warning'); return }
+      const erase = document.getElementById('erase-toggle').checked
+      const useNewLib = document.getElementById('newlib-toggle').checked
+      toast('Starting flash process…', 'info', 4000)
+      await app.flashIpsw({ filePath: selectedIpsw, useNewLib, erase })
+    }
+
+    // ── Recovery ────────────────────────────────────────────────────────────
+    async function enterRecovery() {
+      await app.enterRecovery(currentUdid)
+      toast('Entering recovery mode…', 'info')
+    }
+    async function exitRecovery() {
+      await app.exitRecovery()
+      toast('Exiting recovery mode…', 'info')
+    }
+    async function pwnedDfu() {
+      toast('Entering Pwned DFU…', 'warning', 4000)
+      await app.pwnedDfu()
+    }
+    async function customPwnedDfu() {
+      toast('Entering Custom Pwned DFU (gaster)…', 'warning', 4000)
+      await app.customPwnedDfu()
+    }
+
+    // ── Activation server selection ─────────────────────────────────────────
+    let selectedServer = ''
+
+    // ── iDevice Activation — gated by app activation ───────────────────────
+    async function activate() {
+      if (!DEV_MODE && !isActivated) {
+        toast('App not activated — go to App Activation first', 'error', 4000); return
+      }
+      if (!selectedServer) { toast('Select a server first', 'warning'); return }
+      toast('Activating device…', 'info', 5000)
+      await app.activateWithServer(selectedServer)
+    }
+    async function deactivate() {
+      if (!DEV_MODE && !isActivated) {
+        toast('App not activated', 'error'); return
+      }
+      toast('Deactivating device…', 'warning', 3000)
+      await app.deactivate()
+    }
+
+    // Also gate server bubble selection display
+    function selectServer(btn) {
+      document.querySelectorAll('.server-bubble').forEach(b => b.classList.remove('is-selected'))
+      btn.classList.add('is-selected')
+      selectedServer = btn.dataset.server
+      document.getElementById('selected-server-display').textContent = selectedServer
+      const canActivate = DEV_MODE || isActivated
+      document.getElementById('activate-btn').disabled = !canActivate
+    }
+
+    // ── Connections — open URL in default browser ───────────────────────────
+    function openLink(url) {
+      app.openExternal(url)
+    }
+
+    // ── Update logic ─────────────────────────────────────────────────────────
+    const VER_URL = 'https://dssoft.ch/ver.txt'
+    const ZIP_URL = 'https://raw.githubusercontent.com/DsSoft-Byte/iCu-X/main/iCures.zip'
+    const ZIP_PATH = 'C:\\iCuPlus.zip'
+    const EXTRACT_PATH = 'C:\\UpdateData'
+    const UPDATER_EXE = 'C:\\UpdateData\\iCures\\icuplusupdater.exe'
+
+    async function checkForUpdate() {
+      const btn = document.getElementById('check-update-btn')
+      btn.disabled = true
+      btn.textContent = 'Checking…'
+
+        // hide all result cards
+        ;['update-available-card', 'update-current-card', 'update-error-card'].forEach(id => {
+          document.getElementById(id).style.display = 'none'
+        })
+
+      try {
+        const result = await app.checkForUpdate()
+        document.getElementById('current-version-display').textContent = result.current
+
+        if (result.upToDate) {
+          document.getElementById('update-current-card').style.display = 'block'
+        } else {
+          document.getElementById('update-version-label').textContent =
+            `v${result.latest} available (you have v${result.current})`
+          document.getElementById('update-available-card').style.display = 'block'
+        }
+      } catch (err) {
+        document.getElementById('update-error-msg').textContent = err?.message || 'Could not reach update server.'
+        document.getElementById('update-error-card').style.display = 'block'
+      } finally {
+        btn.disabled = false
+        btn.textContent = 'Check for Update'
+      }
+    }
+
+    async function downloadUpdate() {
+      const btn = document.getElementById('download-update-btn')
+      btn.disabled = true
+      btn.textContent = 'Downloading…'
+
+      const wrap = document.getElementById('update-progress-wrap')
+      const bar = document.getElementById('update-progress-bar')
+      const lbl = document.getElementById('update-progress-label')
+      wrap.style.display = 'flex'
+
+      app.onUpdateProgress(pct => {
+        bar.style.setProperty('--progress', pct + '%')
+        lbl.textContent = pct + '%'
+      })
+
+      try {
+        await app.downloadUpdate()
+        bar.style.setProperty('--progress', '100%')
+        lbl.textContent = '100%'
+        toast('Download complete — ready to install', 'success', 5000)
+        document.getElementById('update-ready-card').style.display = 'block'
+      } catch (err) {
+        toast(err?.message || 'Download failed', 'error')
+        btn.disabled = false
+        btn.textContent = 'Retry Download'
+      }
+    }
+
+    async function launchUpdater() {
+      try {
+        await app.launchUpdater()
+        // app will close itself from main process after launching updater
+      } catch (err) {
+        toast(err?.message || 'Updater missing — check C:\\UpdateData', 'error', 6000)
+      }
+    }
+
+    // ── App Activation (SHA-256, mirrors Form17 exactly) ────────────────────
+    async function sha256hex(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str))
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('')
+    }
+
+    async function getMachineId() {
+      // Fetched from main process (WMI: CPU ProcessorId + BIOS SerialNumber)
+      return app.getMachineId()
+    }
+
+    async function generateActivationCode(machineId) {
+      const hash = await sha256hex(machineId + '0000078463478653465xui')
+      return hash.substring(0, 16)
+    }
+
+    async function loadMachineId() {
+      try {
+        const id = await getMachineId()
+        document.getElementById('machine-id-display').textContent = id || 'Unavailable'
+      } catch {
+        document.getElementById('machine-id-display').textContent = 'Error reading hardware ID'
+      }
+    }
+
+    async function copyMachineId() {
+      const id = document.getElementById('machine-id-display').textContent
+      if (!id || id === 'Computing…') return
+      await app.copy(id)
+      toast('Machine ID copied to clipboard', 'success')
+    }
+
+    async function submitActivationCode() {
+      const entered = document.getElementById('activation-code-input').value.trim().toLowerCase()
+      if (!entered) { toast('Please enter your activation code', 'warning'); return }
+
+      const machineId = await getMachineId()
+      const correct = await generateActivationCode(machineId)
+      const statusCard = document.getElementById('activation-status-card')
+      const statusEl = document.getElementById('activation-status-content')
+
+      statusCard.style.display = 'block'
+
+      if (entered === correct) {
+        await app.setActivated(true)
+        isActivated = true
+        statusEl.className = 'activation-status activation-status--success'
+        statusEl.innerHTML = `<span class="activation-status__icon">✅</span><span>Activation successful — enjoy iOSBridge!</span>`
+        toast('Activated successfully!', 'success', 5000)
+        // enable the iDevice activate button if a server is selected
+        if (selectedServer) document.getElementById('activate-btn').disabled = false
+      } else {
+        statusEl.className = 'activation-status activation-status--error'
+        statusEl.innerHTML = `<span class="activation-status__icon">❌</span><span>Invalid code — please check and try again.</span>`
+        toast('Invalid activation code', 'error')
+      }
+    }
+
+    // ── Backup ──────────────────────────────────────────────────────────────
+    async function backup(legacy) {
+      if (!currentUdid) { toast('No device connected', 'error'); return }
+      const dir = await app.pickFolder()
+      if (!dir) return
+      toast('Backup started — this may take a while', 'info', 6000)
+      await app.backup({ udid: currentUdid, dir, legacy })
+    }
+
+    // ── Diagnostics ─────────────────────────────────────────────────────────
+    async function restartDevice() {
+      if (!currentUdid) { toast('No device connected', 'error'); return }
+      await app.restartDevice(currentUdid)
+      toast('Restarting device…', 'info')
+    }
+    async function shutdownDevice() {
+      if (!currentUdid) { toast('No device connected', 'error'); return }
+      await app.shutdownDevice(currentUdid)
+      toast('Shutting down device…', 'warning')
+    }
+
+    // ── iProxy ──────────────────────────────────────────────────────────────
+    async function startIproxy() {
+      if (!currentUdid) { toast('No device connected', 'error'); return }
+      const local = document.getElementById('local-port').value || '2222'
+      const idevice = document.getElementById('idevice-port').value || '22'
+      await app.iproxy({ udid: currentUdid, local, remote: idevice })
+      toast(`Tunnel started: localhost:${local} → device:${idevice}`, 'success', 5000)
+    }
+
+    // ── Boot ────────────────────────────────────────────────────────────────
+    window.addEventListener('DOMContentLoaded', async () => {
+      // Dev mode banner
+      if (DEV_MODE) document.getElementById('dev-banner').style.display = 'flex'
+
+      startWatch()
+      fetchUdid()
+      loadMachineId()
+
+      // Restore activation state
+      isActivated = DEV_MODE || await app.getActivated()
+
+      if (isActivated && !DEV_MODE) {
+        const statusCard = document.getElementById('activation-status-card')
+        const statusEl = document.getElementById('activation-status-content')
+        statusCard.style.display = 'block'
+        statusEl.className = 'activation-status activation-status--success'
+        statusEl.innerHTML = `<span class="activation-status__icon">✅</span><span>iOSBridge is activated.</span>`
+      }
+
+      // Load current version into update panel
+      const ver = await app.getAppVersion()
+      document.getElementById('current-version-display').textContent = ver
+    })
+
+    window.addEventListener('beforeunload', () => app.stopUsbWatch())
+  </script>
+</body>
+
+</html>
