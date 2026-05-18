@@ -15,7 +15,11 @@ contextBridge.exposeInMainWorld('app', {
   // Device
   getUdid:        ()       => ipcRenderer.invoke('get-udid'),
   getDeviceInfo:  ()       => ipcRenderer.invoke('get-device-info'),
-  startUsbWatch:  ()       => ipcRenderer.invoke('start-usb-watch'),
+  getDeviceField: (key)    => ipcRenderer.invoke('get-device-field', key),
+  getBatteryInfo: ()       => ipcRenderer.invoke('get-battery-info'),
+  getDiskUsage:        ()       => ipcRenderer.invoke('get-disk-usage'),
+  checkRecoveryDevice: ()       => ipcRenderer.invoke('check-recovery-device'),
+  startUsbWatch:       ()       => ipcRenderer.invoke('start-usb-watch'),
   stopUsbWatch:   ()       => ipcRenderer.invoke('stop-usb-watch'),
 
   // Device control
@@ -34,6 +38,8 @@ contextBridge.exposeInMainWorld('app', {
   setActivated:  (val)   => ipcRenderer.invoke('set-activated', val),
   flashIpsw:        (opts)            => ipcRenderer.invoke('flash-ipsw', opts),
   backup:           (opts)            => ipcRenderer.invoke('backup', opts),
+  restoreBackup:    (opts)            => ipcRenderer.invoke('restore-backup', opts),
+  pairDevice:       ()                => ipcRenderer.invoke('pair-device'),
   iproxy:           (opts)            => ipcRenderer.invoke('iproxy', opts),
 
   // File pickers

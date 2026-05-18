@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Silhouette Preview</title>
+<style>
+  body { background: #1a1a1a; color: #fff; font-family: system-ui, sans-serif; display: flex; gap: 40px; padding: 40px; align-items: flex-end; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .label { font-size: 12px; color: #888; letter-spacing: .08em; text-transform: uppercase; }
+  svg { color: #4a9eff; }
+  svg.orange { color: #ff9f0a; }
+</style>
+</head>
+<body>
+
+<!-- vintage: very rounded corners, large circular home button with inner square icon -->
+<div class="item">
+  <svg viewBox="0 0 62 124" fill="none" xmlns="http://www.w3.org/2000/svg" width="62" height="124">
+    <rect x="1.5" y="1.5" width="59" height="121" rx="14" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="5" y="16" width="52" height="85" rx="3" fill="currentColor" opacity=".055"/>
+    <circle cx="31" cy="111" r="6" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="28.5" y="108.5" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1" opacity=".5"/>
+    <rect x="24" y="7" width="14" height="3" rx="1.5" fill="currentColor" opacity=".4"/>
+  </svg>
+  <div class="label">vintage</div>
+  <div style="font-size:10px;color:#555">2G · 3G · 3GS</div>
+</div>
+
+<!-- classic: square corners, small rounded-square home button -->
+<div class="item">
+  <svg viewBox="0 0 62 124" fill="none" xmlns="http://www.w3.org/2000/svg" width="62" height="124">
+    <rect x="1.5" y="1.5" width="59" height="121" rx="6" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="5" y="16" width="52" height="84" rx="2" fill="currentColor" opacity=".055"/>
+    <circle cx="31" cy="112" r="6" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="28.5" y="109.5" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1" opacity=".5"/>
+    <rect x="24" y="7" width="14" height="3" rx="1.5" fill="currentColor" opacity=".4"/>
+  </svg>
+  <div class="label">classic</div>
+  <div style="font-size:10px;color:#555">4 · 4S</div>
+</div>
+
+<!-- tall: medium corners, round home button, earpiece pill -->
+<div class="item">
+  <svg viewBox="0 0 62 124" fill="none" xmlns="http://www.w3.org/2000/svg" width="62" height="124">
+    <rect x="1.5" y="1.5" width="59" height="121" rx="10" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="22" y="8" width="18" height="3" rx="1.5" fill="currentColor" opacity=".4"/>
+    <circle cx="31" cy="113" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="5" y="16" width="52" height="88" rx="3" fill="currentColor" opacity=".055"/>
+  </svg>
+  <div class="label">tall</div>
+  <div style="font-size:10px;color:#555">5 · 6 · 7 · 8 · SE</div>
+</div>
+
+<!-- notched: full-screen, notch path connected to top edge -->
+<div class="item">
+  <svg viewBox="0 0 62 124" fill="none" xmlns="http://www.w3.org/2000/svg" width="62" height="124">
+    <rect x="1.5" y="1.5" width="59" height="121" rx="10" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="2" y="2" width="58" height="120" rx="9" fill="currentColor" opacity=".055"/>
+    <path d="M18,1.5 H44 V7 Q44,10 40,10 H22 Q18,10 18,7 Z" fill="currentColor" opacity=".3"/>
+  </svg>
+  <div class="label">notched</div>
+  <div style="font-size:10px;color:#555">X · XS · 11 · 12 · 13 · 14</div>
+</div>
+
+<!-- island: full-screen, Dynamic Island pill -->
+<div class="item">
+  <svg viewBox="0 0 62 124" fill="none" xmlns="http://www.w3.org/2000/svg" width="62" height="124">
+    <rect x="1.5" y="1.5" width="59" height="121" rx="10" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="2" y="2" width="58" height="120" rx="9" fill="currentColor" opacity=".055"/>
+    <rect x="23" y="7" width="16" height="8" rx="4" fill="currentColor" opacity=".35"/>
+  </svg>
+  <div class="label">island</div>
+  <div style="font-size:10px;color:#555">14 Pro · 15 · 16</div>
+</div>
+
+<div style="width:1px;background:#333;margin:0 10px;align-self:stretch"></div>
+
+<!-- recovery banner size: 36x72 orange -->
+<div class="item">
+  <div style="font-size:10px;color:#555;margin-bottom:4px">recovery banner</div>
+  <svg class="orange" viewBox="0 0 62 124" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="72">
+    <rect x="1.5" y="1.5" width="59" height="121" rx="10" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="22" y="8" width="18" height="3" rx="1.5" fill="currentColor" opacity=".4"/>
+    <circle cx="31" cy="113" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="5" y="16" width="52" height="88" rx="3" fill="currentColor" opacity=".055"/>
+  </svg>
+  <div class="label">36×72 px</div>
+</div>
+
+</body>
+</html>

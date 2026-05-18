@@ -1,18 +1,32 @@
 {
-  "name": "icures",
+  "name": "iosbridge",
   "version": "2.0.0",
-  "description": "iCures — iDevice toolkit",
+  "description": "iOSBridge — iDevice toolkit",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
   },
   "build": {
-    "appId": "com.dssoft.icures",
-    "productName": "iCures",
+    "appId": "com.dssoft.iosbridge",
+    "productName": "iOSBridge",
     "win": {
       "target": "nsis",
       "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }],
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "assets/icon.png",
+      "category": "Utility",
+      "maintainer": "iOSBridge"
     }
   },
   "dependencies": {
