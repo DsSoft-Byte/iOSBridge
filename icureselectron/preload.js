@@ -52,6 +52,9 @@ contextBridge.exposeInMainWorld('app', {
   // Browser / external links
   openExternal: (url)  => ipcRenderer.invoke('open-external', url),
 
+  // Platform
+  isWin: process.platform === 'win32',
+
   // App version
   getAppVersion: ()    => ipcRenderer.invoke('get-app-version'),
 

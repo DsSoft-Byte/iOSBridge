@@ -116,9 +116,13 @@ ipcMain.handle('get-device-field', async (_, key) => {
 
 // ── Battery info via diagnostics ───────────────────────────────────────────
 ipcMain.handle('get-battery-info', async () => {
-  try {
-    return await runCapture(BASE + 'idevicediagnostics' + EXT, ['ioregentry', 'AppleSmartBattery'])
-  } catch { return '' }
+  const tryEntry = async (entry) => {
+    try { return await runCapture(BASE + 'idevicediagnostics' + EXT, ['ioregentry', entry]) }
+    catch { return '' }
+  }
+  const modern = await tryEntry('AppleSmartBattery')
+  if (modern.includes('CurrentCapacity')) return modern
+  return await tryEntry('AppleARMPMUCharger')
 })
 
 // ── Recovery / DFU device query ───────────────────────────────────────────────
@@ -147,7 +151,28 @@ ipcMain.handle('exit-recovery', async () => {
 
 // ── Pwned DFU ──────────────────────────────────────────────────────────────
 ipcMain.handle('pwned-dfu', async () => {
-  runDetached(IDEVICERESTORE, ['--pwn'])
+  if (WIN) {
+    runDetached(IDEVICERESTORE, ['--pwn'])
+  } else if (MAC) {
+    spawn('osascript', [
+      '-e', 'tell application "Terminal" to activate',
+      '-e', 'tell application "Terminal" to do script "/usr/local/bin/ipwndfu -p"',
+    ])
+  } else {
+    const cmd = '/usr/local/bin/ipwndfu -p'
+    const terms = [
+      ['gnome-terminal',      ['--', 'bash', '-c', `${cmd}; read -p 'Done. Press Enter to close.'`]],
+      ['xfce4-terminal',      ['-e', `bash -c "${cmd}; read"`]],
+      ['konsole',             ['-e', `bash -c "${cmd}; read"`]],
+      ['x-terminal-emulator', ['-e', `bash -c "${cmd}; read"`]],
+      ['xterm',               ['-e', `bash -c "${cmd}; read"`]],
+    ]
+    let launched = false
+    for (const [t, args] of terms) {
+      try { execSync(`which ${t}`, { stdio: 'ignore' }); spawn(t, args, { detached: true }).unref(); launched = true; break } catch {}
+    }
+    if (!launched) spawn('bash', ['-c', cmd], { detached: true, stdio: 'ignore' }).unref()
+  }
 })
 
 ipcMain.handle('custom-pwned-dfu', async () => {
@@ -228,7 +253,10 @@ ipcMain.handle('download-update', async (e) => {
   if (fs.existsSync(ZIP_PATH)) throw new Error(`Update file already exists at ${ZIP_PATH} — please delete it first.`)
   await new Promise((resolve, reject) => {
     const file = fs.createWriteStream(ZIP_PATH)
-    https.get('https://www.iosbridge.ch/iCures.zip', res => {
+    const ZIP_URL = WIN ? 'https://www.iosbridge.com/iCures.zip'
+                 : MAC ? 'https://www.iosbridge.com/iCuresMac.zip'
+                 :       'https://www.iosbridge.com/iCuresLin.zip'
+    https.get(ZIP_URL, res => {
       const total = parseInt(res.headers['content-length'] || '0', 10)
       let received = 0
       res.on('data', chunk => {
@@ -282,7 +310,7 @@ ipcMain.handle('flash-ipsw', async (_, { filePath, useNewLib, erase }) => {
       ])
     } else {
       // Linux: try common terminals in order
-      const cmd = `${restore} ${flags.join(' ')}`
+      const cmd = `${restore} ${erase ? '-e ' : ''}"${filePath}"`
       const terms = [
         ['gnome-terminal', ['--', 'bash', '-c', `${cmd}; read -p 'Done. Press Enter to close.'`]],
         ['xfce4-terminal', ['-e', `bash -c "${cmd}; read"`]],
