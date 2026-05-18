@@ -303,14 +303,14 @@ ipcMain.handle('flash-ipsw', async (_, { filePath, useNewLib, erase }) => {
     const restore = IDEVICERESTORE
     const flags   = erase ? ['-e', filePath] : [filePath]
     if (MAC) {
-      const cmdStr = `${restore} ${erase ? '-e ' : ''}"${filePath}"`
+      const cmdStr = `${restore} ${erase ? '-y -e ' : ''}"${filePath}"`
       spawn('osascript', [
         '-e', 'tell application "Terminal" to activate',
         '-e', `tell application "Terminal" to do script "${cmdStr.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`,
       ])
     } else {
       // Linux: try common terminals in order
-      const cmd = `${restore} ${erase ? '-e ' : ''}"${filePath}"`
+      const cmd = `${restore} ${erase ? '-y -e ' : ''}"${filePath}"`
       const terms = [
         ['gnome-terminal', ['--', 'bash', '-c', `${cmd}; read -p 'Done. Press Enter to close.'`]],
         ['xfce4-terminal', ['-e', `bash -c "${cmd}; read"`]],
