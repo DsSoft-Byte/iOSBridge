@@ -5,10 +5,10 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder",
-    "build:win": "electron-builder --win",
-    "build:mac": "electron-builder --mac",
-    "build:linux": "electron-builder --linux"
+    "build": "node scripts/gen-icons.js && electron-builder",
+    "build:win": "node scripts/gen-icons.js && electron-builder --win",
+    "build:mac": "node scripts/gen-icons.js && electron-builder --mac",
+    "build:linux": "node scripts/gen-icons.js && electron-builder --linux"
   },
   "build": {
     "appId": "com.dssoft.iosbridge",
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "electron": "^29.0.0",
-    "electron-builder": "^24.0.0"
+    "electron-builder": "^24.0.0",
+    "png2icons": "^2.0.1"
   }
 }
