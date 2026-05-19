@@ -7,7 +7,7 @@
 #
 # macOS prerequisites (your existing brew script covers all of these):
 #   Xcode CLI Tools
-#   brew install automake libtool libusb libzip gnutls libgcrypt pkg-config libxml2 curl
+#   brew install automake libtool libusb libzip gnutls libgcrypt pkg-config libxml2 curl dylibbundler
 #
 # Linux prerequisites:
 #   sudo apt install build-essential git automake libtool pkg-config patchelf \
@@ -104,80 +104,40 @@ for b in "${BINARIES[@]}"; do
 done
 
 # ══════════════════════════════════════════════════════════════════════════════
-# macOS: bundle dylibs
+# macOS: bundle dylibs with dylibbundler
+# dylibbundler handles install-name canonicalisation so the same library never
+# appears under two different identities (e.g. libplist.4.dylib vs
+# libplist-2.0.4.dylib), which is what caused the duplicate-dylib errors.
 # ══════════════════════════════════════════════════════════════════════════════
 if [[ "$PLATFORM" == mac ]]; then
 
-  is_system_dylib() {
-    [[ "$1" == /usr/lib/* ]] || [[ "$1" == /System/Library/* ]]
-  }
-
-  # Recursively copy non-system dylibs needed by $1 into OUT_LIBS.
-  # Uses the presence of the destination file to prevent re-processing.
-  collect_dylib() {
-    local src="$1"
-    while IFS= read -r dep; do
-      is_system_dylib "$dep"    && continue
-      [[ "${dep:0:1}" == "@" ]] && continue
-      [[ -f "$dep" ]]           || continue
-      local name; name="$(basename "$dep")"
-      [[ -f "$OUT_LIBS/$name" ]] && continue   # already collected — stops cycles
-      cp -L "$dep" "$OUT_LIBS/$name"           # -L dereferences symlinks
-      echo "  + $name"
-      collect_dylib "$OUT_LIBS/$name"          # recurse into transitive deps
-    done < <(otool -L "$src" 2>/dev/null | tail -n +2 | awk '{print $1}')
+  command -v dylibbundler > /dev/null || {
+    echo "dylibbundler not found — installing via brew..."
+    brew install dylibbundler
   }
 
   echo ""
-  echo "━━━ Collecting dylibs ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  for b in "${BINARIES[@]}"; do
-    [[ -f "$OUT_BIN/$b" ]] && collect_dylib "$OUT_BIN/$b"
-  done
-
-  # Rewrite absolute dep paths → @rpath/name so the binary can find them
-  # at @executable_path/../libs at runtime.
-  relink() {
-    local target="$1"
-    local kind="$2"   # "bin" or "lib"
-    codesign --remove-signature "$target" 2>/dev/null || true
-
-    # Remove absolute RPATHs baked in by libtool during compilation (e.g. the
-    # staging dir path). Keeping them causes duplicate-library errors on the
-    # build machine where the staging dir still exists.
-    while IFS= read -r rp; do
-      [[ "${rp:0:1}" == "@" ]] && continue   # keep @-relative entries
-      install_name_tool -delete_rpath "$rp" "$target" 2>/dev/null || true
-    done < <(otool -l "$target" 2>/dev/null | grep -A2 LC_RPATH | awk '/path /{print $2}')
-
-    if [[ "$kind" == bin ]]; then
-      install_name_tool -add_rpath "@executable_path/../libs" "$target" 2>/dev/null || true
-    else
-      install_name_tool -id "@rpath/$(basename "$target")" "$target" 2>/dev/null || true
-    fi
-    while IFS= read -r dep; do
-      is_system_dylib "$dep"    && continue
-      [[ "${dep:0:1}" == "@" ]] && continue
-      local name; name="$(basename "$dep")"
-      [[ -f "$OUT_LIBS/$name" ]] || continue
-      install_name_tool -change "$dep" "@rpath/$name" "$target"
-    done < <(otool -L "$target" 2>/dev/null | tail -n +2 | awk '{print $1}')
-    codesign --force --sign - "$target" 2>/dev/null || true
-  }
-
-  echo ""
-  echo "━━━ Relinking binaries ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "━━━ Bundling dylibs (dylibbundler) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   for b in "${BINARIES[@]}"; do
     [[ -f "$OUT_BIN/$b" ]] || continue
     echo "  → $b"
-    relink "$OUT_BIN/$b" bin
+    # -b  bundle all non-system dependencies
+    # -of overwrite files already in dest dir (multiple binaries share libs)
+    # -x  binary to fix
+    # -d  where to copy the dylibs
+    # -p  install-name prefix written into the binary and each dylib
+    dylibbundler -b -of \
+      -x "$OUT_BIN/$b" \
+      -d "$OUT_LIBS/" \
+      -p "@executable_path/../libs/"
   done
 
   echo ""
-  echo "━━━ Relinking dylibs ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  for dylib in "$OUT_LIBS"/*.dylib; do
-    [[ -f "$dylib" ]] || continue
-    echo "  → $(basename "$dylib")"
-    relink "$dylib" lib
+  echo "━━━ Ad-hoc signing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  for f in "$OUT_BIN"/* "$OUT_LIBS"/*.dylib; do
+    [[ -f "$f" ]] || continue
+    codesign --force --sign - "$f" 2>/dev/null || true
+    echo "  ✓ $(basename "$f")"
   done
 
 # ══════════════════════════════════════════════════════════════════════════════
