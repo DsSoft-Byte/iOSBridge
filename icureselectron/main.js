@@ -13,9 +13,10 @@ const MAC   = platform === 'darwin'
 const EXT   = WIN ? '.exe' : ''
 
 function resolveBase() {
-  if (WIN)  return 'C:\\iCures\\Dependencies\\lim\\'
+  if (WIN) return 'C:\\iCures\\Dependencies\\lim\\'
+  // When packaged, binaries are bundled inside the app's Resources/bin/
+  if (app.isPackaged) return path.join(process.resourcesPath, 'bin') + path.sep
   if (MAC) {
-    // Apple Silicon homebrew path takes priority
     if (fs.existsSync('/opt/homebrew/bin/ideviceinfo')) return '/opt/homebrew/bin/'
     return '/usr/local/bin/'
   }

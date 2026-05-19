@@ -1,0 +1,40 @@
+{
+  "name": "iosbridge",
+  "version": "2.0.0",
+  "description": "iOSBridge — iDevice toolkit",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "node scripts/gen-icons.js && electron-builder",
+    "build:win": "node scripts/gen-icons.js && electron-builder --win",
+    "build:mac": "node scripts/gen-icons.js && electron-builder --mac",
+    "build:linux": "node scripts/gen-icons.js && electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.dssoft.iosbridge",
+    "productName": "iOSBridge",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }],
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "assets/icon.png",
+      "category": "Utility",
+      "maintainer": "iOSBridge"
+    }
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.10"
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.0.0",
+    "png2icons": "^2.0.1"
+  }
+}

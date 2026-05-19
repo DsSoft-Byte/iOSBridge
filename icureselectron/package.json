@@ -5,28 +5,44 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "node scripts/gen-icons.js && electron-builder",
-    "build:win": "node scripts/gen-icons.js && electron-builder --win",
-    "build:mac": "node scripts/gen-icons.js && electron-builder --mac",
-    "build:linux": "node scripts/gen-icons.js && electron-builder --linux"
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build:deps": "bash scripts/build-deps.sh",
+    "build:deps:clean": "bash scripts/build-deps.sh --clean"
   },
   "build": {
     "appId": "com.dssoft.iosbridge",
     "productName": "iOSBridge",
     "win": {
       "target": "nsis",
-      "icon": "assets/icon.ico"
+      "icon": "assets/icon.ico",
+      "extraResources": [
+        { "from": "C:\\iCures", "to": "iCures", "filter": ["**/*", "!Username.txt"] }
+      ]
+    },
+    "nsis": {
+      "include": "scripts/installer.nsh"
     },
     "mac": {
       "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }],
       "icon": "assets/icon.icns",
-      "category": "public.app-category.utilities"
+      "category": "public.app-category.utilities",
+      "extraResources": [
+        { "from": "build/native/mac/bin",  "to": "bin",  "filter": ["**/*"] },
+        { "from": "build/native/mac/libs", "to": "libs", "filter": ["**/*"] }
+      ]
     },
     "linux": {
       "target": ["AppImage", "deb"],
       "icon": "assets/icon.png",
       "category": "Utility",
-      "maintainer": "iOSBridge"
+      "maintainer": "iOSBridge",
+      "extraResources": [
+        { "from": "build/native/linux/bin",  "to": "bin",  "filter": ["**/*"] },
+        { "from": "build/native/linux/libs", "to": "libs", "filter": ["**/*"] }
+      ]
     }
   },
   "dependencies": {
@@ -35,6 +51,7 @@
   "devDependencies": {
     "electron": "^29.0.0",
     "electron-builder": "^24.0.0",
-    "png2icons": "^2.0.1"
+    "png2icons": "^2.0.1",
+    "sharp": "^0.33.0"
   }
 }
