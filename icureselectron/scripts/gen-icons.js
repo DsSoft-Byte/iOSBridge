@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const png2icons = require('png2icons')
+const sharp = require('sharp')
 
 const ICO  = path.join(__dirname, '../assets/icon.ico')
 const PNG  = path.join(__dirname, '../assets/icon.png')
@@ -27,10 +27,45 @@ if (!best) {
   process.exit(1)
 }
 
-fs.writeFileSync(PNG, best.img)
-console.log(`gen-icons: extracted ${best.w}×${best.w} PNG from icon.ico`)
+// ICNS icon types and their pixel sizes
+const ICNS_SIZES = [
+  { size: 16,   type: 'icp4' },
+  { size: 32,   type: 'icp5' },
+  { size: 64,   type: 'icp6' },
+  { size: 128,  type: 'ic07' },
+  { size: 256,  type: 'ic08' },
+  { size: 512,  type: 'ic09' },
+  { size: 1024, type: 'ic10' },
+]
 
-const icns = png2icons.createICNS(best.img, png2icons.BILINEAR, 0)
-if (!icns) { console.error('gen-icons: ICNS conversion failed.'); process.exit(1) }
-fs.writeFileSync(ICNS, icns)
-console.log('gen-icons: created icon.icns')
+async function main() {
+  // Normalise to RGBA so sharp never composites against an implicit white background
+  const src = await sharp(best.img).ensureAlpha().toBuffer()
+
+  // Write icon.png (Linux build)
+  const png = await sharp(src).png().toBuffer()
+  fs.writeFileSync(PNG, png)
+  console.log(`gen-icons: wrote icon.png (${best.w}×${best.w})`)
+
+  // Build icon.icns (Mac build) — each size is a raw PNG chunk inside the ICNS container
+  const chunks = []
+  for (const { size, type } of ICNS_SIZES) {
+    const data = await sharp(src)
+      .resize(size, size, { kernel: sharp.kernel.lanczos3 })
+      .png()
+      .toBuffer()
+    const hdr = Buffer.alloc(8)
+    hdr.write(type)
+    hdr.writeUInt32BE(8 + data.length, 4)
+    chunks.push(hdr, data)
+  }
+
+  const body = Buffer.concat(chunks)
+  const fileHdr = Buffer.alloc(8)
+  fileHdr.write('icns')
+  fileHdr.writeUInt32BE(8 + body.length, 4)
+  fs.writeFileSync(ICNS, Buffer.concat([fileHdr, body]))
+  console.log('gen-icons: wrote icon.icns')
+}
+
+main().catch(e => { console.error(e.message); process.exit(1) })
