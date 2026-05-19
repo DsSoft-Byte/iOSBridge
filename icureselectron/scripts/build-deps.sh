@@ -140,6 +140,15 @@ if [[ "$PLATFORM" == mac ]]; then
     local target="$1"
     local kind="$2"   # "bin" or "lib"
     codesign --remove-signature "$target" 2>/dev/null || true
+
+    # Remove absolute RPATHs baked in by libtool during compilation (e.g. the
+    # staging dir path). Keeping them causes duplicate-library errors on the
+    # build machine where the staging dir still exists.
+    while IFS= read -r rp; do
+      [[ "${rp:0:1}" == "@" ]] && continue   # keep @-relative entries
+      install_name_tool -delete_rpath "$rp" "$target" 2>/dev/null || true
+    done < <(otool -l "$target" 2>/dev/null | grep -A2 LC_RPATH | awk '/path /{print $2}')
+
     if [[ "$kind" == bin ]]; then
       install_name_tool -add_rpath "@executable_path/../libs" "$target" 2>/dev/null || true
     else
