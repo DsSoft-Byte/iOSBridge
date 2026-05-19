@@ -9,6 +9,8 @@
     "build:win": "electron-builder --win",
     "build:mac": "electron-builder --mac",
     "build:linux": "electron-builder --linux",
+    "prebuild:mac": "node scripts/gen-icons.js && mkdir -p build/native/mac/bin build/native/mac/libs",
+    "prebuild:linux": "node scripts/gen-icons.js && mkdir -p build/native/linux/bin build/native/linux/libs",
     "build:deps": "bash scripts/build-deps.sh",
     "build:deps:clean": "bash scripts/build-deps.sh --clean"
   },

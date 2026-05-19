@@ -14,8 +14,10 @@ const EXT   = WIN ? '.exe' : ''
 
 function resolveBase() {
   if (WIN) return 'C:\\iCures\\Dependencies\\lim\\'
-  // When packaged, binaries are bundled inside the app's Resources/bin/
-  if (app.isPackaged) return path.join(process.resourcesPath, 'bin') + path.sep
+  if (app.isPackaged) {
+    const bundled = path.join(process.resourcesPath, 'bin') + path.sep
+    if (fs.existsSync(bundled + 'ideviceinfo')) return bundled
+  }
   if (MAC) {
     if (fs.existsSync('/opt/homebrew/bin/ideviceinfo')) return '/opt/homebrew/bin/'
     return '/usr/local/bin/'
