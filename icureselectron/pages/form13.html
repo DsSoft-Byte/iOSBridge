@@ -1272,6 +1272,14 @@
           </svg>
           Connections
         </button>
+        <button class="nav" data-panel="apps" onclick="switchPanel(this)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          Apps
+        </button>
         <button class="nav" data-panel="update" onclick="switchPanel(this)">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -1285,9 +1293,12 @@
       <div class="main">
         <div class="topbar">
           <h1 class="topbar__heading" id="topbar-heading">iDevice Toolkit</h1>
-          <div class="badge" id="device-badge">
-            <span class="badge__dot"></span>
-            <span id="device-status-text">No device</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <button id="pair-btn" class="btn btn--sm" style="display:none" onclick="pairAndRefresh()">Pair</button>
+            <div class="badge" id="device-badge">
+              <span class="badge__dot"></span>
+              <span id="device-status-text">No device</span>
+            </div>
           </div>
         </div>
 
@@ -1552,13 +1563,22 @@
                     class="toggle__track"></span></label>
               </div>
             </div>
-            <button class="btn btn--accent" style="width:100%;margin-bottom:12px" onclick="flashIpsw()">
+            <button class="btn btn--accent" style="width:100%;margin-bottom:12px" onclick="flashIpsw()" id="flash-btn">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
               </svg>
               Flash IPSW
             </button>
+
+            <div id="flash-log-wrap" style="display:none;margin-bottom:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                <span class="slabel" style="margin:0">Output</span>
+                <span id="flash-status-badge" style="font-size:.6875rem;font-weight:600;color:var(--text-3)"></span>
+              </div>
+              <div id="flash-log" style="background:rgba(0,0,0,.55);border:1px solid var(--border);border-radius:8px;padding:11px 13px;height:200px;overflow-y:auto;font-family:'SF Mono','Consolas','Courier New',monospace;font-size:.6875rem;line-height:1.65;color:#c8d0da;white-space:pre-wrap;word-break:break-all;scrollbar-width:thin;scrollbar-color:var(--border-s) transparent"></div>
+            </div>
+
             <p class="slabel">Restore Modes</p>
             <div class="card" style="padding:0;overflow:hidden;margin-bottom:10px">
               <div style="display:grid;grid-template-columns:1fr 1fr">
@@ -2130,6 +2150,33 @@
             </div>
           </div>
 
+          <!-- ── Apps ──────────────────────────────────────────────── -->
+          <div class="panel" id="panel-apps">
+            <div style="display:flex;gap:8px;margin-bottom:12px">
+              <div style="flex:1;position:relative">
+                <svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none;opacity:.4" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input id="app-search" type="text" placeholder="Filter apps…" oninput="filterApps()"
+                  style="width:100%;padding:6px 10px 6px 30px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;font-size:.75rem;color:var(--text-1);outline:none;font-family:inherit">
+              </div>
+              <button class="btn btn--sm" onclick="loadApps()" id="apps-refresh-btn">Refresh</button>
+              <button class="btn btn--sm btn--accent" onclick="installApp()">Install IPA</button>
+            </div>
+
+            <div id="apps-empty" style="display:none">
+              <div class="card" style="padding:28px 20px;text-align:center;color:var(--text-3);font-size:.8125rem">No apps found — connect a device and tap Refresh.</div>
+            </div>
+            <div id="apps-error" style="display:none">
+              <div class="card" style="padding:13px 16px;display:flex;align-items:center;gap:10px;border-color:rgba(255,69,58,.25);background:rgba(255,69,58,.04)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span style="font-size:.8125rem;color:var(--text-2)" id="apps-error-msg">Could not list apps.</span>
+              </div>
+            </div>
+
+            <div class="card" style="padding:0;overflow:hidden" id="apps-list-card">
+              <div id="app-list"></div>
+            </div>
+          </div>
+
           <!-- ── Update ─────────────────────────────────────────────── -->
           <div class="panel" id="panel-update">
             <div class="card" style="padding:0;overflow:hidden;margin-bottom:12px">
@@ -2146,27 +2193,12 @@
             </div>
 
             <div id="update-available-card" style="display:none">
-              <div class="card" style="padding:0;overflow:hidden;margin-bottom:8px">
-                <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;justify-content:space-between">
-                  <div>
-                    <div style="font-size:.8125rem;font-weight:600;color:var(--text-1)" id="update-version-label">New version available</div>
-                    <div style="font-size:.6875rem;color:var(--text-3);margin-top:2px">Download and prepare the update package</div>
-                  </div>
-                  <button class="btn btn--accent btn--sm" onclick="downloadUpdate()" id="download-update-btn">Download</button>
+              <div class="card" style="padding:14px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between">
+                <div>
+                  <div style="font-size:.8125rem;font-weight:600;color:var(--text-1)" id="update-version-label">New version available</div>
+                  <div style="font-size:.6875rem;color:var(--text-3);margin-top:2px">Visit iosbridge.com to download the latest version</div>
                 </div>
-                <div class="prog-wrap" id="update-progress-wrap" style="display:none;padding:12px 16px 14px">
-                  <div class="prog-track"><div class="prog-fill" id="update-progress-bar"></div></div>
-                  <span class="prog-lbl" id="update-progress-label">0%</span>
-                </div>
-              </div>
-              <div id="update-ready-card" style="display:none">
-                <div class="card" style="padding:14px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between;border-color:rgba(52,199,89,.3);background:rgba(52,199,89,.05)">
-                  <div>
-                    <div style="font-size:.8125rem;font-weight:600;color:var(--green)">Ready to Install</div>
-                    <div style="font-size:.6875rem;color:var(--text-3);margin-top:2px">iOSBridge will close and apply the update</div>
-                  </div>
-                  <button class="btn btn--white btn--sm" onclick="launchUpdater()">Install Now</button>
-                </div>
+                <button class="btn btn--accent btn--sm" onclick="app.openExternal('https://iosbridge.com')">Download</button>
               </div>
             </div>
 
@@ -2207,6 +2239,7 @@
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('is-active'))
       btn.classList.add('is-active')
       document.getElementById('panel-' + btn.dataset.panel).classList.add('is-active')
+      if (btn.dataset.panel === 'apps' && currentUdid) loadApps()
     }
 
     // ── Toast ──────────────────────────────────────────────────────────────────
@@ -2565,20 +2598,46 @@
       document.getElementById('report-content').style.display = 'none'
     }
 
+    // ── Fetch all device data and populate overview + report ──────────────────
+    async function fetchAndPopulate() {
+      const [infoRaw, serial, imei, wifi, bt, build, region, phone, devClass, modelNum, diskRaw, battXml] = await Promise.all([
+        app.getDeviceInfo(),
+        app.getDeviceField('SerialNumber'),
+        app.getDeviceField('MobileEquipmentIdentifier'),
+        app.getDeviceField('WiFiAddress'),
+        app.getDeviceField('BluetoothAddress'),
+        app.getDeviceField('BuildVersion'),
+        app.getDeviceField('RegionInfo'),
+        app.getDeviceField('PhoneNumber'),
+        app.getDeviceField('DeviceClass'),
+        app.getDeviceField('ModelNumber'),
+        app.getDiskUsage(),
+        app.getBatteryInfo(),
+      ])
+      const d    = parseInfo(infoRaw)
+      const batt = parseBattery(battXml)
+      const disk = parseDiskUsage(diskRaw)
+      populateOverview(d, serial, imei, wifi, build, disk, batt)
+      populateReport(d, serial, imei, wifi, bt, build, region, phone, devClass, modelNum, disk, batt)
+      // Show Pair button only when we have a UDID but no serial (device not yet trusted)
+      document.getElementById('pair-btn').style.display = currentUdid && !serial ? 'flex' : 'none'
+    }
+
     // ── USB watch ──────────────────────────────────────────────────────────────
     async function startWatch() {
       await app.startUsbWatch()
 
-      // Recovery / DFU detection poll (every 4 s, only when no normal device)
+      // Recovery / DFU detection — poll every 20 s.
+      // Guard: skip only when a normal (non-recovery) device is connected.
       let lastRecoveryInfo = null
       setInterval(async () => {
-        if (deviceConnected) { lastRecoveryInfo = null; return }
+        if (deviceConnected && !lastRecoveryInfo) return
         try {
-          const raw = await app.checkRecoveryDevice()
+          const raw  = await app.checkRecoveryDevice()
           const info = parseRecoveryInfo(raw)
           if (info && !lastRecoveryInfo) {
             lastRecoveryInfo = info
-            const modeLabel = info.mode + (info.pwned || '') + ' Mode'
+            const modeLabel   = info.mode + (info.pwned || '') + ' Mode'
             const deviceLabel = info.chip ? info.chip + ' device' : 'Legacy Device'
             document.getElementById('overview-empty').style.display = 'none'
             document.getElementById('overview-card').style.display = 'none'
@@ -2597,7 +2656,7 @@
             document.getElementById('overview-empty').style.display = 'block'
           }
         } catch { }
-      }, 4000)
+      }, 20000)
 
       app.onDeviceConnected(async (udid) => {
         lastRecoveryInfo = null
@@ -2606,39 +2665,35 @@
         toast('iDevice connected', 'success')
         document.getElementById('udid-display').textContent = udid || '—'
         document.getElementById('copy-udid-btn').disabled = !udid
-
-        // Fetch full dump + key fields in parallel for speed
-        const [infoRaw, serial, imei, wifi, bt, build, region, phone, devClass, modelNum, diskRaw, battXml] = await Promise.all([
-          app.getDeviceInfo(),
-          app.getDeviceField('SerialNumber'),
-          app.getDeviceField('MobileEquipmentIdentifier'),
-          app.getDeviceField('WiFiAddress'),
-          app.getDeviceField('BluetoothAddress'),
-          app.getDeviceField('BuildVersion'),
-          app.getDeviceField('RegionInfo'),
-          app.getDeviceField('PhoneNumber'),
-          app.getDeviceField('DeviceClass'),
-          app.getDeviceField('ModelNumber'),
-          app.getDiskUsage(),
-          app.getBatteryInfo(),
-        ])
-
-        const d = parseInfo(infoRaw)
-        const batt = parseBattery(battXml)
-        const disk = parseDiskUsage(diskRaw)
-        populateOverview(d, serial, imei, wifi, build, disk, batt)
-        populateReport(d, serial, imei, wifi, bt, build, region, phone, devClass, modelNum, disk, batt)
+        await fetchAndPopulate()
       })
 
       app.onDeviceDisconnected(() => {
         lastRecoveryInfo = null
         currentUdid = ''
         setDeviceState(false, 'No device')
+        document.getElementById('pair-btn').style.display = 'none'
         toast('iDevice disconnected', 'warning')
         document.getElementById('udid-display').textContent = '—'
         document.getElementById('copy-udid-btn').disabled = true
         clearOverview()
       })
+    }
+
+    // ── Pair & Refresh ─────────────────────────────────────────────────────────
+    async function pairAndRefresh() {
+      const btn = document.getElementById('pair-btn')
+      btn.disabled = true; btn.textContent = 'Pairing…'
+      try {
+        await app.pairDevice()
+        btn.textContent = 'Refreshing…'
+        await fetchAndPopulate()
+        toast('Device paired and data refreshed', 'success')
+      } catch (err) {
+        toast(err?.message || 'Pair failed', 'error', 5000)
+      } finally {
+        btn.disabled = false; btn.textContent = 'Pair'
+      }
     }
 
     // ── UDID ───────────────────────────────────────────────────────────────────
@@ -2670,7 +2725,33 @@
 
     async function flashIpsw() {
       if (!selectedIpsw) { toast('Please select an IPSW file first', 'warning'); return }
-      toast('Starting flash process…', 'info', 4000)
+      const btn = document.getElementById('flash-btn')
+      const wrap = document.getElementById('flash-log-wrap')
+      const log  = document.getElementById('flash-log')
+      const badge = document.getElementById('flash-status-badge')
+      btn.disabled = true
+      log.textContent = ''
+      wrap.style.display = 'block'
+      badge.style.color = 'var(--text-3)'
+      badge.textContent = 'Running…'
+      app.onFlashOutput(({ type, text }) => {
+        if (type === 'out') {
+          log.textContent += text
+          log.scrollTop = log.scrollHeight
+        } else if (type === 'done') {
+          const ok = text === 0
+          badge.textContent = ok ? 'Done' : `Failed (exit ${text})`
+          badge.style.color = ok ? 'var(--green)' : 'var(--red)'
+          btn.disabled = false
+          toast(ok ? 'Flash complete' : 'Flash failed — check output', ok ? 'success' : 'error', 5000)
+        } else if (type === 'err') {
+          log.textContent += '\n[ERROR] ' + text
+          log.scrollTop = log.scrollHeight
+          badge.textContent = 'Error'
+          badge.style.color = 'var(--red)'
+          btn.disabled = false
+        }
+      })
       await app.flashIpsw({
         filePath: selectedIpsw,
         useNewLib: document.getElementById('newlib-toggle').checked,
@@ -2721,7 +2802,7 @@
     async function checkForUpdate() {
       const btn = document.getElementById('check-update-btn')
       btn.disabled = true; btn.textContent = 'Checking…'
-        ;['update-available-card', 'update-current-card', 'update-error-card'].forEach(id => document.getElementById(id).style.display = 'none')
+      ;['update-available-card', 'update-current-card', 'update-error-card'].forEach(id => document.getElementById(id).style.display = 'none')
       try {
         const r = await app.checkForUpdate()
         document.getElementById('current-version-display').textContent = r.current
@@ -2737,25 +2818,77 @@
       } finally { btn.disabled = false; btn.textContent = 'Check for Update' }
     }
 
-    async function downloadUpdate() {
-      const btn = document.getElementById('download-update-btn')
-      btn.disabled = true; btn.textContent = 'Downloading…'
-      const wrap = document.getElementById('update-progress-wrap')
-      const bar = document.getElementById('update-progress-bar')
-      const lbl = document.getElementById('update-progress-label')
-      wrap.style.display = 'flex'
-      app.onUpdateProgress(pct => { bar.style.setProperty('--p', pct + '%'); lbl.textContent = pct + '%' })
+    // ── Apps ───────────────────────────────────────────────────────────────────
+    let appsData = []
+
+    async function loadApps() {
+      const btn = document.getElementById('apps-refresh-btn')
+      btn.disabled = true; btn.textContent = 'Loading…'
+      document.getElementById('apps-empty').style.display = 'none'
+      document.getElementById('apps-error').style.display = 'none'
+      document.getElementById('apps-list-card').style.display = 'none'
       try {
-        await app.downloadUpdate()
-        bar.style.setProperty('--p', '100%'); lbl.textContent = '100%'
-        toast('Download complete — ready to install', 'success', 5000)
-        document.getElementById('update-ready-card').style.display = 'block'
-      } catch (err) { toast(err?.message || 'Download failed', 'error'); btn.disabled = false; btn.textContent = 'Retry Download' }
+        appsData = await app.listApps()
+        appsData.sort((a, b) => a.name.localeCompare(b.name))
+        renderApps(appsData)
+      } catch (err) {
+        document.getElementById('apps-error-msg').textContent = err?.message || 'Could not list apps.'
+        document.getElementById('apps-error').style.display = 'block'
+      } finally { btn.disabled = false; btn.textContent = 'Refresh' }
     }
 
-    async function launchUpdater() {
-      try { await app.launchUpdater() }
-      catch (err) { toast(err?.message || 'Updater missing', 'error', 6000) }
+    function renderApps(list) {
+      const container = document.getElementById('app-list')
+      if (!list.length) {
+        document.getElementById('apps-empty').style.display = 'block'
+        document.getElementById('apps-list-card').style.display = 'none'
+        return
+      }
+      document.getElementById('apps-list-card').style.display = 'block'
+      container.innerHTML = list.map((a, i) => `
+        <div class="app-row" data-bundle="${a.bundleId}" data-name="${a.name}"
+          style="display:flex;align-items:center;gap:12px;padding:10px 16px;${i < list.length - 1 ? 'border-bottom:1px solid var(--border)' : ''}">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:.8125rem;font-weight:600;color:var(--text-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escHtml(a.name)}</div>
+            <div style="font-size:.6875rem;color:var(--text-3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escHtml(a.bundleId)} · v${escHtml(a.version)}</div>
+          </div>
+          <button class="btn btn--sm btn--danger" onclick="uninstallApp('${escHtml(a.bundleId)}', this)">Uninstall</button>
+        </div>`).join('')
+    }
+
+    function filterApps() {
+      const q = document.getElementById('app-search').value.toLowerCase()
+      document.querySelectorAll('.app-row').forEach(row => {
+        const match = row.dataset.name.toLowerCase().includes(q) || row.dataset.bundle.toLowerCase().includes(q)
+        row.style.display = match ? '' : 'none'
+      })
+    }
+
+    async function installApp() {
+      const filePath = await app.pickIpa()
+      if (!filePath) return
+      toast('Installing…', 'info', 8000)
+      try {
+        await app.installApp(filePath)
+        toast('App installed successfully', 'success')
+        loadApps()
+      } catch (err) { toast(err?.message || 'Install failed', 'error', 6000) }
+    }
+
+    async function uninstallApp(bundleId, btn) {
+      btn.disabled = true; btn.textContent = 'Removing…'
+      try {
+        await app.uninstallApp(bundleId)
+        toast('App uninstalled', 'success')
+        loadApps()
+      } catch (err) {
+        toast(err?.message || 'Uninstall failed', 'error', 5000)
+        btn.disabled = false; btn.textContent = 'Uninstall'
+      }
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
     }
 
     // ── App Activation ─────────────────────────────────────────────────────────

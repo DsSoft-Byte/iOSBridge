@@ -99,13 +99,14 @@ build_repo "https://github.com/libimobiledevice/libimobiledevice"      --without
 build_repo "https://github.com/OliTheRepairDude/libideviceactivation"
 build_repo "https://github.com/libimobiledevice/libirecovery"
 build_repo "https://github.com/libimobiledevice/idevicerestore"
+build_repo "https://github.com/libimobiledevice/ideviceinstaller"
 
 # ── Collect binaries ───────────────────────────────────────────────────────
 echo ""
 echo "━━━ Collecting binaries ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 BINARIES=(
   ideviceinfo idevice_id idevicediagnostics ideviceenterrecovery
-  idevicebackup2 idevicepair iproxy irecovery ideviceactivation idevicerestore
+  idevicebackup2 idevicepair iproxy irecovery ideviceactivation idevicerestore ideviceinstaller
 )
 for b in "${BINARIES[@]}"; do
   if [[ -f "$STAGING/bin/$b" ]]; then

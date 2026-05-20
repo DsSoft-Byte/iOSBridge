@@ -26,10 +26,11 @@ function resolveBase() {
 }
 
 const BASE           = resolveBase()
-const GASTER         = WIN ? 'C:\\iCures\\Dependencies\\gaster.exe' : BASE + 'gaster'
-const IDEVICERESTORE = WIN
+const GASTER           = WIN ? 'C:\\iCures\\Dependencies\\gaster.exe' : BASE + 'gaster'
+const IDEVICERESTORE   = WIN
   ? 'C:\\iCures\\Dependencies\\libimdevice\\libimdevice\\idevicerestore.exe'
   : BASE + 'idevicerestore'
+const IDEVICEINSTALLER = BASE + 'ideviceinstaller' + EXT
 
 function createWindow(page, opts = {}) {
   const win = new BrowserWindow({
@@ -293,41 +294,26 @@ ipcMain.handle('set-activated', (_, value) => {
 })
 
 // ── Flash IPSW ─────────────────────────────────────────────────────────────
-ipcMain.handle('flash-ipsw', async (_, { filePath, useNewLib, erase }) => {
-  if (WIN) {
-    const exe       = BASE + (useNewLib ? 'idr1.exe' : 'idr.exe')
-    const eraseFlag = erase ? '-e ' : ''
-    const noInput   = erase ? '-y ' : ''
-    const cmd = DEV_MODE
-      ? `start "iCures Restore" cmd /k ""${exe}" ${noInput}${eraseFlag}"${filePath}""`
-      : `start "iCures Restore" /wait "${exe}" ${noInput}${eraseFlag}"${filePath}"`
-    exec(cmd, { shell: true })
-  } else {
-    const restore = IDEVICERESTORE
-    const flags   = erase ? ['-e', filePath] : [filePath]
-    if (MAC) {
-      const cmdStr = `${restore} ${erase ? '-y -e ' : ''}"${filePath}"`
-      spawn('osascript', [
-        '-e', 'tell application "Terminal" to activate',
-        '-e', `tell application "Terminal" to do script "${cmdStr.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`,
-      ])
-    } else {
-      // Linux: try common terminals in order
-      const cmd = `${restore} ${erase ? '-y -e ' : ''}"${filePath}"`
-      const terms = [
-        ['gnome-terminal', ['--', 'bash', '-c', `${cmd}; read -p 'Done. Press Enter to close.'`]],
-        ['xfce4-terminal', ['-e', `bash -c "${cmd}; read"`]],
-        ['konsole',        ['-e', `bash -c "${cmd}; read"`]],
-        ['x-terminal-emulator', ['-e', `bash -c "${cmd}; read"`]],
-        ['xterm',          ['-e', `bash -c "${cmd}; read"`]],
-      ]
-      let launched = false
-      for (const [t, args] of terms) {
-        try { execSync(`which ${t}`, { stdio: 'ignore' }); spawn(t, args, { detached: true }).unref(); launched = true; break } catch {}
-      }
-      if (!launched) spawn('bash', ['-c', cmd], { detached: true, stdio: 'ignore' }).unref()
-    }
+ipcMain.handle('flash-ipsw', async (e, { filePath, useNewLib, erase }) => {
+  const send = (type, text) => {
+    const win = BrowserWindow.fromWebContents(e.sender)
+    if (win && !win.isDestroyed()) win.webContents.send('flash-output', { type, text })
   }
+  let exe, args
+  if (WIN) {
+    exe  = BASE + (useNewLib ? 'idr1.exe' : 'idr.exe')
+    args = [...(erase ? ['-y', '-e'] : []), filePath]
+  } else {
+    exe  = IDEVICERESTORE
+    args = [...(erase ? ['-y', '-e'] : []), filePath]
+  }
+  return new Promise(resolve => {
+    const p = spawn(exe, args, { shell: false, windowsHide: true })
+    p.stdout.on('data', d => send('out', d.toString()))
+    p.stderr.on('data', d => send('out', d.toString()))
+    p.on('close', code => { send('done', code); resolve({ code }) })
+    p.on('error', err  => { send('err', err.message); resolve({ code: -1 }) })
+  })
 })
 
 // ── Backup ─────────────────────────────────────────────────────────────────
@@ -365,6 +351,29 @@ ipcMain.handle('pick-folder', async (e) => {
     title: 'Select Backup Directory', properties: ['openDirectory'],
   })
   return canceled ? null : filePaths[0]
+})
+ipcMain.handle('pick-ipa', async (e) => {
+  const { canceled, filePaths } = await dialog.showOpenDialog(BrowserWindow.fromWebContents(e.sender), {
+    title: 'Select IPA', filters: [{ name: 'iOS App', extensions: ['ipa'] }], properties: ['openFile'],
+  })
+  return canceled ? null : filePaths[0]
+})
+
+// ── App management ─────────────────────────────────────────────────────────
+ipcMain.handle('list-apps', async () => {
+  const out = await runCapture(IDEVICEINSTALLER, ['list', '--user'])
+  return out.split('\n').slice(1).map(line => {
+    const m = line.match(/^([^,]+),\s*"([^"]*)",\s*"(.*)"/)
+    return m ? { bundleId: m[1].trim(), version: m[2], name: m[3] } : null
+  }).filter(Boolean)
+})
+
+ipcMain.handle('install-app', async (_, filePath) => {
+  return runCapture(IDEVICEINSTALLER, ['install', filePath])
+})
+
+ipcMain.handle('uninstall-app', async (_, bundleId) => {
+  return runCapture(IDEVICEINSTALLER, ['uninstall', bundleId])
 })
 
 // ── USB watcher ────────────────────────────────────────────────────────────

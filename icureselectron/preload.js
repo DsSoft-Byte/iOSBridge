@@ -37,6 +37,7 @@ contextBridge.exposeInMainWorld('app', {
   getActivated:  ()      => ipcRenderer.invoke('get-activated'),
   setActivated:  (val)   => ipcRenderer.invoke('set-activated', val),
   flashIpsw:        (opts)            => ipcRenderer.invoke('flash-ipsw', opts),
+  onFlashOutput:    (cb) => { ipcRenderer.removeAllListeners('flash-output'); ipcRenderer.on('flash-output', (_, d) => cb(d)) },
   backup:           (opts)            => ipcRenderer.invoke('backup', opts),
   restoreBackup:    (opts)            => ipcRenderer.invoke('restore-backup', opts),
   pairDevice:       ()                => ipcRenderer.invoke('pair-device'),
@@ -45,6 +46,12 @@ contextBridge.exposeInMainWorld('app', {
   // File pickers
   pickIpsw:   ()       => ipcRenderer.invoke('pick-ipsw'),
   pickFolder: ()       => ipcRenderer.invoke('pick-folder'),
+  pickIpa:    ()       => ipcRenderer.invoke('pick-ipa'),
+
+  // App management
+  listApps:     ()           => ipcRenderer.invoke('list-apps'),
+  installApp:   (filePath)   => ipcRenderer.invoke('install-app', filePath),
+  uninstallApp: (bundleId)   => ipcRenderer.invoke('uninstall-app', bundleId),
 
   // Clipboard
   copy: (text)         => ipcRenderer.invoke('copy-to-clipboard', text),
@@ -59,10 +66,7 @@ contextBridge.exposeInMainWorld('app', {
   getAppVersion: ()    => ipcRenderer.invoke('get-app-version'),
 
   // OTA updates
-  checkForUpdate:   ()    => ipcRenderer.invoke('check-for-update'),
-  downloadUpdate:   ()    => ipcRenderer.invoke('download-update'),
-  launchUpdater:    ()    => ipcRenderer.invoke('launch-updater'),
-  onUpdateProgress: (cb)  => ipcRenderer.on('update-progress', (_, pct) => cb(pct)),
+  checkForUpdate: () => ipcRenderer.invoke('check-for-update'),
 
   // USB events from main
   onDeviceConnected:    (cb) => ipcRenderer.on('device-connected',    (_, udid) => cb(udid)),
