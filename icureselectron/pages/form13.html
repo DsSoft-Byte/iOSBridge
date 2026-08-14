@@ -1523,7 +1523,14 @@
 
           <!-- ── Restore / Flash ────────────────────────────────────── -->
           <div class="panel" id="panel-restore">
-            <p class="slabel" style="margin-top:0">IPSW Image</p>
+            <p class="slabel" style="margin-top:0">Automatic Download</p>
+            <div class="card" style="padding:0;overflow:hidden;margin-bottom:10px">
+              <div id="auto-ipsw-body" style="padding:15px 16px;font-size:.75rem;color:var(--text-2);line-height:1.55">
+                Connect a device in <b>normal mode</b> to auto-detect signed firmware.
+              </div>
+            </div>
+
+            <p class="slabel">IPSW Image</p>
             <div class="card" style="padding:0;overflow:hidden;margin-bottom:10px">
               <div onclick="pickIpsw()"
                 style="cursor:pointer;display:flex;align-items:center;gap:14px;padding:15px 16px;border-bottom:1px solid var(--border);transition:background var(--fast)"
@@ -2228,7 +2235,10 @@
     const DEV_MODE = false
 
     let currentUdid = ''
+    let currentProductType = ''
     let selectedIpsw = ''
+    let signedIpswList = []
+    let ipswDownloading = false
     let deviceConnected = false
     let isActivated = false
     let selectedServer = ''
@@ -2240,6 +2250,7 @@
       btn.classList.add('is-active')
       document.getElementById('panel-' + btn.dataset.panel).classList.add('is-active')
       if (btn.dataset.panel === 'apps' && currentUdid) loadApps()
+      if (btn.dataset.panel === 'restore') loadSignedIpsw()
     }
 
     // ── Toast ──────────────────────────────────────────────────────────────────
@@ -2385,21 +2396,29 @@
           kv[line.slice(0, i).trim()] = line.slice(i + 1).trim()
         })
       if (!kv.CPID) return null
+      // Complete CPID → SoC map covering every shipping iPhone / iPad / iPod touch.
       const CPID_CHIP = {
-        '0x8900': 'S5L8900', '0x8920': 'S5L8920', '0x8922': 'S5L8922',
-        '0x8930': 'A4', '0x8940': 'A5', '0x8942': 'A5', '0x8945': 'A5', '0x8947': 'A5',
-        '0x8950': 'A6', '0x8955': 'A6X',
-        '0x8960': 'A7', '0x7000': 'A8', '0x7001': 'A8X', '0x8000': 'A9', '0x8003': 'A9',
-        '0x8001': 'A9X', '0x8010': 'A10 Fusion', '0x8011': 'A10X Fusion', '0x8015': 'A11 Bionic',
-        '0x8020': 'A12 Bionic', '0x8030': 'A13 Bionic', '0x8101': 'A14 Bionic',
-        '0x8110': 'A15 Bionic', '0x8120': 'A16 Bionic', '0x8130': 'A17 Pro',
+        // Early S5L SoCs
+        '0x8720': 'S5L8720', '0x8900': 'S5L8900', '0x8920': 'S5L8920', '0x8922': 'S5L8922',
+        // A-series with home button
+        '0x8930': 'A4',  '0x8940': 'A5',  '0x8942': 'A5',  '0x8945': 'A5X', '0x8947': 'A5',
+        '0x8950': 'A6',  '0x8955': 'A6X', '0x8960': 'A7',
+        '0x7000': 'A8',  '0x7001': 'A8X', '0x8000': 'A9',  '0x8003': 'A9',  '0x8001': 'A9X',
+        '0x8010': 'A10 Fusion', '0x8011': 'A10X Fusion', '0x8015': 'A11 Bionic',
+        // Face ID era
+        '0x8020': 'A12 Bionic', '0x8027': 'A12X / A12Z Bionic',
+        '0x8030': 'A13 Bionic', '0x8101': 'A14 Bionic', '0x8103': 'M1',
+        '0x8110': 'A15 Bionic', '0x8112': 'M2', '0x8120': 'A16 Bionic', '0x8122': 'M3',
+        '0x8130': 'A17 Pro',    '0x8132': 'M4',
+        '0x8140': 'A18 / A18 Pro', '0x8142': 'M5',
+        '0x8150': 'A19 / A19 Pro',
       }
       const chip = CPID_CHIP[kv.CPID] || null
       const ibfl = parseInt(kv.IBFL, 16) || 0
       const mode = (ibfl & 0x04) ? 'Recovery' : 'DFU'
       const pwned = raw.toLowerCase().includes('pwnd') ? ' (Pwned)' : ''
       const serial = (kv.SRNM || '').replace(/[\[\]]/g, '').trim()
-      return { mode, chip, serial, pwned, cpid: kv.CPID, ecid: kv.ECID }
+      return { mode, chip, serial, pwned, cpid: kv.CPID, bdid: kv.BDID, ecid: kv.ECID }
     }
 
     const SILHOUETTES = {
@@ -2427,14 +2446,18 @@
     }
 
     function getCpidEra(cpid) {
+      // Best-effort silhouette per CPID (a chip shared by iPhone + iPad picks the
+      // phone shape; the real shape self-corrects once the identifier resolves).
       const CPID_ERA = {
-        '0x8900': 'vintage', '0x8920': 'vintage', '0x8922': 'vintage',
-        '0x8930': 'classic', '0x8940': 'classic', '0x8942': 'classic', '0x8945': 'classic', '0x8947': 'classic',
-        '0x8950': 'tall', '0x8955': 'tall',
-        '0x8960': 'tall', '0x7000': 'tall', '0x7001': 'tall', '0x8000': 'tall', '0x8003': 'tall', '0x8001': 'tall',
-        '0x8010': 'tall', '0x8011': 'tall', '0x8015': 'tall',
+        '0x8720': 'vintage', '0x8900': 'vintage', '0x8920': 'vintage', '0x8922': 'vintage',
+        '0x8930': 'classic', '0x8940': 'classic', '0x8942': 'classic', '0x8947': 'classic',
+        '0x8945': 'ipad', '0x8955': 'ipad',
+        '0x8950': 'tall', '0x8960': 'tall', '0x7000': 'tall', '0x8000': 'tall', '0x8003': 'tall',
+        '0x7001': 'ipad', '0x8001': 'ipad', '0x8011': 'ipad', '0x8027': 'ipad',
+        '0x8103': 'ipad', '0x8112': 'ipad', '0x8122': 'ipad', '0x8132': 'ipad', '0x8142': 'ipad',
+        '0x8010': 'tall', '0x8015': 'tall',
         '0x8020': 'notched', '0x8030': 'notched', '0x8101': 'notched', '0x8110': 'notched',
-        '0x8120': 'island', '0x8130': 'island',
+        '0x8120': 'island', '0x8130': 'island', '0x8140': 'island', '0x8150': 'island',
       }
       return CPID_ERA[cpid] || 'tall'
     }
@@ -2468,6 +2491,13 @@
       'iPad11,6': 'iPad 8th Gen', 'iPad11,3': 'iPad Air 4th Gen',
     }
 
+    // Live identifier→name map from the cached ipsw.me device table (fills gaps
+    // in MODEL_MAP and keeps newly released models named without an app update).
+    let deviceNameMap = {}
+    function modelName(pt) {
+      return MODEL_MAP[pt] || deviceNameMap[pt] || pt || '—'
+    }
+
     // ── Populate overview ──────────────────────────────────────────────────────
     function populateOverview(d, serial, imei, wifi, build, disk, batt) {
       document.getElementById('overview-empty').style.display = 'none'
@@ -2480,7 +2510,7 @@
       document.getElementById('topbar-heading').textContent = name
 
       const pt = d['ProductType'] || ''
-      document.getElementById('ov-model').textContent = MODEL_MAP[pt] || pt || '—'
+      document.getElementById('ov-model').textContent = modelName(pt)
       setDeviceSilhouette(getDeviceEra(pt))
 
       document.getElementById('ov-ios').textContent = d['ProductVersion'] || '—'
@@ -2530,7 +2560,8 @@
       document.getElementById('report-content').style.display = 'flex'
 
       const pt = d['ProductType'] || ''
-      const friendlyModel = MODEL_MAP[pt] ? `${MODEL_MAP[pt]} (${pt})` : pt || '—'
+      const nm = MODEL_MAP[pt] || deviceNameMap[pt]
+      const friendlyModel = nm ? `${nm} (${pt})` : pt || '—'
 
       document.getElementById('rt-device').innerHTML =
         buildRow('Name', d['DeviceName']) +
@@ -2615,22 +2646,26 @@
         app.getBatteryInfo(),
       ])
       const d    = parseInfo(infoRaw)
+      currentProductType = d['ProductType'] || ''
       const batt = parseBattery(battXml)
       const disk = parseDiskUsage(diskRaw)
       populateOverview(d, serial, imei, wifi, build, disk, batt)
       populateReport(d, serial, imei, wifi, bt, build, region, phone, devClass, modelNum, disk, batt)
       // Show Pair button only when we have a UDID but no serial (device not yet trusted)
       document.getElementById('pair-btn').style.display = currentUdid && !serial ? 'flex' : 'none'
+      // Refresh the auto-download card if the Flash tab is currently open
+      if (document.getElementById('panel-restore').classList.contains('is-active')) loadSignedIpsw()
     }
 
     // ── USB watch ──────────────────────────────────────────────────────────────
     async function startWatch() {
       await app.startUsbWatch()
 
-      // Recovery / DFU detection — poll every 20 s.
+      // Recovery / DFU detection — checked immediately at launch (so a device
+      // already in recovery when the app opens is picked up), then every 20 s.
       // Guard: skip only when a normal (non-recovery) device is connected.
       let lastRecoveryInfo = null
-      setInterval(async () => {
+      const pollRecovery = async () => {
         if (deviceConnected && !lastRecoveryInfo) return
         try {
           const raw  = await app.checkRecoveryDevice()
@@ -2649,14 +2684,32 @@
             setDeviceSilhouette(getCpidEra(info.cpid), 'recovery-device-art')
             setDeviceState(true, (info.chip || 'Legacy') + ' · ' + info.mode)
             toast(deviceLabel + ' detected in ' + modeLabel, 'warning', 4000)
+            // Resolve the product identifier from CPID/BDID so auto-download works in
+            // recovery/DFU — and use it to name/draw the device even when its chip
+            // isn't in the hardcoded maps (keeps new models from showing as "Legacy").
+            currentProductType = ''
+            app.identifyRecoveryDevice({ cpid: info.cpid, bdid: info.bdid }).then(id => {
+              if (id && lastRecoveryInfo === info) {
+                currentProductType = id
+                const name = modelName(id)
+                document.getElementById('recovery-mode-title').textContent = name + ' in ' + modeLabel
+                setDeviceSilhouette(getDeviceEra(id), 'recovery-device-art')
+                setDeviceState(true, name + ' · ' + info.mode)
+                if (document.getElementById('panel-restore').classList.contains('is-active')) loadSignedIpsw()
+              }
+            }).catch(() => {})
           } else if (!info && lastRecoveryInfo) {
             lastRecoveryInfo = null
+            currentProductType = ''
             setDeviceState(false, 'No device')
             document.getElementById('overview-recovery').style.display = 'none'
             document.getElementById('overview-empty').style.display = 'block'
           }
         } catch { }
-      }, 20000)
+      }
+      pollRecovery()                    // immediate check for a device already in recovery
+      setTimeout(pollRecovery, 4000)    // early retry in case the USB driver wasn't ready yet
+      setInterval(pollRecovery, 20000)  // then keep polling
 
       app.onDeviceConnected(async (udid) => {
         lastRecoveryInfo = null
@@ -2671,6 +2724,7 @@
       app.onDeviceDisconnected(() => {
         lastRecoveryInfo = null
         currentUdid = ''
+        currentProductType = ''
         setDeviceState(false, 'No device')
         document.getElementById('pair-btn').style.display = 'none'
         toast('iDevice disconnected', 'warning')
@@ -2757,6 +2811,82 @@
         useNewLib: document.getElementById('newlib-toggle').checked,
         erase: document.getElementById('erase-toggle').checked,
       })
+    }
+
+    // ── Automatic IPSW download (ipsw.me) ────────────────────────────────────────
+    function autoIpswMsg(html) {
+      return `<div style="font-size:.75rem;color:var(--text-2);line-height:1.55">${html}</div>`
+    }
+
+    async function loadSignedIpsw() {
+      if (ipswDownloading) return
+      const body = document.getElementById('auto-ipsw-body')
+      const id = currentProductType
+      if (!id) {
+        body.innerHTML = autoIpswMsg('Connect a device in <b>normal mode</b> to auto-detect signed firmware.')
+        return
+      }
+      body.innerHTML = autoIpswMsg(`Checking ipsw.me for signed firmware for <b>${escHtml(id)}</b>…`)
+      try {
+        const list = await app.checkSignedIpsw(id)
+        if (!list || !list.length) { showNoSigned(id); return }
+        signedIpswList = list
+        renderSignedList(id, list)
+      } catch { showNoSigned(id) }
+    }
+
+    function showNoSigned(id) {
+      document.getElementById('auto-ipsw-body').innerHTML =
+        autoIpswMsg(`Couldn't fetch a signed firmware automatically for <b>${escHtml(id)}</b>. Open ipsw.me to download a signed IPSW manually, then select the file below.`) +
+        `<button class="btn btn--sm" style="margin-top:10px" onclick="app.openExternal('https://ipsw.me/${encodeURIComponent(id)}')">Open ipsw.me →</button>`
+    }
+
+    function renderSignedList(id, list) {
+      const rows = list.map((fw, i) => `
+        <div style="display:flex;align-items:center;gap:12px;${i > 0 ? 'margin-top:10px;padding-top:10px;border-top:1px solid var(--border)' : ''}">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:.8125rem;font-weight:600;color:var(--text-1)">iOS ${escHtml(fw.version)}</div>
+            <div style="font-size:.6875rem;color:var(--text-3);margin-top:2px">Build ${escHtml(fw.buildid)} · ${fmtGB(fw.filesize)} · <span style="color:var(--green)">Signed</span></div>
+          </div>
+          <button class="btn btn--accent btn--sm" onclick="downloadSignedIpsw(${i})">Download</button>
+        </div>`).join('')
+      document.getElementById('auto-ipsw-body').innerHTML =
+        autoIpswMsg(`Signed firmware available for <b>${escHtml(id)}</b> — downloads to your Downloads folder and is selected automatically.`) +
+        `<div style="margin-top:12px">${rows}</div>`
+    }
+
+    async function downloadSignedIpsw(index) {
+      const fw = signedIpswList[index]
+      if (!fw || ipswDownloading) return
+      ipswDownloading = true
+      const body = document.getElementById('auto-ipsw-body')
+      body.innerHTML =
+        autoIpswMsg(`Downloading iOS <b>${escHtml(fw.version)}</b> (${fmtGB(fw.filesize)})…`) +
+        `<div style="margin-top:12px;height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden">
+           <div id="ipsw-dl-bar" style="height:100%;width:0%;background:var(--accent);transition:width .2s"></div>
+         </div>
+         <div id="ipsw-dl-label" style="margin-top:8px;font-size:.6875rem;color:var(--text-3)">Starting…</div>`
+      const bar = document.getElementById('ipsw-dl-bar')
+      const label = document.getElementById('ipsw-dl-label')
+      app.onIpswProgress(({ received, total, pct }) => {
+        bar.style.width = pct + '%'
+        label.textContent = total
+          ? `${fmtGB(received)} / ${fmtGB(total)} · ${pct}%`
+          : `${fmtGB(received)} downloaded`
+      })
+      try {
+        const res = await app.downloadIpsw({ url: fw.url, identifier: fw.identifier, version: fw.version, buildid: fw.buildid })
+        selectedIpsw = res.filePath
+        const el = document.getElementById('ipsw-path-display')
+        el.textContent = res.filePath; el.classList.add('has-file')
+        body.innerHTML = autoIpswMsg(`${res.reused ? 'Already downloaded' : 'Downloaded'} iOS <b>${escHtml(fw.version)}</b> — selected for flashing below.`)
+        toast(res.reused ? 'IPSW already on disk — selected' : 'IPSW downloaded and selected', 'success', 4000)
+      } catch (err) {
+        body.innerHTML =
+          autoIpswMsg(`Download failed: ${escHtml(err?.message || 'unknown error')}`) +
+          `<button class="btn btn--sm" style="margin-top:10px" onclick="loadSignedIpsw()">Try again</button>`
+        toast('IPSW download failed', 'error', 5000)
+      } finally { ipswDownloading = false }
     }
 
     // ── Recovery ───────────────────────────────────────────────────────────────
@@ -2973,6 +3103,7 @@
       if (!app.isWin) document.getElementById('newlib-row').style.display = 'none'
       document.getElementById(app.isWin ? 'pwndfu-unix' : 'pwndfu-win').style.display = 'none'
       if (DEV_MODE) document.getElementById('dev-banner').style.display = 'flex'
+      app.getDeviceNames().then(m => { if (m) deviceNameMap = m }).catch(() => {})
       startWatch()
       fetchUdid()
       loadMachineId()

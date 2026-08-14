@@ -1,6 +1,6 @@
 {
   "name": "iosbridge",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "iOSBridge — iDevice toolkit",
   "main": "main.js",
   "scripts": {

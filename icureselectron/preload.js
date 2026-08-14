@@ -43,6 +43,13 @@ contextBridge.exposeInMainWorld('app', {
   pairDevice:       ()                => ipcRenderer.invoke('pair-device'),
   iproxy:           (opts)            => ipcRenderer.invoke('iproxy', opts),
 
+  // IPSW auto-download (ipsw.me)
+  checkSignedIpsw: (identifier)       => ipcRenderer.invoke('check-signed-ipsw', identifier),
+  getDeviceNames:  ()                 => ipcRenderer.invoke('get-device-names'),
+  identifyRecoveryDevice: (opts)      => ipcRenderer.invoke('identify-recovery-device', opts),
+  downloadIpsw:    (opts)             => ipcRenderer.invoke('download-ipsw', opts),
+  onIpswProgress:  (cb) => { ipcRenderer.removeAllListeners('ipsw-download-progress'); ipcRenderer.on('ipsw-download-progress', (_, d) => cb(d)) },
+
   // File pickers
   pickIpsw:   ()       => ipcRenderer.invoke('pick-ipsw'),
   pickFolder: ()       => ipcRenderer.invoke('pick-folder'),

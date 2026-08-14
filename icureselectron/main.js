@@ -54,7 +54,12 @@ function createWindow(page, opts = {}) {
   return win
 }
 
-app.whenReady().then(() => { createWindow('form13') })
+app.whenReady().then(() => {
+  createWindow('form13')
+  // Warm the ipsw.me device table: load any disk cache, then refresh from network if reachable.
+  loadDeviceCacheFromDisk()
+  refreshDeviceCache().catch(() => {})
+})
 app.on('window-all-closed', () => { if (!MAC) app.quit() })
 
 // ── Window chrome ──────────────────────────────────────────────────────────
@@ -314,6 +319,121 @@ ipcMain.handle('flash-ipsw', async (e, { filePath, useNewLib, erase }) => {
     p.on('close', code => { send('done', code); resolve({ code }) })
     p.on('error', err  => { send('err', err.message); resolve({ code: -1 }) })
   })
+})
+
+// ── IPSW: check signed firmware via ipsw.me API ─────────────────────────────
+ipcMain.handle('check-signed-ipsw', async (_, identifier) => {
+  if (!identifier) return []
+  const https = require('https')
+  const raw = await new Promise((resolve, reject) => {
+    https.get(`https://api.ipsw.me/v4/device/${encodeURIComponent(identifier)}?type=ipsw`,
+      { headers: { 'User-Agent': 'iOSBridge', 'Accept': 'application/json' } }, res => {
+        if (res.statusCode !== 200) return reject(new Error(`HTTP ${res.statusCode}`))
+        let d = ''; res.on('data', c => { d += c }); res.on('end', () => resolve(d))
+      }).on('error', reject)
+  })
+  const json = JSON.parse(raw)
+  return (json.firmwares || [])
+    .filter(f => f.signed)
+    .map(f => ({ version: f.version, buildid: f.buildid, url: f.url, filesize: f.filesize, identifier: f.identifier }))
+})
+
+// ── IPSW: device table (ipsw.me) with persistent, self-refreshing cache ─────
+// Full /v4/devices list is cached to disk so recovery/DFU identifier lookup
+// works offline. Whenever the network is reachable we re-fetch and re-cache,
+// so newly launched devices are picked up automatically on the next online run.
+const IPSW_DEVICES_CACHE = path.join(app.getPath('userData'), 'ipsw-devices.json')
+let _ipswDeviceCache = null
+
+function loadDeviceCacheFromDisk() {
+  if (_ipswDeviceCache) return _ipswDeviceCache
+  try {
+    const arr = JSON.parse(fs.readFileSync(IPSW_DEVICES_CACHE, 'utf8'))
+    if (Array.isArray(arr) && arr.length) _ipswDeviceCache = arr
+  } catch {}
+  return _ipswDeviceCache
+}
+
+async function refreshDeviceCache() {
+  const https = require('https')
+  const raw = await new Promise((resolve, reject) => {
+    https.get('https://api.ipsw.me/v4/devices',
+      { headers: { 'User-Agent': 'iOSBridge', 'Accept': 'application/json' } }, res => {
+        if (res.statusCode !== 200) return reject(new Error(`HTTP ${res.statusCode}`))
+        let d = ''; res.on('data', c => { d += c }); res.on('end', () => resolve(d))
+      }).on('error', reject)
+  })
+  const arr = JSON.parse(raw)
+  if (Array.isArray(arr) && arr.length) {
+    _ipswDeviceCache = arr
+    try { fs.mkdirSync(path.dirname(IPSW_DEVICES_CACHE), { recursive: true }); fs.writeFileSync(IPSW_DEVICES_CACHE, raw) } catch {}
+  }
+  return _ipswDeviceCache
+}
+
+// Identifier → friendly name map (e.g. iPhone16,2 → "iPhone 15 Pro Max"),
+// used as a fallback for models not in the renderer's hardcoded table.
+ipcMain.handle('get-device-names', async () => {
+  let list = _ipswDeviceCache || loadDeviceCacheFromDisk()
+  if (!list) { try { list = await refreshDeviceCache() } catch {} }
+  const map = {}
+  if (list) for (const dev of list) if (dev.identifier && dev.name) map[dev.identifier] = dev.name
+  return map
+})
+
+ipcMain.handle('identify-recovery-device', async (_, { cpid, bdid }) => {
+  if (!cpid || bdid == null) return null
+  const cpidNum = parseInt(cpid, 16)
+  const bdidNum = parseInt(bdid, 16)
+  if (isNaN(cpidNum) || isNaN(bdidNum)) return null
+  // Use the warm cache (memory or disk); only hit the network if we have nothing.
+  // The startup refresh keeps the cache current, so this stays fast and offline-safe.
+  let list = _ipswDeviceCache || loadDeviceCacheFromDisk()
+  if (!list) { try { list = await refreshDeviceCache() } catch {} }
+  if (!list) return null
+  const match = list.find(dev => {
+    const boards = (dev.boards && dev.boards.length) ? dev.boards : [{ cpid: dev.cpid, bdid: dev.bdid }]
+    return boards.some(b => b.cpid === cpidNum && b.bdid === bdidNum)
+  })
+  return match ? match.identifier : null
+})
+
+// ── IPSW: download signed firmware (streams progress) ───────────────────────
+ipcMain.handle('download-ipsw', async (e, { url, identifier, version, buildid }) => {
+  const https = require('https')
+  const dir = app.getPath('downloads')
+  const fileName = `${identifier}_${version}_${buildid}.ipsw`.replace(/[^\w.\-]/g, '_')
+  const finalPath = path.join(dir, fileName)
+  if (fs.existsSync(finalPath) && fs.statSync(finalPath).size > 0) return { filePath: finalPath, reused: true }
+
+  const partPath = finalPath + '.part'
+  await new Promise((resolve, reject) => {
+    const get = (u, hops = 5) => {
+      https.get(u, { headers: { 'User-Agent': 'iOSBridge' } }, res => {
+        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+          res.resume()
+          return hops > 0 ? get(res.headers.location, hops - 1) : reject(new Error('Too many redirects'))
+        }
+        if (res.statusCode !== 200) return reject(new Error(`HTTP ${res.statusCode}`))
+        const total = parseInt(res.headers['content-length'] || '0', 10)
+        let received = 0
+        const file = fs.createWriteStream(partPath)
+        res.on('data', chunk => {
+          received += chunk.length
+          const win = BrowserWindow.fromWebContents(e.sender)
+          if (win && !win.isDestroyed())
+            win.webContents.send('ipsw-download-progress', { received, total, pct: total ? Math.round(received / total * 100) : 0 })
+        })
+        res.pipe(file)
+        file.on('finish', () => file.close(() => resolve()))
+        file.on('error', err => { try { fs.unlinkSync(partPath) } catch {} reject(err) })
+        res.on('error', reject)
+      }).on('error', reject)
+    }
+    get(url)
+  })
+  fs.renameSync(partPath, finalPath)
+  return { filePath: finalPath, reused: false }
 })
 
 // ── Backup ─────────────────────────────────────────────────────────────────

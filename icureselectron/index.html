@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOSBridge — iDevice Toolkit</title>
+  <meta name="description"
+    content="iOSBridge — the professional iDevice toolkit. Restore, activate, backup and repair iOS devices with ease.">
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --bg-1: #0a0a0c;
+      --bg-2: #111114;
+      --glass: rgba(18, 18, 22, .52);
+      --glass-hover: rgba(28, 28, 34, .62);
+      --border: rgba(255, 255, 255, .07);
+      --border-hi: rgba(255, 255, 255, .14);
+      --text-1: #f5f5f7;
+      --text-2: #88888e;
+      --text-3: #48484e;
+      --blue: #0a84ff;
+      --blue-dim: rgba(10, 132, 255, .18);
+      --blue-glow: rgba(10, 132, 255, .32);
+      --amber: #ff9a00;
+      --amber-dim: rgba(255, 154, 0, .15);
+      --amber-glow: rgba(255, 154, 0, .28);
+      --green: #30d158;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ── Utilities ── */
+    .grad-text {
+      background: linear-gradient(160deg, #fff 30%, #666 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .amber-text {
+      background: linear-gradient(135deg, #ffcc00, #ff7700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Navbar ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      transition: background .4s var(--ease), border-color .4s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.scrolled {
+      background: rgba(0, 0, 0, .75);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom-color: var(--border);
+    }
+
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .9375rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .nav__icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 16px var(--amber-glow);
+    }
+
+    .nav__icon img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: color .15s;
+    }
+
+    .nav__links a:hover {
+      color: var(--text-1);
+    }
+
+    .nav__cta {
+      padding: 8px 22px;
+      background: var(--text-1);
+      color: #000;
+      font-size: .875rem;
+      font-weight: 600;
+      border-radius: 999px;
+      transition: transform .15s var(--ease), box-shadow .15s;
+    }
+
+    .nav__cta:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(255, 255, 255, .15);
+    }
+
+    @media (max-width:700px) {
+      .nav__links {
+        display: none;
+      }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 2rem 80px;
+      position: relative;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 120px;
+      }
+
+      .hero__right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        order: -1;
+      }
+    }
+
+    /* Background canvas */
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-bg__orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+    }
+
+    .hero-bg__orb--blue {
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(10, 132, 255, .14) 0%, transparent 70%);
+      top: -10%;
+      left: 30%;
+    }
+
+    .hero-bg__orb--amber {
+      width: 500px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255, 120, 0, .12) 0%, transparent 70%);
+      top: 20%;
+      right: -5%;
+    }
+
+    .hero-bg__orb--blue2 {
+      width: 400px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(10, 132, 255, .07) 0%, transparent 70%);
+      bottom: 10%;
+      left: 10%;
+    }
+
+    .hero-bg__grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .022) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black, transparent);
+    }
+
+    /* Hero left */
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .35
+      }
+    }
+
+    .hero__h1 {
+      font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+      font-weight: 800;
+      letter-spacing: -.05em;
+      line-height: 1.04;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease) .2s forwards;
+    }
+
+    .hero__sub {
+      font-size: clamp(.9375rem, 1.3vw, 1.125rem);
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 480px;
+      margin-bottom: 2.25rem;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease) .3s forwards;
+    }
+
+    @media (max-width:900px) {
+      .hero__sub {
+        margin: 0 auto 2.25rem;
+      }
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease) .4s forwards;
+    }
+
+    @media (max-width:900px) {
+      .hero__actions {
+        justify-content: center;
+      }
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--text-1);
+      color: #000;
+      font-size: .9375rem;
+      font-weight: 700;
+      border-radius: 999px;
+      transition: transform .15s var(--ease), box-shadow .15s;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .3);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 30px rgba(255, 255, 255, .18), 0 8px 32px rgba(0, 0, 0, .4);
+    }
+
+    .btn-glass {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--glass);
+      color: var(--text-1);
+      font-size: .9375rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: 1px solid var(--border-hi);
+      transition: background .15s, transform .15s var(--ease);
+    }
+
+    .btn-glass:hover {
+      background: var(--glass-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Hero right — icon showcase */
+    .hero__right {
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) .5s forwards;
+      position: relative;
+    }
+
+    .hero__icon-wrap {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @media (max-width:900px) {
+      .hero__icon-wrap {
+        width: 220px;
+        height: 220px;
+      }
+    }
+
+    .hero__icon-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -30px;
+      background: radial-gradient(ellipse, var(--amber-glow) 0%, transparent 65%);
+      border-radius: 50%;
+      filter: blur(30px);
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+
+    .hero__icon-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(ellipse, var(--blue-glow) 0%, transparent 65%);
+      border-radius: 50%;
+      filter: blur(25px);
+      animation: glowPulse 4s ease-in-out infinite reverse;
+    }
+
+    .hero__icon-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 22.5%;
+      display: block;
+      box-shadow:
+        0 0 0 1.5px rgba(255, 255, 255, .10),
+        0 0 28px rgba(255, 255, 255, .07),
+        0 40px 80px rgba(0, 0, 0, .7),
+        0 0 60px rgba(255, 120, 0, .15);
+    }
+
+    /* Platform badges below icon */
+    .hero__platforms {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease) .7s forwards;
+    }
+
+    .hero__platform-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 500;
+      color: var(--text-2);
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      33% {
+        transform: translateY(-12px) rotate(.5deg);
+      }
+
+      66% {
+        transform: translateY(-6px) rotate(-.3deg);
+      }
+    }
+
+    @keyframes glowPulse {
+
+      0%,
+      100% {
+        opacity: .6;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+    }
+
+    /* ── App Preview section ── */
+    .preview-section {
+      padding: 7rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      margin-bottom: .75rem;
+    }
+
+    .section-header p {
+      font-size: 1.0625rem;
+      color: var(--text-2);
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* App window shell */
+    .app-window {
+      background: rgba(12, 12, 18, .92);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 .5px rgba(255, 255, 255, .05),
+        0 50px 120px rgba(0, 0, 0, .85),
+        inset 0 1px 0 rgba(255, 255, 255, .08);
+      position: relative;
+    }
+
+    .app-window::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 100px;
+      background: radial-gradient(ellipse, var(--amber-dim) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Titlebar — brand left | title center | win-buttons right */
+    .aw-titlebar {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      background: rgba(255, 255, 255, .02);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .aw-brand {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--text-3);
+      letter-spacing: .02em;
+    }
+
+    .aw-title-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .75rem;
+      font-weight: 500;
+      color: var(--text-3);
+    }
+
+    .aw-win-btns {
+      display: flex;
+      gap: 7px;
+    }
+
+    .aw-tb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .aw-tb--min {
+      background: #FFBD2E;
+    }
+
+    .aw-tb--max {
+      background: #27C840;
+    }
+
+    .aw-tb--close {
+      background: #FF5F57;
+    }
+
+    /* Body */
+    .aw-body {
+      display: flex;
+      height: 490px;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .aw-sidebar {
+      width: 200px;
+      flex-shrink: 0;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 12px 10px;
+      gap: 2px;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    .aw-sidebar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .aw-slabel {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding: 13px 8px 4px;
+    }
+
+    .aw-slabel:first-child {
+      padding-top: 2px;
+    }
+
+    .aw-navitem {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: .8125rem;
+      font-weight: 500;
+      color: var(--text-2);
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .aw-navitem.active {
+      color: var(--text-1);
+      background: rgba(255, 255, 255, .07);
+      border-color: rgba(255, 255, 255, .17);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .11);
+    }
+
+    .aw-navitem svg {
+      flex-shrink: 0;
+      opacity: .6;
+    }
+
+    .aw-navitem.active svg {
+      opacity: 1;
+    }
+
+    /* Main column */
+    .aw-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .aw-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 22px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .aw-topbar-heading {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      letter-spacing: -.025em;
+    }
+
+    .aw-badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(52, 199, 89, .07);
+      border: 1px solid rgba(52, 199, 89, .28);
+      font-size: .75rem;
+      font-weight: 500;
+      color: var(--text-1);
+    }
+
+    .aw-badge-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 7px var(--green);
+      animation: blink 2s ease infinite;
+    }
+
+    /* Scroll area */
+    .aw-panels {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+      padding: 16px 20px;
+    }
+
+    .aw-panels::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .aw-panels::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, .15);
+      border-radius: 3px;
+    }
+
+    /* Overview card */
+    .aw-overview {
+      background: rgba(28, 28, 36, .72);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .11), 0 4px 20px rgba(0, 0, 0, .3);
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    /* 3-col grid: left (flex) | battery (130px) | storage (130px) */
+    .aw-ov-grid {
+      display: grid;
+      grid-template-columns: 1fr 130px 130px;
+    }
+
+    /* Left col */
+    .aw-ov-left {
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .aw-ov-device-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 16px 10px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .aw-device-art {
+      height: 90px;
+      color: var(--blue);
+    }
+
+    .aw-dname {
+      font-size: .8125rem;
+      font-weight: 700;
+      color: var(--text-1);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .aw-dmodel {
+      font-size: .6875rem;
+      color: var(--text-3);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .aw-stat-row {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      align-items: center;
+      padding: 5px 10px;
+      border-bottom: 1px solid var(--border);
+      gap: 4px;
+    }
+
+    .aw-stat-row:last-child {
+      border-bottom: none;
+    }
+
+    .aw-stat-k {
+      font-size: .575rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      white-space: nowrap;
+    }
+
+    .aw-stat-v {
+      font-size: .6875rem;
+      font-weight: 500;
+      color: var(--text-1);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .aw-stat-v.mono {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: .6rem;
+      color: var(--text-2);
+    }
+
+    .aw-stat-v.ok {
+      color: var(--green);
+    }
+
+    /* Battery / Storage cols */
+    .aw-ov-batt {
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 8px;
+      gap: 8px;
+    }
+
+    .aw-ov-storage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 8px;
+      gap: 8px;
+    }
+
+    .aw-col-label {
+      font-size: .575rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--text-3);
+    }
+
+    .aw-arc-wrap {
+      position: relative;
+      width: 76px;
+      height: 76px;
+      flex-shrink: 0;
+    }
+
+    .aw-arc-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+    }
+
+    .aw-arc-pct {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--text-1);
+      line-height: 1;
+    }
+
+    .aw-arc-free {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--text-1);
+      line-height: 1;
+    }
+
+    .aw-arc-free-lbl {
+      font-size: .5rem;
+      font-weight: 500;
+      color: var(--text-3);
+      margin-top: 1px;
+    }
+
+    .aw-col-stats {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .aw-col-stats div {
+      font-size: .625rem;
+      font-weight: 500;
+      color: var(--text-3);
+    }
+
+    .aw-col-stats div:first-child {
+      color: var(--text-2);
+    }
+
+    /* Actions bar */
+    .aw-ov-actions {
+      padding: 10px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, .015);
+    }
+
+    /* Generic small card */
+    .aw-card {
+      background: rgba(28, 28, 36, .72);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 8px;
+    }
+
+    /* Section label inside panel */
+    .aw-panel-slabel {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin: 16px 0 6px;
+    }
+
+    /* Mono row */
+    .aw-mono-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .aw-mono-val {
+      flex: 1;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: .6875rem;
+      color: var(--text-2);
+      padding: 7px 10px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Buttons */
+    .aw-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-size: .8125rem;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, .17);
+      background: rgba(255, 255, 255, .06);
+      color: var(--text-1);
+      white-space: nowrap;
+    }
+
+    .aw-btn--sm {
+      padding: 5px 11px;
+      font-size: .75rem;
+    }
+
+    .aw-btn--accent {
+      background: var(--blue);
+      border-color: transparent;
+      box-shadow: 0 0 16px var(--blue-glow);
+    }
+
+    .aw-btn--warning {
+      border-color: rgba(255, 159, 10, .38);
+      color: #FF9F0A;
+      background: rgba(255, 255, 255, .03);
+    }
+
+    /* ── Stats ── */
+    .stats-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 2rem;
+    }
+
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 2.5rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat__val {
+      display: block;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      background: linear-gradient(160deg, #fff 30%, #555);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+
+    .stat__key {
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    /* ── Features ── */
+    .features-section {
+      padding: 7rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: 1rem;
+      margin-top: 3.5rem;
+    }
+
+    .feat-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: background .3s var(--ease), border-color .3s, transform .3s var(--ease);
+    }
+
+    .feat-card:hover {
+      background: var(--glass-hover);
+      border-color: var(--border-hi);
+      transform: translateY(-4px);
+    }
+
+    .feat-card--span {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 36px 40px;
+    }
+
+    @media (max-width:700px) {
+      .feat-card--span {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+    }
+
+    .feat-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--blue);
+    }
+
+    .feat-card--span .feat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      margin-bottom: 1.25rem;
+    }
+
+    .feat-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: .5rem;
+    }
+
+    .feat-card--span .feat-title {
+      font-size: 1.5rem;
+      letter-spacing: -.03em;
+      margin-bottom: .75rem;
+    }
+
+    .feat-desc {
+      font-size: .9375rem;
+      color: var(--text-2);
+      line-height: 1.58;
+    }
+
+    .feat-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 1.25rem;
+    }
+
+    .feat-tag {
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 600;
+      background: var(--blue-dim);
+      border: 1px solid rgba(10, 132, 255, .25);
+      color: var(--blue);
+    }
+
+    /* Animated progress bars */
+    .feat-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .feat-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .feat-bar__fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), rgba(10, 132, 255, .4));
+      box-shadow: 0 0 8px var(--blue-glow);
+      animation: barPulse 3s ease infinite;
+    }
+
+    .feat-bar:nth-child(1) .feat-bar__fill {
+      width: 85%;
+    }
+
+    .feat-bar:nth-child(2) .feat-bar__fill {
+      width: 62%;
+      animation-delay: .3s;
+    }
+
+    .feat-bar:nth-child(3) .feat-bar__fill {
+      width: 91%;
+      animation-delay: .6s;
+    }
+
+    .feat-bar:nth-child(4) .feat-bar__fill {
+      width: 48%;
+      animation-delay: .9s;
+    }
+
+    @keyframes barPulse {
+
+      0%,
+      100% {
+        opacity: .5
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    /* ── Download ── */
+    .dl-section {
+      padding: 0 2rem 8rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .dl-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 3.5rem;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 40px 100px rgba(0, 0, 0, .6);
+    }
+
+    .dl-panel::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(10, 132, 255, .1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .dl-panel::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: 10%;
+      width: 300px;
+      height: 200px;
+      background: radial-gradient(ellipse, var(--amber-dim) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .dl-panel__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .dl-panel h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      margin-bottom: .75rem;
+      text-align: center;
+    }
+
+    .dl-panel>.dl-panel__content>p {
+      text-align: center;
+      color: var(--text-2);
+      font-size: 1.0625rem;
+      max-width: 440px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+
+    .dl-platforms {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (max-width:760px) {
+      .dl-platforms {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dl-group__head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+
+    .dl-group__head svg {
+      color: var(--text-2);
+    }
+
+    .dl-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .dl-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: background .15s, border-color .15s, transform .15s var(--ease);
+      cursor: pointer;
+    }
+
+    .dl-btn:hover {
+      background: rgba(255, 255, 255, .09);
+      border-color: var(--border-hi);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+    }
+
+    .dl-btn--accent {
+      background: var(--blue-dim);
+      border-color: rgba(10, 132, 255, .3);
+      box-shadow: 0 0 20px rgba(10, 132, 255, .08);
+    }
+
+    .dl-btn--accent:hover {
+      background: rgba(10, 132, 255, .22);
+      border-color: rgba(10, 132, 255, .5);
+      box-shadow: 0 0 28px rgba(10, 132, 255, .18), 0 8px 24px rgba(0, 0, 0, .35);
+    }
+
+    .dl-btn__ico {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dl-btn__ico svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .dl-btn__name {
+      font-size: .9375rem;
+      font-weight: 600;
+      color: var(--text-1);
+      display: block;
+      letter-spacing: -.01em;
+    }
+
+    .dl-btn__sub {
+      font-size: .75rem;
+      color: var(--text-3);
+      display: block;
+      margin-top: 1px;
+    }
+
+    .dl-activate {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 760px) {
+
+      /* Hide the app window mockup — too dense to render at mobile width */
+      .preview-section {
+        display: none;
+      }
+
+      /* Navbar */
+      .nav {
+        padding: 0 1.25rem;
+      }
+
+      .nav__cta {
+        padding: 7px 18px;
+        font-size: .8125rem;
+      }
+
+      /* Hero — full viewport height so stats start below the fold */
+      .hero {
+        min-height: 100svh;
+        padding: 80px 1.5rem 48px;
+        gap: 0.5rem;
+      }
+
+      .hero__left {
+        margin-top: -0.75rem;
+      }
+
+      .hero__icon-wrap {
+        width: 160px;
+        height: 160px;
+      }
+
+      /* Platform badges: scaled down, icons kept */
+      .hero__platforms {
+        gap: 5px;
+        margin-top: 1rem;
+      }
+
+      .hero__platform-badge {
+        padding: 3px 8px;
+        font-size: .625rem;
+        gap: 4px;
+      }
+
+      .hero__platform-badge svg {
+        width: 10px;
+        height: 10px;
+        flex-shrink: 0;
+      }
+
+      .btn-white,
+      .btn-glass {
+        padding: 13px 22px;
+        font-size: .875rem;
+      }
+
+      /* Stats */
+      .stats-strip {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .stats-inner {
+        gap: 1.5rem 2rem;
+      }
+
+      .stat__key {
+        font-size: .75rem;
+      }
+
+      /* Features */
+      .features-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feat-card {
+        padding: 22px;
+      }
+
+      .feat-card--span {
+        padding: 22px;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.75rem;
+      }
+
+      .section-header p {
+        font-size: .9375rem;
+      }
+
+      /* Download */
+      .dl-section {
+        padding: 0 1.25rem 4.5rem;
+      }
+
+      .dl-panel {
+        padding: 2.25rem 1.5rem;
+        border-radius: 20px;
+      }
+
+      .dl-panel h2 {
+        font-size: 1.75rem;
+      }
+
+      .dl-panel>.dl-panel__content>p {
+        font-size: .9375rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 1.5rem;
+      }
+
+      .footer__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .75rem;
+      }
+
+      .footer__links {
+        gap: 1rem;
+      }
+
+      .footer__copy {
+        font-size: .75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-white,
+      .btn-glass {
+        justify-content: center;
+      }
+
+      .hero__h1 {
+        letter-spacing: -.04em;
+      }
+
+      .dl-activate {
+        margin-top: 1.75rem;
+      }
+
+      .dl-activate .btn-glass {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ── Reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-d1 {
+      transition-delay: .05s;
+    }
+
+    .reveal-d2 {
+      transition-delay: .10s;
+    }
+
+    .reveal-d3 {
+      transition-delay: .15s;
+    }
+
+    .reveal-d4 {
+      transition-delay: .20s;
+    }
+
+    .reveal-d5 {
+      transition-delay: .25s;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .footer__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer__brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .875rem;
+      font-weight: 600;
+    }
+
+    .footer__brand img {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+    }
+
+    .footer__copy {
+      font-size: .8125rem;
+      color: var(--text-3);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer__links a {
+      font-size: .875rem;
+      color: var(--text-3);
+      transition: color .15s;
+    }
+
+    .footer__links a:hover {
+      color: var(--text-1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Background canvas ── -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg__orb hero-bg__orb--blue"></div>
+    <div class="hero-bg__orb hero-bg__orb--amber"></div>
+    <div class="hero-bg__orb hero-bg__orb--blue2"></div>
+    <div class="hero-bg__grid"></div>
+  </div>
+
+  <!-- ── Navbar ── -->
+  <header class="nav" id="nav">
+    <a href="/" class="nav__brand">
+      <span class="nav__icon"><img src="assets/icon.png" alt="iOSBridge"></span>
+      iOSBridge
+    </a>
+    <nav>
+      <ul class="nav__links">
+        <li><a href="#preview">App</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="https://dssoft.ch" target="_blank">DsSoft</a></li>
+      </ul>
+    </nav>
+    <a href="#download" class="nav__cta">Download</a>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+
+      <!-- Left: text -->
+      <div class="hero__left">
+        <h1 class="hero__h1">
+          <span class="grad-text">Every iOS tool.<br>One interface.</span>
+        </h1>
+
+        <p class="hero__sub">
+          Restore, activate, backup and repair iOS devices without iTunes.
+          Built on libimobiledevice. Works on every platform.
+          Designed by DsSoft.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#download" class="btn-white">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download iOSBridge
+          </a>
+          <a href="https://activation.iosbridge.com" class="btn-glass">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            Get Activation
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: icon -->
+      <div class="hero__right">
+        <div class="hero__icon-wrap">
+          <img src="assets/icon.png" alt="iOSBridge icon" class="hero__icon-img">
+        </div>
+        <div class="hero__platforms">
+          <span class="hero__platform-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            macOS
+          </span>
+          <span class="hero__platform-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 5h8v8H3V5m0 10h8v6H3v-6m10-2h8v8h-8v-8m0-8h8v6h-8V5z" />
+            </svg>
+            Windows
+          </span>
+          <span class="hero__platform-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2m0 2c4.41 0 8 3.59 8 8a7.93 7.93 0 0 1-2.24 5.53C17.07 16.57 15 16 12 16s-5.07.57-5.76 1.53A7.93 7.93 0 0 1 4 12c0-4.41 3.59-8 8-8m0 1c-1.86 0-3.41 1.28-3.86 3H8.5c.38-.87 1.23-1.5 2.25-1.5A2.5 2.5 0 0 1 13.25 9H15c-.45-1.72-2-3-3.86-3h.86M9 9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m6 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1" />
+            </svg>
+            Linux
+          </span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── App Preview ── -->
+    <section class="preview-section" id="preview">
+      <div class="section-header reveal">
+        <h2 class="grad-text">Built to look as good as it works</h2>
+        <p>A clean, unified interface for every iDevice operation — no terminal required.</p>
+      </div>
+
+      <div class="app-window reveal reveal-d1">
+
+        <!-- Titlebar: brand left | title center | win-buttons right -->
+        <div class="aw-titlebar">
+          <span class="aw-brand">iOSBridge</span>
+          <span class="aw-title-center">iDevice Toolkit</span>
+          <div class="aw-win-btns">
+            <span class="aw-tb aw-tb--min"></span>
+            <span class="aw-tb aw-tb--max"></span>
+            <span class="aw-tb aw-tb--close"></span>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="aw-body">
+
+          <!-- Sidebar: 11 items matching the real app -->
+          <nav class="aw-sidebar">
+            <span class="aw-slabel">Device</span>
+            <div class="aw-navitem active">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" />
+                <circle cx="12" cy="17" r=".5" fill="currentColor" />
+              </svg>
+              Overview
+            </div>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              Device Report
+            </div>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+              Restore / Flash
+            </div>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 4 1 10 7 10" />
+                <path d="M3.51 15a9 9 0 1 0 .49-4.5" />
+              </svg>
+              Recovery / DFU
+            </div>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="15" r="4" />
+                <line x1="18" y1="3" x2="11" y2="10" />
+                <line x1="21" y1="6" x2="15" y2="6" />
+                <line x1="21" y1="3" x2="21" y2="9" />
+              </svg>
+              Activation
+            </div>
+            <span class="aw-slabel">Tools</span>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+              </svg>
+              Backup
+            </div>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+              Diagnostics
+            </div>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" />
+                <rect x="2" y="14" width="20" height="8" rx="2" />
+                <line x1="6" y1="6" x2="6.01" y2="6" />
+                <line x1="6" y1="18" x2="6.01" y2="18" />
+              </svg>
+              Network / SSH
+            </div>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              App Activation
+            </div>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Connections
+            </div>
+            <div class="aw-navitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                <polyline points="17 6 23 6 23 12" />
+              </svg>
+              Update
+            </div>
+          </nav>
+
+          <!-- Main column -->
+          <div class="aw-main">
+
+            <!-- Topbar -->
+            <div class="aw-topbar">
+              <span class="aw-topbar-heading">iDevice Toolkit</span>
+              <div class="aw-badge">
+                <span class="aw-badge-dot"></span>
+                iPhone 15 Pro — Connected
+              </div>
+            </div>
+
+            <!-- Scrollable panel area -->
+            <div class="aw-panels">
+
+              <!-- Overview card: 3-col grid -->
+              <div class="aw-overview">
+                <div class="aw-ov-grid">
+
+                  <!-- Col 1: device silhouette + stat rows -->
+                  <div class="aw-ov-left">
+                    <div class="aw-ov-device-top">
+                      <svg class="aw-device-art" viewBox="0 0 62 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1.5" y="1.5" width="59" height="121" rx="10" stroke="currentColor"
+                          stroke-width="1.5" />
+                        <rect x="20" y="7" width="22" height="8" rx="4" fill="currentColor" opacity=".55" />
+                        <rect x="2" y="2" width="58" height="120" rx="9" fill="currentColor" opacity=".055" />
+                      </svg>
+                      <div class="aw-dname">iPhone 15 Pro</div>
+                      <div class="aw-dmodel">iPhone16,1 · A17 Pro</div>
+                    </div>
+                    <div class="aw-stat-row"><span class="aw-stat-k">iOS</span><span class="aw-stat-v">17.5.1</span>
+                    </div>
+                    <div class="aw-stat-row"><span class="aw-stat-k">Build</span><span
+                        class="aw-stat-v mono">21F90</span></div>
+                    <div class="aw-stat-row"><span class="aw-stat-k">Serial</span><span
+                        class="aw-stat-v mono">C8QK3XYZF1GH</span></div>
+                    <div class="aw-stat-row"><span class="aw-stat-k">IMEI</span><span
+                        class="aw-stat-v mono">351234567890123</span></div>
+                    <div class="aw-stat-row"><span class="aw-stat-k">Wi-Fi</span><span
+                        class="aw-stat-v mono">A8:B9:C4:D2:E1:F0</span></div>
+                    <div class="aw-stat-row"><span class="aw-stat-k">Status</span><span
+                        class="aw-stat-v ok">Activated</span></div>
+                    <div class="aw-stat-row" style="border-bottom:none"><span class="aw-stat-k">CPU</span><span
+                        class="aw-stat-v mono">ARM64e</span></div>
+                  </div>
+
+                  <!-- Col 2: Battery arc -->
+                  <div class="aw-ov-batt">
+                    <div class="aw-col-label">Battery</div>
+                    <div class="aw-arc-wrap">
+                      <svg viewBox="0 0 100 100" width="76" height="76" style="transform:rotate(-90deg)">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="7" />
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#34C759" stroke-width="7"
+                          stroke-dasharray="251.3" stroke-dashoffset="32.7" stroke-linecap="round" />
+                      </svg>
+                      <div class="aw-arc-center">
+                        <span class="aw-arc-pct">87%</span>
+                      </div>
+                    </div>
+                    <div class="aw-col-stats">
+                      <div>312 cycles</div>
+                      <div>Health: 94%</div>
+                    </div>
+                  </div>
+
+                  <!-- Col 3: Storage arc -->
+                  <div class="aw-ov-storage">
+                    <div class="aw-col-label">Storage</div>
+                    <div class="aw-arc-wrap">
+                      <svg viewBox="0 0 100 100" width="76" height="76" style="transform:rotate(-90deg)">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="7" />
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#0A84FF" stroke-width="7"
+                          stroke-dasharray="251.3" stroke-dashoffset="62.8" stroke-linecap="round" />
+                      </svg>
+                      <div class="aw-arc-center">
+                        <span class="aw-arc-free">64 GB</span>
+                        <span class="aw-arc-free-lbl">free</span>
+                      </div>
+                    </div>
+                    <div class="aw-col-stats">
+                      <div>256 GB total</div>
+                      <div>192 GB used</div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Action buttons bar -->
+                <div class="aw-ov-actions">
+                  <span class="aw-btn aw-btn--sm">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="1 4 1 10 7 10" />
+                      <path d="M3.51 15a9 9 0 1 0 .49-4.5" />
+                    </svg>
+                    Restart
+                  </span>
+                  <span class="aw-btn aw-btn--sm aw-btn--accent">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <ellipse cx="12" cy="5" rx="9" ry="3" />
+                      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                    </svg>
+                    Backup
+                  </span>
+                  <span class="aw-btn aw-btn--sm aw-btn--warning">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="1 4 1 10 7 10" />
+                      <path d="M3.51 15a9 9 0 1 0 .49-4.5" />
+                    </svg>
+                    Recovery
+                  </span>
+                  <span class="aw-btn aw-btn--sm">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" />
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                    Copy UDID
+                  </span>
+                </div>
+              </div>
+
+              <!-- UDID card -->
+              <p class="aw-panel-slabel">UDID</p>
+              <div class="aw-card">
+                <div class="aw-mono-row">
+                  <div class="aw-mono-val">00008140-001A4C2E3A28001E</div>
+                  <span class="aw-btn aw-btn--sm">Refresh</span>
+                  <span class="aw-btn aw-btn--sm">Copy</span>
+                </div>
+              </div>
+
+            </div><!-- aw-panels -->
+
+          </div><!-- aw-main -->
+
+        </div><!-- aw-body -->
+
+      </div><!-- app-window -->
+
+    </section>
+
+    <!-- ── Stats ── -->
+    <div class="divider"></div>
+    <section class="stats-strip">
+      <div class="stats-inner">
+        <div class="stat reveal">
+          <span class="stat__val">iOS 3–17</span>
+          <span class="stat__key">Supported Range</span>
+        </div>
+        <div class="stat reveal reveal-d1">
+          <span class="stat__val">3</span>
+          <span class="stat__key">Platforms</span>
+        </div>
+        <div class="stat reveal reveal-d2">
+          <span class="stat__val">A12+</span>
+          <span class="stat__key">Activation Support</span>
+        </div>
+        <div class="stat reveal reveal-d3">
+          <span class="stat__val">0</span>
+          <span class="stat__key">iTunes Required</span>
+        </div>
+      </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- ── Features ── -->
+    <section class="features-section" id="features">
+      <div class="section-header reveal">
+        <h2 class="grad-text">Everything you need</h2>
+        <p>Professional repair tools that used to need five different apps — unified in one glass interface.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <!-- Big card -->
+        <div class="feat-card feat-card--span reveal">
+          <div>
+            <div class="feat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </div>
+            <h3 class="feat-title grad-text">Restore &amp; Flash IPSW</h3>
+            <p class="feat-desc">Full erase or update restores via idevicerestore on all three platforms.</p>
+            <div class="feat-tags">
+              <span class="feat-tag">Multi-platform</span>
+              <span class="feat-tag">32 &amp; 64-bit</span>
+              <span class="feat-tag">Verbose output</span>
+            </div>
+          </div>
+          <div class="feat-bars">
+            <div class="feat-bar">
+              <div class="feat-bar__fill"></div>
+            </div>
+            <div class="feat-bar">
+              <div class="feat-bar__fill"></div>
+            </div>
+            <div class="feat-bar">
+              <div class="feat-bar__fill"></div>
+            </div>
+            <div class="feat-bar">
+              <div class="feat-bar__fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feat-card reveal reveal-d1">
+          <div class="feat-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+          <h3 class="feat-title">Device Activation</h3>
+          <p class="feat-desc">Three dedicated servers — iPad 2 &amp; 4S, checkm8 devices, and A12+. One click, very
+            fair prices.</p>
+        </div>
+
+        <div class="feat-card reveal reveal-d2">
+          <div class="feat-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10" />
+              <path d="M3.51 15a9 9 0 1 0 .49-3.51" />
+            </svg>
+          </div>
+          <h3 class="feat-title">Recovery Control</h3>
+          <p class="feat-desc">Enter/exit recovery, trigger Pwned DFU via gaster/limera1n on Windows or ipwndfu on macOS
+            and Linux.</p>
+        </div>
+
+        <div class="feat-card reveal reveal-d3">
+          <div class="feat-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+          </div>
+          <h3 class="feat-title">Backup &amp; Restore</h3>
+          <p class="feat-desc">Full device backups regardless of iOS version or platform.</p>
+        </div>
+
+        <div class="feat-card reveal reveal-d4">
+          <div class="feat-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18" />
+            </svg>
+          </div>
+          <h3 class="feat-title">SSH over USB</h3>
+          <p class="feat-desc">iProxy TCP tunnelling — forward any port to the device. Default 2222→22 for jailbroken
+            device SSH.</p>
+        </div>
+
+        <div class="feat-card reveal reveal-d5">
+          <div class="feat-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+          </div>
+          <h3 class="feat-title">Live Device Detection</h3>
+          <p class="feat-desc">USB hot-plug detection with live silhouette so you always know which device is connected.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Download ── -->
+    <section class="dl-section" id="download">
+      <div class="dl-panel reveal">
+        <div class="dl-panel__content">
+          <h2 class="grad-text">Pick your platform</h2>
+          <p>Download iOSBridge, run the dependencies script once (MacOS and Linux), and start repairing devices in
+            minutes.</p>
+
+          <div class="dl-platforms">
+
+            <!-- macOS -->
+            <div class="dl-group reveal reveal-d1">
+              <div class="dl-group__head">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                </svg>
+                macOS
+              </div>
+              <div class="dl-btns">
+                <a href="https://www.iosbridge.com/iCuresMac.zip" class="dl-btn dl-btn--accent">
+                  <span class="dl-btn__ico">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
+                    </svg>
+                  </span>
+                  <span>
+                    <span class="dl-btn__name">Apple Silicon</span>
+                    <span class="dl-btn__sub">macOS · ARM · .dmg</span>
+                  </span>
+                </a>
+                <a href="https://www.iosbridge.com/iCuresMac.zip" class="dl-btn">
+                  <span class="dl-btn__ico">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" />
+                      <line x1="8" y1="21" x2="16" y2="21" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                  </span>
+                  <span>
+                    <span class="dl-btn__name">Intel Mac</span>
+                    <span class="dl-btn__sub">macOS · x64 · .dmg</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Windows -->
+            <div class="dl-group reveal reveal-d2">
+              <div class="dl-group__head">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 5h8v8H3V5m0 10h8v6H3v-6m10-2h8v8h-8v-8m0-8h8v6h-8V5z" />
+                </svg>
+                Windows
+              </div>
+              <div class="dl-btns">
+                <a href="https://www.iosbridge.com/iCures.zip" class="dl-btn dl-btn--accent">
+                  <span class="dl-btn__ico">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                  </span>
+                  <span>
+                    <span class="dl-btn__name">Windows</span>
+                    <span class="dl-btn__sub">.exe installer · x64</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Linux -->
+            <div class="dl-group reveal reveal-d3">
+              <div class="dl-group__head">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm-2 14.5v-9l7 4.5-7 4.5z" />
+                </svg>
+                Linux
+              </div>
+              <div class="dl-btns">
+                <a href="https://www.iosbridge.com/iCuresLin.zip" class="dl-btn dl-btn--accent">
+                  <span class="dl-btn__ico">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    </svg>
+                  </span>
+                  <span>
+                    <span class="dl-btn__name">AppImage</span>
+                    <span class="dl-btn__sub">Universal · x64</span>
+                  </span>
+                </a>
+                <a href="https://www.iosbridge.com/iCuresLin.zip" class="dl-btn">
+                  <span class="dl-btn__ico">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                      <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                  </span>
+                  <span>
+                    <span class="dl-btn__name">.deb Package</span>
+                    <span class="dl-btn__sub">Debian · Ubuntu</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="dl-activate">
+            <a href="https://activation.iosbridge.com" class="btn-glass">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              Get Activation Code
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="assets/icon.png" alt="iOSBridge">
+        iOSBridge
+        <span class="footer__copy">by DsSoft</span>
+      </div>
+      <p class="footer__copy">© 2025 iOSBridge / DsSoft. All rights reserved.</p>
+      <ul class="footer__links">
+        <li><a href="https://dssoft.ch" target="_blank">DsSoft</a></li>
+        <li><a href="https://activation.iosbridge.com">Activation</a></li>
+        <li><a href="https://t.me/the_hackintosh" target="_blank">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const nav = document.getElementById('nav')
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive: true })
+
+    // Scroll reveals
+    const obs = new IntersectionObserver(
+      es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    )
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
+  </script>
+
+</body>
+
+</html>
