@@ -2,8 +2,6 @@
   "name": "iosbridge",
   "version": "2.1.0",
   "description": "iOSBridge — iDevice toolkit",
-  "homepage": "https://www.iosbridge.com",
-  "author": "DsSoft",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
