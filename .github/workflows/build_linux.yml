@@ -30,6 +30,10 @@ jobs:
           cache-dependency-path: icureselectron/package-lock.json
 
       # Prerequisites from the script header, plus:
+      #   autoconf/libtool-bin — libtatsu & friends drive libtoolize/autoconf
+      #                          in autogen.sh; don't rely on transitive pulls
+      #   libreadline-dev — enables irecovery's interactive shell (else it
+      #                     silently builds without line editing)
       #   libssl-dev  — idevicerestore / libtatsu may pull in libcrypto
       #   fakeroot    — deb packaging
       #   libfuse2    — AppImage assembly on 22.04
@@ -37,9 +41,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            build-essential git automake libtool pkg-config patchelf \
-            libusb-1.0-0-dev libgnutls28-dev libzip-dev libcurl4-openssl-dev \
-            libxml2-dev libssl-dev zlib1g-dev fakeroot libfuse2
+            build-essential git autoconf automake libtool libtool-bin \
+            pkg-config patchelf libusb-1.0-0-dev libgnutls28-dev libzip-dev \
+            libcurl4-openssl-dev libxml2-dev libssl-dev zlib1g-dev \
+            libreadline-dev fakeroot libfuse2
 
       - name: Install npm dependencies
         run: npm ci
