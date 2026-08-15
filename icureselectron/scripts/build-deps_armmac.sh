@@ -72,7 +72,7 @@ build_repo() {
   echo "━━━ $name ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   git clone --depth=1 "$url" "$name"
   pushd "$name" > /dev/null
-  ./autogen.sh "$@" --prefix="$STAGING"
+  ./autogen.sh "$@" --prefix="$STAGING" --libdir="$STAGING/lib"
   make -j"$CPUS"
   make install
   popd > /dev/null
@@ -95,6 +95,7 @@ popd > /dev/null
 
 build_repo "https://github.com/libimobiledevice/libimobiledevice-glue"
 build_repo "https://github.com/libimobiledevice/libusbmuxd"
+build_repo "https://github.com/libimobiledevice/libtatsu"
 build_repo "https://github.com/libimobiledevice/libimobiledevice"      --without-cython --disable-openssl
 build_repo "https://github.com/OliTheRepairDude/libideviceactivation"
 build_repo "https://github.com/libimobiledevice/libirecovery"

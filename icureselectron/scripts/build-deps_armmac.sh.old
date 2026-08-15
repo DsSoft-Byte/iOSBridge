@@ -54,9 +54,7 @@ ${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
   export LDFLAGS="-L$STAGING/lib -L$BREW_PREFIX/lib -L$BREW_PREFIX/opt/libxml2/lib${LDFLAGS:+ $LDFLAGS}"
   export CPPFLAGS="-I$STAGING/include -I$BREW_PREFIX/include -I$BREW_PREFIX/opt/libxml2/include${CPPFLAGS:+ $CPPFLAGS}"
 else
-  # Include lib64 as a backstop: even with --libdir forcing lib, a stray
-  # package that ignores it (or a distro default of lib64) stays discoverable.
-  export PKG_CONFIG_PATH="$STAGING/lib/pkgconfig:$STAGING/lib64/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+  export PKG_CONFIG_PATH="$STAGING/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
   export LDFLAGS="-L$STAGING/lib${LDFLAGS:+ $LDFLAGS}"
   export CPPFLAGS="-I$STAGING/include${CPPFLAGS:+ $CPPFLAGS}"
 fi
@@ -74,16 +72,29 @@ build_repo() {
   echo "━━━ $name ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   git clone --depth=1 "$url" "$name"
   pushd "$name" > /dev/null
-  ./autogen.sh "$@" --prefix="$STAGING" --libdir="$STAGING/lib"
+  ./autogen.sh "$@" --prefix="$STAGING"
   make -j"$CPUS"
-  sudo make install
+  make install
   popd > /dev/null
 }
 
-build_repo "https://github.com/libimobiledevice/libplist"              --without-cython
+# ── libplist: build lib only, skip tools/ (plistutil.c references symbols
+#    not yet present in the installed headers on latest HEAD)
+echo ""
+echo "━━━ libplist ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+git clone --depth=1 https://github.com/libimobiledevice/libplist libplist
+pushd libplist > /dev/null
+./autogen.sh --without-cython --prefix="$STAGING"
+# Build only the subdirs we need — tools/ contains broken plistutil.c on HEAD
+make -j"$CPUS" -C libcnary
+make -j"$CPUS" -C src
+make -C libcnary install
+make -C src install
+make -C include install
+popd > /dev/null
+
 build_repo "https://github.com/libimobiledevice/libimobiledevice-glue"
 build_repo "https://github.com/libimobiledevice/libusbmuxd"
-build_repo "https://github.com/libimobiledevice/libtatsu"
 build_repo "https://github.com/libimobiledevice/libimobiledevice"      --without-cython --disable-openssl
 build_repo "https://github.com/OliTheRepairDude/libideviceactivation"
 build_repo "https://github.com/libimobiledevice/libirecovery"

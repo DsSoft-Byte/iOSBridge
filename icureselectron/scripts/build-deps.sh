@@ -81,9 +81,9 @@ build_repo() {
 build_repo "https://github.com/libimobiledevice/libplist"              --without-cython
 build_repo "https://github.com/libimobiledevice/libimobiledevice-glue"
 build_repo "https://github.com/libimobiledevice/libusbmuxd"
+build_repo "https://github.com/libimobiledevice/libtatsu"
 build_repo "https://github.com/libimobiledevice/libimobiledevice"      --without-cython --disable-openssl
 build_repo "https://github.com/OliTheRepairDude/libideviceactivation"
-build_repo "https://github.com/libimobiledevice/libtatsu"
 build_repo "https://github.com/libimobiledevice/libirecovery"
 build_repo "https://github.com/libimobiledevice/idevicerestore"
 build_repo "https://github.com/libimobiledevice/ideviceinstaller"
