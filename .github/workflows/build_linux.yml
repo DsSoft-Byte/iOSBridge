@@ -1,0 +1,64 @@
+name: Build Linux
+
+# Builds the AppImage + deb. Your deps script was tested on Fedora, but the
+# build logic (autogen / make / ldd / patchelf) is distro-agnostic — only the
+# prerequisite package names differ. Running on ubuntu-22.04 here because the
+# apt prerequisite list is already documented in the script header and 22.04
+# still ships libfuse2 under that name (24.04 renamed it), which electron-builder
+# wants for AppImage assembly.
+
+on:
+  workflow_dispatch:
+  push:
+    tags: [ "v*" ]
+
+defaults:
+  run:
+    working-directory: icureselectron
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: icureselectron/package-lock.json
+
+      # Prerequisites from the script header, plus:
+      #   libssl-dev  — idevicerestore / libtatsu may pull in libcrypto
+      #   fakeroot    — deb packaging
+      #   libfuse2    — AppImage assembly on 22.04
+      - name: Install build prerequisites (apt)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential git automake libtool pkg-config patchelf \
+            libusb-1.0-0-dev libgnutls28-dev libzip-dev libcurl4-openssl-dev \
+            libxml2-dev libssl-dev zlib1g-dev fakeroot libfuse2
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      # Compiles into build/native/linux/{bin,libs}. This script uses
+      # `sudo make install` into the repo-local staging prefix, which the
+      # runner allows via passwordless sudo.
+      - name: Build libimobiledevice stack
+        run: bash scripts/build-deps_linux.sh
+
+      # prebuild:linux (gen-icons + mkdir) runs automatically before build:linux.
+      - name: Package AppImage + deb
+        run: npm run build:linux
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: iosbridge-linux
+          path: |
+            icureselectron/dist/*.AppImage
+            icureselectron/dist/*.deb
+          if-no-files-found: error
