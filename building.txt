@@ -1,11 +1,14 @@
 cd projectdir
 
-npm install && npm start
+npm install
 
-then when closed start again with
+MacOS and Linux: npm run install:deps
+Windows: Install latest iOSBridge to populate C:\iCures\Dependencies which are then embedded into the new release you will build.
 
-npm run start
+npm run build:mac
+npm run build:win
+npm run build:lin
 
-build with 
+Releases built on x86 Mac will only work on x86 Mac, the arm64 release will have broken dependencies. There is no workaround currently except building OSX x86 binaries locally, Releases built on arm64 will work on arm64 Macs but the x86 build will be broken due to embedded arm64 dependencies. Please fork and use the macos arm64 build workflow if you dont have a M-Series mac. x86 will be built manually by me as long as node is supported on Tahoe, If you need to build it for x86 Mac for whatever reason, youll need a x86 Mac.
 
-npm run bild
+Linux Builds can be automatically built by actions aswell as MacOS arm64
