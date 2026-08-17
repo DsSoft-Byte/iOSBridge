@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh api *)",
+      "Bash(curl -s \"https://api.github.com/repos/verygenericname/SSHRD_Script/contents/\")",
+      "Bash(curl -s \"https://api.github.com/repos/verygenericname/SSHRD_Script/git/trees/main?recursive=1\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/verygenericname/SSHRD_Script/main/.gitmodules\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/verygenericname/SSHRD_Script/main/README.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/verygenericname/SSHRD_Script/contents/other\")",
+      "Bash(curl -s \"https://api.github.com/repos/verygenericname/SSHRD_Script/contents/sshtars\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/verygenericname/SSHRD_Script/main/sshrd.sh\" -o /private/tmp/claude-501/-Users-daniel-Desktop-iOSBridge-electron-icureselectron/aab52ff1-0254-4091-8d41-038d91fca59c/scratchpad/sshrd.sh)",
+      "Bash(curl -s \"https://api.github.com/repos/axi0mX/ipwndfu/contents/\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/axi0mX/ipwndfu/master/requirements.txt\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/axi0mX/ipwndfu/master/README.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/axi0mX/ipwndfu/master/Makefile\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/axi0mX/ipwndfu/master/ipwndfu\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/axi0mX/ipwndfu/master/LICENSE\")",
+      "Bash(curl -s \"https://api.github.com/repos/axi0mX/ipwndfu/branches\")",
+      "Bash(curl -s \"https://api.github.com/repos/axi0mX/ipwndfu\")",
+      "Bash(curl -s \"https://api.github.com/repos/verygenericname/gaster\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/verygenericname/gaster/main/README.md\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\('license'\\), d.get\\('fork'\\), d.get\\('parent',{}\\).get\\('full_name'\\) if d.get\\('fork'\\) else None, d.get\\('pushed_at'\\)\\)\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/verygenericname/gaster/main/src/main.rs\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/0x7ff/gaster/master/README.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/0x7ff/gaster\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/0x7ff/gaster/main/README.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/0x7ff/gaster/contents/\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/verygenericname/gaster/main/gaster.c\")",
+      "Bash(curl -s \"https://api.github.com/repos/verygenericname/sshtars\")",
+      "Bash(curl -s \"https://api.github.com/repos/verygenericname/sshtars/contents/\")"
+    ]
+  }
+}

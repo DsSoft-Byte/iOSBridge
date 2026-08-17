@@ -1,6 +1,6 @@
 {
   "name": "iosbridge",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "iOSBridge — iDevice toolkit",
   "homepage": "https://www.iosbridge.com",
   "author": "DsSoft",
@@ -11,8 +11,8 @@
     "build:win": "electron-builder --win",
     "build:mac": "electron-builder --mac",
     "build:linux": "electron-builder --linux",
-    "prebuild:mac": "node scripts/gen-icons.js && mkdir -p build/native/mac/bin build/native/mac/libs",
-    "prebuild:linux": "node scripts/gen-icons.js && mkdir -p build/native/linux/bin build/native/linux/libs",
+    "prebuild:mac": "node scripts/gen-icons.js && mkdir -p build/native/mac/bin build/native/mac/libs build/native/mac/sshrd",
+    "prebuild:linux": "node scripts/gen-icons.js && mkdir -p build/native/linux/bin build/native/linux/libs build/native/linux/sshrd",
     "build:deps": "bash scripts/build-deps.sh",
     "build:deps:clean": "bash scripts/build-deps.sh --clean"
   },
@@ -34,8 +34,9 @@
       "icon": "assets/icon.icns",
       "category": "public.app-category.utilities",
       "extraResources": [
-        { "from": "build/native/mac/bin",  "to": "bin",  "filter": ["**/*"] },
-        { "from": "build/native/mac/libs", "to": "libs", "filter": ["**/*"] }
+        { "from": "build/native/mac/bin",   "to": "bin",   "filter": ["**/*"] },
+        { "from": "build/native/mac/libs",  "to": "libs",  "filter": ["**/*"] },
+        { "from": "build/native/mac/sshrd", "to": "sshrd", "filter": ["**/*"] }
       ]
     },
     "linux": {
@@ -44,8 +45,9 @@
       "category": "Utility",
       "maintainer": "iOSBridge",
       "extraResources": [
-        { "from": "build/native/linux/bin",  "to": "bin",  "filter": ["**/*"] },
-        { "from": "build/native/linux/libs", "to": "libs", "filter": ["**/*"] }
+        { "from": "build/native/linux/bin",   "to": "bin",   "filter": ["**/*"] },
+        { "from": "build/native/linux/libs",  "to": "libs",  "filter": ["**/*"] },
+        { "from": "build/native/linux/sshrd", "to": "sshrd", "filter": ["**/*"] }
       ]
     }
   },

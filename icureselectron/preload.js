@@ -38,10 +38,19 @@ contextBridge.exposeInMainWorld('app', {
   setActivated:  (val)   => ipcRenderer.invoke('set-activated', val),
   flashIpsw:        (opts)            => ipcRenderer.invoke('flash-ipsw', opts),
   onFlashOutput:    (cb) => { ipcRenderer.removeAllListeners('flash-output'); ipcRenderer.on('flash-output', (_, d) => cb(d)) },
+  onPwnOutput:      (cb) => { ipcRenderer.removeAllListeners('pwn-output'); ipcRenderer.on('pwn-output', (_, d) => cb(d)) },
+  pwnDfuCancel:     ()                => ipcRenderer.invoke('pwn-dfu-cancel'),
   backup:           (opts)            => ipcRenderer.invoke('backup', opts),
   restoreBackup:    (opts)            => ipcRenderer.invoke('restore-backup', opts),
   pairDevice:       ()                => ipcRenderer.invoke('pair-device'),
   iproxy:           (opts)            => ipcRenderer.invoke('iproxy', opts),
+
+  // SSHRD (SSH Ramdisks)
+  sshrdRun:         (args)  => ipcRenderer.invoke('sshrd-run', args),
+  sshrdSsh:         ()      => ipcRenderer.invoke('sshrd-ssh'),
+  sshrdSendInput:   (text)  => ipcRenderer.invoke('sshrd-send-input', text),
+  sshrdDisconnect:  ()      => ipcRenderer.invoke('sshrd-disconnect'),
+  onSshrdOutput:    (cb) => { ipcRenderer.removeAllListeners('sshrd-output'); ipcRenderer.on('sshrd-output', (_, d) => cb(d)) },
 
   // IPSW auto-download (ipsw.me)
   checkSignedIpsw: (identifier)       => ipcRenderer.invoke('check-signed-ipsw', identifier),

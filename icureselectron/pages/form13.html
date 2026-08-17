@@ -1246,6 +1246,15 @@
           </svg>
           Diagnostics
         </button>
+        <button class="nav" data-panel="sshrd" onclick="switchPanel(this)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="11" width="16" height="10" rx="2" />
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+            <line x1="12" y1="15" x2="12" y2="17" />
+          </svg>
+          SSH Ramdisks
+        </button>
         <button class="nav" data-panel="network" onclick="switchPanel(this)">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -1750,13 +1759,33 @@
                 </button>
               </div>
               <div id="pwndfu-unix" style="padding:12px 16px">
-                <button class="btn btn--sm btn--danger" style="width:100%" onclick="pwnedDfu()">
+                <button class="btn btn--sm btn--danger" id="pwndfu-unix-btn" style="width:100%" onclick="pwnedDfu()">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
                   Enter Pwned DFU
                 </button>
+
+                <div id="pwn-log-wrap" style="display:none;margin-top:14px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                    <span class="slabel" style="margin:0">Output</span>
+                    <div style="display:flex;align-items:center;gap:8px">
+                      <span id="pwn-status-badge" style="font-size:.6875rem;font-weight:600;color:var(--text-3)"></span>
+                      <button id="pwn-cancel-btn" class="btn btn--sm btn--danger" style="display:none;padding:2px 10px;font-size:.6875rem" onclick="pwnDfuCancel()">Cancel</button>
+                    </div>
+                  </div>
+                  <div id="pwn-log" style="background:rgba(0,0,0,.55);border:1px solid var(--border);border-radius:8px;padding:11px 13px;height:200px;overflow-y:auto;font-family:'SF Mono','Consolas','Courier New',monospace;font-size:.6875rem;line-height:1.65;color:#c8d0da;white-space:pre-wrap;word-break:break-all;scrollbar-width:thin;scrollbar-color:var(--border-s) transparent"></div>
+                  <div class="note" style="margin-top:8px">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <span>checkm8 isn't always reliable on the first try — if it stalls, Cancel and re-enter DFU before retrying.</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1950,6 +1979,73 @@
               </svg>
               <span>A connected device is required. Both commands are sent over USB via <code
                   style="font-family:'SF Mono','Fira Code',monospace;font-size:.6875rem;background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">idevicediagnostics</code>.</span>
+            </div>
+          </div>
+
+          <!-- ── SSH Ramdisks ──────────────────────────────────────── -->
+          <div class="panel" id="panel-sshrd">
+            <div id="sshrd-empty" class="note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              <span>Connect a device (normal, recovery, or DFU mode) to build and boot an SSH ramdisk.</span>
+            </div>
+
+            <div id="sshrd-body" style="display:none">
+              <p class="slabel" style="margin-top:0">Device</p>
+              <div class="card" style="padding:13px 16px;margin-bottom:10px">
+                <div id="sshrd-mode-hint" style="font-size:.8125rem;color:var(--text-2);margin-bottom:10px"></div>
+                <div class="input-group">
+                  <label>iOS Version for Ramdisk</label>
+                  <input type="text" class="glass-input" id="sshrd-version" placeholder="e.g. 16.0">
+                </div>
+              </div>
+
+              <p class="slabel">Ramdisk</p>
+              <div class="card" style="padding:13px 16px;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+                <button class="btn btn--sm btn--accent" id="sshrd-create-btn" style="flex:1 1 45%" onclick="sshrdCreateRamdisk()">Create Ramdisk</button>
+                <button class="btn btn--sm" id="sshrd-boot-btn" style="flex:1 1 45%" onclick="sshrdBoot()">Boot Ramdisk</button>
+                <button class="btn btn--sm" id="sshrd-ssh-btn" style="flex:1 1 45%" onclick="sshrdStartSsh()">Start SSH</button>
+                <button class="btn btn--sm" id="sshrd-reboot-btn" style="flex:1 1 45%" onclick="sshrdReboot()">Reboot Device</button>
+                <button class="btn btn--sm" id="sshrd-blobs-btn" style="flex:1 1 45%" onclick="sshrdDumpBlobs()">Dump Blobs</button>
+                <button class="btn btn--sm" id="sshrd-clean-btn" style="flex:1 1 45%" onclick="sshrdClean()">Clean Ramdisk Files</button>
+                <button class="btn btn--sm btn--danger" id="sshrd-reset-btn" style="flex:1 1 100%" onclick="sshrdReset()">Reset / Erase Device</button>
+              </div>
+
+              <div id="sshrd-log-wrap" style="display:none;margin-bottom:10px">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                  <span class="slabel" style="margin:0">Output</span>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <span id="sshrd-status-badge" style="font-size:.6875rem;font-weight:600;color:var(--text-3)"></span>
+                    <button id="sshrd-cancel-btn" class="btn btn--sm btn--danger" style="display:none;padding:2px 10px;font-size:.6875rem" onclick="sshrdCancelRun()">Cancel</button>
+                  </div>
+                </div>
+                <div id="sshrd-log" style="background:rgba(0,0,0,.55);border:1px solid var(--border);border-radius:8px;padding:11px 13px;height:220px;overflow-y:auto;font-family:'SF Mono','Consolas','Courier New',monospace;font-size:.6875rem;line-height:1.65;color:#c8d0da;white-space:pre-wrap;word-break:break-all;scrollbar-width:thin;scrollbar-color:var(--border-s) transparent"></div>
+              </div>
+
+              <div id="sshrd-input-row" style="display:none;gap:8px;margin-bottom:10px">
+                <input type="text" class="glass-input" id="sshrd-input" placeholder="Command…" style="flex:1"
+                  onkeydown="if(event.key==='Enter') sshrdSendCommand()">
+                <button class="btn btn--sm" onclick="sshrdSendCommand()">Send</button>
+                <button class="btn btn--sm btn--danger" onclick="sshrdDisconnect()">Disconnect</button>
+              </div>
+
+              <div class="note" style="margin:0">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                <span>Uses <a href="#" onclick="app.openExternal('https://github.com/verygenericname/SSHRD_Script'); return false">SSHRD_Script</a>
+                  (A7–A11 / checkm8 devices only). Create the ramdisk, put the device in DFU, then Boot and Start SSH.
+                  Default credentials are <strong>root</strong> / <strong>alpine</strong>. Once connected, run
+                  <code style="font-family:'SF Mono','Fira Code',monospace;font-size:.6875rem;background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">mount_filesystems</code>
+                  to mount /var and /private/preboot.</span>
+              </div>
             </div>
           </div>
 
@@ -2236,6 +2332,11 @@
 
     let currentUdid = ''
     let currentProductType = ''
+    let currentIosVersion = ''
+    let lastRecoveryInfo = null
+    let pwnCancelling = false
+    let sshrdCancelling = false
+    let lastOverviewStatic = null   // { d, serial, imei, wifi, build } cached from the last full fetchAndPopulate()
     let selectedIpsw = ''
     let signedIpswList = []
     let ipswDownloading = false
@@ -2251,6 +2352,7 @@
       document.getElementById('panel-' + btn.dataset.panel).classList.add('is-active')
       if (btn.dataset.panel === 'apps' && currentUdid) loadApps()
       if (btn.dataset.panel === 'restore') loadSignedIpsw()
+      if (btn.dataset.panel === 'sshrd') refreshSshrdPanel()
     }
 
     // ── Toast ──────────────────────────────────────────────────────────────────
@@ -2647,14 +2749,27 @@
       ])
       const d    = parseInfo(infoRaw)
       currentProductType = d['ProductType'] || ''
+      currentIosVersion  = d['ProductVersion'] || ''
       const batt = parseBattery(battXml)
       const disk = parseDiskUsage(diskRaw)
+      lastOverviewStatic = { d, serial, imei, wifi, build }
       populateOverview(d, serial, imei, wifi, build, disk, batt)
       populateReport(d, serial, imei, wifi, bt, build, region, phone, devClass, modelNum, disk, batt)
       // Show Pair button only when we have a UDID but no serial (device not yet trusted)
       document.getElementById('pair-btn').style.display = currentUdid && !serial ? 'flex' : 'none'
       // Refresh the auto-download card if the Flash tab is currently open
       if (document.getElementById('panel-restore').classList.contains('is-active')) loadSignedIpsw()
+      if (document.getElementById('panel-sshrd').classList.contains('is-active')) refreshSshrdPanel()
+    }
+
+    // Lightweight live-stats refresh — just battery + storage, reusing the
+    // static fields cached from the last full fetchAndPopulate() so the poll
+    // doesn't re-spawn ideviceinfo/ideviceinfo -k N times a minute.
+    async function refreshLiveStats() {
+      if (!currentUdid || !lastOverviewStatic) return
+      const [diskRaw, battXml] = await Promise.all([app.getDiskUsage(), app.getBatteryInfo()])
+      const { d, serial, imei, wifi, build } = lastOverviewStatic
+      populateOverview(d, serial, imei, wifi, build, parseDiskUsage(diskRaw), parseBattery(battXml))
     }
 
     // ── USB watch ──────────────────────────────────────────────────────────────
@@ -2664,7 +2779,6 @@
       // Recovery / DFU detection — checked immediately at launch (so a device
       // already in recovery when the app opens is picked up), then every 20 s.
       // Guard: skip only when a normal (non-recovery) device is connected.
-      let lastRecoveryInfo = null
       const pollRecovery = async () => {
         if (deviceConnected && !lastRecoveryInfo) return
         try {
@@ -2684,6 +2798,7 @@
             setDeviceSilhouette(getCpidEra(info.cpid), 'recovery-device-art')
             setDeviceState(true, (info.chip || 'Legacy') + ' · ' + info.mode)
             toast(deviceLabel + ' detected in ' + modeLabel, 'warning', 4000)
+            if (document.getElementById('panel-sshrd').classList.contains('is-active')) refreshSshrdPanel()
             // Resolve the product identifier from CPID/BDID so auto-download works in
             // recovery/DFU — and use it to name/draw the device even when its chip
             // isn't in the hardcoded maps (keeps new models from showing as "Legacy").
@@ -2696,6 +2811,7 @@
                 setDeviceSilhouette(getDeviceEra(id), 'recovery-device-art')
                 setDeviceState(true, name + ' · ' + info.mode)
                 if (document.getElementById('panel-restore').classList.contains('is-active')) loadSignedIpsw()
+                if (document.getElementById('panel-sshrd').classList.contains('is-active')) refreshSshrdPanel()
               }
             }).catch(() => {})
           } else if (!info && lastRecoveryInfo) {
@@ -2704,12 +2820,14 @@
             setDeviceState(false, 'No device')
             document.getElementById('overview-recovery').style.display = 'none'
             document.getElementById('overview-empty').style.display = 'block'
+            if (document.getElementById('panel-sshrd').classList.contains('is-active')) refreshSshrdPanel()
           }
         } catch { }
       }
       pollRecovery()                    // immediate check for a device already in recovery
       setTimeout(pollRecovery, 4000)    // early retry in case the USB driver wasn't ready yet
       setInterval(pollRecovery, 20000)  // then keep polling
+      setInterval(refreshLiveStats, 5000)  // keep battery %/storage current while connected (no-ops when no device)
 
       app.onDeviceConnected(async (udid) => {
         lastRecoveryInfo = null
@@ -2725,12 +2843,14 @@
         lastRecoveryInfo = null
         currentUdid = ''
         currentProductType = ''
+        lastOverviewStatic = null
         setDeviceState(false, 'No device')
         document.getElementById('pair-btn').style.display = 'none'
         toast('iDevice disconnected', 'warning')
         document.getElementById('udid-display').textContent = '—'
         document.getElementById('copy-udid-btn').disabled = true
         clearOverview()
+        if (document.getElementById('panel-sshrd').classList.contains('is-active')) refreshSshrdPanel()
       })
     }
 
@@ -2892,8 +3012,214 @@
     // ── Recovery ───────────────────────────────────────────────────────────────
     async function enterRecovery() { await app.enterRecovery(currentUdid); toast('Entering recovery mode…', 'info') }
     async function exitRecovery() { await app.exitRecovery(); toast('Exiting recovery mode…', 'info') }
-    async function pwnedDfu() { toast('Entering Pwned DFU…', 'warning', 4000); await app.pwnedDfu() }
+
+    async function pwnedDfu() {
+      if (app.isWin) {
+        toast('Entering Pwned DFU…', 'warning', 4000)
+        await app.pwnedDfu()
+        return
+      }
+      const btn = document.getElementById('pwndfu-unix-btn')
+      const wrap = document.getElementById('pwn-log-wrap')
+      const log = document.getElementById('pwn-log')
+      const badge = document.getElementById('pwn-status-badge')
+      const cancelBtn = document.getElementById('pwn-cancel-btn')
+      btn.disabled = true
+      log.textContent = ''
+      wrap.style.display = 'block'
+      badge.style.color = 'var(--text-3)'
+      badge.textContent = 'Running…'
+      cancelBtn.style.display = 'inline-block'
+      pwnCancelling = false
+      app.onPwnOutput(({ type, text }) => {
+        if (type === 'out') {
+          log.textContent += text
+          log.scrollTop = log.scrollHeight
+        } else if (type === 'done') {
+          if (pwnCancelling) return
+          const ok = text === 0
+          badge.textContent = ok ? 'Done' : `Failed (exit ${text})`
+          badge.style.color = ok ? 'var(--green)' : 'var(--red)'
+          btn.disabled = false
+          cancelBtn.style.display = 'none'
+          toast(ok ? 'Device is in Pwned DFU' : 'Pwned DFU failed — check output', ok ? 'success' : 'error', 5000)
+        } else if (type === 'err') {
+          if (pwnCancelling) return
+          log.textContent += '\n[ERROR] ' + text
+          log.scrollTop = log.scrollHeight
+          badge.textContent = 'Error'
+          badge.style.color = 'var(--red)'
+          btn.disabled = false
+          cancelBtn.style.display = 'none'
+        }
+      })
+      await app.pwnedDfu()
+    }
+
+    async function pwnDfuCancel() {
+      pwnCancelling = true
+      await app.pwnDfuCancel()
+      const badge = document.getElementById('pwn-status-badge')
+      badge.textContent = 'Cancelled'
+      badge.style.color = 'var(--text-3)'
+      document.getElementById('pwn-log').textContent += '\n[cancelled]'
+      document.getElementById('pwndfu-unix-btn').disabled = false
+      document.getElementById('pwn-cancel-btn').style.display = 'none'
+    }
+
     async function customPwnedDfu() { toast('Entering Pwned DFU (gaster)…', 'warning', 4000); await app.customPwnedDfu() }
+
+    // ── SSHRD (SSH Ramdisks) ─────────────────────────────────────────────────────
+    function sshrdButtons() {
+      return ['sshrd-create-btn', 'sshrd-boot-btn', 'sshrd-ssh-btn', 'sshrd-reboot-btn', 'sshrd-blobs-btn', 'sshrd-clean-btn', 'sshrd-reset-btn']
+        .map(id => document.getElementById(id))
+    }
+    function sshrdSetBusy(busy) { sshrdButtons().forEach(b => b.disabled = busy) }
+
+    function sshrdBeginLog() {
+      const wrap = document.getElementById('sshrd-log-wrap')
+      const log = document.getElementById('sshrd-log')
+      const badge = document.getElementById('sshrd-status-badge')
+      wrap.style.display = 'block'
+      log.textContent = ''
+      badge.style.color = 'var(--text-3)'
+      badge.textContent = 'Running…'
+      return { log, badge }
+    }
+
+    async function sshrdRunCommand(args, label) {
+      sshrdSetBusy(true)
+      sshrdCancelling = false
+      const { log, badge } = sshrdBeginLog()
+      document.getElementById('sshrd-cancel-btn').style.display = 'inline-block'
+      app.onSshrdOutput(({ type, text }) => {
+        if (type === 'out') {
+          log.textContent += text
+          log.scrollTop = log.scrollHeight
+        } else if (type === 'done') {
+          if (sshrdCancelling) return
+          const ok = text === 0
+          badge.textContent = ok ? 'Done' : `Failed (exit ${text})`
+          badge.style.color = ok ? 'var(--green)' : 'var(--red)'
+          sshrdSetBusy(false)
+          document.getElementById('sshrd-cancel-btn').style.display = 'none'
+          toast(ok ? `${label} complete` : `${label} failed — check output`, ok ? 'success' : 'error', 5000)
+        } else if (type === 'err') {
+          if (sshrdCancelling) return
+          log.textContent += '\n[ERROR] ' + text
+          log.scrollTop = log.scrollHeight
+          badge.textContent = 'Error'
+          badge.style.color = 'var(--red)'
+          sshrdSetBusy(false)
+          document.getElementById('sshrd-cancel-btn').style.display = 'none'
+        }
+      })
+      const res = await app.sshrdRun(args)
+      if (res && res.error) {
+        badge.textContent = 'Error'
+        badge.style.color = 'var(--red)'
+        log.textContent += '[ERROR] ' + res.error
+        sshrdSetBusy(false)
+        document.getElementById('sshrd-cancel-btn').style.display = 'none'
+        toast(res.error, 'error', 5000)
+      }
+    }
+
+    async function sshrdCancelRun() {
+      sshrdCancelling = true
+      await app.sshrdDisconnect()
+      const badge = document.getElementById('sshrd-status-badge')
+      badge.textContent = 'Cancelled'
+      badge.style.color = 'var(--text-3)'
+      document.getElementById('sshrd-log').textContent += '\n[cancelled]'
+      document.getElementById('sshrd-cancel-btn').style.display = 'none'
+      sshrdSetBusy(false)
+    }
+
+    function sshrdCreateRamdisk() {
+      const version = document.getElementById('sshrd-version').value.trim()
+      if (!version) { toast('Enter an iOS version first', 'warning'); return }
+      sshrdRunCommand([version], 'Ramdisk creation')
+    }
+    function sshrdBoot()      { sshrdRunCommand(['boot'], 'Boot') }
+    function sshrdReboot()    { sshrdRunCommand(['reboot'], 'Reboot') }
+    function sshrdDumpBlobs() { sshrdRunCommand(['dump-blobs'], 'Blob dump') }
+    function sshrdClean()     { sshrdRunCommand(['clean'], 'Cleanup') }
+
+    function sshrdReset() {
+      if (!confirm('This will ERASE ALL DATA on the connected device. Continue?')) return
+      sshrdRunCommand(['reset'], 'Reset')
+    }
+
+    async function sshrdStartSsh() {
+      sshrdSetBusy(true)
+      const { log, badge } = sshrdBeginLog()
+      badge.textContent = 'Connecting…'
+      document.getElementById('sshrd-input-row').style.display = 'flex'
+      app.onSshrdOutput(({ type, text }) => {
+        if (type === 'out') {
+          log.textContent += text
+          log.scrollTop = log.scrollHeight
+          badge.textContent = 'Connected'
+          badge.style.color = 'var(--green)'
+        } else if (type === 'done') {
+          badge.textContent = 'Disconnected'
+          badge.style.color = 'var(--text-3)'
+          sshrdSetBusy(false)
+          document.getElementById('sshrd-input-row').style.display = 'none'
+        } else if (type === 'err') {
+          log.textContent += '\n[ERROR] ' + text
+          log.scrollTop = log.scrollHeight
+          badge.textContent = 'Error'
+          badge.style.color = 'var(--red)'
+          sshrdSetBusy(false)
+          document.getElementById('sshrd-input-row').style.display = 'none'
+        }
+      })
+      await app.sshrdSsh()
+    }
+
+    function sshrdSendCommand() {
+      const input = document.getElementById('sshrd-input')
+      const text = input.value
+      if (!text) return
+      document.getElementById('sshrd-log').textContent += '\n$ ' + text + '\n'
+      app.sshrdSendInput(text)
+      input.value = ''
+    }
+
+    async function sshrdDisconnect() {
+      await app.sshrdDisconnect()
+      document.getElementById('sshrd-input-row').style.display = 'none'
+      sshrdSetBusy(false)
+    }
+
+    function refreshSshrdPanel() {
+      const empty = document.getElementById('sshrd-empty')
+      const body = document.getElementById('sshrd-body')
+      const hint = document.getElementById('sshrd-mode-hint')
+      const versionInput = document.getElementById('sshrd-version')
+      if (app.isWin) { empty.style.display = 'block'; body.style.display = 'none'; return }
+      if (currentUdid) {
+        empty.style.display = 'none'
+        body.style.display = 'block'
+        hint.textContent = modelName(currentProductType) + ' — normal mode, UDID ' + currentUdid.slice(0, 8) + '…'
+        versionInput.value = currentIosVersion
+      } else if (lastRecoveryInfo) {
+        empty.style.display = 'none'
+        body.style.display = 'block'
+        if (currentProductType) {
+          hint.textContent = modelName(currentProductType) + ' — ' + lastRecoveryInfo.mode + ' mode'
+          versionInput.value = currentIosVersion
+        } else {
+          hint.textContent = (lastRecoveryInfo.chip || 'Unknown chip') + ' — ' + lastRecoveryInfo.mode + ' mode. Enter the iOS version to build a ramdisk for.'
+          versionInput.value = ''
+        }
+      } else {
+        empty.style.display = 'block'
+        body.style.display = 'none'
+      }
+    }
 
     // ── Activation server ──────────────────────────────────────────────────────
     function selectServer(btn) {
@@ -3102,6 +3428,7 @@
     window.addEventListener('DOMContentLoaded', async () => {
       if (!app.isWin) document.getElementById('newlib-row').style.display = 'none'
       document.getElementById(app.isWin ? 'pwndfu-unix' : 'pwndfu-win').style.display = 'none'
+      if (app.isWin) document.querySelector('[data-panel="sshrd"]').style.display = 'none'
       if (DEV_MODE) document.getElementById('dev-banner').style.display = 'flex'
       app.getDeviceNames().then(m => { if (m) deviceNameMap = m }).catch(() => {})
       startWatch()

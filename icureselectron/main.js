@@ -32,6 +32,12 @@ const IDEVICERESTORE   = WIN
   : BASE + 'idevicerestore'
 const IDEVICEINSTALLER = BASE + 'ideviceinstaller' + EXT
 
+function resolveSshrdDir() {
+  if (app.isPackaged) return path.join(process.resourcesPath, 'sshrd')
+  return path.join(__dirname, 'build', 'native', MAC ? 'mac' : 'linux', 'sshrd')
+}
+const SSHRD_DIR = WIN ? null : resolveSshrdDir()
+
 function createWindow(page, opts = {}) {
   const win = new BrowserWindow({
     width: opts.width || 1000,
@@ -61,6 +67,12 @@ app.whenReady().then(() => {
   refreshDeviceCache().catch(() => {})
 })
 app.on('window-all-closed', () => { if (!MAC) app.quit() })
+// Long-running child processes (gaster pwn, sshrd.sh) aren't killed by Electron
+// on quit by default — without this they can be left running as orphans.
+app.on('before-quit', () => {
+  try { pwnChild && pwnChild.kill() } catch {}
+  killSshrdGroup()
+})
 
 // ── Window chrome ──────────────────────────────────────────────────────────
 ipcMain.on('win-minimize', e => BrowserWindow.fromWebContents(e.sender).minimize())
@@ -159,29 +171,34 @@ ipcMain.handle('exit-recovery', async () => {
 })
 
 // ── Pwned DFU ──────────────────────────────────────────────────────────────
-ipcMain.handle('pwned-dfu', async () => {
+// Windows uses idevicerestore's built-in limera1n pwn. macOS/Linux stream a
+// bundled `gaster pwn` run into the renderer, same pattern as flash-ipsw.
+// checkm8 can legitimately hang mid-exploit on some chips/revisions (no
+// automatic timeout upstream), so the child is tracked for pwn-dfu-cancel.
+let pwnChild = null
+
+ipcMain.handle('pwned-dfu', async (e) => {
   if (WIN) {
     runDetached(IDEVICERESTORE, ['--pwn'])
-  } else if (MAC) {
-    spawn('osascript', [
-      '-e', 'tell application "Terminal" to activate',
-      '-e', 'tell application "Terminal" to do script "/usr/local/bin/ipwndfu -p"',
-    ])
-  } else {
-    const cmd = '/usr/local/bin/ipwndfu -p'
-    const terms = [
-      ['gnome-terminal',      ['--', 'bash', '-c', `${cmd}; read -p 'Done. Press Enter to close.'`]],
-      ['xfce4-terminal',      ['-e', `bash -c "${cmd}; read"`]],
-      ['konsole',             ['-e', `bash -c "${cmd}; read"`]],
-      ['x-terminal-emulator', ['-e', `bash -c "${cmd}; read"`]],
-      ['xterm',               ['-e', `bash -c "${cmd}; read"`]],
-    ]
-    let launched = false
-    for (const [t, args] of terms) {
-      try { execSync(`which ${t}`, { stdio: 'ignore' }); spawn(t, args, { detached: true }).unref(); launched = true; break } catch {}
-    }
-    if (!launched) spawn('bash', ['-c', cmd], { detached: true, stdio: 'ignore' }).unref()
+    return
   }
+  if (pwnChild) return { code: -1, error: 'A Pwned DFU attempt is already running' }
+  const send = (type, text) => {
+    const win = BrowserWindow.fromWebContents(e.sender)
+    if (win && !win.isDestroyed()) win.webContents.send('pwn-output', { type, text })
+  }
+  return new Promise(resolve => {
+    const p = spawn(GASTER, ['pwn'], { shell: false })
+    pwnChild = p
+    p.stdout.on('data', d => send('out', d.toString()))
+    p.stderr.on('data', d => send('out', d.toString()))
+    p.on('close', code => { pwnChild = null; send('done', code); resolve({ code }) })
+    p.on('error', err  => { pwnChild = null; send('err', err.message); resolve({ code: -1 }) })
+  })
+})
+
+ipcMain.handle('pwn-dfu-cancel', () => {
+  if (pwnChild) { try { pwnChild.kill() } catch {} ; pwnChild = null }
 })
 
 ipcMain.handle('custom-pwned-dfu', async () => {
@@ -512,9 +529,65 @@ ipcMain.handle('start-usb-watch', async (e) => {
     } catch {
       if (lastUdid) { lastUdid = ''; BrowserWindow.fromWebContents(e.sender)?.webContents.send('device-disconnected') }
     }
-  }, 2000)
+  }, 750)
 })
 
 ipcMain.handle('stop-usb-watch', () => {
   clearInterval(usbPollInterval); usbPollInterval = null
 })
+
+// ── SSHRD (SSH Ramdisks) ────────────────────────────────────────────────────
+// Wraps the bundled SSHRD_Script (sshrd.sh) — a self-contained shell script
+// with its own prebuilt tools — invoked from its own directory since it uses
+// paths relative to itself (sshtars/, other/, work/, "$oscheck"/<tool>).
+let sshrdChild = null
+
+function sshrdSend(e, type, text) {
+  const win = BrowserWindow.fromWebContents(e.sender)
+  if (win && !win.isDestroyed()) win.webContents.send('sshrd-output', { type, text })
+}
+
+// sshrd.sh itself shells out to gaster/irecovery/pzb/img4 etc — killing just
+// the `sh` PID leaves those grandchildren running as orphans. Spawning
+// detached makes `sh` the leader of its own process group, so killing the
+// whole group (negative PID) reaches every descendant it started.
+function killSshrdGroup() {
+  if (!sshrdChild) return
+  try { process.kill(-sshrdChild.pid, 'SIGTERM') } catch {}
+  sshrdChild = null
+}
+
+// Covers all one-shot subcommands: ramdisk creation (args: [iosVersion]),
+// 'boot', 'reboot', 'reset', 'dump-blobs', 'clean'.
+ipcMain.handle('sshrd-run', async (e, args = []) => {
+  if (WIN || !SSHRD_DIR) return { code: -1, error: 'Not supported on this platform' }
+  if (sshrdChild) return { code: -1, error: 'An SSHRD operation is already running' }
+  return new Promise(resolve => {
+    const p = spawn('sh', ['sshrd.sh', ...args], { cwd: SSHRD_DIR, shell: false, detached: true })
+    sshrdChild = p
+    p.stdout.on('data', d => sshrdSend(e, 'out', d.toString()))
+    p.stderr.on('data', d => sshrdSend(e, 'out', d.toString()))
+    p.on('close', code => { sshrdChild = null; sshrdSend(e, 'done', code); resolve({ code }) })
+    p.on('error', err  => { sshrdChild = null; sshrdSend(e, 'err', err.message); resolve({ code: -1 }) })
+  })
+})
+
+// 'ssh' is the one interactive case — keeps stdin open for sshrd-send-input.
+ipcMain.handle('sshrd-ssh', async (e) => {
+  if (WIN || !SSHRD_DIR) return { code: -1, error: 'Not supported on this platform' }
+  if (sshrdChild) return { code: -1, error: 'An SSHRD operation is already running' }
+  return new Promise(resolve => {
+    const p = spawn('sh', ['sshrd.sh', 'ssh'], { cwd: SSHRD_DIR, shell: false, detached: true })
+    sshrdChild = p
+    p.stdout.on('data', d => sshrdSend(e, 'out', d.toString()))
+    p.stderr.on('data', d => sshrdSend(e, 'out', d.toString()))
+    p.on('close', code => { sshrdChild = null; sshrdSend(e, 'done', code); resolve({ code }) })
+    p.on('error', err  => { sshrdChild = null; sshrdSend(e, 'err', err.message); resolve({ code: -1 }) })
+  })
+})
+
+ipcMain.handle('sshrd-send-input', (_, text) => {
+  if (sshrdChild && sshrdChild.stdin && !sshrdChild.stdin.destroyed) sshrdChild.stdin.write(text + '\n')
+})
+
+ipcMain.handle('sshrd-disconnect', () => { killSshrdGroup() })
