@@ -29,7 +29,15 @@
       "Bash(curl -s \"https://api.github.com/repos/0x7ff/gaster/contents/\")",
       "Bash(curl -s \"https://raw.githubusercontent.com/verygenericname/gaster/main/gaster.c\")",
       "Bash(curl -s \"https://api.github.com/repos/verygenericname/sshtars\")",
-      "Bash(curl -s \"https://api.github.com/repos/verygenericname/sshtars/contents/\")"
+      "Bash(curl -s \"https://api.github.com/repos/verygenericname/sshtars/contents/\")",
+      "Bash(bash -n scripts/build-deps_armmac.sh)",
+      "Bash(bash scripts/build-deps_armmac.sh)",
+      "Bash(echo \"started pid $!\")",
+      "Bash(kill -0 97887)",
+      "Read(//private/tmp/**)",
+      "Bash(bash -n scripts/build-deps_linux.sh)",
+      "Bash(codesign -dv /Users/daniel/Desktop/iOSBridge-electron/icureselectron/build/native/mac/bin/gaster)",
+      "Bash(ioreg -p IOUSB -w0)"
     ]
   }
 }

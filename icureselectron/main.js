@@ -38,6 +38,31 @@ function resolveSshrdDir() {
 }
 const SSHRD_DIR = WIN ? null : resolveSshrdDir()
 
+// sshrd.sh writes into its own directory (mkdir logs, decompresses
+// sshtars/*.tar.gz in place, creates work/ and sshramdisk/) — the bundled
+// copy is read-only once packaged (AppImage's squashfs mount; root-owned
+// /opt install prefixes on .deb/.rpm), so it's run from a writable copy
+// under userData instead, copied once per app version.
+let sshrdRuntimeDir = null
+function resolveWritableSshrdDir() {
+  if (!SSHRD_DIR) return null
+  if (sshrdRuntimeDir) return sshrdRuntimeDir
+  const dest = path.join(app.getPath('userData'), `sshrd-${app.getVersion()}`)
+  if (!fs.existsSync(path.join(dest, 'sshrd.sh'))) {
+    fs.rmSync(dest, { recursive: true, force: true })
+    fs.mkdirSync(path.dirname(dest), { recursive: true })
+    fs.cpSync(SSHRD_DIR, dest, { recursive: true })
+    // cpSync preserves the bundled copy's mode bits — including read-only
+    // directories on some packaging targets — so the whole tree needs write
+    // permission restored before sshrd.sh can create logs/work/sshramdisk or
+    // decompress sshtars/*.tar.gz in place. This is our own userData copy,
+    // always owned by the current user, so no elevated permissions needed.
+    execSync(`chmod -R u+w "${dest}"`)
+  }
+  sshrdRuntimeDir = dest
+  return sshrdRuntimeDir
+}
+
 function createWindow(page, opts = {}) {
   const win = new BrowserWindow({
     width: opts.width || 1000,
@@ -116,6 +141,22 @@ function runDetached(exe, args = []) {
   p.unref()
 }
 
+// Windows-only: pops a real, visible cmd.exe window running exe/args and
+// leaves it open (/k) so the user can actually see limera1n/gaster output —
+// there's no in-app streaming equivalent on Windows (unlike mac/linux).
+// windowsVerbatimArguments is required here: without it Node re-quotes each
+// argv entry as if it were a normal program argument, which mangles the
+// composite `start "title" cmd /k <command>` line that cmd.exe itself
+// re-parses with its own quoting rules — so the command line must be built
+// and quoted by hand instead.
+function spawnVisibleTerminal(title, exe, args) {
+  const quote = s => /[\s"]/.test(s) ? `"${String(s).replace(/"/g, '""')}"` : s
+  const cmdLine = [exe, ...args].map(quote).join(' ')
+  spawn('cmd.exe', ['/c', 'start', `"${title}"`, 'cmd.exe', '/k', cmdLine], {
+    detached: true, shell: false, windowsHide: false, windowsVerbatimArguments: true, stdio: 'ignore',
+  }).unref()
+}
+
 // ── Get UDID ───────────────────────────────────────────────────────────────
 ipcMain.handle('get-udid', async () => {
   return runCapture(BASE + 'idevice_id' + EXT, ['-l'])
@@ -179,7 +220,7 @@ let pwnChild = null
 
 ipcMain.handle('pwned-dfu', async (e) => {
   if (WIN) {
-    runDetached(IDEVICERESTORE, ['--pwn'])
+    spawnVisibleTerminal('iOSBridge - Pwned DFU (limera1n)', IDEVICERESTORE, ['--pwn'])
     return
   }
   if (pwnChild) return { code: -1, error: 'A Pwned DFU attempt is already running' }
@@ -203,7 +244,7 @@ ipcMain.handle('pwn-dfu-cancel', () => {
 
 ipcMain.handle('custom-pwned-dfu', async () => {
   if (!WIN) { return }  // gaster is Windows-only
-  runDetached(GASTER, ['pwn'])
+  spawnVisibleTerminal('iOSBridge - Pwned DFU (gaster)', GASTER, ['pwn'])
 })
 
 // ── Restart / Shutdown ─────────────────────────────────────────────────────
@@ -562,8 +603,10 @@ function killSshrdGroup() {
 ipcMain.handle('sshrd-run', async (e, args = []) => {
   if (WIN || !SSHRD_DIR) return { code: -1, error: 'Not supported on this platform' }
   if (sshrdChild) return { code: -1, error: 'An SSHRD operation is already running' }
+  let cwd
+  try { cwd = resolveWritableSshrdDir() } catch (err) { return { code: -1, error: 'Could not prepare SSHRD tools: ' + err.message } }
   return new Promise(resolve => {
-    const p = spawn('sh', ['sshrd.sh', ...args], { cwd: SSHRD_DIR, shell: false, detached: true })
+    const p = spawn('sh', ['sshrd.sh', ...args], { cwd, shell: false, detached: true })
     sshrdChild = p
     p.stdout.on('data', d => sshrdSend(e, 'out', d.toString()))
     p.stderr.on('data', d => sshrdSend(e, 'out', d.toString()))
@@ -576,8 +619,10 @@ ipcMain.handle('sshrd-run', async (e, args = []) => {
 ipcMain.handle('sshrd-ssh', async (e) => {
   if (WIN || !SSHRD_DIR) return { code: -1, error: 'Not supported on this platform' }
   if (sshrdChild) return { code: -1, error: 'An SSHRD operation is already running' }
+  let cwd
+  try { cwd = resolveWritableSshrdDir() } catch (err) { return { code: -1, error: 'Could not prepare SSHRD tools: ' + err.message } }
   return new Promise(resolve => {
-    const p = spawn('sh', ['sshrd.sh', 'ssh'], { cwd: SSHRD_DIR, shell: false, detached: true })
+    const p = spawn('sh', ['sshrd.sh', 'ssh'], { cwd, shell: false, detached: true })
     sshrdChild = p
     p.stdout.on('data', d => sshrdSend(e, 'out', d.toString()))
     p.stderr.on('data', d => sshrdSend(e, 'out', d.toString()))
