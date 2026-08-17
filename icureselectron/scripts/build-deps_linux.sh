@@ -10,8 +10,8 @@
 #   brew install automake libtool libusb libzip gnutls libgcrypt pkg-config libxml2 curl dylibbundler
 #
 # Linux prerequisites:
-#   sudo apt install build-essential git automake libtool pkg-config patchelf \
-#     libusb-1.0-0-dev libgnutls28-dev libzip-dev libcurl4-openssl-dev libxml2-dev
+#   sudo apt install build-essential git automake libtool pkg-config patchelf xxd \
+#     libusb-1.0-0-dev libgnutls28-dev libzip-dev libcurl4-openssl-dev libxml2-dev libssl-dev
 #
 # Usage:
 #   bash scripts/build-deps.sh           # build and bundle
@@ -106,6 +106,45 @@ for b in "${BINARIES[@]}"; do
     echo "  ✗ MISSING: $b — check build output above"
   fi
 done
+
+# ── Build gaster from source (checkm8 pwn-DFU tool used by both the app's
+# own "Pwned DFU" button and the bundled SSHRD_Script below) ───────────────
+# Built from source (not the prebuilt CI binary) because upstream gaster.c
+# never calls setvbuf() — its stdout is fully block-buffered whenever it
+# isn't attached to a real terminal (i.e. always, when spawned from Electron),
+# so none of its progress output ("Stage: RESET", etc.) ever reaches the
+# renderer until the process exits. One-line patch: force unbuffered stdout.
+echo ""
+echo "━━━ Building gaster from source ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+git clone --depth=1 https://github.com/verygenericname/gaster gaster-src
+pushd gaster-src > /dev/null
+sed -i.bak 's/\(usb_handle_t handle;\)/\1\n\n\tsetvbuf(stdout, NULL, _IONBF, 0);/' gaster.c
+grep -q 'setvbuf(stdout' gaster.c || {
+  echo "ERROR: gaster.c unbuffered-stdout patch didn't apply — upstream source"
+  echo "       likely changed shape. Fix the sed pattern above before continuing,"
+  echo "       otherwise Pwned DFU output will silently go back to being invisible."
+  exit 1
+}
+if [[ "$PLATFORM" == mac ]]; then
+  make macos -j"$CPUS"
+else
+  xxd -iC payload_A9.bin payload_A9.h
+  xxd -iC payload_A7.bin payload_A7.h
+  xxd -iC payload_notA9.bin payload_notA9.h
+  xxd -iC payload_notA9_armv7.bin payload_notA9_armv7.h
+  xxd -iC payload_handle_checkm8_request.bin payload_handle_checkm8_request.h
+  xxd -iC payload_handle_checkm8_request_armv7.bin payload_handle_checkm8_request_armv7.h
+  # Dynamically linked (not upstream's -static libusb/openssl CI build) — the
+  # existing collect_so/patchelf pass below bundles whatever .so's this links
+  # against, same as every other tool built by this script.
+  cc -DHAVE_LIBUSB gaster.c lzfse.c -o gaster -lusb-1.0 -lcrypto -pthread -ldl -Os
+  rm -f payload_A9.h payload_A7.h payload_notA9.h payload_notA9_armv7.h payload_handle_checkm8_request.h payload_handle_checkm8_request_armv7.h
+fi
+cp -L gaster "$OUT_BIN/gaster"
+chmod +x "$OUT_BIN/gaster"
+popd > /dev/null
+BINARIES+=(gaster)
+echo "  ✓ gaster"
 
 # ══════════════════════════════════════════════════════════════════════════════
 # macOS: bundle dylibs with dylibbundler
@@ -202,6 +241,26 @@ elif [[ "$PLATFORM" == linux ]]; then
   done
 
 fi
+
+# ── Bundle SSHRD_Script (SSH Ramdisks tool) ────────────────────────────────
+# Pure shell + prebuilt binaries, no build step — just clone it (with its
+# sshtars submodule) and drop in the gaster binary we already fetched above
+# so its own runtime auto-download of gaster is short-circuited.
+echo ""
+echo "━━━ Fetching SSHRD_Script ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+SSHRD_OUT="$REPO_ROOT/build/native/$PLATFORM/sshrd"
+rm -rf "$SSHRD_OUT"
+git clone --depth=1 --recursive https://github.com/verygenericname/SSHRD_Script "$SSHRD_OUT"
+[[ -s "$SSHRD_OUT/sshtars/ssh.tar.gz" ]] || git -C "$SSHRD_OUT" submodule update --init --recursive
+# Strip git metadata (incl. the sshtars submodule's packed objects) — it's not
+# needed at runtime, bloats the bundle by hundreds of MB, and its read-only
+# pack files break `electron-builder`'s recursive codesign on mac.
+rm -rf "$SSHRD_OUT/.git" "$SSHRD_OUT/sshtars/.git"
+GASTER_DIRNAME="Darwin"
+[[ "$PLATFORM" == linux ]] && GASTER_DIRNAME="Linux"
+cp -L "$OUT_BIN/gaster" "$SSHRD_OUT/$GASTER_DIRNAME/gaster"
+chmod +x "$SSHRD_OUT/sshrd.sh" "$SSHRD_OUT/$GASTER_DIRNAME/"*
+echo "  ✓ SSHRD_Script → $SSHRD_OUT"
 
 # ── Summary ────────────────────────────────────────────────────────────────
 echo ""
