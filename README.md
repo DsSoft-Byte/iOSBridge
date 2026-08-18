@@ -1,21 +1,21 @@
 # iOSBridge
 
-The complete iDevice toolkit. restore, activate, back up and repair iPhone & iPad on **macOS, Windows and Linux**. Built on [libimobiledevice](https://libimobiledevice.org); no iTunes required.
+The complete iDevice toolkit. restore, activate, back up and repair iPhone & iPad on **macOS, Windows and Linux**. Built on [libimobiledevice](https://libimobiledevice.org). No iTunes required.
 
 By [DsSoft](https://dssoft.ch).
 
 ## Features
 
-- **Restore & flash IPSW** — signed firmware auto-selected, or point it at any IPSW (update or erase & restore)
-- **Device activation** — iPad 2 & 4S, checkm8 devices, and A12+
-- **Recovery & Pwned DFU** — enter/exit recovery, gaster/limera1n on Windows, ipwndfu on macOS/Linux
-- **Full backups & restore** — any iOS version, any platform
-- **SSH over USB** — iProxy port forwarding (default `2222→22`)
-- **Live device report** — serial, IMEI, UDID, battery and storage
+- **Restore & flash IPSW**  Signed firmware auto-selected, or point it at any IPSW (update or erase & restore)
+- **Device activation**     iPad 2 & 4S, checkm8 devices, and A12+
+- **Recovery & Pwned DFU**  Enter/exit recovery, gaster/limera1n on Windows, ipwndfu on macOS/Linux
+- **Full backups & restore**Any iOS version, any platform
+- **SSH over USB**          iProxy port forwarding (default `2222→22`)
+- **Live device report**    Serial, IMEI, UDID, battery and storage
 
 ## Download
 
-Grab the latest build for your platform from **[iosbridge.com](https://iosbridge.com/#download)** — `.dmg` (Apple Silicon / Intel), `.exe`, `.AppImage` or `.deb`.
+Grab the latest build for your platform from **[iosbridge.com](https://iosbridge.com/#download)** `.dmg` (Apple Silicon / Intel), `.exe`, `.AppImage` or `.deb`.
 
 ### macOS: "App is damaged" error
 
