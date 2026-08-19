@@ -243,21 +243,6 @@
       background: rgba(52, 199, 89, .07)
     }
 
-    .badge__dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--text-3);
-      flex-shrink: 0;
-      transition: background var(--mid)
-    }
-
-    .badge.ok .badge__dot {
-      background: var(--green);
-      box-shadow: 0 0 7px var(--green);
-      animation: pulse 2s ease infinite
-    }
-
     @keyframes pulse {
 
       0%,
@@ -296,6 +281,75 @@
 
     .panel.is-active {
       display: block
+    }
+
+    /* Overview tab fills the panel's full height so the Quick Access shortcut
+       grid below the device card can occupy whatever vertical space is free,
+       instead of leaving it as dead space under the card's action buttons. */
+    #panel-info.is-active {
+      display: flex;
+      flex-direction: column;
+      height: 100%
+    }
+
+    /* flex-start (not center) is deliberate: if the window is too short for
+       both the device card and this section, it should overflow *downward*
+       into a scroll (.panels already has overflow-y:auto) rather than
+       centering into negative space and bleeding upward into the card
+       above. */
+    .qa-section {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 4px
+    }
+
+    .qa-section > .slabel {
+      margin-top: 0;
+      margin-bottom: 8px
+    }
+
+    .qa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+      gap: 8px
+    }
+
+    .qa-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text-2);
+      cursor: pointer;
+      transition: background var(--fast), border-color var(--fast), color var(--fast)
+    }
+
+    .qa-btn:hover {
+      background: rgba(255, 255, 255, .06);
+      border-color: var(--border-s);
+      color: var(--text-1)
+    }
+
+    .qa-btn svg {
+      width: 17px;
+      height: 17px;
+      color: var(--accent);
+      flex-shrink: 0
+    }
+
+    .qa-btn span {
+      font-size: .6875rem;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.25
     }
 
     @keyframes fadeup {
@@ -364,7 +418,17 @@
       border-radius: 12px;
       box-shadow: var(--glass-edge), 0 4px 20px rgba(0, 0, 0, .3);
       overflow: hidden;
-      margin-bottom: 10px
+      margin-bottom: 10px;
+      flex-shrink: 0
+    }
+
+    /* Recovery/DFU takes over the whole tab — no device details or Quick
+       Access to show yet, so the box fills the space instead of sitting
+       card-sized above dead space. */
+    #overview-recovery {
+      flex: 1;
+      min-height: 0;
+      flex-direction: column
     }
 
     .ov-header {
@@ -395,7 +459,7 @@
     }
 
     .ov-dname {
-      font-size: .8125rem;
+      font-size: .9375rem;
       font-weight: 700;
       color: var(--text-1);
       text-align: center;
@@ -403,7 +467,7 @@
     }
 
     .ov-model {
-      font-size: .6875rem;
+      font-size: .75rem;
       color: var(--text-3);
       text-align: center;
       font-weight: 500
@@ -570,7 +634,13 @@
     .rt-row {
       display: grid;
       grid-template-columns: 130px 1fr;
-      border-bottom: 1px solid var(--border)
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background var(--fast)
+    }
+
+    .rt-row:hover {
+      background: rgba(255, 255, 255, .04)
     }
 
     .rt-row:last-child {
@@ -613,15 +683,15 @@
     /* ── Overview stat rows ── */
     .ov-stat-row {
       display: grid;
-      grid-template-columns: 50px 1fr;
+      grid-template-columns: 56px 1fr;
       align-items: center;
-      padding: 5px 10px;
+      padding: 7px 10px;
       border-bottom: 1px solid var(--border);
       gap: 4px
     }
 
     .ov-stat-k {
-      font-size: .575rem;
+      font-size: .625rem;
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -630,7 +700,7 @@
     }
 
     .ov-stat-v {
-      font-size: .6875rem;
+      font-size: .8125rem;
       font-weight: 500;
       color: var(--text-1);
       white-space: nowrap;
@@ -640,7 +710,7 @@
 
     .ov-stat-v.mono {
       font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: .6rem
+      font-size: .75rem
     }
 
     /* ── Buttons ── */
@@ -1305,7 +1375,6 @@
           <div style="display:flex;align-items:center;gap:8px">
             <button id="pair-btn" class="btn btn--sm" style="display:none" onclick="pairAndRefresh()">Pair</button>
             <div class="badge" id="device-badge">
-              <span class="badge__dot"></span>
               <span id="device-status-text">No device</span>
             </div>
           </div>
@@ -1325,7 +1394,7 @@
                   <circle cx="12" cy="17" r=".5" fill="currentColor" />
                 </svg>
                 <div class="empty__title">No device connected</div>
-                <div class="empty__sub">Connect your iPhone, iPad or iPod touch via USB — the overview will appear here.
+                <div class="empty__sub">Connect your iPhone, iPad or iPod touch via USB. The overview will appear here.
                 </div>
               </div>
             </div>
@@ -1334,7 +1403,7 @@
             <div class="overview" id="overview-recovery"
               style="display:none;border-color:rgba(255,159,10,.25);background:rgba(255,159,10,.04)">
               <div
-                style="padding:24px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+                style="padding:24px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;flex:1">
                 <svg id="recovery-device-art" viewBox="0 0 62 124" fill="none" xmlns="http://www.w3.org/2000/svg"
                   style="width:36px;height:72px;color:var(--orange)">
                   <rect x="1.5" y="1.5" width="59" height="121" rx="10" stroke="currentColor" stroke-width="1.5" />
@@ -1385,6 +1454,8 @@
                         id="ov-build">—</span></div>
                     <div class="ov-stat-row"><span class="ov-stat-k">Serial</span><span class="ov-stat-v mono"
                         id="ov-serial">—</span></div>
+                    <div class="ov-stat-row"><span class="ov-stat-k">UDID</span><span class="ov-stat-v mono"
+                        id="ov-udid">—</span></div>
                     <div class="ov-stat-row"><span class="ov-stat-k">IMEI</span><span class="ov-stat-v mono"
                         id="ov-imei">—</span></div>
                     <div class="ov-stat-row"><span class="ov-stat-k">Wi-Fi</span><span class="ov-stat-v mono"
@@ -1478,13 +1549,58 @@
               </div>
             </div>
 
-            <!-- UDID -->
-            <p class="slabel">UDID</p>
-            <div class="card">
-              <div class="mono-row">
-                <div class="mono-val" id="udid-display">—</div>
-                <button class="btn btn--sm" onclick="fetchUdid()">Refresh</button>
-                <button class="btn btn--sm" id="copy-udid-btn" onclick="copyUdid()" disabled>Copy</button>
+            <!-- Quick Access — fills the leftover vertical space with 3uTools-style
+                 icon shortcuts into the sidebar tools most people jump to next. -->
+            <div class="qa-section">
+              <p class="slabel">Quick Access</p>
+              <div class="qa-grid">
+                <button class="qa-btn" onclick="goToPanel('report')">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                  <span>Full Report</span>
+                </button>
+                <button class="qa-btn" onclick="goToPanel('activation')">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="8" cy="15" r="4" />
+                    <line x1="18" y1="3" x2="11" y2="10" />
+                    <line x1="21" y1="6" x2="15" y2="6" />
+                    <line x1="21" y1="3" x2="21" y2="9" />
+                  </svg>
+                  <span>Activate Device</span>
+                </button>
+                <button class="qa-btn" id="qa-sshrd-btn" onclick="goToPanel('sshrd')">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="11" width="16" height="10" rx="2" />
+                    <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                    <line x1="12" y1="15" x2="12" y2="17" />
+                  </svg>
+                  <span>SSHRD Fun</span>
+                </button>
+                <button class="qa-btn" onclick="goToPanel('network')">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="8" rx="2" />
+                    <rect x="2" y="14" width="20" height="8" rx="2" />
+                    <line x1="6" y1="6" x2="6.01" y2="6" />
+                    <line x1="6" y1="18" x2="6.01" y2="18" />
+                  </svg>
+                  <span>SSH Tunneling</span>
+                </button>
+                <button class="qa-btn" onclick="goToPanel('restore')">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                  <span>Restore</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1535,7 +1651,7 @@
             <p class="slabel" style="margin-top:0">Automatic Download</p>
             <div class="card" style="padding:0;overflow:hidden;margin-bottom:10px">
               <div id="auto-ipsw-body" style="padding:15px 16px;font-size:.75rem;color:var(--text-2);line-height:1.55">
-                Connect a device in <b>normal mode</b> to auto-detect signed firmware.
+                Connect a device in <b>normal mode</b> to autodetect signed firmware.
               </div>
             </div>
 
@@ -1557,7 +1673,7 @@
                   <div style="font-size:.8125rem;font-weight:600;color:var(--text-1);margin-bottom:3px">IPSW File</div>
                   <div class="file-path" id="ipsw-path-display"
                     style="padding:0;background:transparent;border:none;border-radius:0;font-size:.6875rem">No file
-                    selected — click to browse</div>
+                    selected, click to browse</div>
                 </div>
                 <span class="btn btn--sm" style="pointer-events:none;flex-shrink:0">Browse…</span>
               </div>
@@ -1565,7 +1681,7 @@
                 style="display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--border)">
                 <div>
                   <div class="tt__main">Erase &amp; Restore</div>
-                  <div class="tt__sub">Full wipe, required for DFU-stuck devices and boot loop recovery</div>
+                  <div class="tt__sub">Full wipe, required for DFU stuck devices and boot loop recovery</div>
                 </div>
                 <label class="toggle"><input type="checkbox" id="erase-toggle"><span
                     class="toggle__track"></span></label>
@@ -1573,7 +1689,7 @@
               <div id="newlib-row" style="display:flex;align-items:center;justify-content:space-between;padding:11px 16px">
                 <div>
                   <div class="tt__main">64Bit Restore</div>
-                  <div class="tt__sub">Required for 64-bit devices</div>
+                  <div class="tt__sub">Required for 64 bit devices</div>
                 </div>
                 <label class="toggle"><input type="checkbox" id="newlib-toggle"><span
                     class="toggle__track"></span></label>
@@ -1610,7 +1726,7 @@
                     style="font-size:.6875rem;font-weight:700;color:var(--orange);letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px">
                     Erase &amp; Restore</div>
                   <div style="font-size:.75rem;color:var(--text-2);line-height:1.55">Factory wipe. Required for
-                    tether-downgrades. Put device in recovery or DFU mode first.</div>
+                    wiping jailbreaks. Put device in recovery or DFU mode first.</div>
                 </div>
               </div>
             </div>
@@ -1621,7 +1737,7 @@
                 <line x1="12" y1="8" x2="12" y2="12" />
                 <line x1="12" y1="16" x2="12.01" y2="16" />
               </svg>
-              <span>If you see <em>Unable to place device into restore mode</em> — update iTunes, restart your PC, then
+              <span>If you see <em>Unable to place device into restore mode</em> Update iTunes, restart your PC, then
                 remove <em>Apple Recovery (iBoot) USB Composite Device</em> from Device Manager (tick "Delete driver
                 software").</span>
             </div>
@@ -1658,14 +1774,14 @@
               </div>
             </div>
 
-            <p class="slabel">DFU Mode — Step by Step</p>
+            <p class="slabel">DFU Mode Step by Step</p>
             <div class="card" style="padding:0;overflow:hidden;margin-bottom:10px">
               <div style="padding:13px 16px;border-bottom:1px solid var(--border)">
                 <div style="font-size:.75rem;font-weight:600;color:var(--text-1);margin-bottom:4px">Device Firmware
                   Update</div>
                 <div style="font-size:.8125rem;color:var(--text-2);line-height:1.55">DFU bypasses iBoot stage one
-                  entirely — the
-                  lowest-level restore state. Required for tether-downgrades, jailbreaks, and devices that won't enter
+                  entirely. The
+                  lowest level restore state. Required for SSH ramdisks, jailbreaks, and devices that won't enter
                   recovery.</div>
               </div>
               <div style="padding:13px 16px;border-bottom:1px solid var(--border)">
@@ -1697,7 +1813,7 @@
                     <div
                       style="width:20px;height:20px;border-radius:50%;background:var(--accent-dim);border:1px solid rgba(10,132,255,.3);display:flex;align-items:center;justify-content:center;font-size:.625rem;font-weight:700;color:var(--accent);flex-shrink:0">
                       4</div>
-                    <div style="font-size:.75rem;color:var(--text-2)">Release Side only — keep holding Volume Down 5
+                    <div style="font-size:.75rem;color:var(--text-2)">Release Side only, keep holding Volume Down 5
                       more seconds</div>
                   </div>
                 </div>
@@ -1718,14 +1834,14 @@
                     <div
                       style="width:20px;height:20px;border-radius:50%;background:var(--accent-dim);border:1px solid rgba(10,132,255,.3);display:flex;align-items:center;justify-content:center;font-size:.625rem;font-weight:700;color:var(--accent);flex-shrink:0">
                       2</div>
-                    <div style="font-size:.75rem;color:var(--text-2)">Release Side button only — keep holding Volume
+                    <div style="font-size:.75rem;color:var(--text-2)">Release Side button only, keep holding Volume
                       Down 5 more seconds</div>
                   </div>
                   <div style="display:flex;align-items:center;gap:10px">
                     <div
                       style="width:20px;height:20px;border-radius:50%;background:var(--accent-dim);border:1px solid rgba(10,132,255,.3);display:flex;align-items:center;justify-content:center;font-size:.625rem;font-weight:700;color:var(--accent);flex-shrink:0">
                       3</div>
-                    <div style="font-size:.75rem;color:var(--text-2)">Screen stays black — iOSBridge will detect DFU
+                    <div style="font-size:.75rem;color:var(--text-2)">Screen stays black, iOSBridge will detect DFU
                       mode automatically</div>
                   </div>
                 </div>
@@ -1783,7 +1899,7 @@
                       <line x1="12" y1="8" x2="12" y2="12" />
                       <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
-                    <span>checkm8 isn't always reliable on the first try — if it stalls, Cancel and re-enter DFU before retrying.</span>
+                    <span>checkm8 isn't always reliable on the first try. If it stalls, Cancel and re-enter DFU before retrying.</span>
                   </div>
                 </div>
               </div>
@@ -1798,7 +1914,7 @@
               </div>
               <div>
                 <div style="font-size:.8125rem;font-weight:600;color:var(--text-1);margin-bottom:3px">iCloud Activation Bypass</div>
-                <div style="font-size:.6875rem;color:var(--text-3);line-height:1.6">Forges signed activation records via a custom server. For checkm8 devices, enter Recovery or DFU mode first, then select the matching server and click Activate.</div>
+                <div style="font-size:.6875rem;color:var(--text-3);line-height:1.6">Forges signed activation records via a custom server. For checkm8 devices, enter Recovery or DFU mode first, then select the matching server and click Activate. Checkm8 devices use a SSH ramdisk.</div>
               </div>
             </div>
 
@@ -1845,7 +1961,7 @@
                 </div>
                 <div style="flex:1">
                   <div style="font-size:.8125rem;font-weight:600;color:var(--text-1);margin-bottom:2px">Re-Pair Device</div>
-                  <div style="font-size:.6875rem;color:var(--text-3)">Forces a fresh trust pairing — tap Trust on the device when prompted</div>
+                  <div style="font-size:.6875rem;color:var(--text-3)">Forces a fresh trust pairing. Tap Trust on the device when prompted</div>
                 </div>
                 <button class="btn btn--sm btn--warning" onclick="pairDevice()">Pair Now</button>
               </div>
@@ -1919,12 +2035,8 @@
                 <div style="padding:12px 15px;border-bottom:1px solid var(--border)">
                   <div style="font-size:.6875rem;font-weight:700;color:var(--red);margin-bottom:6px">Not included</div>
                   <div style="font-size:.75rem;color:var(--text-2);line-height:1.75">Face ID / Touch ID data<br>Apple
-                    Pay information<br>iCloud-synced content<br>App Store purchases<br>Keychain (unencrypted)</div>
+                    Pay information<br>iCloud-synced content<br>App Store purchases<br>Keychain</div>
                 </div>
-              </div>
-              <div style="padding:10px 15px">
-                <div style="font-size:.75rem;color:var(--text-3)">You will be prompted to choose a folder before the
-                  operation starts.</div>
               </div>
             </div>
           </div>
@@ -1946,7 +2058,7 @@
                   </div>
                   <div>
                     <div class="tt__main">Restart Device</div>
-                    <div class="tt__sub">Graceful reboot via USB diagnostics</div>
+                    <div class="tt__sub">Graceful reboot via USB</div>
                   </div>
                 </div>
                 <button class="btn btn--sm" onclick="restartDevice()">Restart</button>
@@ -1969,16 +2081,6 @@
                 </div>
                 <button class="btn btn--sm btn--danger" onclick="shutdownDevice()">Shutdown</button>
               </div>
-            </div>
-            <div class="note">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
-              </svg>
-              <span>A connected device is required. Both commands are sent over USB via <code
-                  style="font-family:'SF Mono','Fira Code',monospace;font-size:.6875rem;background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">idevicediagnostics</code>.</span>
             </div>
           </div>
 
@@ -2068,6 +2170,14 @@
                 </svg>
                 Start Tunnel
               </button>
+              <button class="btn btn--sm btn--danger" style="width:100%;margin-bottom:10px" onclick="killAllIproxy()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                Kill All Tunnels
+              </button>
               <div class="note" style="margin:0">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
@@ -2131,7 +2241,7 @@
                   3</div>
                 <div style="font-size:.75rem;color:var(--text-2)">Run <code
                     style="font-family:'SF Mono','Fira Code',monospace;font-size:.6875rem;background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">ssh root@localhost -p 2222</code>
-                  — default password is <code
+                 default password is <code
                     style="font-family:'SF Mono','Fira Code',monospace;font-size:.6875rem;background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">alpine</code>
                 </div>
               </div>
@@ -2199,18 +2309,6 @@
                 <div class="status-row" id="activation-status-content"></div>
               </div>
             </div>
-
-            <div class="note">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
-              </svg>
-              <span>Need an activation code? Send your Machine ID to support at <a href="#"
-                  onclick="app.openExternal('https://dssoft.ch');return false"
-                  style="color:var(--accent);text-decoration:none">dssoft.ch</a>.</span>
-            </div>
           </div>
 
           <!-- ── Connections ────────────────────────────────────────── -->
@@ -2223,7 +2321,7 @@
                 </div>
                 <div style="flex:1">
                   <div style="font-size:.8125rem;font-weight:600;color:var(--text-1);margin-bottom:2px">iTunes</div>
-                  <div style="font-size:.6875rem;color:var(--text-3)">Latest version — required for device communication on Windows</div>
+                  <div style="font-size:.6875rem;color:var(--text-3)">Latest version. Required for device communication on Windows</div>
                 </div>
                 <button class="btn btn--accent btn--sm" onclick="openLink('https://secure-appldnld.apple.com/itunes12/031-69284-20160802-7E7B2D20-552B-11E6-B2B9-696CECD541CE/iTunes64Setup.exe')">Download</button>
               </div>
@@ -2233,7 +2331,7 @@
                 </div>
                 <div style="flex:1">
                   <div style="font-size:.8125rem;font-weight:600;color:var(--text-1);margin-bottom:2px">iTunes Legacy</div>
-                  <div style="font-size:.6875rem;color:var(--text-3)">Older version — compatible with iPhone 3GS restores</div>
+                  <div style="font-size:.6875rem;color:var(--text-3)">Older version. Compatible with iPhone 3GS restores</div>
                 </div>
                 <button class="btn btn--sm" onclick="openLink('https://www.filehorse.com/download-itunes-64/16353/download/')">Download</button>
               </div>
@@ -2246,7 +2344,7 @@
                 </div>
                 <div style="flex:1">
                   <div style="font-size:.8125rem;font-weight:600;color:var(--text-1);margin-bottom:2px">Apple Mobile Device Drivers</div>
-                  <div style="font-size:.6875rem;color:var(--text-3)">USB drivers only — no iTunes required</div>
+                  <div style="font-size:.6875rem;color:var(--text-3)">USB drivers only. No iTunes required</div>
                 </div>
                 <button class="btn btn--sm" disabled style="opacity:.45;cursor:not-allowed">Soon</button>
               </div>
@@ -2266,7 +2364,7 @@
             </div>
 
             <div id="apps-empty" style="display:none">
-              <div class="card" style="padding:28px 20px;text-align:center;color:var(--text-3);font-size:.8125rem">No apps found — connect a device and tap Refresh.</div>
+              <div class="card" style="padding:28px 20px;text-align:center;color:var(--text-3);font-size:.8125rem">No apps found, connect a device and tap Refresh.</div>
             </div>
             <div id="apps-error" style="display:none">
               <div class="card" style="padding:13px 16px;display:flex;align-items:center;gap:10px;border-color:rgba(255,69,58,.25);background:rgba(255,69,58,.04)">
@@ -2516,10 +2614,14 @@
         '0x8150': 'A19 / A19 Pro',
       }
       const chip = CPID_CHIP[kv.CPID] || null
-      const ibfl = parseInt(kv.IBFL, 16) || 0
-      const mode = (ibfl & 0x04) ? 'Recovery' : 'DFU'
       const pwned = raw.toLowerCase().includes('pwnd') ? ' (Pwned)' : ''
-      const serial = (kv.SRNM || '').replace(/[\[\]]/g, '').trim()
+      // IBFL-bit mode detection is unreliable on older devices (e.g. iPhone5,2
+      // reports actual Recovery mode as DFU). Recovery always exposes a real
+      // serial; DFU always reports it as "N/A" — that's a solid signal across
+      // every device generation, so derive mode from serial presence instead.
+      const rawSerial = (kv.SRNM || '').replace(/[\[\]]/g, '').trim()
+      const serial = (rawSerial && rawSerial.toUpperCase() !== 'N/A') ? rawSerial : ''
+      const mode = serial ? 'Recovery' : 'DFU'
       return { mode, chip, serial, pwned, cpid: kv.CPID, bdid: kv.BDID, ecid: kv.ECID }
     }
 
@@ -2571,10 +2673,11 @@
       svg.innerHTML = SILHOUETTES[era] || SILHOUETTES.tall
     }
 
-    function goToFlash() {
-      const btn = document.querySelector('[data-panel="restore"]')
+    function goToPanel(name) {
+      const btn = document.querySelector(`[data-panel="${name}"]`)
       if (btn) switchPanel(btn)
     }
+    function goToFlash() { goToPanel('restore') }
 
     const MODEL_MAP = {
       'iPhone16,2': 'iPhone 15 Pro Max', 'iPhone16,1': 'iPhone 15 Pro', 'iPhone15,5': 'iPhone 15 Plus', 'iPhone15,4': 'iPhone 15',
@@ -2605,6 +2708,7 @@
       document.getElementById('overview-empty').style.display = 'none'
       document.getElementById('overview-recovery').style.display = 'none'
       document.getElementById('overview-card').style.display = 'block'
+      document.querySelector('.qa-section').style.display = ''
       document.getElementById('device-art').classList.add('live')
 
       const name = d['DeviceName'] || 'iPhone'
@@ -2652,8 +2756,16 @@
     }
 
     // ── Build device report ────────────────────────────────────────────────────
+    // Click any field row to silently copy its value — no toast, no visual
+    // confirmation, just the copy.
+    function copyField(row) {
+      const val = row.querySelector('.rt-val')?.textContent
+      if (!val || val === '—') return
+      app.copy(val)
+    }
+
     function buildRow(key, val, cls = '') {
-      return `<div class="rt-row"><div class="rt-key">${key}</div><div class="rt-val ${cls}">${val || '—'}</div></div>`
+      return `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">${key}</div><div class="rt-val ${cls}">${val || '—'}</div></div>`
     }
     function buildMonoRow(key, val) { return buildRow(key, val, 'mono') }
 
@@ -2693,14 +2805,14 @@
         const chgLabel = batt.isCharging ? 'Yes ⚡' : 'No'
         const healthCls = batt.health != null ? (batt.health >= 80 ? 'ok' : batt.health >= 60 ? 'warn' : 'err') : ''
         battRows =
-          `<div class="rt-row"><div class="rt-key">Battery Level</div><div class="rt-val">${batt.level != null ? batt.level + '%' : '—'}</div></div>` +
-          `<div class="rt-row"><div class="rt-key">Charging</div><div class="rt-val">${chgLabel}</div></div>` +
-          `<div class="rt-row"><div class="rt-key">Health</div><div class="rt-val ${healthCls}">${batt.health != null ? batt.health + '%' : '—'}</div></div>` +
-          `<div class="rt-row"><div class="rt-key">Cycle Count</div><div class="rt-val">${batt.cycleCount ?? '—'}</div></div>` +
-          `<div class="rt-row"><div class="rt-key">Temperature</div><div class="rt-val">${batt.tempC != null ? batt.tempC + '°C' : '—'}</div></div>` +
-          `<div class="rt-row"><div class="rt-key">Voltage</div><div class="rt-val">${batt.voltageV != null ? batt.voltageV + ' V' : '—'}</div></div>` +
-          `<div class="rt-row"><div class="rt-key">Full Charge Cap.</div><div class="rt-val">${batt.nominalMah ? batt.nominalMah + ' mAh' : '—'}</div></div>` +
-          `<div class="rt-row"><div class="rt-key">Design Capacity</div><div class="rt-val">${batt.designMah ? batt.designMah + ' mAh' : '—'}</div></div>`
+          `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">Battery Level</div><div class="rt-val">${batt.level != null ? batt.level + '%' : '—'}</div></div>` +
+          `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">Charging</div><div class="rt-val">${chgLabel}</div></div>` +
+          `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">Health</div><div class="rt-val ${healthCls}">${batt.health != null ? batt.health + '%' : '—'}</div></div>` +
+          `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">Cycle Count</div><div class="rt-val">${batt.cycleCount ?? '—'}</div></div>` +
+          `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">Temperature</div><div class="rt-val">${batt.tempC != null ? batt.tempC + '°C' : '—'}</div></div>` +
+          `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">Voltage</div><div class="rt-val">${batt.voltageV != null ? batt.voltageV + ' V' : '—'}</div></div>` +
+          `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">Full Charge Cap.</div><div class="rt-val">${batt.nominalMah ? batt.nominalMah + ' mAh' : '—'}</div></div>` +
+          `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">Design Capacity</div><div class="rt-val">${batt.designMah ? batt.designMah + ' mAh' : '—'}</div></div>`
       } else {
         const fallbackBatt = parseInt(d['BatteryCurrentCapacity'] || '0', 10)
         battRows = buildRow('Battery Level', fallbackBatt > 0 ? fallbackBatt + '%' : '—')
@@ -2717,7 +2829,7 @@
       const activCls = activ === 'Activated' ? 'ok' : activ === 'Unactivated' ? 'err' : ''
       const pwProt = d['PasswordProtected']
       document.getElementById('rt-status').innerHTML =
-        `<div class="rt-row"><div class="rt-key">Activation</div><div class="rt-val ${activCls}">${activ}</div></div>` +
+        `<div class="rt-row" onclick="copyField(this)"><div class="rt-key">Activation</div><div class="rt-val ${activCls}">${activ}</div></div>` +
         buildRow('Password Protected', pwProt === '1' || pwProt === 'true' ? 'Yes' : pwProt === '0' || pwProt === 'false' ? 'No' : pwProt)
     }
 
@@ -2725,6 +2837,7 @@
       document.getElementById('overview-empty').style.display = 'block'
       document.getElementById('overview-recovery').style.display = 'none'
       document.getElementById('overview-card').style.display = 'none'
+      document.querySelector('.qa-section').style.display = ''
       document.getElementById('device-art').classList.remove('live')
       document.getElementById('topbar-heading').textContent = 'iDevice Toolkit'
       document.getElementById('report-empty').style.display = 'block'
@@ -2750,6 +2863,7 @@
       const d    = parseInfo(infoRaw)
       currentProductType = d['ProductType'] || ''
       currentIosVersion  = d['ProductVersion'] || ''
+      setDeviceState(true, currentProductType || 'Connected')
       const batt = parseBattery(battXml)
       const disk = parseDiskUsage(diskRaw)
       lastOverviewStatic = { d, serial, imei, wifi, build }
@@ -2790,7 +2904,8 @@
             const deviceLabel = info.chip ? info.chip + ' device' : 'Legacy Device'
             document.getElementById('overview-empty').style.display = 'none'
             document.getElementById('overview-card').style.display = 'none'
-            document.getElementById('overview-recovery').style.display = 'block'
+            document.getElementById('overview-recovery').style.display = 'flex'
+            document.querySelector('.qa-section').style.display = 'none'
             document.getElementById('recovery-mode-title').textContent = deviceLabel + ' in ' + modeLabel
             document.getElementById('recovery-mode-sub').textContent = info.serial
               ? 'S/N: ' + info.serial
@@ -2820,6 +2935,7 @@
             setDeviceState(false, 'No device')
             document.getElementById('overview-recovery').style.display = 'none'
             document.getElementById('overview-empty').style.display = 'block'
+            document.querySelector('.qa-section').style.display = ''
             if (document.getElementById('panel-sshrd').classList.contains('is-active')) refreshSshrdPanel()
           }
         } catch { }
@@ -2832,10 +2948,9 @@
       app.onDeviceConnected(async (udid) => {
         lastRecoveryInfo = null
         currentUdid = udid
-        setDeviceState(true, udid ? udid.slice(0, 8) + '…' : 'Connected')
+        setDeviceState(true, 'Connected')
         toast('iDevice connected', 'success')
-        document.getElementById('udid-display').textContent = udid || '—'
-        document.getElementById('copy-udid-btn').disabled = !udid
+        document.getElementById('ov-udid').textContent = udid || '—'
         await fetchAndPopulate()
       })
 
@@ -2847,8 +2962,7 @@
         setDeviceState(false, 'No device')
         document.getElementById('pair-btn').style.display = 'none'
         toast('iDevice disconnected', 'warning')
-        document.getElementById('udid-display').textContent = '—'
-        document.getElementById('copy-udid-btn').disabled = true
+        document.getElementById('ov-udid').textContent = '—'
         clearOverview()
         if (document.getElementById('panel-sshrd').classList.contains('is-active')) refreshSshrdPanel()
       })
@@ -2875,9 +2989,7 @@
       try {
         const udid = await app.getUdid()
         currentUdid = udid
-        document.getElementById('udid-display').textContent = udid || 'No device found'
-        document.getElementById('copy-udid-btn').disabled = !udid
-        if (udid) toast('UDID refreshed', 'success')
+        document.getElementById('ov-udid').textContent = udid || '—'
       } catch { toast('Could not get UDID', 'error') }
     }
 
@@ -2943,7 +3055,7 @@
       const body = document.getElementById('auto-ipsw-body')
       const id = currentProductType
       if (!id) {
-        body.innerHTML = autoIpswMsg('Connect a device in <b>normal mode</b> to auto-detect signed firmware.')
+        body.innerHTML = autoIpswMsg('Connect a device in <b>normal mode</b> to autodetect signed firmware.')
         return
       }
       body.innerHTML = autoIpswMsg(`Checking ipsw.me for signed firmware for <b>${escHtml(id)}</b>…`)
@@ -2971,7 +3083,7 @@
           <button class="btn btn--accent btn--sm" onclick="downloadSignedIpsw(${i})">Download</button>
         </div>`).join('')
       document.getElementById('auto-ipsw-body').innerHTML =
-        autoIpswMsg(`Signed firmware available for <b>${escHtml(id)}</b> — downloads to your Downloads folder and is selected automatically.`) +
+        autoIpswMsg(`Signed firmware available for <b>${escHtml(id)}</b> downloads to your Downloads folder and is selected automatically.`) +
         `<div style="margin-top:12px">${rows}</div>`
     }
 
@@ -3042,7 +3154,7 @@
           badge.style.color = ok ? 'var(--green)' : 'var(--red)'
           btn.disabled = false
           cancelBtn.style.display = 'none'
-          toast(ok ? 'Device is in Pwned DFU' : 'Pwned DFU failed — check output', ok ? 'success' : 'error', 5000)
+          toast(ok ? 'Device is in Pwned DFU' : 'Pwned DFU failed, check output', ok ? 'success' : 'error', 5000)
         } else if (type === 'err') {
           if (pwnCancelling) return
           log.textContent += '\n[ERROR] ' + text
@@ -3103,7 +3215,7 @@
           badge.style.color = ok ? 'var(--green)' : 'var(--red)'
           sshrdSetBusy(false)
           document.getElementById('sshrd-cancel-btn').style.display = 'none'
-          toast(ok ? `${label} complete` : `${label} failed — check output`, ok ? 'success' : 'error', 5000)
+          toast(ok ? `${label} complete` : `${label} failed, check output`, ok ? 'success' : 'error', 5000)
         } else if (type === 'err') {
           if (sshrdCancelling) return
           log.textContent += '\n[ERROR] ' + text
@@ -3203,7 +3315,7 @@
       if (currentUdid) {
         empty.style.display = 'none'
         body.style.display = 'block'
-        hint.textContent = modelName(currentProductType) + ' — normal mode, UDID ' + currentUdid.slice(0, 8) + '…'
+        hint.textContent = modelName(currentProductType) + ' ,normal mode, UDID ' + currentUdid.slice(0, 8) + '…'
         versionInput.value = currentIosVersion
       } else if (lastRecoveryInfo) {
         empty.style.display = 'none'
@@ -3242,7 +3354,7 @@
     }
 
     async function activate() {
-      if (!DEV_MODE && !isActivated) { toast('App not activated — go to App Activation first', 'error', 4000); return }
+      if (!DEV_MODE && !isActivated) { toast('App not activated, go to App Activation first', 'error', 4000); return }
       if (!selectedServer) { toast('Select a server first', 'warning'); return }
       toast('Activating device…', 'info', 5000)
       await app.activateWithServer(selectedServer)
@@ -3377,11 +3489,11 @@
       card.style.display = 'block'
       if (entered === correct) {
         await app.setActivated(true); isActivated = true
-        el.innerHTML = `<span class="status-icon">✅</span><span class="status-msg ok">Activation successful — enjoy iOSBridge!</span>`
+        el.innerHTML = `<span class="status-msg ok">Activation successful. Enjoy iOSBridge!</span>`
         toast('Activated successfully!', 'success', 5000)
         if (selectedServer) document.getElementById('activate-btn').disabled = false
       } else {
-        el.innerHTML = `<span class="status-icon">❌</span><span class="status-msg err">Invalid code — please check and try again.</span>`
+        el.innerHTML = `<span class="status-msg err">Invalid code. Please check and try again.</span>`
         toast('Invalid activation code', 'error')
       }
     }
@@ -3422,6 +3534,11 @@
       toast(`Tunnel: localhost:${local} → device:${idevice}`, 'success', 5000)
     }
 
+    async function killAllIproxy() {
+      await app.killAllIproxy()
+      toast('Killed all iProxy tunnels', 'info', 3000)
+    }
+
     function openLink(url) { app.openExternal(url) }
 
     // ── Boot ───────────────────────────────────────────────────────────────────
@@ -3429,6 +3546,19 @@
       if (!app.isWin) document.getElementById('newlib-row').style.display = 'none'
       document.getElementById(app.isWin ? 'pwndfu-unix' : 'pwndfu-win').style.display = 'none'
       if (app.isWin) document.querySelector('[data-panel="sshrd"]').style.display = 'none'
+      // SSHRD Fun has no Windows binaries — repurpose that Quick Access slot
+      // for Manage Apps instead of just hiding it.
+      if (app.isWin) {
+        const qaTile = document.getElementById('qa-sshrd-btn')
+        qaTile.onclick = () => goToPanel('apps')
+        qaTile.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          <span>Manage Apps</span>`
+      }
       if (DEV_MODE) document.getElementById('dev-banner').style.display = 'flex'
       app.getDeviceNames().then(m => { if (m) deviceNameMap = m }).catch(() => {})
       startWatch()
@@ -3439,7 +3569,7 @@
         const card = document.getElementById('activation-status-card')
         const el = document.getElementById('activation-status-content')
         card.style.display = 'block'
-        el.innerHTML = `<span class="status-icon">✅</span><span class="status-msg ok">iOSBridge is activated.</span>`
+        el.innerHTML = `<span class="status-msg ok">iOSBridge is activated.</span>`
       }
       document.getElementById('current-version-display').textContent = await app.getAppVersion()
     })

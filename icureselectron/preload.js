@@ -44,6 +44,7 @@ contextBridge.exposeInMainWorld('app', {
   restoreBackup:    (opts)            => ipcRenderer.invoke('restore-backup', opts),
   pairDevice:       ()                => ipcRenderer.invoke('pair-device'),
   iproxy:           (opts)            => ipcRenderer.invoke('iproxy', opts),
+  killAllIproxy:    ()                => ipcRenderer.invoke('kill-all-iproxy'),
 
   // SSHRD (SSH Ramdisks)
   sshrdRun:         (args)  => ipcRenderer.invoke('sshrd-run', args),

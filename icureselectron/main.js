@@ -27,9 +27,7 @@ function resolveBase() {
 
 const BASE           = resolveBase()
 const GASTER           = WIN ? 'C:\\iCures\\Dependencies\\gaster.exe' : BASE + 'gaster'
-const IDEVICERESTORE   = WIN
-  ? 'C:\\iCures\\Dependencies\\libimdevice\\libimdevice\\idevicerestore.exe'
-  : BASE + 'idevicerestore'
+const IDEVICERESTORE   = BASE + 'idevicerestore' + EXT
 const IDEVICEINSTALLER = BASE + 'ideviceinstaller' + EXT
 
 function resolveSshrdDir() {
@@ -66,9 +64,9 @@ function resolveWritableSshrdDir() {
 function createWindow(page, opts = {}) {
   const win = new BrowserWindow({
     width: opts.width || 1000,
-    height: opts.height || 700,
+    height: opts.height || 740,
     minWidth: 800,
-    minHeight: 560,
+    minHeight: 600,
     frame: false,
     transparent: true,
     backgroundColor: '#00000000',
@@ -91,7 +89,10 @@ app.whenReady().then(() => {
   loadDeviceCacheFromDisk()
   refreshDeviceCache().catch(() => {})
 })
-app.on('window-all-closed', () => { if (!MAC) app.quit() })
+// No native menu bar or dock 'activate' reopen flow exists in this app, so
+// the usual macOS convention of staying alive after all windows close would
+// just strand it as a background zombie process — quit on all platforms.
+app.on('window-all-closed', () => { app.quit() })
 // Long-running child processes (gaster pwn, sshrd.sh) aren't killed by Electron
 // on quit by default — without this they can be left running as orphans.
 app.on('before-quit', () => {
@@ -149,10 +150,15 @@ function runDetached(exe, args = []) {
 // composite `start "title" cmd /k <command>` line that cmd.exe itself
 // re-parses with its own quoting rules — so the command line must be built
 // and quoted by hand instead.
+// cwd is set to the exe's own directory: `start` otherwise inherits whatever
+// directory Electron's main process happened to be launched from, and both
+// idevicerestore.exe and gaster.exe expect their sibling DLLs to be
+// resolvable from the current directory.
 function spawnVisibleTerminal(title, exe, args) {
   const quote = s => /[\s"]/.test(s) ? `"${String(s).replace(/"/g, '""')}"` : s
   const cmdLine = [exe, ...args].map(quote).join(' ')
   spawn('cmd.exe', ['/c', 'start', `"${title}"`, 'cmd.exe', '/k', cmdLine], {
+    cwd: path.dirname(exe),
     detached: true, shell: false, windowsHide: false, windowsVerbatimArguments: true, stdio: 'ignore',
   }).unref()
 }
@@ -512,6 +518,19 @@ ipcMain.handle('pair-device', async () => {
 // ── iProxy ─────────────────────────────────────────────────────────────────
 ipcMain.handle('iproxy', async (_, { udid, local, remote }) => {
   runDetached(BASE + 'iproxy' + EXT, ['-u', udid, local, remote])
+})
+
+// iproxy tunnels are launched detached/unref'd with no PID tracking (each
+// one is fire-and-forget), so "kill all" targets the process by name instead
+// of trying to keep a live handle list.
+ipcMain.handle('kill-all-iproxy', async () => {
+  return new Promise(resolve => {
+    const p = WIN
+      ? spawn('taskkill', ['/F', '/IM', 'iproxy.exe', '/T'], { shell: false })
+      : spawn('pkill', ['-f', 'iproxy'], { shell: false })
+    p.on('close', code => resolve({ code }))
+    p.on('error', () => resolve({ code: -1 }))
+  })
 })
 
 // ── Clipboard ──────────────────────────────────────────────────────────────
